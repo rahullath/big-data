@@ -27,33 +27,33 @@ Co-owned with Vansh (methods write-up) and Sahar (critical evaluation).
 
 ## Model Checklist
 
-| # | Model | Type | Status | Output Files |
+| # | Model | Type | Status | Result |
 |---|---|---|---|---|
-| 1 | OLS Linear Regression | Regression baseline | ⬜ Run | fig_08, metrics |
-| 2 | Ridge Regression (L2) | Regularised | ⬜ Run | fig_08, λ table |
-| 3 | LASSO Regression (L1) | Feature selection | ⬜ Run | fig_08, zeroed features |
-| 4 | Elastic Net (L1+L2) | Combined | ⬜ Run | fig_08, l1_ratio |
-| 5 | Random Forest | Non-linear ensemble | ⬜ Run | fig_06, fig_08 |
-| 6 | ANN / MLP | Deep learning | ⬜ Run | fig_07, fig_08 |
-| 7 | RF Classifier (direction) | Classification bonus | ⬜ Run | fig_10, AUC-ROC |
+| 1 | OLS Linear Regression | Regression baseline | ✅ Run | RMSE=0.005188, R²=0.8265 |
+| 2 | Ridge Regression (L2) | Regularised | ✅ Run | RMSE=0.005188, R²=0.8265 — α=0.0001 (≡ OLS; finding: L2 not needed) |
+| 3 | LASSO Regression (L1) | Feature selection | ✅ Run | RMSE=0.005175, R²=0.8274 — zeroed SP, DAX, EU |
+| 4 | Elastic Net (L1+L2) | Combined | ✅ Run | RMSE=0.005170, R²=0.8277 — **best model**, l1_ratio=0.70 |
+| 5 | Random Forest | Non-linear ensemble | ✅ Run | RMSE=0.005358, R²=0.8149 — ise2 dominant (66% MDI) |
+| 6 | ANN / MLP | Deep learning | ✅ Run | RMSE=0.006244, R²=0.7486 — CV_RMSE=0.037 (overfitting on small sample) |
+| 7 | RF Classifier (direction) | Classification bonus | ✅ Run | AUC=0.888, Accuracy=82% |
 
 ---
 
 ## Figure Checklist
 
-| Figure | Description | Status |
-|---|---|---|
-| fig_01_ise_timeseries.png | ISE_USD daily returns time series | ⬜ |
-| fig_02_ise_distribution.png | Return distribution + Q-Q plot | ⬜ |
-| fig_03_correlation_heatmap.png | Pearson correlation matrix (all 8 vars) | ⬜ |
-| fig_04_scatter_matrix.png | Each feature vs ISE_USD scatter + trendline | ⬜ |
-| fig_05_vif.png | VIF bar chart (multicollinearity diagnostic) | ⬜ |
-| fig_06_rf_feature_importance.png | RF Gini importance | ⬜ |
-| fig_07_ann_loss_curve.png | ANN training/validation loss curve | ⬜ |
-| fig_08_model_comparison.png | RMSE / MAE / R² bar charts all 6 models | ⬜ |
-| fig_09_pred_vs_actual.png | Best model predicted vs actual + residuals | ⬜ |
-| fig_10_classification_results.png | Confusion matrix + ROC curve | ⬜ |
-| fig_11_feature_importance_all.png | Normalised feature importance all models | ⬜ |
+| Figure | Description | Status | Saved as |
+|---|---|---|---|
+| fig_01_ise_timeseries.png | ISE_USD daily returns time series | ✅ | `plots/s2_timeseries.png` |
+| fig_02_ise_distribution.png | Return distribution + Q-Q plot | — | (in Section 1 EDA) |
+| fig_03_correlation_heatmap.png | Pearson correlation matrix (all 8 vars) | ✅ | `plots/s2_correlation.png` |
+| fig_04_scatter_matrix.png | Each feature vs ISE_USD scatter + trendline | — | (in Section 1 EDA) |
+| fig_05_vif.png | VIF bar chart (multicollinearity diagnostic) | ✅ | `plots/s2_vif.png` |
+| fig_06_rf_feature_importance.png | RF Gini importance | ✅ | embedded in `s2_feature_importance.png` |
+| fig_07_ann_loss_curve.png | ANN training/validation loss curve | ✅ | `plots/fig_07_ann_loss_curve.png` |
+| fig_08_model_comparison.png | RMSE / MAE / R² bar charts all 6 models | ✅ | `plots/s2_model_comparison.png` |
+| fig_09_pred_vs_actual.png | Best model predicted vs actual + residuals | ✅ | `plots/s2_actual_vs_predicted.png` |
+| fig_10_classification_results.png | Confusion matrix + ROC curve | ✅ | `plots/s2_classification.png` |
+| fig_11_feature_importance_all.png | Normalised feature importance all models | ✅ | `plots/s2_feature_importance.png` |
 
 ---
 
@@ -61,21 +61,21 @@ Co-owned with Vansh (methods write-up) and Sahar (critical evaluation).
 
 | Cell Group | Content | Status |
 |---|---|---|
-| §0 | Imports, style setup | ⬜ |
-| §1 | Data load + validation (NIKKEI 0-fill, NaN check) | ⬜ |
-| §2 | EDA — timeseries, distribution, correlation, scatter, VIF | ⬜ |
-| §3 | Train/test split (80/20, time-ordered), scaling | ⬜ |
-| §4.1 | OLS + CV score | ⬜ |
-| §4.2 | Ridge + optimal λ | ⬜ |
-| §4.3 | LASSO + feature selection | ⬜ |
-| §4.4 | Elastic Net + l1_ratio grid | ⬜ |
-| §4.5 | Random Forest + GridSearchCV | ⬜ |
-| §4.6 | ANN/MLP + GridSearchCV + loss curve | ⬜ |
-| §5 | Comparison table + bar charts | ⬜ |
-| §6 | Classification framing (RF + AUC-ROC) | ⬜ |
-| §7 | Unified feature importance across all models | ⬜ |
-| §8 | Save all models (.pkl) + scaler | ⬜ |
-| §9 | Business interpretation + module connections | ⬜ |
+| §0 | Imports, style setup | ✅ |
+| §1 | Data load + validation (NIKKEI 0-fill + bfill for row-0 holiday) | ✅ |
+| §2 | EDA — timeseries, distribution, correlation, scatter, VIF | ✅ |
+| §3 | Train/test split (80/20, time-ordered), scaling | ✅ |
+| §4.1 | OLS + CV score | ✅ |
+| §4.2 | Ridge + optimal λ (α=0.0001 → finding: L2 not needed) | ✅ |
+| §4.3 | LASSO + feature selection (zeroed SP, DAX, EU) | ✅ |
+| §4.4 | Elastic Net + l1_ratio=0.70 (sparsity preferred) | ✅ |
+| §4.5 | Random Forest + GridSearchCV | ✅ |
+| §4.6 | ANN/MLP + GridSearchCV + loss curve | ✅ |
+| §5 | Comparison table + bar charts | ✅ |
+| §6 | Classification framing (RF + AUC-ROC=0.888) | ✅ |
+| §7 | Unified feature importance across all models | ✅ |
+| §8 | Save all models (.pkl) + scaler | ✅ |
+| §9 | Business interpretation + module connections | ✅ |
 
 ---
 
@@ -154,4 +154,4 @@ If you want Keras: `pip install tensorflow` and replace §4.6 with a Keras Seque
 
 ---
 
-*Last updated: 22 April 2026 | Rahul Lath*
+*Last updated: 23 April 2026 | Rahul Lath — notebook fully executed, all outputs frozen, markdown interpretations verified against actual results*
