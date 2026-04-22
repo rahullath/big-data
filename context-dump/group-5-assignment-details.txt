@@ -1,0 +1,65 @@
+Assignment Group 5
+Stock market data analytics
+
+
+Data information
+Input Variables
+There are 7 columns in the table that provide information about each stock market return index. This data set is from Istanbul Stock Exchange Data Set.
+
+Column Name
+Description
+Type
+sp
+S&P 500 Index (New York Stock Exchange)
+Numeric
+dax
+Deutscher Aktien Index (Frankfurt Stock Exchange)
+Numeric
+ftse
+FTSE 100 Index (London Stock Exchange)
+Numeric
+nikkei
+Nikkei Index (Tokyo Stock Exchange)
+Numeric
+bovespa
+Bovespa Index (Brasil Sao Paulo Stock Exchange)
+Numeric
+eu
+MSCI Europe Index
+Numeric
+em
+MSCI Emerging Markets Index
+Numeric
+Note: The first column in the table is named date and corresponds to the date of the returns.
+Output Variable
+There is one column in the table that corresponds to our target value.
+Column Name
+Description
+Type
+ise2
+ISE (Istanbul Stock Exchange)
+Note: This column was named ise.2 in the original data set.
+Numeric
+Note: The column ise2 is USD-based, whereas the column ise1 (which was named ise.1 in the original data set) is 
+Section 1: Data quality control 
+    • What is the size of the data set? What are the type features given in the data sets? Are 
+    • Is there any missing values in the data set? How to impute the data sets?
+    • Is there any outliers in the data sets? Which are those? 
+    • How he distributions of the features of the data look like? 
+    • Summarize data sets
+Section 2: Model development and analytics
+    • Which model to use? Univariate or multivariate? Supervised vs. unsupervised?
+    • Which Machine learning methods will be suitable and why? 
+
+    • Identify which variable(s) are really a contributors towards churn? Is it possible to identify? How?
+    • How all variables are correlated /or not correlated? 
+    • How can you summarize the results using plots/graphs?
+    • Develop a prediction model and compare them 
+    • Describe advantages and disadvantages 
+Section 3: Interpretation 
+    • How results can be interpreted?
+    • How your results help to make a business decision?  
+
+
+
+

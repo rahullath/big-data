@@ -1,0 +1,2955 @@
+[Auto-generated transcript. Edits may have been applied for clarity.]
+The. I think that.
+
+Them. Um.
+
+You. Okay.
+
+Good afternoon everyone. Um, you can start. So the last time we started.
+
+Talking about. Um. Some basic so far and you have seen.
+
+Some basic operations. Those operations are of, um. And really, it's probably going to last and we have to go through those basics.
+
+Um, but just to recap. Um.
+
+What? How many types of data structure are?
+
+What are the types? Data structure.
+
+Oh, I didn't know. What are the different data structure in R?
+
+I am not talking about data types. I'm saying data structure.
+
+You have a market. Actors.
+
+Yeah. What is the difference between metrics and data frame?
+
+Listed as one that you know. What is the difference between metrics and data frame?
+
+With. Basically, we seemed to think that it seemed that we could somehow.
+
+You implement these elements in the matrix need to be the same, right?
+
+The data for any of the different types. Yeah. And and so so matrix ADT data type.
+
+Okay. And in terms of the data frame, we can combine multiple.
+
+Data points. But the problem is.
+
+The size need to be the same. Then if you think about the least, what is the difference in list versus dataframe?
+
+If you consider listed unstructured data frame rates in.
+
+No, I'm asking mostly based on the content. So for example, you say.
+
+I mean, if it is a metrics they need to be same data, right? Data frame can accommodate multiple different data types.
+
+But then what is the differences between least if I use a least.
+
+What is the difference between least versus. Yeah.
+
+So least can accommodate. Not the same length.
+
+Okay? Definitely. Okay. So so these are.
+
+This is really important because many of the functions are written.
+
+The main basis is that is a data structure. Okay.
+
+Um. Yeah.
+
+And then also we have seen. Some exercise using the phone function.
+
+Okay, we have done some very basic stuff using correlation.
+
+Type of approaches. Okay. Um, so we go a little bit more deep today and.
+
+I will also talk about. General principle of data analysis.
+
+What do you mean by general principle? General principle means it doesn't matter what capability you are getting.
+
+You need to follow a similar type of strategy. Yeah.
+
+So that's called general principle, meaning that if someone is giving your credit card to someone,
+
+you marketing it or someone is giving you opinion data, someone is giving you many different types.
+
+It doesn't matter really. So that was the general principle.
+
+Of the data analysis. Okay.
+
+So we have kind of a kind of talked about a little bit on those ones.
+
+Um. But then I and also a little bit more on that.
+
+I mean, you know, the art is very much case sensitive. Okay.
+
+So if you try one object, you want it to retrieve the object.
+
+We go lower case versus upper case. You cannot retrieve if you make so.
+
+So it will be very careful. There is other thing in the same aspect.
+
+You cannot reuse the function as object. For example, if I say mean, mean is a name of a function.
+
+You cannot use that object name. Okay.
+
+All right, but there are some kind of a cheat sheet.
+
+So if you type in Google or some other cheat sheet, meaning that it will help you, I mean, you can keep it if you take every one of you.
+
+Yeah, it's like a shortcut version of things.
+
+So for example, you can see and I will go to some of the cheat sheet and we talk about, for example, many of the operations you have done.
+
+Selecting literally the positions. You can see what that means.
+
+This is a little bit more comprehensive, but very condensed.
+
+Okay. And.
+
+In the same line. Intellectually that somebody if you could think of a little bit carefully,
+
+you can see there are different types of the reader data types, different methods and functions.
+
+Uh, different environmental related functions. For example, if you want to list parentheses, you can use all the variables you are working on.
+
+So this is really kind of in. Guiding document.
+
+If you just pick a theme or maybe keep your background, it will help you a lot.
+
+Yeah. Uh, and this is already the, uh, uh, perfume in the canvas.
+
+Uh, you can have a look into that. But today, what we are going to do, we'll start with the exercise, because we wanted to recap what we have done.
+
+Okay. So in that respect. I want you to execute this.
+
+We are. There is already some data for.
+
+Okay. So. So when you install the R base package. Some of the data coming by default.
+
+Okay. For example, this is called air quality data. This is coming when you install the base package.
+
+Okay, I'll show you. For example, if I.
+
+So if I say dee Dee. Maybe I'll make a.
+
+Okay. I made object for team. Uh, okay.
+
+Sorry. Maybe first I would like to load.
+
+Okay, so what I've done. Like that data air quality.
+
+So I know the name of the name of the object built in air.
+
+If you take capital it, it's not going to be working. Okay.
+
+And then. What I've done here. I have stored.
+
+This entire thing. Okay.
+
+So I'm typing. By I mean I did a mistake, I'm typing here. But but it's alright.
+
+In that case you might want to use this pen. The top pen.
+
+What type? Okay, so what I've done.
+
+I made the object for. And I stood.
+
+The data entity. Is it clear? So my object is no.
+
+Now, the first thing I would like to check. Time. Time of DT for dimension.
+
+How many rows? How many columns? Okay.
+
+Now, sometimes data become very, very big. You cannot really take my name with you.
+
+I mean, for example, if it is a 1 million rows, it is not advisable.
+
+If you take 1 million rows, you cannot see any. So it is always.
+
+Suggested you check a few rows.
+
+You can't. You want. I don't want to train 153 rules.
+
+Six column is fine, but I really don't want to print 153 rules.
+
+Okay, so I am interested in a few rows in the top of the data.
+
+So I'm typing head of. If you type head function by default, it will select first six rows.
+
+First six rules. It will give me an idea what type of data.
+
+So I can see this is an eight month temperature. We got something awesome.
+
+They have measured some of them. So these are what you have. Quality composition of the air quality.
+
+Is it clear? Now, if there is a head, there should be one thing.
+
+If you that did. What will happen last six tonight and see.
+
+Well it is. Taking last.
+
+Something. They have six rules. Okay.
+
+It is very useful command. For big data because you don't really want it to print and it is not usable.
+
+I mean. Okay, now there is something.
+
+Can you notice something here in this case? If there's anything, that's what it all.
+
+You. We'll get it. Maybe you don't need it. I don't know if there's something.
+
+Not this data. Something else in here. And if we're not in.
+
+Okay. It could be anything. It could be anything.
+
+And we thought about it. But also it is a good practice.
+
+You check what is the structure? What is the data structure of the air quality?
+
+So what we do is dot matrix.
+
+I am asking questioner if this is a matrix.
+
+What do you think? Yes. Okay, well, we'll check it.
+
+Is matrix D false.
+
+No. Why it's not going to.
+
+Have some concerns. Thank you sir. You got it, Eddie.
+
+Uh, well, I mean, you're close, but it's not that I got into little.
+
+That's up to second guessing data structure. No, that's not my question.
+
+Is it? It is one type of data structure.
+
+It's not a matrix. Okay.
+
+We can check it out. Is dot data dot frame true?
+
+Why? Because it's true though. No label means what?
+
+William is one. You. Never again. That's why I'm saying.
+
+I mean, I started the discussion today. The differences. So you go back to the definition, what I'm saying.
+
+I am saying if it is a metric, that's what you're saying. He's saying what is different?
+
+Different classes of data. No, no, no.
+
+This be easy. You're easy to number. Yeah, it's already been confirmed.
+
+Yeah, we've got the number. If the integer is exactly the norm.
+
+So that's why it is a dataframe.
+
+DataFrame is a combination between numeric and non-numeric, or it be the same size, but it can accommodate numeric versus let's say, character.
+
+It also can accommodate character as well. In a matrix.
+
+I can have all characters or all numeric, right.
+
+Or length. Or just numeric. It's usually the numerical.
+
+It's usually the numeric one in the in that particular case in the in the context of our.
+
+Yeah. So what I'm doing.
+
+So what I've done so far is. You can see your here as well.
+
+Many of the first heading. There are some missing. Harry.
+
+Okay. Maybe there is something else. It's a combination of two different datatypes.
+
+Okay. So. For? For this exercise I have done first one.
+
+We have read air quality data which is inbuilt. We have checked the dimension using the function.
+
+Print first and last few data set. In that case, we have used the head and tail.
+
+Then I am asking, what is your observation in each of the columns? Do you find something is not normal?
+
+What is the issue? Do you think you can overcome that? So I am talking about you have seen enabling.
+
+The question is. What do with it? What do you do?
+
+What do you. If I didn't like it.
+
+I can find the name of.
+
+Perhaps. Okay.
+
+You know, I could stay here. Yeah. Okay. What would you say?
+
+What do you waiting for? We say what?
+
+Yes, indeed. I asked why he didn't see any.
+
+How do you we. Okay. What do you mean?
+
+What do you mean? Obviously you know how you make the decision.
+
+So you probably do the data differently. You can do that right through merging it.
+
+For example you need the average. You don't need to anything really. Zero.
+
+Okay. We will come back to that. So. So I want to see if you guys would be sufficient.
+
+I mean, I would like to think. Okay. What do you mean?
+
+Like, what do you got? What would you give? Anything. How do I charge that?
+
+Oh, yeah. Uh, yeah. Well, that's.
+
+I don't think you have anything to eat.
+
+What do you get? You do? Yes.
+
+What do you mean? You know? You know. And so once you get.
+
+Don't you think? This way? I think my mother.
+
+And usually on the beach. All right.
+
+So. Okay. So this is. This is a good discussion.
+
+The reason I mean it's not about right or wrong. I mean, if you were someone saying we mean something.
+
+I mean, it's not like someone is going to be hanged. You know? I mean, that's fine.
+
+I mean, this is the things I want that you know. What do you want?
+
+And then we would see that we think so this is actually debatable thing in the literature.
+
+First of all, any animal, meaning that not even a yes, you would be okay.
+
+Now some people. What? I have seen people repeatedly do things wrong.
+
+Zero means this is a value, you know. And then you don't know.
+
+What is it? So there is a difference between that particular value versus you do not know.
+
+It could be anything right. Okay. Now. So someone said you do the part of pre-processing 100%.
+
+So this is a big, big, big issue.
+
+I mean, whenever you're getting a job, either data analytics will be spending 70% of your time on the processing the data, cleaning the data.
+
+That is a very crucial step of the data analysis. It doesn't matter what you know.
+
+I mean, I mean, I am using biological data, but it really doesn't matter. It matters.
+
+Are you following again? This is a part of the general principles of data analysis.
+
+Okay. I know Anna is not out there.
+
+Don't consider anybody who is an open up in a usual meeting that now people can write thesis for thesis on the missing value imputation.
+
+Big topic in the statistics.
+
+Okay, now the process of replacing an all imputation process, the replacing any by something that something is individual.
+
+Some people say okay I am going to be mean that.
+
+I'm going to need it. Some people say I'm going to get redundant.
+
+I would say I will develop my prediction model. I will use canon method in unison with someone who said no, I will be used multiple months.
+
+Someone said no, I'm going to use. So there is a there is a different point of view, different other things.
+
+Okay. Now what we can do, we can think about.
+
+How best we can improve. But, but, but I will tell you some general principles, but not necessarily.
+
+We have to do everything in this class. But you need to know.
+
+Think about this situation because we are talking about think about this situation.
+
+Oh, by the way, this is your code, okay. This is your attendance code.
+
+It's not working. There is nothing. Okay, so what happens?
+
+You know. Next it. Uh, someone is giving you data.
+
+It's always giving better and. And there were so many ballots.
+
+There were some envelopes. There were some envelopes. And.
+
+Before Inadvertence. If you don't consider your name, your distribution of your data look like something like this.
+
+You could make one.
+
+You didn't consider any, let's say removing mean of what you possibly making, removing the rules or something and you withdraw its revision.
+
+It look like this. Okay with me.
+
+And then you have done. Imputation process.
+
+These imputation process may be done by me.
+
+Imputation. You are giving me your only vacancy and just replaced by an by the value of what mean value of my column.
+
+My measurements. Yeah, I took the meat and I went, well, once I have done.
+
+I got my distribution is like this. So this is my original distribution.
+
+This is my mean then imputed distribution. And then mean well.
+
+And then someone did median. Someone did median. So the median value will look like this.
+
+You find it. If you are wrong, you can not. And then what is?
+
+Your distribution lies here. You created your own detection. You created your own data, actually.
+
+If I do. I guess it was called Wallace Nest. I'm sorry, Mr. Wallace.
+
+Called, um. Uh, kolmogorov-smirnov test, which is comparing distributions and generate the probability.
+
+If I hit a significance, you should not use this problem.
+
+Your data should look like your imputed data some extent.
+
+We follow your original distribution. If you do a statistical test you don't like any significant.
+
+You not only focus or you have a Z, there would be different differences.
+
+So that would be the correct way. So you should not use mean.
+
+You should not use median. These are all wrong. Yes, but this depends upon the, like the data set.
+
+Yeah. Of course, of course. Depends how serious it is. Of course.
+
+I mean, these are all depending on the data you cannot pick. Oh I know, mean median and it will be applicable to everyone.
+
+No it is not applicable to every data set but they will be applicable to some.
+
+There could be one question is did you check some.
+
+You redefine what is some 1 to 1 data to be computed.
+
+So it could be an interview. So be open about that one.
+
+So if someone is saying oh mean well then I would like to see is a logical data efficient.
+
+Oh sorry no patience. If the person is coming multiple times in the bank or somewhere.
+
+And I would like to know in detail. And I also ask why it is missing.
+
+Is it someone is coming in the, in the bank and you put a question early and this guy may be fighting in the home and coming.
+
+No no no no no no no. And then I don't like is it the case or is like something else.
+
+So it's a big, big, big topic. So. Yeah.
+
+The reason I am telling you in a very systematic piece would be the systematic way you do it,
+
+in the form of, you know, Russian scientists to compare distribution.
+
+Sure. Probably the value is not significant. And then you take into.
+
+Okay. By the way, we do not consider anything. If it is a 30% more than 30% missing, we don't consider those data.
+
+So we take only. So this is the first filtering anyway. But within 30% regime there might be something.
+
+And then you follow this kind of strategy. Okay.
+
+Does it make sense? It is more data driven, not a domain driven.
+
+Okay. So this is the discussion I mean it.
+
+What do you think? You can. How can you overcome? I think the answer is me.
+
+We can overcome ways. Depends on what you want to do. If it maybe mean is correct, one beta is correct.
+
+One if you go systematically. Yes. Happy to accept any justification as long as you justify why done.
+
+What is the motivation that you just. Okay.
+
+Um, how do you summarize the basic. I'll be sorry.
+
+I mean, we are more range than any region variants of each of the below. How do you do that?
+
+Yeah. So there are already functions. Okay, there are already functions.
+
+So for example, I think I have shown last I mean um, if you type mean it will do it for, you know, and these are basically statistics right.
+
+And it doesn't matter. Any data is given. I think this is the first thing you should do just to trying to get a sense and of the um.
+
+He's not each of the fellows using something.
+
+Okay, so can you try to draw something? Does it work? So if I do East.
+
+Okay. East, and I'm trying to fix the engine.
+
+Let's see if it is working or not. What I've done here is the eat from did I have, you know lazy eyes glaze one.
+
+So it looks like it looks like by default in the heat function, it can handle missing value.
+
+Probably didn't take into account the samples got a missing value.
+
+Only those samples has a value they put together.
+
+It's polished overall. You use it right in your other courses, right?
+
+But you, you know, you okay? Probably useful.
+
+I mean, if you are dealing with the data some point, I mean, you know, uh, but for example,
+
+people like me who work with the people who does experiment, what they do, they do experiment, they generate data.
+
+They have to analyze your sampling, not as big as the data, but they have to.
+
+So it looks like, well, what is your comment on this part of it looks like so have you.
+
+Is it like all those in first column when you like, what do you think goes on for now?
+
+Yeah, yeah yeah I think so I think so. So we can, we can, we can go deep, deep into that.
+
+Okay. So, um. We can.
+
+What we can do, actually. Um. So. Ozone. Okay. Okay.
+
+No, you're not here. So what I am doing here, I have created ozone and I have stored the value.
+
+Okay. Okay, so I have I have created my new object called the ozone.
+
+And then I have. So if I do know east of ozone.
+
+Okay. And then what will do it? It will change the name, you see. Yeah.
+
+That's fine. Okay. And then you can create for all all of them accordingly.
+
+So looks like the hist function can handle actually the missing values here.
+
+What it does it remove. Removing removing roads is okay, but you need to consider how many sample dummy persons you are considering.
+
+If it is a 20 or removing maybe maybe 8 or 9, you are losing your your sample size.
+
+If it is 200, 200 and then you are removing and if you will, if I see that, fine.
+
+And then so it is always the balance depends on how well you data.
+
+Okay. Okay.
+
+All right. So we'll go to the next. This one. What is that.
+
+Yeah. Yeah. And then plot the bivariate relationship each other using the plot function.
+
+I think you have done it earlier. Find the correlation. We each column.
+
+Okay. So in that case if I use if you use core function and you can check if it is really working or not working.
+
+Okay, if it is not working, then then actually we are going to that direction.
+
+How we can. Uh, impute those values and other things in that case.
+
+And it would be checked if it is used for function. Is it working or not working?
+
+So. Yeah.
+
+Yeah. Okay. So he's working with this, but then he goes goes over who has a handicap, you know taking on.
+
+And most often it gives an A+.
+
+And then you get a matrix that there are a little bit in the matrix in it.
+
+Yeah, that type of thing. Can we just like.
+
+Yeah. You can just ask for function for the. Okay.
+
+And then you would see what is happening there. Yeah.
+
+Okay. Yeah yeah yeah yeah. So, uh. Okay.
+
+But I mean, you can, you can do this exercise at home because I just wanted to recap what we've done here last time and move a little bit faster.
+
+Okay. Okay, good. So please do in your in your.
+
+I mean because that I think next class is happening in in one month's time.
+
+Yeah, because I'm coming. Um, but I mean, um, so.
+
+So my mates. No, not others think so, because in between there is a tendency to forget.
+
+So what I'm going to do and 100% I mean, this is I mean, if you say no, I don't believe in that.
+
+So what I'm going to do, I mean, I mean, that's why I'm moving a little bit so that I can give you some tasks.
+
+Okay. Okay. So that you can practice it. And then I will ask randomly one person and then they will come and explain to the.
+
+Uh. Okay, so what I what I want you to do now.
+
+Can you install first?
+
+This particular package. Summary tools.
+
+Okay. I want you to install this particular because I wanted to show you something.
+
+You do not need all of them at the moment. Please install only this particular package because I am going to do.
+
+Some operations. I am going to borrow some function. Using this particular day.
+
+So I want you to install this package in Iran.
+
+See. More people.
+
+So how do we. How do you tell? You. There are many ways you can install.
+
+You can use install dot packages. I just use x, y, z could be anything.
+
+But I guess the last thing people think the x x doesn't call them an example.
+
+Okay, so if you please explain something here or you click in your install and then just for now,
+
+just just install this particular package, I just want to show you something that.
+
+If we. Yeah.
+
+Carry on. Okay. For.
+
+Not. One.
+
+Okay. Everybody here. You just. All right? Yeah. Okay. Yeah, yeah.
+
+So this one, you know. So what are you going to do?
+
+Three. So we are going to do this.
+
+Okay. This is a summary. Coming up.
+
+Okay, so here what we have to do. You have installed the package.
+
+Now I am calling the package. There are two different thing. Installation and calling is not same.
+
+So I'm doing library. Okay.
+
+So I'm saying library summary tools. Installation and calling two different thing.
+
+I want to do some operations. That is why I am using these summer tools.
+
+And then. I am using DF.
+
+I am using df summary dt, meaning that remember the air quality data.
+
+Remember the air quality data we have stored in TX for me TX.
+
+I am passing only one function here. DF.
+
+Summary. And only one command it will give me.
+
+All basic statistics in a single command. You don't have to do each column.
+
+So it is a loop. Okay. In Python in your Java or C plus plus you have run a lot of looping right?
+
+Here. Actually, he's even deeper in the bank. All of them with a graphics.
+
+Okay so I because I think my. Yep.
+
+And of course, you have to be huge. I get it.
+
+I was. As well as looking like a.
+
+So how do you want to paint?
+
+We got to. I, you know.
+
+You know, and then like, you know. Of.
+
+We have been here for a month because we.
+
+Even though it was a super long. Just like you seen from my audience.
+
+And point by point. You will see.
+
+What offended you? Like most people. You guys love them?
+
+Yeah, yeah, it's like a company. Who you. So some of your ideas about.
+
+Ahead of its time. Hold you.
+
+Hope you. Don't have a worry at this point.
+
+I have to tell which one of you just put the error message salt on.
+
+I think you didn't even have to install it once. What?
+
+How do you spell that? I do you. What is your name?
+
+I was, um, already familiar with my.
+
+Well, I think so.
+
+25 1821 so how do you know that?
+
+So guys, those who are married, they they're facing some problem because you are facing second.
+
+Right. You did want to find out.
+
+Why did you say you don't. Want anybody having.
+
+Speaking from. So for the Mac, I don't have a dependency because I do realize that the system has a lot of pain,
+
+but I really don't like to be working, for example, when it works for me.
+
+But yeah, yeah, we'll make it work on that.
+
+Yeah. So just wait. I mean, I was in the energy intensive, you know that.
+
+That's helpful. Yeah, that is what I long for.
+
+Yeah. Option. All right. Do you always want to do this?
+
+No. I mean, this is crazy. I mean, I have no idea how it works now.
+
+It works now. So I think that's what I had to explore for.
+
+Yeah. So. Yeah. So. Oh, yeah.
+
+Yeah. So then. Okay, I don't know about. And now we're running out of room.
+
+Okay. So no. So for her work, this is the conclusion of what he's done.
+
+All right. Yeah. How do you get home? Uh, do you have a mac?
+
+I had to install cords, and it shows you the error message.
+
+And then once you install it, you get another area where it tells you it's a set option where you have to use X11 as far.
+
+But once you put that in the console, it works. Yeah.
+
+How are you telling? Um. Is it possible that maybe you have an internal message?
+
+Yes, I do. Okay, and what if you want to have a human WhatsApp group or something?
+
+Other than can you please message them to them? So. Yeah.
+
+So I'm using windows machine. Yeah. So anyway, I encounter this problem.
+
+Okay. So I think there's an extra an extra bit about, um, what this particular package has done for you.
+
+It works. Right? Oh, okay. Great. Thank you. I mean, if you get it, someone can talk to the group.
+
+That'd be really great. Yeah. Okay. Yeah.
+
+Okay. So what? All I'm trying to say. The differences between you have learned in classical Java or whatever in subject oriented programming.
+
+I mean, the pejorative. Right? So you need to write in X plus.
+
+Plus I is equal to one. And then iterate over the each of the columns it is doing for you all automatically.
+
+You just need to know which packages, what are the things. And it doesn't matter if it is a 100 columns, it will do for 100 columns.
+
+Okay. And if there's a way, we can see the other.
+
+We can see and say before and from, okay,
+
+I'm trying to do the one making the how you can write reporting like an automated version of documentation using should be this kind of thing.
+
+Okay. So so you do the analyses. You get a report and it will do it for you all on end.
+
+But like I like and I buy the notebook kind of stuff more reproducible.
+
+Yeah. So so that. And you can ask me. Okay.
+
+How do I know? Okay. I'm using those those packages. That's why I know that I mean for you guys it's a very steep learning curve.
+
+Right. If you're learning which one is working. But these summary, um, tools can do many other stuffs as well, like a visualization, any other thing.
+
+So if you want to know more you can please exploring. But if someone is giving you data, this is the thing you can do in a minute.
+
+That's it. You. The descriptive statistics. Okay.
+
+Up. Uh. Thank you. I Google your name.
+
+My love, my life. Okay. Thank you very much. I mean, I think you might have received NFC if you follow those we're using Mac.
+
+I think you can resolve to people definitely social media. So so great.
+
+Um all right so should we move on.
+
+So this is the, uh, thing I wanted to show you. Um.
+
+And then. And then there are other packages you need to install eventually.
+
+Uh, each of the packages has got different function, for example.
+
+These two packages deeply are reshaped. These two packages are enormously helpful.
+
+Enormously helpful for what? For data pre-processing. Not for data modeling, but for data pre-processing.
+
+Data pre-processing is not data model. Okay.
+
+They don't. Like.
+
+Yes, I think it starts with. Interquartile range.
+
+I do like this, um, one.
+
+Yeah, we don't like that. But we we will talk about it if you do a box with it.
+
+Yeah. First one of the second quantile internal differences. Yeah.
+
+Okay. Now we are going to discuss very important topic.
+
+And this will be the basis of what you are going to learn. Okay. So far we have done some basics of scripting a lot of things.
+
+But we are going to do the principles of data. Okay. Now these principles holds true.
+
+It doesn't matter what type of data is coming to you. It doesn't matter.
+
+Really. So this is big general principle. So starting with you are working in a company or some some research organization or whatever.
+
+Some people got okay, this is your job. This is the data, uh, is given to you.
+
+Now we want you to know the knowledge from the data. Okay.
+
+What do you mean by knowledge? Meaning? The decision making capability.
+
+Data should tell you something. The company should take a decision. Go.
+
+No go. Or policy? No policy on how to blend you data driven knowledge into the different, um, uh, different strategic decisions.
+
+Yeah. Okay. Now, my first question if someone is working, did you get a lot of your.
+
+We. In the. You know if someone is going to give you the real money would be wonderful.
+
+I awesome. You have any friends today? And what is the.
+
+What will you tell? Me?
+
+Will you? Please.
+
+Open. Okay. Let me let you go.
+
+I. Honestly, even what we need to understand.
+
+Right? Yeah. What are we? We can get emergency liquidity.
+
+On what data? What do you mean by. Um is seen but not see columns and also see the columns and rows.
+
+Okay. And then probably I'm ready.
+
+Okay. So, so I think you guys are getting used to kind of me, but I think I have a hard, only one right answer.
+
+The right answer is you should ask question. You should not go any.
+
+You should not do anything. The person who bring the data.
+
+You should then. Okay. Can I have a meeting next week? I would like to go through one of the things you are interested in.
+
+So don't touch data. If you wish to promise not to.
+
+This is your first. Doing nothing. So you give stress the person who is bringing the first.
+
+And do you realize what is going to happen if you are doing all the things you are telling me?
+
+Next thing, here we go. What are you ask this question. In companies, it is very easy.
+
+I mean, we are going to take the reliability. I mean it exactly the right I mean it's your you you take responsibility.
+
+You you you decide what to do. So the best thing would be you be me.
+
+You say, okay, I actually have you don't know anything about that right?
+
+Any questions about the data. Easy for strategy making. Easy for predictability.
+
+Easy for selecting features. Selecting. Measuring.
+
+Easy for identifying the population structure and based on the population structure, you are able to do a marketing promotion.
+
+Yeah. So first step of the data analysis. Starting and refining the question.
+
+This should be. And this is okay. By the way, if you eat this video, this is from Roger Payne from Johns Hopkins, United States.
+
+Okay. These are the art of data science, a guide for anyone who works with data.
+
+It's a kind of a very layman way of telling. This guy has been.
+
+He's a biostatistician, um, professor Roger Japan.
+
+And there's other valuable things. I think we're going to be a free PDF.
+
+So he's arguing. Your first step would be you. You discuss a lot.
+
+I mean, what is the main critical? Because many of the things you don't know, I mean, okay, the first thing second, exploring.
+
+What do you mean by excluding exploring mean what already happened.
+
+Meaning you want to see the distribution you wanted to see. You think that you want to see, um, what do you want to ask?
+
+Why this is missing? Yeah. Is it is it different ways it's coming from I mean, I mean, and so you wanted to get a proper understanding of the data.
+
+Okay. And then if your quality, quality control, QC control is allowing you to do that.
+
+Step number three, then you go for step number three. Step number three is building formal statistical machine learning I.
+
+I'm seeing statistical model, but I can replace all in statistics machine learning in.
+
+Some people bringing deep learning, CNN and artificial CNN gone.
+
+Genetic diversity modeling. My first question for them show me the data quality.
+
+Okay. So these are the three. So this is very sophisticated I think.
+
+Yeah. So we spend some time here we people that actually we have practical work in the lecture.
+
+Okay then for interpreting the results, how you're going to interpret.
+
+I mean, interpretation is a big deal, right? I mean, I mean, for example, uh, you get the positive coefficients.
+
+Do you? How do you interpret in this one. And the final thing is that communicating your results, you need to know your audience.
+
+I mean, if you are for minorities background and you want to talk in a model, model, model,
+
+you lost your audience, then we just need to see what you got from the data, how they can implement it at all.
+
+Those measurements can be um.
+
+And inputting into the into the, uh, in the mining point of view, into the financial point of view, into the into the domain expert.
+
+So you also need to learn how to communicate. Okay.
+
+And usually I can move my mikes. Sometimes people come to me with the data and they have a very specific model, specific thing in their mind.
+
+They asked me to do this one particular, and then I ask why they see.
+
+They think this is the best one. I didn't know, know not the best. You have something.
+
+So this is happened when people doesn't know. They have assumptions, you know.
+
+So they have a three simple they want to do deep learning okay.
+
+I mean you cannot even do anything since people they. So these are the things.
+
+So you need to be. So you guys are learning it. So you guys need to be.
+
+Taking responsibility and authority. I mean, you're not. You're not God.
+
+I mean, people think, oh, you they can do anything with the data. No, I cannot bring anything on the data.
+
+Okay. Question. Any question? No.
+
+Okay. So let's talk a little bit more. I think I have I have explained a lot about the starting and refining.
+
+The question is so important. And I'm giving you this. So this paper came out in science.
+
+Again, it would have been heavily. They look at article.
+
+What is the question? And they say this is look like a 2015.
+
+Is a week to ten years old. But still I teach this particular example a lot of different posts because it is so important.
+
+And this is science. Science. But you know, what is the impact of science, right?
+
+Science nature articles.
+
+I mean, if you don't know, you see, I mean, if you could do science, maybe you have done your I mean, probably next you get a promotion.
+
+Getting it. Yeah. So nature nature is around 100 intersect or something.
+
+So there I mean or recommending that you initiate question what you're asking.
+
+It will. Give you a lot of impact. Further downstream analysis.
+
+So if you are wrong in asking questions, you everything goes wrong.
+
+Your time, your resources, whatever you talk about, everything will be equal.
+
+So it is quite important that you should think about what are the type of questions you are asking?
+
+Yeah, it's a one and one page article.
+
+So it was it is quite good. All right. So um, then comes exploring data.
+
+Yeah. And uh, and then in exploring data is maybe I think, I think I have a lot on this.
+
+Okay. So exploring data as I see it is mostly talking about descriptive going so descriptive
+
+on what it can mean within most navigation variance purposes and all the things that,
+
+you know, I mean, we've been discussing last few days. So actually we are trying to understand what already happened.
+
+Okay. Backward looking. Yes. But summarizing what it means when you're trying to find a logical argument and, um, that's.
+
+Okay. Then I think at the previous like now.
+
+So this is the first wave of analysis, descriptive analyses. Predictable.
+
+That's unbelievable. What what do you mean if you can analyze it. Something to do with the prediction.
+
+Like if you do a market like you put the money in the market, want to know what is happening towards anybody?
+
+If you predict then you will be the gainer or if you can predict two months from now.
+
+Two months from now. Yeah. So so that is about predictive analytics.
+
+Prescriptive analytics meaning that you change one parameter.
+
+Okay, page one parameter. And then you want it to see how it is affecting.
+
+Very. Okay. So for example, uh, was earlier.
+
+Have you heard about causality? Have you? Have you heard a proposal?
+
+So it be okay. I'll give you one example. What do you mean by causality?
+
+Was already means because of something. Because of.
+
+In the system, something is happening and then it is causing some changes.
+
+So for example, I'll give you one example. Let's say this is one e you have measure and this is B another measurement.
+
+Two measurements are taken. Okay. Now if it is an association which we do using the correlation type of analysis.
+
+We use the binding on the keys, we do a lot, right. So this is just an association.
+
+So it all ties huh? A to B if it is in here B here how it we might kind of associate it and that's what we will however.
+
+If it is a causal ace or g b, it should be e causing b.
+
+There should be a directionality equal to. Yeah.
+
+No, no, it is important, I think of it to be these not affecting.
+
+It is affecting be. That's the cause. So if A is not in the system, we will be all right.
+
+So he's causing be. This is called Kosovo.
+
+Puzzle. And then there is something called cause of I was an artificial intelligence, meaning that they kind of it.
+
+They can identify the structure. So if you measure anything, it will be easy to see your we don't know the structure.
+
+Ultimately they learn the structure of their system. So in the stock market, the system dynamics plays a major role as well.
+
+System dynamics to it. So. So for example in London stock market versus in New York versus zone.
+
+Right. Yeah. Yeah. So what happens one is go down.
+
+Another is affecting as well. So all in effect. So the question is and is causing.
+
+So if you consider many of the system around E okay is a cluster and B maybe associated with someone as well.
+
+Okay. We can understand the system dynamics how it is affecting the wheat as well.
+
+And we call this a Markov model. It's a matter of vision, right?
+
+I mean, for example, suddenly something happened. What happened in 2007? So there is economic crash.
+
+So one, it goes down and then it affected all the things. So these these parted ways in front of it somehow in the system.
+
+So and then we do the system benefit. Okay.
+
+So here is a very deep. Honey rescue if you want to leave.
+
+Okay, I know I love students autonomous analytics.
+
+What does it mean? Real-Time prediction. Google.com.
+
+What is it? Google.com. Going. Car is going.
+
+So let's say the forest green lost 30 years of data. 58.
+
+But then. Then something else is going on in the Google Card.
+
+Each time one card is moving, it is getting feedback from the environment.
+
+Zebra crossing environment. Green heat. So.
+
+Very deep web of analytics predictability.
+
+Okay. In healthcare domain, we use it to monitor real time prediction of the patient's.
+
+Each time, like you said. Okay.
+
+Yeah. So you need to recognize there are different types of pottery.
+
+Yeah. I mean, the moment, you know, there is a different category, you can place yourself accordingly, right.
+
+So you can ask them, is it there, is it a um and the prediction model.
+
+Then if it is a prediction model, increase the values here. If it is also analyzes association.
+
+Uh, more than that, then maybe this here. Okay.
+
+Questions. No. All right. Okay, so I have discussed about those a little bit on on this side.
+
+Okay. Now data wrangling. Okay, now they are different from one.
+
+So again, we are talking about, uh, not being single like these.
+
+We we're still in the descriptive. I don't like it. And there is something called data wrangling.
+
+Some people call it data pre-processing. These are kind of it um, or data cleaning.
+
+I think some people have, say, data cleaning. Um, many different name.
+
+Um, and uh, we actually, uh, boiled down to the similar thing, um, how the data look like.
+
+Yeah. Okay, so some examples of wrangling like merging multiple data sources into a single data for analysis.
+
+Let's say someone you have um, you want to make your own analyses.
+
+Uh, um, so you are merging multiple studies.
+
+Yeah. That's possible. So you are. Um. Um. Gathering information, but merging.
+
+Okay, so it is it is not really any predictive analytics.
+
+It is just a wrangling and kind of a data preparation type of thing.
+
+Okay. So that could be data wrangling as well okay. Identify gaps in the data.
+
+Empty cells I think we have talked about it. Empty cells versus the missing and all the thing again it is it is a part of the data wrangling okay.
+
+Deleting data if either necessary identify extreme outliers in the data.
+
+So we haven't talked that much about it. But I'm going to talk about later little bit later as well okay.
+
+So data wrangling is a part of data preparation where you understand more and more it is a it is a it
+
+is a multiple different thing composition between um pre-processing and and the data preparation okay.
+
+All right. Uh, okay. There is a there is online.
+
+If you look into Harvard Business School. I will be just called in.
+
+And, uh, there is a there are some materials. Um, so this course run from the business school in Harvard.
+
+They have a data science under a different one. So sometimes they have a different course.
+
+So if you look into that, I think I think that is okay. That one data range.
+
+So please if possible there is a blog. Okay on the decorating.
+
+You might want to go to that. Yeah. Okay, so I have taken some few points from this particular blog and what they say.
+
+They say there are six type of lettering. Okay.
+
+The first one is, uh, discovery.
+
+Okay, Emily, yourself, I think we have discussed already the VAT feminization fraction transform ordinary use growth rate data.
+
+So will we talk a little bit more on that?
+
+What you don't want me to read on is that nobody has done anything data coming to you, but then it may not be usable.
+
+And then you have done some processing on the data. So you have done some structuring cleaning.
+
+And you may find publications like these are the right, uh, very similar but part of data ready.
+
+So these are the points. If you go to the um, kind of um, this link, you will find more information there.
+
+Okay. Okay, so data can be missing.
+
+Why? I mean I mean we have been discussing now identity record and exclude.
+
+First identify how many. Okay then one.
+
+So we can put equal record meaning that information. The parts that would be excluded.
+
+Don't consider, I think, many people saying, right, you excluded from this one. That's one.
+
+Okay. So, um, how how, you know, if there are any missing values in the data.
+
+So there is a comma is not in it. So here I mean, that's an example.
+
+Okay. And then when you mess up with the dumpling.
+
+So, uh, I created something of the beauty. And then.
+
+And then he's got energy. So he's a symbol. Okay.
+
+And you determine he's got energy so he can return.
+
+Yeah. True or false? He's. So, you know that. Is that any any any missing person.
+
+Okay. And then you apply some function. Need total.
+
+How many. Okay. And then you then you can find a then any the point meaning you want to omit this
+
+PT if you apply on the entire rows will be deleted and their rows will be deleted,
+
+meaning it will not take into account any of the rules which contain.
+
+So very simple. Just just you can you all give in. And then what I trying to do and frankly impute and foresee.
+
+But look at it in an axis in the position. No.
+
+The third part could come in the position and then use something here.
+
+And we see that. And then for each I want each, you know, something some examples.
+
+You know, I mean one I can extreme but yeah. Okay, we'll do exit.
+
+Don't worry. We'll do a little more on that. It's just a theoretical background and on.
+
+Okay. Data normalization.
+
+What do you mean by normalization? So.
+
+So meaning that not all measurements has been done in a single place.
+
+Maybe not all measurements is done. So we just.
+
+What is the problem? I give you an example. So you are standing in a in a train station.
+
+Where from one one gay city and that from seven into you can pretty much help me.
+
+So it's not being a good idea. Normalization make everything in the same platform.
+
+Normalization makes all the measurements in the same platform.
+
+Because many measurements may not be matching. Okay.
+
+And one of the ways of doing using the Z school.
+
+What is that for? You subtract mean from each of the measurement.
+
+Divide by. Standard deviation. There are many others.
+
+There are many others that would be range normalization, z normalization, min max normalization.
+
+There are many different way you can do it. But okay for now. See that.
+
+Now you can write x x I x.
+
+I could be any measurement of the mean mu for me of this particular column you'd like the standard deviation of x.
+
+Okay. In. Are you just like ski?
+
+That's it. You don't really. Automatically the scale function.
+
+We'll go to the geometric. Everything we see.
+
+Again. Think about the week. The formal.
+
+Speaking languages done. You guys have done object oriented programming.
+
+Because they actually do not. So all the pilots will be automatically.
+
+Normalize for you and then it will return. Normalized version of your metrics.
+
+Yeah, it would be to normalize version of the matrix and that matrix.
+
+You need to use for your prediction model. Why? Because many of the because if you are not making comparable in your measurements.
+
+Think about regression. So in regression what is happening in regression one is equal to beta naught plus beta one plus epsilon.
+
+If it is a multiple linear regression we don't want it to you estimate the coefficient.
+
+If there are two different measurement you beta one beta two will not be compatible.
+
+I'll be very high. One will be maybe high. But you don't know. Is it?
+
+How? How big, how easy. And you don't know. Yeah.
+
+So that's why people use normal expression. Are you guys following what I'm saying so far?
+
+Yeah. Yeah. Okay. So we take a break five minutes and we come back.
+
+Okay, great. We can. Yeah.
+
+This is incredible. So he's always helped me out, so I.
+
+Well, maybe. Okay.
+
+I'm. You know how long will.
+
+No, I don't feel. You're actually part about that.
+
+Yeah. What you want to. Beginning in 20 them.
+
+Yes. Yes you are.
+
+Going to escape with this.
+
+I one. For now.
+
+Obviously, that's what they need.
+
+It is not going to work.
+
+I guess. Oh.
+
+Are you going to change that mission statement? Right? I think so.
+
+I mean, you know, I want to get off the plane.
+
+You know, if I was coming in. It's on the bottom.
+
+I think it's more often.
+
+Oh, yeah. I don't know if I can do one.
+
+More on that. Um.
+
+And then. I'll let you think.
+
+What do you say? I'm sorry. I used to work in. We.
+
+Are moving. If you want to go into the health.
+
+Care plan with them in 5.94.
+
+Think one of these. Um. Okay. Thank you.
+
+I guess my what I'm gonna be like from. The government, I just.
+
+I mean, you know who? Yeah. Human like. Yeah. Yeah.
+
+What about the fact that I. Was looking for life like that as well?
+
+Yeah, I got the bad news first.
+
+Then why are you asking? Oh, you know, I want to have you done what you want.
+
+I'm a part of it. Yeah. Uh. So.
+
+You. You know, um.
+
+We would. Alphapencil1 like, you know, he's like mom, which is very.
+
+This is most of the time.
+
+How? Why are you telling us? Holy cow!
+
+I like the idea. Of.
+
+What you do. How did you get on with working with Cisco?
+
+You are talking about how. And then be able to.
+
+I'm not. Do you think you can change?
+
+You know, some kind of charging slot? Um, I have to go there, you know?
+
+Um, you know, I like. You know what I mean?
+
+Like, fun, like, um, so, like, you go out here and even us, um, that's, uh.
+
+Me be. Oh, yeah, I know.
+
+So here are some of the rooms they've got. They do? Yeah, but I think the same problem.
+
+Yeah. So once you open things, it's somewhat easier for you.
+
+Um, if you do have the book from the actual living room.
+
+Yeah. Did you see that last night? I don't know if I've got know of.
+
+Thank you. Yeah, you should have. You. Well.
+
+Thank you. Although she did not.
+
+One of the only. Think people are going to spend.
+
+So what are the parallel courses on the blockchain. And we have blockchain on our options.
+
+Okay. We've got private equity replenishment and visualization.
+
+And lastly, what is the Python name? Yes, we have Python.
+
+Um, and we have portfolio theory investment management. Okay.
+
+Um, you have corporate Python. Okay. So have you guys already know this stuff's.
+
+What do you think? I suppose piping roses. Yeah.
+
+Yeah. We didn't object where we have to do, like, go through these. And how do we do what we we did?
+
+Like I'm learning. I don't think we. Yeah.
+
+Something pretty. Simple.
+
+Uh, yeah. That works. That's not that.
+
+I mean, you know. Yeah, yeah. You know, you know, when people are going to school, you have a recipe.
+
+So the first batch. Yeah, it was one of those.
+
+She. She got a fellowship from United States.
+
+The. Thank you from the team from University of California.
+
+She went to California. The reason I go because I didn't even want to make it work.
+
+Oh, yes. So keep your horses.
+
+One minute and another over there. And she got a penalty.
+
+Nobody said anything. You don't think so?
+
+You didn't even know. I think she's doing in California.
+
+And then other people have got some jobs here. Um. In the companies.
+
+Uh, I think in London you will be. So you never know which direction to take.
+
+Sometimes people come from very different backgrounds. Some people even maybe the never done these things accountant.
+
+Maybe you'll need something. Finance, maybe marketing, maybe these things.
+
+But in the end, other people, the finance.
+
+You can write if you see the papers, you know, traditional.
+
+I mean, I don't think that in life, like any other, there any traditional way of learning the way it is,
+
+it will be more and more linking from multiple different domains.
+
+And so that's why you see there is quite a lot of people are shifting.
+
+Okay. We move on. Okay. So um, so we're discussing about normalization.
+
+So don't think this is the only way to normalize. Okay, so this is that money?
+
+Yeah. Um, and then there are different ways of normalizing the data.
+
+And question is many of them are subjective. Many many of them depends on.
+
+The data you have. Yeah. And and quality of the data making depends on.
+
+Okay. Okay, now, I told you that.
+
+I mean, I mean, few of the packages are quite interesting. And then we I mean, I don't know if they found me to work for me.
+
+Probably. I cannot go through everything, but I can. I can tell you when you go through it yourself, I mean, this course need a video.
+
+And then I think how many hours I can remember it. Self-Study. Yeah.
+
+And then and then you have to really go to if you really want to take advantage of this course,
+
+for example, deep and wide these days, this particular package is like a well.
+
+Okay. Who would you risk with? What?
+
+Okay. So you will see many of the things and the skills in this particular package.
+
+You, but you don't see them, for example. You sissy. But you can give me an idea.
+
+You'll see. Like a select feature. Come on.
+
+You'll be doing in the backside some sort of an expert commanding out.
+
+Okay. Anyway, we need you to summarize. So this particular package, I mean, there is an extensive documentation.
+
+Extensive. Yeah. Because sometimes we don't want to select all the rows, all the columns.
+
+We want to specifically use some of them.
+
+Okay. Sometimes we want to add something something we want it to remove something.
+
+And that can be done very programmatically. Wait. So okay so for example this one.
+
+Okay. So I'm clicking this. Uh, so this is an excellent tutorial on on this particular topic.
+
+Yeah. So introduced to dplyr for faster data manipulation in R.
+
+Okay. So I mean very nicely they have mentioned.
+
+So this is. Um, I mean, I see the.
+
+Okay. So. Library.
+
+Each flight. So meaning that how many flights. So this is in inbuilt package right.
+
+So you can access the data sets there. Um so look ahead.
+
+You can see how many years need man. So this is quite nice I mean you can see all of them.
+
+Um there is something called tbl df and you click okay and then you can print.
+
+It's like a data structure around okay. Uh, so deploy our everything will access by making an internal object called tbl tbl df.
+
+Okay. And then you can access all of them. Um, filter db rows matching criteria.
+
+So there are many many for example, and operation um filtering operations and many, many other operations you can do.
+
+So this is all about data wrangling. Yeah.
+
+So selecting cutting edge from things you know so I keep I'm telling you you guys mean practice in because there will be a time can get.
+
+So if you practice that will be really great. You can just practice executes. Okay.
+
+And I'm going to give you data anyway. So you can you can apply those things once you learn it.
+
+Okay. So this is I thought I can just show you um, the website I mean, I mean cleaning and pipelining here.
+
+Uh, you can make your own pipeline, rearrange order. So many, many different operations.
+
+You can you can make and and the thing is, you will not feel it if it is a small data,
+
+but if it is a big data, big data, many, many 1 million persons, okay, 20,000 little big data.
+
+So then you can see, as I said in the background it is SQL okay.
+
+All the things are written as an equal format. You just access those functions.
+
+Mm. Okay. Great. So.
+
+And this is really you have to go through quite in detail. So that's why I'm telling it.
+
+Okay. Now let's go through a little bit of the of the visual stuff.
+
+So, so far I have talked about basic principles of data analysis.
+
+I have talked about revision of what we have done. Now we are trying to come back to the visual stuff as well.
+
+Yeah. And it actually we talked about the communication.
+
+Remember how to communicate in visual team will be very, very key to communicate with other different domains.
+
+They will not understand your judgments, but they will see the figures.
+
+And that's how I can. Yeah. So three types of graphs.
+
+Univariate. Bivariate and multivariate.
+
+And we touched upon some of the graphical theme in the last okay.
+
+But in more detail you needed. You can use the categorical.
+
+If it is a categorical data you can think about your treatment if it is a quantitative data okay.
+
+If you think bivariate five for two reasons two relationship can happen with a categorical versus categorical data versus quantitative.
+
+Quantitative versus quantitative. So you decide what it will be that you go to, for example.
+
+Um. Default credit card default versus uh, for, uh, uh, getting.
+
+Default or not. Default versus gender.
+
+Male or female. So. Male. Female. Categorical. Default.
+
+Non default. It is also categorical. So categorical versus kind of legal.
+
+You might want to refer to the stakeholder group budget segment in question.
+
+Okay. Quantity versus, uh, quantity like what we have done.
+
+So instead of the remember last. Last. Nothing yet.
+
+Entropy versus quantity but the violin parts or maybe some kind of in other kind of a distribution.
+
+Yeah. Multivariate group grouping faceting heatmap scatterplot matrix.
+
+Um you know heatmap scatter plot matrix.
+
+Maybe. Maybe not that much faceting. Uh, I'll discuss it in moment grouping.
+
+Maybe we talked about grouping right. Clustered them binning them and grouping them.
+
+And then you project. Okay. So.
+
+So once you identify what you wanted to do. Then it is easy to make yourself.
+
+You can you can look around the solution. So first thing is you need to know what you want to do.
+
+Yeah. Okay.
+
+Grammar of graphics. So. Download graphics ggplot.
+
+Initial version was one then. They say version two.
+
+Okay. It's done by Henry Whitman. Uh, this is from New Zealand.
+
+And then you kind of say, he's the first one. Actually.
+
+He goes, grandma, he's saying, okay, we can make any visualization if you follow some company.
+
+Okay. And what do you mean? He said.
+
+We need three things to make any. Number one.
+
+We need data. We need six.
+
+And when you do it. And that's it. We need three things.
+
+If we can identify two things, we can draw energy. Okay.
+
+So data data is a data frame for example.
+
+Yeah. Why data frame. It also can be methods. But then data frame is computation between you categorical versus um uh quantitative relationship.
+
+So let's say data can be nothing. So it is used in division x and y variable.
+
+It can also be used as a control of the color size, shape and other things.
+
+Okay. So S&P will control color size. So remember.
+
+And then in the last thing how you want to go. Is it got or is it the density rather.
+
+Three different thing. So he saying if we don't see things.
+
+We can make a proper visualization. We can end.
+
+Okay. We can add for herpes in the visualization. Using these three principles.
+
+Okay. There is a big book on that.
+
+And this this package is really, really useful. Okay. Now we will do some, some exercise of course here.
+
+So in this particular example this is called data in ice.
+
+I see that if you use media types I mean this is the ice is a positive plant species.
+
+So the measure measured um the different quality of the of the size quality, the stem quality and everybody in the world,
+
+because this data is so nice that they can compare these data and try to generate some results.
+
+Yeah. So data if you take if you like data is like you have done um, for equality.
+
+This data is coming also um by default.
+
+Okay. So when we are coming by you okay.
+
+So you can access data ice like this, then you can see the first six columns, uh, fixed six rows.
+
+Then did you plot the this is the function height. So data is the ice okay S1 s2 is x axis.
+
+You want to represent something sepal length okay.
+
+Y axis. Potomac length. So meaning acceleration ray. And then you want to project is a point that seems to me.
+
+Okay. So that is actually it's a very, very simple way of representation.
+
+Very simple. Okay, so if I do it.
+
+What is it? Oh, yeah. Okay. Control.
+
+So I have. Okay.
+
+No I'm not. All right, so if you wanted to check these.
+
+Yeah. So I printed first six rows and you can see the measurement.
+
+They measure different length width length butter length and species what type of species they are.
+
+Okay. And then if I just copy this particular one.
+
+Okay. So but before that what I have to do I have to put library.
+
+Ggplot two. I think you have already installed from the last class here.
+
+So here you can see if I type it here. You see.
+
+So it is coming like a. Yeah.
+
+So this is a relationship between length and.
+
+The sepal length and petal length and this is a scatter plot.
+
+Okay. And if you can follow the principles this is a bivariate.
+
+Both of them are quantitative right. So connect those three as well.
+
+Yeah. Okay.
+
+So the basic principle. Remember the principles. Principle is first one is the data frame.
+
+And we can check if it itself is a data frame okay. Is dot data dot frame I read.
+
+Okay. Through. If it is not true, you cannot get visualization.
+
+Do we throw you a kind of a an error message?
+
+It is not related data. Okay. Yeah.
+
+Okay. No, it is very simple, right? Very simple. Like you have made a relationship between X and Y.
+
+You just made a relationship between X and Y, which is very simple way of doing it.
+
+Same function. Which function can do the same thing? Blah blah.
+
+Well same thing. So these people have not done a good job in my opinion.
+
+By using plot function, I could I could get the same thing.
+
+But here is the point. Point is.
+
+I want you to now do all these things and show me how it looks.
+
+I want you to change each of the light and dark.
+
+The visualizes what you are getting. So the first one I have done.
+
+Second one, what I am telling you. Oh, kind of you.
+
+Kind of based on the species. Okay, so already information about the species.
+
+There are four species. Yeah.
+
+How do I know? Because I used it. Yeah, but then you can, you can, you can check.
+
+You can check species yourself. Okay.
+
+Can you please finish up this? And you said one of the different things you are getting.
+
+So you will check in and you find each day you are actually you are not you are not touching these guy dataframe.
+
+You are changing yesterdays. Either you are changing aesthetics or you are changing the geometry.
+
+That's all. I think.
+
+I think these lies also in the, in your in your canvas. Yeah.
+
+So I want you to copy the line and paste it in changing. In a week for I think in week four, if you can look into that one that you would find it.
+
+In initial point you would think, oh, this is very easy. I mean, this is of course easy.
+
+I'm saying that comparison to what function plot function is like, and, uh, there is nothing, governor.
+
+Everything yet you heard some idea. You don't have anything you can't record.
+
+It's all your argument. Okay? So if you know what people do, if you want, you can do.
+
+I'm. I love the direction we have taken.
+
+Yeah. I don't think. Just thinking.
+
+And some of you. More. Thank you for.
+
+Welcome to the homes of. Where were we?
+
+I think. I think we just need to. You?
+
+Probably right? Yeah. On it.
+
+You gotta ask what? What's going on? I'm definitely not looking back.
+
+What are the differences you're meeting? We're noticing the difference between an MBA in medicine.
+
+Yeah. So. I think I may be positive, but I'm confident.
+
+It's one thing. Science fiction.
+
+Oh, yeah? Yeah. Different places. Yeah. Yes.
+
+Yes. Yes. So. See here how flexible you could be.
+
+You are getting close to the each size. You are taking the different types of from you know each of the balls.
+
+I'm going to take you to a 19. Yeah.
+
+Okay. Thank you. Electricity. Love. Saving energy.
+
+Okay. You can say this later. Um, yeah.
+
+So you can remove the economic report. You mean something that was amended in the background?
+
+That's sci fi. Do you like? Yeah. In 20.
+
+I would like them to think that.
+
+I mean, these things.
+
+If you want to do like what it is like in maybe an industry continues to consume and you could change, you know the question, right?
+
+So you can compete at competitors and then you think so this is yeah.
+
+So estimates from the business analysts.
+
+And we think yeah. Yeah I want you to sense that.
+
+Yeah. You can I think you can always reach us you know.
+
+So so that's why it's on the blog. And you can see what you know I hear you know, some people I mean.
+
+So. Yeah. Was easy to speak to your commission.
+
+Mother. She. Told me.
+
+How then do you think? Like how many pieces? And then you can decide on and on.
+
+On the colors. Okay. Okay.
+
+Thank you for saying that. Thank you for being so.
+
+And then you've managed. Within the parliament, everyone sees a message verging on ugliness, and that's okay.
+
+I think I was that I was on that first name that were me.
+
+I'm asking the last one in the book that's coming up.
+
+You know it's not going to operate.
+
+In my view, not even close. You for that?
+
+Yeah. Situation would never play out. See I was going to do something I was I mean, I don't really know.
+
+I find it easy for you to go find an article once you don't have time.
+
+For. What is this? 100 and?
+
+You want? We're just gonna take you.
+
+A little bit. You know, in other words, how you wanna think?
+
+We want to just cover. Yeah, but, you know, this could have been something else.
+
+He's on one side, you know.
+
+I'll be using zoom for these kind of. I say, uh, how do you.
+
+Know that this is my chair? I mean, I actually like a lot of.
+
+Things. To be honest about.
+
+Yeah. So have you seen what you observe?
+
+It's just sad to see that all the same people, despite having things that we can change very drastically.
+
+Low. And these are the population quality figures. Yeah, but maybe you can make the quality figures.
+
+What does Alpha Alpha Alpha is doing. Alpha improving the guide.
+
+Transparency change the alpha will. I think I'll find pudding 0.4 or something.
+
+Here. Even when doing nothing lost. Yeah. Oh.
+
+Uh uh. Yeah. Uh, maybe.
+
+Maybe later. But we didn't. Yeah. Okay. That's fine.
+
+That's fine. Um. Do nothing more then.
+
+You know, I think I. You don't know means.
+
+Only those 100 and thousand. 128 people in the crowd do that.
+
+People do not do that. And we do that.
+
+On that note, we. Have options.
+
+The company. On the.
+
+If you have a. On the floor.
+
+There's lots and lots of people. It can be like fishing. Find out how.
+
+You don't see me. I see you. I. Do not like you.
+
+She was with me. I knew I was in a lot of money there for them.
+
+It kind of makes them feel like you can't even afford someone.
+
+You. You might as well.
+
+You know how. I feel connected when you have a member of Congress who thinks the job is going to.
+
+Be okay. If it's not what it is, and if it is more important than all of them.
+
+So what do we do with this? Yeah, you do it.
+
+I was one one. Um. 100.
+
+If you don't like. Maybe this.
+
+Is what? We just have.
+
+Yeah. You know, I feel so guilty on this one.
+
+Let's see what we know.
+
+No. What did you know?
+
+There was no. Yeah, as much as I just.
+
+How? And those kinds of things I think are the.
+
+Something funny. What do you mean?
+
+Well, you probably don't look like. You know how much of.
+
+You wonder. Where have you seen?
+
+I never thought. What is this issue?
+
+I feel. Just search for her.
+
+Oh. That's simple. You know, you can only do 100.
+
+It's an insult. I think I'm.
+
+You know, when you walk into. So that's what I mean.
+
+I don't know what is wrong with you. Um.
+
+If you want to consider something else. We.
+
+Also want. I probably don't have.
+
+Any room here. Yeah.
+
+We are all on the same. They.
+
+That's the power of this one. You can use that.
+
+Yeah. You know, some of. This is quite easy.
+
+So you want to understand the background. Of the time.
+
+I hope you know that you not to. Things like that, which is not.
+
+Pretty. That's a lot to do that I think we have to deal with.
+
+But I do not know. Yeah.
+
+So, you know, you got to turn it all on.
+
+I really do like you, and I, um.
+
+Yeah. No, I'm the one who sells it, so it's like.
+
+Yes. Yeah. Integrity. Yeah.
+
+Looks a lot like a young black person whose which is always behind the coffee.
+
+Over the second we have to each. And so I'm assuming that she's like um, even know they claim they overcame some things that I.
+
+So that's one of the. This is cool.
+
+This is probably not. Anything that I do not love.
+
+Thanks everyone so much. So it may not.
+
+Be possible to use all the policies in India anymore.
+
+You can see that in my notes.
+
+You. Can see from the data that if you have you already have an interview.
+
+Right. Yeah. That's about. All of this and that's how you want to.
+
+Climate change. You mean that you don't want to see your.
+
+I may not. Understand.
+
+What? I'm here for you, but nothing.
+
+What else? Well. Up in.
+
+Does it say that you didn't have a problem? I think it's a good day to watch.
+
+Uh, yeah. Okay. Lots and lots.
+
+He didn't have. And.
+
+Super Superfund. In some.
+
+You know. Is it?
+
+2021. Five.
+
+Yeah. Basically he is looking for the final, right.
+
+But with something like this getting behind one of the most important things yet.
+
+Oh, okay. Um, have you released some of them?
+
+If not all? Yeah. Okay. So what is your observation?
+
+What is your general observation? Excuse me.
+
+Gigi. I'm. Yeah yeah yeah yeah.
+
+So, so my intention is to not tell you that. Okay. This is all.
+
+This is the first thing. This is just the starting point. I'm just trying to give you a kind of.
+
+Um, if you're going right, you go this way or that way, and then you explode.
+
+I'm giving you framework. So general framework. So, so irrespective of which background you come from, which background.
+
+And if you can hold on to that, I think you can go far. Um, so my main mission is to say, you know, using the discipline function,
+
+using the discipline function, you can aesthetically make your figures beautiful.
+
+Yeah. Which will be very difficult. Sometimes you have a function which is a beast.
+
+Okay. Now you will realize that this is a very small data.
+
+Okay. But this data has been used many, many times for this type of activities.
+
+The beauty of this data is it is a mix between quantitative and category.
+
+So you can see that species there are four different species, right?
+
+Sometimes you are coloring based on the species, meaning that if you can here you can also color based on the default as well.
+
+Default or no. Default or no. Yeah. So if I ask you okay you make this plot but you show me.
+
+Well, what are the people at default to make a visualization? Yeah, probably you can do it.
+
+Yeah. So that's the ethos. Now, you might have already experienced there are some functions like, uh, alpha beta.
+
+These are, these are very detailed. I mean, there is no way I remember I mean, I don't actually remember two.
+
+The only way to learn the bullet or centipede kind of stuffs. But you know, what is the function is doing.
+
+Alpha is controlling the transparency. If you do a 0.3 you're blurring.
+
+If you do very high it is done.
+
+Sometimes you need it. What do you mean? Because maybe you what you're feeling is very complex.
+
+You want it to be pretty on one side, maybe do something else.
+
+So you never know one. What do you mean? So? So.
+
+And there are many, many other. There is a big book by Hadley.
+
+This much a book thickness. And it's from Springer only on ggplot2.
+
+So I mean I'm and I'm giving one lecture on B and it's interesting.
+
+Yeah. But what I'm saying that this is your platform. You can go and you can, you can export it to be more and more.
+
+Okay, good. And then you have explored probably some new data which is mg.
+
+MG is mileage data, meaning that some curves they have um, and they have put you to the r, uh, different properties of this particular car.
+
+And, and they measured mileage on how many.
+
+Well, the kind of thing and, and and um, and I just wanted to show you there are many different, uh, data set exist in R which you can practice.
+
+Yeah. That will give you kind of a, um, uh, familiarity how we can use some of the scripts.
+
+Okay. Then Boxplots box plots are very important and very useful because sometimes we talk about outlier.
+
+Okay. Remember we talked about outlier and when and how to identify the outlier.
+
+So one of the ways people identify using the box. Okay.
+
+So the boxplot used for outlier detection. Boxplot used for.
+
+Understanding the distribution of the data. Okay. In that case, you can prepare maybe all the.
+
+I think in that case, all the data is actually showing, you know, the box plot type of thing.
+
+So you can see what is happening. Those, uh, those samples are okay.
+
+So we'll continue. So this is a cheat sheet. So again these tips are very useful sometimes because you would not remember many of the things.
+
+So he's thank you Pam. Uh, yeah.
+
+So here you have a data you reported system and you were plotting and similar way of doing it and, and, uh, and there are so.
+
+Some of the basic graphical kind of a representation.
+
+So a is is kind of an object.
+
+And you are putting as it is a data frame. And sometimes data frame is changing and there is no actually by default.
+
+So if there is nothing is there is, it is um, how you want to geometry is missing by default if we take what is coming.
+
+So I think by default it is a dot or something like this. Yeah. So this we have something like segmentation.
+
+So we have not done like for example you can see geo applying it to every line.
+
+You can represent line not the points. Okay. Um.
+
+And there are many others. Maybe incoming incoming lectures.
+
+Sometimes I will pick up some of the functions and also different things. Yeah.
+
+Okay. And any question so far? No.
+
+So we have gone a little bit far in the visual thing. Okay. Now, from now what I'm going to do, I am going to.
+
+Read the file. So this is a new topic. So far.
+
+What is the data? Is already in the arm.
+
+Now, what if I give you a text file in how you're.
+
+Okay. So important in that case. Okay.
+
+So I think first I will show you how to read the file. Okay.
+
+Now there might be. Let us see. There might there might be, uh.
+
+No. Um. Give us.
+
+By week. Yeah.
+
+So I want you to download this particular data dot txt format.
+
+Credit. Underscore card dot x.
+
+Should be within the same sentence even. One.
+
+One. Thank you.
+
+Jennifer. You.
+
+What is. Okay.
+
+Did you? Download it credit underscore dot txt.
+
+Okay. Now question for you where you are going to put this data under the.
+
+So. So. So.
+
+You might have working somewhere in your directory, right? The working directory.
+
+These files need to be in your working directory.
+
+Okay. So in this data this is very basic.
+
+So there are some binary. Client ID.
+
+This is the unique IP. There is a default some some number.
+
+So zero and one. So one is default. Zero is not default.
+
+Some sort of credit card type of data income age and loan.
+
+Income, age and loan. So in conclusion, lone, up, pretty girl, independent women.
+
+The default is the outcome variable, which is considered as a one.
+
+Okay. Yeah. Okay.
+
+So what we're going to do. We need to read the file.
+
+And the command is used. Read the table. Okay, read your table.
+
+And remember this file has run ins. What is running.
+
+Row names means unique. Client ID.
+
+It has got a header. Header means heading. Heading means this part is heading right.
+
+Income. Each loan. Okay.
+
+And it is a tip separated file. So.
+
+How do I know? Because, I mean. I mean, it's a text file. Usually text files are type separated file.
+
+Okay, so have you understood that the file.
+
+Actually, I mean, what I'm trying to say here. So the file, if you open this text file is a XLS or some, some kind of a file open or maybe some even.
+
+See, you could have any column names and you can have it on its.
+
+This is the first thing you need to observe when someone is giving you data. Groanings.
+
+Calumnies. Well, I'm names also called Izzy.
+
+Adam. Meaning heading. Okay.
+
+And I am mentioning for me for this particular exercise I am interested in.
+
+First one. People thought so. I mean, so maybe he's coming from the bank or something.
+
+Some people are not paying. Definitely, you know, proper time.
+
+So they go defaulter. If you miss particular two three times then you can default.
+
+So bank is not going to give you a loan. So that's probably easy. And it depends on how much income.
+
+Maybe you could fired from the job and you know income. So that would be one of the things.
+
+So income matters a lot.
+
+You h I mean if it is you are retired be a lot have money or you are raised in 18 years you don't have money or maybe not even,
+
+you know, get 1820 or something. Okay.
+
+Uh, each loan, if you have a overdraft loan or anything, then probably high probability that,
+
+you know, so so we have to keep that on because and this is the outcome variable.
+
+And we want you to read the file. The file is in a text format okay.
+
+Now the first thing is once you start a new analysis you need to get rid of all the objects you have already.
+
+Used. Okay. I mean, I mean, in this part, I mean, probably you might not want to use today because you have many of the things you have done.
+
+I mean, but in general. So you make sure not any of the objects interfere in your new objects.
+
+How to do that? So if you do remember, remove list is equal to l is equal, meaning that you will one hour to remove all of them.
+
+You can remove. All the predefined, not predefined all the session.
+
+You have created some objects that you wanted to remove it. Okay, so this is the end you cleaned?
+
+Yeah. Okay then data one for me. My, my I have created data.
+
+One is an object I have assigned. Okay I have used the return table credit card, underscore card to txt quote unquote.
+
+Yeah. Quote unquote in the quote unquote. You need to put this one and then separated how it is separated them separated.
+
+It could. Yeah.
+
+And then header is equal to T for true road route names is equal to one meaning that you are asking are you considered road names as it true.
+
+Meaning it has got a row names, meaning it has got some unique ID.
+
+So you want to interpret that Heather is equal to two t for capital D?
+
+Some people write t capital R u e as well. It will work in that case.
+
+Okay. And then I want entire t r should interpret r should interpret as a data frame.
+
+I'm 40. Why? How do I know I'm 40?
+
+Look, is is data free? Is not easy.
+
+Instead of him. I'm telling us, please consider, although this is a metric, but you please consider is a data frame.
+
+Because I never know. Because you remember the default r zero and one. Maybe R is interpreting as it is a categorical variable, I don't know.
+
+So I'm forcing R. Please do interpret as a data frame.
+
+So I will wait here until this. So I want you to execute these and tell me if you if you are able to read your file.
+
+Yes. Okay.
+
+Thank you for reading up for me in a way where he seemed like he was doing okay.
+
+Okay. Um. I want them to be part of the reason that, you know.
+
+You know, one of you know, if you just showed up, I.
+
+Had to it. Well, yeah. What do you want?
+
+Um, I was looking for Matthew. Show me the first.
+
+The first thing you. Yes. If. Um.
+
+What can I do for you? Do I need to tell you how to do this?
+
+Whenever I want to do anything like that, you.
+
+You know. You know what happens to all that as well?
+
+Oh, yeah. Yeah. No. Oh, no.
+
+What do you mean, why? Why you want to work?
+
+All right then. Yeah. What do you think?
+
+Um. Well, just that one quick question. Okay. Okay.
+
+I do this thing. I didn't get along, and I don't know who it is, I mean.
+
+You need to do the homework. Oh. You're right. Because you do not know your name.
+
+You guys okay? Yeah. You know what? I'll be okay.
+
+Yeah. Okay. So you need to work.
+
+So first go to working directory. Why do you say three underscore.
+
+Uh, or the underscore file or something. Yeah.
+
+And then you need to write this. You need to write this.
+
+Again I'm explaining again here. Forget about the date of the book.
+
+Read the tribute. Why do we? Because it depicts a CSV file of CSV.
+
+Okay. No, I mean, I completely excel file all of these.
+
+So go back to this question mode because I'm good. First you think you grasp what it is.
+
+Okay. So reach up to me because in the next slide remember don't forget quote unquote,
+
+this is the name of the file that's separated by header is equal to true running.
+
+With the beginning of the definition.
+
+How many of you have seen flooding conditions.
+
+Okay. Who was it. It was on.
+
+It focuses on the movement itself. Yeah.
+
+It's, uh, which we have with a select group of one on 15 Consolidated Press.
+
+Right. And that is one of the companies.
+
+You just might need that. Yeah, I you know that.
+
+It's funny. Well, I haven't been reading. Yeah.
+
+It's exciting. Right? You got other things that you would want?
+
+Yeah. Yeah. You know the way you order one.
+
+Well. I'm not returning back to the game.
+
+Well. Oh, yeah. Now I.
+
+And if we were. Of.
+
+So. Do what you will.
+
+Because if you do. I love you.
+
+And honestly can do without the injustice of humanity defeat.
+
+Over 50 tons of data. I feel like myself. Aren't you?
+
+Right. I want to thank you all for. He gets home at night.
+
+University education takes a hard one. And he was coming out.
+
+You know. It's interesting because it's not, you know, have.
+
+Come back later to explain what makes you laugh so stupid.
+
+Well, this means that if. You can only find where you want.
+
+They don't want you to think you don't have. No one want to use.
+
+Uh, you know what? Yeah. You don't want to be finding, like, in something longer than five minutes from want to.
+
+They don't want to do the same thing. Have.
+
+Not. You know, it's, uh, it's gonna take a little longer.
+
+So you have to go along with what you have to pay, I think.
+
+I didn't, you know, make the money. You don't want to talk.
+
+I think you might. You don't. You think so?
+
+You doing your thing? I know it is. Do you have anything in your bag?
+
+Yeah. You think?
+
+One of the problems of the day. I love my uniform.
+
+Thank you. I don't know. You don't understand.
+
+So you want to. Know what?
+
+You. 2 to 1.
+
+I don't know. I don't know. Yeah.
+
+Why do you. You.
+
+Don't have to say you haven't got. It on.
+
+When do you feel that you can go? To any sort of.
+
+Yes, I know what it is to how it is.
+
+But I do think you know that we live in Brazil, but we take what you can give us.
+
+You got what you wanted. I think you can use helium again.
+
+What did you just do? I'd like you to call my lawyer. I know that you're waking up well this morning.
+
+If you have anything like that in this world. I don't want things to do.
+
+Oh. Oh, God. If I do names no one here in front of.
+
+Okay. I work side by side with Jesus and not just try.
+
+How do you think? You know, like an ¥8 million fraudulent amount.
+
+So. I was like, I want six.
+
+Yeah. One divided by 35. Um, I'm not come out of those, I think.
+
+All right. So looks like many people have done it.
+
+Yeah. Anyone who could not read it here. You okay?
+
+But let's not. Forget them.
+
+I think they became original.
+
+And it look that.
+
+I do for me, it's not like the.
+
+Important. Not so important to us.
+
+It's not working. No.
+
+It's not. How do I know it's not me?
+
+When people find it. So they want to see that little one.
+
+And it's something we did. I don't know.
+
+Maybe we come up with inheritance.
+
+No, it's not that, you know. I mean, I know people of association.
+
+Well, this one I. Up.
+
+Um. If we. Well, I think you can do with.
+
+And then again. Hold on, hold on, hold on, hold on.
+
+Yeah I saw. This.
+
+Yeah. This one was like. You're one of your methods.
+
+Yeah. You go. Did you.
+
+Ever if you actually multiple people.
+
+Know what? You're.
+
+Okay, you move on one of these, you must be a wealthy or something like that.
+
+You just want to believe you know how to fight if you can.
+
+So you know what you got on this property for me.
+
+I'm so excited because. I do not, you know, um, the difference between work and how to bake is made up of the cheap ones.
+
+Yeah. Know that we have, um. Uh, now, I couldn't extract the answer three because I want, you know, what you can feel.
+
+You know why you doing one thing about things I want you to feel important for to be free.
+
+So what do we do? You can make ends meet all within the same time.
+
+And then I will be paying attention. The.
+
+Since I got my degree.
+
+So. Uh, we'll see that this is positive for black and white.
+
+So I'm doing it on the phone here so that you can see think.
+
+Anybody abilities them and it would okay. If anybody else like that, it will that even better.
+
+I can do what I can. Yeah I mean that's the whole point.
+
+Oh in this one. Yeah.
+
+It's okay. You know what? I want you to be.
+
+Life on the life cycle. On the. The way I.
+
+Okay. Lucky. Yeah.
+
+Yeah, I yeah. Yeah. No.
+
+That's not true. Right, Jerry? Yeah.
+
+Let's see. This is one of the things when I'm working on this now, you know, it was all my fault, you know?
+
+I mean, you know, we did it for you. Breaking the fourth wall.
+
+Yeah. So I have a problem with you now, and I got no hope.
+
+So now you could be living in Boulder. All right, so I think many of the people have done it.
+
+So the main idea, main idea is how to read the external file which is dot txt.
+
+I mean, if you can read this file, any txt file you can read. Yeah.
+
+Okay. The first thing. What do you do? You remember when you were reading the file?
+
+Next thing, you need to check the dimension of the data. You need to see what is coming.
+
+Um, as a kind of, um. Uh. Like it?
+
+Um, a top. So for example if this is me and then.
+
+Let's see if I just copy it and then. Okay.
+
+So, um. You. You need the.
+
+Okay. So here, first thing I would like to check what is the dimension of data one.
+
+Okay. So this is I can see so 2000 rows four columns.
+
+Okay then I'm typing head data one. No no no no no.
+
+So. Data. One.
+
+Okay. So that's how we read.
+
+Okay. So these are the first six columns. And then I am taking tail okay.
+
+Tail of data one. Tail of data one meaning that last last six rows okay.
+
+But I have understanding now this is a default something on default income in the age and loan okay.
+
+Now if I ask you, can you make a, um, a correlation between can you make a correlation between income age and loan?
+
+I don't want to take into account default column.
+
+I want a correlation between income, age, and loan.
+
+So. Yep.
+
+I think you can even do what your mother. Okay, here's the first pass on Thursday.
+
+Just. Can just make.
+
+One. He.
+
+You know what that means? Yeah. Let's do it. You can do it for free.
+
+Don't you think we need to go to New Zealand? No.
+
+Okay. Ten minutes. And then.
+
+And then I did something else here. And we just need to do a sample flight of the GDPR.
+
+Whatever you want. I just want to see. I mean, you have options now.
+
+Thank you. I think a lot of these.
+
+This one. This one will feature 140.
+
+That's a. But it may be the only.
+
+The future. You can.
+
+Thank you, Mr. Campbell. You have.
+
+We ought to. It's hard to.
+
+One of the things you see here.
+
+But I never thought. So.
+
+You. You know, sort of.
+
+Which makes people really. No.
+
+Don't let them get you like this.
+
+We do the same things only once. You. You know.
+
+But I couldn't agree with you.
+
+Um. So we have some.
+
+It is more important. I.
+
+He finishes. You do?
+
+You see, I. The ultimate.
+
+Was a. Um.
+
+For the patient population of the village within the holding company.
+
+What do you think? Come on, come on.
+
+I allow you. You need to change the color.
+
+You know, they were able to open. If you feel.
+
+Hundreds of. The integrity of.
+
+It's affected my own. Just like.
+
+So we can do some work, you know. So that.
+
+For one reason only for. Okay.
+
+How many people have done the first point? Which function you have used.
+
+What is the result? What is the relationship between, um, uh, income and age?
+
+What is the correlation value? Any any age hasn't seen them.
+
+Yeah. Okay. Okay. So. Okay, then.
+
+And then, um, encompasses loan 0.15 okay.
+
+And then age versus loan. And.
+
+Okay. All right. Okay. And and then somebody.
+
+Tools. Have you found. Have you? Have you done the statistics? Yeah.
+
+All of them. Yeah. Okay. And did you plot anything?
+
+Did you? I'll be honest with you.
+
+And. I did it. All you do is play a.
+
+Calcium carbonate. If you think about it, in all creation, you make it hard for you.
+
+That's not good for you, right? Yeah. Yeah, yeah.
+
+Then it gets like school age for those.
+
+Yeah. I know what you want.
+
+Yeah, I used to do. It's good to see of.
+
+Yeah, I think so. I think that.
+
+Hey, guys. And that leaves us.
+
+No no no no no. You know, we would never use that.
+
+We would take off. I don't know if it's like.
+
+Okay, so I will not tell you 100% solution.
+
+I will just give you some points here. Okay. The first thing.
+
+So when you when you talk about the correlations okay.
+
+Um here. It's just a core function.
+
+Yeah, it's just a core function. Yeah. Um, then the summary tool, summary tools probably would have given you some plot around.
+
+And the way it works probably will if they're not missing the plot function will not take into account that particular sample or particular person.
+
+Yeah. Is there any missing data? Yeah.
+
+Which which do you have done? Is built in a.
+
+Somebody somebody in some other things tell us also. Okay. So that's good.
+
+So meaning that you can get an estimate how many are missing. So which is really great.
+
+Okay. Normalize the data using scale. Now the thing is probably we have to do with the missing mode.
+
+But you cannot normalize it without doing anything on the missing. Okay.
+
+So this is something I will keep you thinking.
+
+What can you do with the missing. Without missing the beacon anomalies.
+
+You see what I mean? So probably you could do some imputation process and then.
+
+But I wanted to put these questions anyway because this is the way we see it.
+
+So first you describe the data, first you read the thing and then you think about what are the ways you can impute the data sets.
+
+And then you normalize the data. Okay. So in your free time please think about how we can.
+
+Kind of impute the data and normalize the data. And I have already written the scale function, okay.
+
+The scale function automatically iterate over all your columns and then do the scaling.
+
+Okay. All right. I'll go slowly to the other stuff a bit.
+
+Um, so this is you treat as a homework or something like this.
+
+You think about and try to fill it up. Okay, so you read the file, you look at the distribution, you look at the correlations and other things.
+
+Yeah. And then see if you can do something extra there.
+
+Okay. Um. All right.
+
+Now, in this particular exercise, what I have done here, I have removed those missing columns.
+
+Why? Because there are 2000 observations out of 2000 observations I have removed.
+
+If any of them had got any missing. So what I have done here, I have only it, and it would only be.
+
+And it would only data one and one, meaning that I have nine and it would go and getting are you don't consider it any missing.
+
+Sample is there. And creating a new object for my new object is my dear one.
+
+You see what I mean? But I want you to think about all the possibilities.
+
+I'm just showing you one week. I want you to think about you do a million imputation.
+
+Mean imputation and check the results. What are the differences?
+
+Okay, so if I type this particular one.
+
+Okay. So here. Now.
+
+Dime f one. You see?
+
+Only three of them are missing. Is it? Only two you're missing.
+
+So, okay, out of 2000, I removed three. Yeah.
+
+I mean, that's fine. Yeah. So probably you don't have to think about any imputation process for this particular example.
+
+Yeah. So it it has. It has removed three subjects.
+
+Is it clear? It has removed three subjects. Don't worry about the common command.
+
+You can, you can, you can. You can type in chat. You can get it okay. But think about the process, what it is doing and why it is.
+
+Yeah. Okay. So now. Now, I will show you a couple of other things here.
+
+And remember, I mean, um, there are a couple of other packages I wanted to show.
+
+So you see here summary tools. Yeah.
+
+So this is the last one actually. So there are other packages which will give you description of your data descriptive statistics.
+
+It's not only the summary tools will provide you a nice way of description.
+
+Yeah. There are other packages doing the same.
+
+For example this particular one. So. If I.
+
+Okay for me. Also, there is no packages so I need to install myself as well.
+
+So um. Hmm, I uh, c install, so I'm installing this particular package.
+
+Hmm. I see, um. Yeah.
+
+And then what I am doing. I have, I have loaded my library and I am using this particular, uh, particular recipe described, so I'm.
+
+So here this describe function is coming from this particular package called h m ic.
+
+Okay. So if I run it. You can see.
+
+For variables 1997.
+
+Observations. Okay. Default. How many mean missing zero.
+
+See? Missing zero. Not because I mean every movie.
+
+Yeah. Income in income there is zero info mean, uh, highest, lowest age.
+
+And so you get you get quite, quite nice information there. Also descriptive statistics.
+
+Yeah. Also descriptive statistics. Okay then then there is another one for example.
+
+I think I have to install that one as well. Maybe um. Okay so if I.
+
+Installed. Let's go.
+
+Okay. And then. If I. If I check.
+
+Yeah. Look nice. So here you can see all of them.
+
+Not only standard deviation. Mean standard error. Standard error of mean coefficient variations.
+
+All the things you can think of. Everything is there in this particular one.
+
+So standard DSC applying on DF.
+
+So each of them. So default for the default.
+
+These are the data for income. These are the data value null.
+
+Is there any name. Minimum value. Maximum value range. Some median mean median.
+
+You see everything is putting on your table.
+
+Okay, so the reason I'm showing you. So you should not think this is the only way to do it.
+
+You can use any of them based on the your requirement.
+
+Yeah. So if I send you some data set, can you read and do some analysis basic analysis.
+
+I think that would be that would be a good, good exercise. You plot it and I will tell you what exactly needs to be done.
+
+Yeah. And if I instruct you then it will be a really good exercise when I come back.
+
+Um. And then we can start from from, uh.
+
+So I think next class one more time, I'm going to start on the model and be.
+
+Okay. I mean, have you heard about regularization? What about regularization?
+
+To continue working. Anybody heard about regularization?
+
+Have you heard about the regression? That's what we've heard.
+
+So we think it's something. Something? Nothing. Anybody else here?
+
+Have you heard about? You had to be a regression in 2011 and even before, like.
+
+Lasso regression. Elastic networks. So we discussed he's not a high dimensional statistics.
+
+So we will we will getting there. But but before that I'm just preparing you guys to understand those concepts okay.
+
+Um. Yeah.
+
+So these are some of the instructions. Okay now.
+
+Okay. Maybe. I think this is the last 170.
+
+See. And then also. Okay.
+
+How do you want to do? Now you can say one thing, okay?
+
+And that's it. Yeah. Okay. So the the thing is.
+
+Um. It's, um.
+
+Okay. So. Okay, I'll go to my R1.
+
+So as you can see. So we we are very comfortable now with the descriptive statistics.
+
+Yeah. Now, because this data is very unique in the sense that it is what the outcome variable is.
+
+Um, is a binary. Yeah. And other predictors are like quantitative.
+
+Okay. So I wanted to introduce now regression.
+
+Okay, I wanted to introduce regression, but the problem is the outcome variable is a binary.
+
+So you can really use regression. Okay. So we have to use regression with the quantitative variables we have.
+
+Okay. So. So this is the instruction.
+
+Yeah. This is the instruction in that case. Yeah. So I, um.
+
+I mean probably you can create these things. So create income age and loan as a separate data separate object.
+
+So what you can do you can chop. You can slice column number two.
+
+1 or 2 is a loan or. Um.
+
+Column two. Is it loan or income? So column number two.
+
+Yeah. If you slice column number two put it is the income is object.
+
+So now you can see income is in is your um object now.
+
+Okay. Uh which is quantitative age. I think age is the second one or third one.
+
+You you chop it and story age as eight.
+
+Now these two are quantitative. Yeah, these two are quantitative.
+
+For example, I'll show you. I'll be quick. But then I have to say that because I just, uh, we have just read the file.
+
+It will be nice if we can talk about it. Will be so I forgot what what was there?
+
+So I'm taking, um, what is the function data?
+
+One DF one for me, DF one. Yeah, df one, so I forgot. What is this? So I am looking.
+
+Okay, fine. So income, uh. Income I am creating from Df1.
+
+I am chopping column number two. Okay, so. And then each.
+
+Okay I am, I am, I am chopping, um, column number three.
+
+Okay. Okay.
+
+You see, I forgot one. Yeah, I am typing DF but it is a DF one actually.
+
+So that's why it cannot work. So now I have created income and age.
+
+I want it to regress. I want it to use income as my y new y and age is my predictor.
+
+You see what I mean? So I want to make a linear regression. So what.
+
+So you understand right. There is a difference between multiple linear regression and regression.
+
+Simple linear regression. Simple many. Only one predictor.
+
+If it is multiple, as it says, more than one. Okay, so.
+
+In are the function which we are going to use called elem function lm for linear model okay.
+
+LM okay. LM for a.
+
+Sorry. Yeah, I should have. Prostate.
+
+Um. Okay.
+
+So. So this is it.
+
+One of the great function I coming. With the basement.
+
+So if you install the beast, Alan will be automatically available for you.
+
+Yeah. So what I'm doing, Elon. Results.
+
+I've created my own object. You can do whatever you like.
+
+I'm using LM income. There is a field here.
+
+Is it? Is it the decimal something? I mean, you could find it.
+
+You, uh. It's a connection. I don't know what it's called, but we call it.
+
+Is it disinfo or something? H oh, no. Then data is equal to data.
+
+One for me. Df1 yeah, for me it is df one.
+
+Okay. If you. And then what? What does it mean? I am storing all the conclusions in results and then I am interested.
+
+What is the summary of the result? And if I do so, if I do so, then you can see you can get a very nice estimate okay.
+
+You can get very nice estimates. You can get residual, you can get options.
+
+What are the coefficients. So we come to the coefficients. Good estimates.
+
+Yeah. Um you can get an intercept okay. Is a negative.
+
+Yeah yeah yeah it is error devalue probability values.
+
+So you can see that the intercept is significant. Me is not passing through the what do you.
+
+Yeah. So you and your threshold you think you guys I mean the other thing is important is the probability that look at even here okay.
+
+There are five in. And because it is a regression you could ask where you get a multiple R-squared.
+
+You can adjusted R squared. What is the difference. Oh um.
+
+I don't know how we find a discount school, but all I know is that a few people are hiding variables to model the multiple r-square will increase,
+
+but then we use adjusted R square to make sure that we're adding variables that actually make sense.
+
+Okay. And how does it work? Like how? Like how do you interpret it?
+
+How does it work? So. So the thing is that it is normalized. You write what you see.
+
+It you keep on increasing. We want to control it. How do you control it? You remember the number of samples is normalized by number of samples.
+
+So people and this is more reliable and tested in R squared is more reliable publicly.
+
+Okay. And then you can get many other parameters here. I mean you can see for significance for zero meaning tester.
+
+Yeah. 0.01 for all that you can do to start.
+
+Uh, and these are the, uh. These are the way you can interpret and then you can see this is a t step, meaning the probability then is very, very low.
+
+So you can accept the null hypothesis. You can reject the null hypothesis. Okay.
+
+Other things. Three observations deleted due to the missingness. Oh, really?
+
+Uh, okay. Because, yeah, of course, maybe you do this move because I'm thinking my gear when I already moved it, right?
+
+But what does it mean? It means l function itself can accommodate the missing value by removing the columns.
+
+It does it for me. Yeah, it does it for me. Okay.
+
+So yeah. And Exelon function is very, very useful. So what I'm telling you is that.
+
+Today's if you if you think about today's class, we have looked at many, many different things.
+
+We have we I think one of the important thing we have, we have done how to redaction of files which is in dot txt.
+
+Now you can ask me how to read CSB file. It will come.
+
+But you didn't force this to. Okay.
+
+And then some basic statistics. So you brush up your statistics because next time I'll be going a little bit faster.
+
+I'm not going to ask you what it is to a lot of things. I'm assuming, you know, you regression, all the things are very good.
+
+I'll start with some some high dimensional statistics.
+
+Okay, I think I should stop now. I mean, I think I have all loaded you guys in quite a lot, so, uh, but, um, wait for my email.
+
+I'm going to send you a read through and give you some instructions. Yeah. So you want to move these items in between.
+
+And when I go next, I'll revise anyway. But then we'll walk away from whatever stuff.
+
+Yeah. All right. So till then.
+
+Yeah. Have a good evening then. And see you soon. Okay.
+
+That's coming up in.
+
