@@ -4,7 +4,7 @@ context-dump/
 *.txt
 
 # Exclude old/planning HTML files
-"Financial Fragility Clock v2.html"
+Financial Fragility Clock v2.html
 pipeline-execution-plan.html
 pipeline-schema.html
 
@@ -18,8 +18,11 @@ pipeline-schema.html
 # Security & IDE
 .env
 .claude/
+.codex
 .codex/
 .ipynb_checkpoints/
 __pycache__/
 *.py[cod]
+*.py
+*.pdf
 .DS_Store
