@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Fragility Clock · ISE 2003–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f8f6;--surface:#fff;--alt:#f3f2f0;--border:rgba(0,0,0,.07);--bm:rgba(0,0,0,.13);--t:#1a1714;--t2:#5a5450;--t3:#a09894;--pu:#7132f5;--pdk:#5741d8;--ps:rgba(113,50,245,.09);--pd:rgba(113,50,245,.22);--hedge:#149e61;--spec:#d97706;--ponzi:#dc2626;--hs:rgba(20,158,97,.11);--ss:rgba(217,119,6,.11);--ps2:rgba(220,38,38,.11);--cf:#fff;--cn:rgba(0,0,0,.22);--ct:rgba(0,0,0,.1);--sh:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.07);--r:4px;--rl:12px;--fs:'IBM Plex Serif',Georgia,serif;--fn:'IBM Plex Sans',system-ui,sans-serif;--fm:'IBM Plex Mono',monospace}
+[data-theme=dark]{--bg:#0c0c10;--surface:#131318;--alt:#1a1a22;--border:rgba(255,255,255,.07);--bm:rgba(255,255,255,.14);--t:#e8eaf0;--t2:#8b92a8;--t3:#3d4357;--ps:rgba(113,50,245,.15);--cf:#0e0e14;--cn:rgba(255,255,255,.2);--ct:rgba(255,255,255,.09);--sh:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.5)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}body{font-family:var(--fn);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;transition:background .3s,color .3s}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--bm);border-radius:3px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px)}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--t)}
+.nav-logo-icon{width:26px;height:26px;background:var(--pu);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo-name{font-size:13px;font-weight:600;letter-spacing:-.01em}
+.nav-links{display:flex;gap:2px}
+.nav-a{font-size:12px;font-weight:500;color:var(--t2);text-decoration:none;padding:5px 10px;border-radius:var(--r);transition:color .15s,background .15s}
+.nav-a:hover,.nav-a.active{color:var(--pu);background:var(--ps)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.rpill{font-family:var(--fm);font-size:10px;padding:3px 9px;border-radius:9999px;letter-spacing:.06em;text-transform:uppercase}
+.rpill.hedge{background:var(--hs);color:var(--hedge)}.rpill.spec{background:var(--ss);color:var(--spec)}.rpill.ponzi{background:var(--ps2);color:var(--ponzi)}
+.ibtn{width:32px;height:32px;border-radius:var(--r);border:1px solid var(--bm);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .15s}
+.ibtn:hover{color:var(--pu);border-color:var(--pd);background:var(--ps)}
+a.ibtn{text-decoration:none;font-size:13px;font-weight:500}
+
+/* MODEL BANNER */
+.mbanner{border-bottom:1px solid var(--border);background:var(--surface);padding:0 40px;display:flex;align-items:center;gap:16px;height:44px;flex-wrap:nowrap;overflow-x:auto}
+.mbanner-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+.mtgl{display:inline-flex;background:var(--alt);border-radius:var(--r);padding:3px;gap:1px}
+.mtgl-btn{font-family:var(--fm);font-size:11px;padding:5px 14px;border-radius:3px;border:none;background:transparent;color:var(--t2);cursor:pointer;transition:all .2s;letter-spacing:.04em;white-space:nowrap}
+.mtgl-btn.on{background:var(--surface);color:var(--pu);box-shadow:var(--sh)}
+.mbanner-desc{font-size:11px;color:var(--t3);font-family:var(--fm);white-space:nowrap}
+.mbanner-badge{margin-left:auto;font-family:var(--fm);font-size:10px;padding:3px 10px;border-radius:9999px;background:var(--ps);color:var(--pu);white-space:nowrap;flex-shrink:0}
+
+/* LAYOUT */
+.section{max-width:1200px;margin:0 auto;padding:72px 40px}
+.fw{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.fw .inner{max-width:1200px;margin:0 auto;padding:72px 40px}
+.eyebrow{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--pu);margin-bottom:10px}
+.sh{font-family:var(--fs);font-size:clamp(26px,3vw,40px);font-weight:400;letter-spacing:-.025em;line-height:1.13;margin-bottom:10px}
+.sh em{font-style:italic;color:var(--t2)}
+.sub{font-size:14px;color:var(--t2);line-height:1.65;max-width:520px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+/* HERO */
+.hero{min-height:calc(100vh - 96px);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.hero-clock-wrap{display:flex;flex-direction:column;align-items:center;position:relative}
+.clock-glow{position:absolute;inset:-50px;border-radius:50%;pointer-events:none;transition:background .8s}
+.clock-svg{width:100%;max-width:380px;height:auto;overflow:visible}
+.hero-info{display:flex;flex-direction:column;gap:32px}
+.hero-time{font-family:var(--fs);font-size:clamp(28px,3.2vw,48px);font-weight:300;line-height:1.1;letter-spacing:-.025em}
+.score-block{display:flex;flex-direction:column;gap:10px}
+.score-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--t3)}
+.score-num{font-family:var(--fm);font-size:50px;font-weight:500;line-height:1;transition:color .6s}
+.score-bar{height:3px;background:var(--bm);border-radius:2px;max-width:250px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:2px;transition:width .8s cubic-bezier(.34,1.56,.64,1),background .6s}
+.meta-list{display:flex;flex-direction:column;gap:8px}
+.meta-item{display:flex;align-items:baseline;gap:8px;font-size:13px;color:var(--t2)}
+.meta-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;position:relative;top:-1px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-p{font-family:var(--fn);font-size:13px;font-weight:500;padding:9px 18px;background:var(--pu);color:#fff;border:none;border-radius:var(--r);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s,transform .1s;text-decoration:none}
+.btn-p:hover{background:var(--pdk);transform:translateY(-1px)}
+.btn-s{font-family:var(--fn);font-size:13px;font-weight:500;padding:9px 18px;background:transparent;color:var(--t);border:1px solid var(--bm);border-radius:var(--r);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,color .15s;text-decoration:none}
+.btn-s:hover{border-color:var(--pu);color:var(--pu)}
+
+/* SCRUBBER */
+.scrubber{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 40px;display:flex;align-items:center;gap:18px;max-width:1200px;margin:0 auto}
+.scrubber-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+input[type=range].slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--bm);border-radius:1px;cursor:pointer;outline:none}
+input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;background:var(--pu);border-radius:50%;border:2.5px solid var(--surface);box-shadow:0 0 0 1.5px var(--pu);cursor:pointer}
+.scrubber-val{font-family:var(--fm);font-size:12px;color:var(--pu);white-space:nowrap;min-width:90px;text-align:right}
+
+/* STAT STRIP */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);max-width:1200px;margin:0 auto}
+.stat{padding:24px 28px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:8px}
+.stat-val{font-family:var(--fm);font-size:28px;font-weight:500;line-height:1;margin-bottom:5px;transition:color .5s}
+.stat-note{font-size:11px;color:var(--t3)}
+.up{color:var(--hedge)}.dn{color:var(--ponzi)}.pu{color:var(--pu)}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);box-shadow:var(--sh);overflow:hidden}
+.card-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.card-title{font-size:13px;font-weight:600}
+.card-sub{font-size:11px;color:var(--t2);margin-top:2px}
+.card-body{padding:20px}
+.btn-x{font-family:var(--fm);font-size:10px;padding:4px 10px;background:var(--ps);color:var(--pu);border:1px solid var(--pd);border-radius:var(--r);cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-x:hover{background:var(--pu);color:#fff}
+
+/* TABLES */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.tbl td{font-family:var(--fm);font-size:12px;padding:9px 12px;border-bottom:1px solid var(--border);transition:color .4s}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td.best{color:var(--pu);font-weight:500}.tbl td.mu{color:var(--t2)}.tbl td.good{color:var(--hedge)}.tbl td.bad{color:var(--ponzi)}
+
+/* SHAP */
+.shap-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.shap-lbl{font-family:var(--fm);font-size:11px;color:var(--t2);width:100px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shap-track{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+.shap-fill{height:100%;border-radius:4px;background:var(--pu);transition:width .7s ease}
+.shap-num{font-family:var(--fm);font-size:10px;color:var(--t3);width:42px;text-align:right}
+
+/* HEATMAP */
+.hmap-cell{border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;font-weight:500;cursor:default;transition:transform .15s;position:relative}
+.hmap-cell:hover{transform:scale(1.1);z-index:2}
+
+/* CRISIS BARS */
+.cd-row{display:grid;grid-template-columns:130px 1fr 1fr;gap:16px;align-items:center;margin-bottom:14px}
+.cd-name{font-size:12px;font-weight:500;text-align:right;color:var(--t2)}
+.cd-date{font-family:var(--fm);font-size:10px;color:var(--t3);display:block;margin-top:2px}
+.cd-bar-wrap{position:relative}
+.cd-bar-track{height:28px;background:var(--alt);border-radius:4px;overflow:visible;position:relative;border:1px solid var(--border)}
+.cd-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;transition:width .7s cubic-bezier(.34,1.56,.64,1)}
+.cd-bar-val{font-family:var(--fm);font-size:11px;font-weight:500;color:#fff;white-space:nowrap}
+.cd-thresh{position:absolute;top:-2px;bottom:-2px;width:2px;border-radius:1px;background:var(--ponzi);opacity:.6;pointer-events:none}
+.cd-tag{font-family:var(--fm);font-size:10px;padding:2px 7px;border-radius:9999px;margin-left:8px;white-space:nowrap}
+.cd-tag.missed{background:var(--ps2);color:var(--ponzi)}.cd-tag.caught{background:var(--hs);color:var(--hedge)}.cd-tag.partial{background:var(--ss);color:var(--spec)}
+
+/* REGIME MATRIX */
+.rmat{display:grid;grid-template-columns:auto repeat(3,1fr);gap:4px}
+.rmat-cell{padding:12px 8px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:13px;font-weight:500;transition:opacity .4s}
+.rmat-lbl{font-family:var(--fm);font-size:10px;color:var(--t3);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;letter-spacing:.05em}
+.rmat-head{font-family:var(--fm);font-size:10px;color:var(--t3);display:flex;align-items:center;justify-content:center;letter-spacing:.05em}
+
+/* FEATURE TIMELINE */
+.ftl-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px}
+.ftl-item{display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:11px;color:var(--t2);cursor:pointer}
+.ftl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* DRAWER */
+.drawer{position:fixed;top:96px;right:0;z-index:300;width:360px;height:calc(100vh - 96px);background:var(--surface);border-left:1px solid var(--border);box-shadow:-12px 0 40px rgba(0,0,0,.1);transform:translateX(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.drawer-title{font-size:13px;font-weight:600}
+.dclose{width:28px;height:28px;border:1px solid var(--bm);background:transparent;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:13px}
+.drawer-body{padding:22px;overflow-y:auto;flex:1}
+.dsect{margin-bottom:20px}
+.dsect-title{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:6px}
+.dsect-text{font-size:13px;line-height:1.72;color:var(--t2)}
+
+/* TIMELINE CRISIS EVENTS */
+.cline{position:relative;padding-left:28px}
+.cline::before{content:'';position:absolute;left:5px;top:8px;bottom:0;width:1px;background:var(--bm)}
+.cev{position:relative;margin-bottom:32px}
+.cev::before{content:'';position:absolute;left:-27px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ponzi);border:2px solid var(--surface)}
+.cev.s::before{background:var(--spec)}.cev.h::before{background:var(--hedge)}
+.cev-date{font-family:var(--fm);font-size:10px;letter-spacing:.07em;color:var(--t3);margin-bottom:4px}
+.cev-title{font-size:14px;font-weight:600;margin-bottom:5px}
+.cev-desc{font-size:13px;color:var(--t2);line-height:1.65}
+.cev-badge{display:inline-flex;align-items:center;margin-top:7px;font-family:var(--fm);font-size:10px;padding:2px 8px;border-radius:9999px;background:var(--ps2);color:var(--ponzi)}
+.cev-badge.s{background:var(--ss);color:var(--spec)}.cev-badge.h{background:var(--hs);color:var(--hedge)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:12px}
+.footer-txt{font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.7}
+
+/* LOADING */
+.loading-overlay{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;transition:opacity .4s}
+.loading-overlay.hide{opacity:0;pointer-events:none}
+.loading-txt{font-family:var(--fm);font-size:12px;color:var(--t3);letter-spacing:.1em;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.hero{grid-template-columns:1fr;min-height:auto;gap:48px;padding-top:48px}.hero-info{order:-1}.grid2,.grid3{grid-template-columns:1fr}}
+@media(max-width:900px){.nav{padding:0 20px}.nav-links{display:none}.section{padding:56px 20px}.fw .inner{padding:56px 20px}.stat-strip{grid-template-columns:1fr 1fr}.scrubber{padding:14px 20px}.mbanner{padding:0 16px}.cd-row{grid-template-columns:90px 1fr 1fr;gap:10px}}
+@media(max-width:640px){.stat-strip{grid-template-columns:1fr 1fr}.cd-row{grid-template-columns:1fr;gap:4px}.cd-name{text-align:left}.mbanner-desc,.mbanner-badge{display:none}.nav-logo-name{display:none}}
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loading"><div class="loading-txt">LOADING DATA...</div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="white" stroke-width="1.5"/><line x1="7" y1="2.5" x2="7" y2="7" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="7" y1="7" x2="10.2" y2="5.2" stroke="white" stroke-width="1" stroke-linecap="round"/></svg></div>
+    <span class="nav-logo-name">Financial Fragility Clock</span>
+  </a>
+  <div class="nav-links">
+    <a href="#clock" class="nav-a active">Clock</a>
+    <a href="#timeline" class="nav-a">Timeline</a>
+    <a href="#detection" class="nav-a">Crisis Test</a>
+    <a href="#models" class="nav-a">Models</a>
+    <a href="#features" class="nav-a">Features</a>
+    <a href="#history" class="nav-a">Archive</a>
+  </div>
+  <div class="nav-right">
+    <span class="rpill spec" id="nav-pill">SPECULATIVE</span>
+    <a href="presentation.html" class="ibtn" title="Presentation mode" style="font-size:11px;padding:0 8px;width:auto">▶ Present</a>
+    <button class="ibtn" id="theme-btn" title="Toggle dark mode"><svg id="theme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+  </div>
+</nav>
+
+<!-- MODEL BANNER -->
+<div class="mbanner">
+  <span class="mbanner-lbl">Dataset</span>
+  <div class="mtgl">
+    <button class="mtgl-btn" id="mb-a" onclick="switchModel('model_2009')">2009–2011 Original</button>
+    <button class="mtgl-btn on" id="mb-b" onclick="switchModel('model_2003')">2003–2026 Extended</button>
+  </div>
+  <span class="mbanner-desc" id="model-desc">2003–2026 · VIX, DXY, Brent, EUR/USD, TRY/USD · lag features</span>
+  <span class="mbanner-badge" id="model-badge">Default · Best performance</span>
+</div>
+
+<!-- HERO -->
+<section class="section" id="clock">
+  <div class="hero">
+    <div class="hero-clock-wrap">
+      <div class="clock-glow" id="clock-glow"></div>
+      <svg class="clock-svg" viewBox="0 0 380 400" id="clock-svg">
+        <defs>
+          <radialGradient id="faceGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" id="grad-stop" stop-color="#d97706" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g id="regime-arcs"></g>
+        <circle cx="190" cy="195" r="172" fill="none" stroke="var(--bm)" stroke-width="1"/>
+        <circle cx="190" cy="195" r="155" fill="url(#faceGrad)"/>
+        <g id="ticks"></g>
+        <g id="crisis-pins"></g>
+        <text x="190" y="14" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" id="crash-lbl" fill="rgba(220,38,38,0.4)" letter-spacing="0.22em">CRASH</text>
+        <text x="190" y="382" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--cn)" letter-spacing="0.22em">SAFE</text>
+        <circle cx="190" cy="195" r="135" fill="var(--cf)" id="clock-face"/>
+        <circle cx="190" cy="195" r="135" fill="none" stroke="var(--ct)" stroke-width="1"/>
+        <text x="190" y="52" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">12</text>
+        <text x="333" y="197" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">3</text>
+        <text x="190" y="342" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">6</text>
+        <text x="47" y="197" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">9</text>
+        <text id="face-date" x="190" y="165" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--cn)" letter-spacing="0.09em">—</text>
+        <text id="face-score" x="190" y="232" text-anchor="middle" font-size="13" font-family="IBM Plex Mono,monospace" font-weight="500" fill="#d97706" letter-spacing="0.04em">— / 100</text>
+        <line id="second-hand" x1="190" y1="211" x2="190" y2="100" stroke="rgba(220,38,38,0.35)" stroke-width="1" stroke-linecap="round"/>
+        <line id="minute-hand" x1="190" y1="211" x2="190" y2="95" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/>
+        <line id="hour-hand" x1="190" y1="209" x2="190" y2="128" stroke="#d97706" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="190" cy="195" r="6.5" fill="var(--cf)" stroke="var(--bm)" stroke-width="1.5"/>
+        <circle cx="190" cy="195" r="3.5" fill="#d97706" id="pivot"/>
+      </svg>
+    </div>
+    <div class="hero-info">
+      <div>
+        <p class="eyebrow">Istanbul Stock Exchange · Minsky Framework</p>
+        <h1 class="hero-time"><em id="hero-em" style="color:var(--spec)">—</em><br><span id="hero-sfx">to midnight</span></h1>
+      </div>
+      <div class="score-block">
+        <div class="score-lbl">Fragility Score</div>
+        <div class="score-num" id="hero-score">—</div>
+        <div class="score-bar"><div class="score-bar-fill" id="score-fill" style="width:0%"></div></div>
+      </div>
+      <div class="meta-list">
+        <div class="meta-item"><div class="meta-dot" style="background:var(--pu)"></div><span>Regime: <strong id="hero-regime">—</strong></span></div>
+        <div class="meta-item"><div class="meta-dot" id="meta-dot-2" style="background:var(--spec)"></div><span id="hero-driver">Primary driver loading...</span></div>
+        <div class="meta-item"><div class="meta-dot" style="background:var(--t3)"></div><span id="hero-model-lbl">—</span></div>
+      </div>
+      <div class="cta-row">
+        <button class="btn-p" onclick="openDrawer('clock')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>Explain this</button>
+        <a href="#timeline" class="btn-s">Explore timeline ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUBBER -->
+<div class="scrubber">
+  <span class="scrubber-lbl">Scrub time</span>
+  <input type="range" class="slider" id="scrubber" min="0" max="100" value="100">
+  <span class="scrubber-val" id="scrubber-lbl">—</span>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat"><div class="stat-lbl">Fragility Score</div><div class="stat-val pu" id="st-score">—</div><div class="stat-note" id="st-score-note">current model</div></div>
+  <div class="stat"><div class="stat-lbl">Model A Score</div><div class="stat-val" id="st-ma">—</div><div class="stat-note">2009–2011 trained</div></div>
+  <div class="stat"><div class="stat-lbl">Model B Score</div><div class="stat-val" id="st-mb">—</div><div class="stat-note">2003–2026 extended</div></div>
+  <div class="stat"><div class="stat-lbl">Score Δ (B−A)</div><div class="stat-val" id="st-delta">—</div><div class="stat-note" id="st-delta-note">B sees more fragility</div></div>
+</div>
+
+<!-- REGIME TIMELINE -->
+<section id="timeline" class="fw" style="background:var(--surface)">
+  <div class="inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px">
+      <div>
+        <p class="eyebrow">Regime History</p>
+        <h2 class="sh">Fragility over time<br><em id="timeline-subtitle">2003 — 2026</em></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+        <div style="display:flex;gap:16px;font-family:var(--fm);font-size:10px;letter-spacing:.05em">
+          <span style="color:var(--hedge)">● Hedge (&lt;40)</span>
+          <span style="color:var(--spec)">● Speculative (40–70)</span>
+          <span style="color:var(--ponzi)">● Ponzi (≥70)</span>
+        </div>
+        <div style="font-family:var(--fm);font-size:9px;color:var(--t3)">Click chart to scrub · dashed lines = regime thresholds</div>
+        <button class="btn-x" onclick="openDrawer('timeline')">? Plain English</button>
+      </div>
+    </div>
+    <div class="card" style="cursor:crosshair;overflow:hidden">
+      <svg id="timeline-svg" width="100%" height="260" viewBox="0 0 1120 260" preserveAspectRatio="none" style="display:block;"></svg>
+    </div>
+    <p style="font-size:11px;font-family:var(--fm);color:var(--t3);margin-top:10px;letter-spacing:.04em" id="timeline-note">—</p>
+  </div>
+</section>
+
+<!-- CRISIS DETECTION -->
+<section id="detection" class="section">
+  <p class="eyebrow">The Core Question</p>
+  <h2 class="sh">Which model detected<br><em>Turkey's crises?</em></h2>
+  <p class="sub" style="margin-bottom:32px">Model A trained on 2009–2011 (global recovery). Model B trained on 2003–2026 (includes TRY collapse). Dashed line = PONZI threshold (70). The 2018 and 2021 crises are the decisive test.</p>
+  <div class="card">
+    <div class="card-head">
+      <div><div class="card-title">Crisis Detection — Model A vs Model B · Real Fragility Scores</div><div class="card-sub">Higher score = stronger crisis signal. Threshold = 70.</div></div>
+      <button class="btn-x" onclick="openDrawer('detection')">? Explain</button>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:130px 1fr 1fr;gap:16px;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <div></div>
+        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">Model A · 2009–2011</div>
+        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--pu)">Model B · 2003–2026</div>
+      </div>
+      <div id="crisis-detect-chart"></div>
+      <div style="margin-top:16px;padding:14px 16px;background:var(--ps);border:1px solid var(--pd);border-radius:var(--rl);font-size:13px;color:var(--t2)">
+        <span style="font-family:var(--fm);font-size:9px;color:var(--pu);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:5px">Key Finding</span>
+        At the 2018 TRY Crisis, global VIX was only 12.5 (markets were calm). Model A saw calm global markets and scored 24.0 (HEDGE). Model B saw 12 months of lira collapse (try_usd: 0.285→0.172) and scored 40.5 (SPECULATIVE). The mechanism difference — not just the magnitude — is what separates the models.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL LAB -->
+<section id="models" class="fw" style="background:var(--surface)">
+  <div class="inner">
+    <p class="eyebrow">Model Laboratory</p>
+    <h2 class="sh" style="margin-bottom:8px">Performance &amp; explainability</h2>
+    <p class="sub" style="margin-bottom:32px">Three-model comparison per walk-forward split. SHAP shows which features drive each model's fragility predictions.</p>
+    <div class="grid2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Walk-Forward Performance</div><div class="card-sub" id="perf-sub">Active: 2003–2026 extended</div></div>
+          <button class="btn-x" onclick="openDrawer('perf')">? Explain</button>
+        </div>
+        <div class="card-body" style="padding:0">
+          <table class="tbl" id="perf-tbl">
+            <thead><tr><th>Split</th><th>Model</th><th>R²</th><th>RMSE</th><th>Hedge RMSE</th><th>Spec RMSE</th></tr></thead>
+            <tbody id="perf-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">SHAP Feature Importance</div><div class="card-sub" id="shap-sub">Active model · mean |SHAP|</div></div>
+          <button class="btn-x" onclick="openDrawer('shap')">? Explain</button>
+        </div>
+        <div class="card-body" id="shap-body"></div>
+      </div>
+    </div>
+    <!-- Regime Transition Matrix -->
+    <div class="grid2">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Regime Transition Matrix</div><div class="card-sub">Empirical Markov chain from monthly score sequence</div></div>
+          <button class="btn-x" onclick="openDrawer('markov')">? Explain</button>
+        </div>
+        <div class="card-body" id="regime-matrix-body"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Score Distribution by Model</div><div class="card-sub">Full 2003–2026 range · Model A vs Model B</div></div>
+        </div>
+        <div class="card-body" style="padding:0">
+          <svg id="dist-svg" width="100%" height="200" viewBox="0 0 540 200" preserveAspectRatio="none" style="display:block;"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE ANALYSIS -->
+<section id="features" class="section">
+  <p class="eyebrow">Feature Analysis</p>
+  <h2 class="sh" style="margin-bottom:8px">What Model B sees<br><em>that Model A cannot</em></h2>
+  <p class="sub" style="margin-bottom:32px">VIX, DXY, Brent, EUR/USD, TRY/USD and their lags over time. These features are available in Model B only. The 2018 TRY story is written in TRY/USD — not in global indices.</p>
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-head">
+      <div><div class="card-title">Turkey-Specific Features Over Time (Model B)</div><div class="card-sub">Monthly values from extended dataset · click legend to toggle</div></div>
+      <button class="btn-x" onclick="openDrawer('features')">? Explain</button>
+    </div>
+    <div class="card-body">
+      <div class="ftl-legend" id="ftl-legend"></div>
+      <svg id="ftl-svg" width="100%" height="220" viewBox="0 0 1120 220" preserveAspectRatio="none" style="display:block;"></svg>
+    </div>
+  </div>
+  <!-- Correlations heatmap (Model A) -->
+  <div class="card">
+    <div class="card-head">
+      <div><div class="card-title">ISE vs Global Indices — Rolling Correlation</div><div class="card-sub" id="hmap-date">60-day Pearson · scrub timeline to update</div></div>
+      <button class="btn-x" onclick="openDrawer('heatmap')">? Explain</button>
+    </div>
+    <div class="card-body" id="hmap-body"></div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history" class="fw" style="background:var(--surface)">
+  <div class="inner" style="display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start">
+    <div>
+      <p class="eyebrow">Crisis Archive</p>
+      <h2 class="sh">Historical analogues<br><em>&amp; fragility signals</em></h2>
+      <p class="sub" style="margin-top:16px">Key crisis episodes annotated with real fragility scores from both models. The contrast between Model A and Model B scores at each crisis date is the empirical core of the submission.</p>
+      <div style="margin-top:24px;padding:16px 18px;background:var(--ps);border:1px solid var(--pd);border-radius:var(--rl)">
+        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--pu);margin-bottom:6px;text-transform:uppercase">Academic Narrative</div>
+        <div style="font-size:13px;line-height:1.7;color:var(--t2)">Model A was trained on a global crisis. It learned to read contagion through global index co-movement. When a Turkey-specific crisis struck in 2018 with global markets calm (VIX=12.5), Model A saw nothing. Model B saw 12 months of lira collapse in its TRY/USD lag features.</div>
+      </div>
+    </div>
+    <div class="cline" id="crisis-archive"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-txt">Financial Fragility Clock · Group 5 · MSc FinTech · University of Birmingham<br>Minsky (1992) · OLS + Elastic Net + Random Forest · ISE 2003–2026 · April 2026</div>
+  <span class="rpill spec" id="footer-pill">SPECULATIVE REGIME</span>
+</footer>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer-head"><span class="drawer-title">Plain English</span><button class="dclose" onclick="closeDrawer()">✕</button></div>
+  <div class="drawer-body" id="drawer-body"></div>
+</div>
+
+<script>
+// ── TWEAK DEFAULTS ──────────────────────────────────────────────────────────
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "darkMode": false
+}/*EDITMODE-END*/;
+
+// ── CONSTANTS ───────────────────────────────────────────────────────────────
+const CX=190, CY=195, R_OUT=172;
+const REGIME_COLS = {HEDGE:'#149e61', SPECULATIVE:'#d97706', PONZI:'#dc2626'};
+const REGIME_CLASS = {HEDGE:'hedge', SPECULATIVE:'spec', PONZI:'ponzi'};
+
+// ── STATE ───────────────────────────────────────────────────────────────────
+let DATA = null;
+let currentModel = 'model_2003';
+let currentIdx = 0;
+let darkMode = TWEAK_DEFAULTS.darkMode;
+let secondAngle = 0;
+let hiddenFeatures = new Set();
+
+// ── DATA ACCESS ──────────────────────────────────────────────────────────────
+const getScores    = () => DATA?.models[currentModel]?.monthly_scores || [];
+const getScore     = i  => getScores()[i]?.fragility_score ?? 0;
+const getRegime    = i  => getScores()[i]?.regime ?? 'HEDGE';
+const getDate      = i  => getScores()[i]?.date ?? '';
+const getCorrs     = i  => getScores()[i]?.correlations ?? {};
+const getFeats     = i  => getScores()[i]?.features ?? {};
+const getShap      = () => DATA?.models[currentModel]?.shap_values ?? {};
+const getWF        = () => DATA?.models[currentModel]?.walk_forward ?? [];
+const getPerf      = () => DATA?.models[currentModel]?.performance ?? {};
+
+function getScoreByDate(model, dateStr) {
+  const s = DATA?.models[model]?.monthly_scores;
+  if (!s) return null;
+  const row = s.find(r => r.date.startsWith(dateStr));
+  return row ? row.fragility_score : null;
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+const regCol = s => s>=70?'#dc2626':s>=40?'#d97706':'#149e61';
+const regLabel = s => s>=70?'Ponzi Finance':s>=40?'Speculative Finance':'Hedge Finance';
+const regClass = s => s>=70?'ponzi':s>=40?'spec':'hedge';
+const fmtDate = d => { if(!d) return '—'; const p=d.split('-'); return p[0]+'-'+(p[1]||''); };
+const fmtDateLong = d => { if(!d) return '—'; const dt=new Date(d); return dt.toLocaleDateString('en-US',{year:'numeric',month:'short'}); };
+
+function polar(cx,cy,r,deg){const rad=(deg-90)*Math.PI/180;return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}}
+function scoreToTime(s){
+  if(s>=70){const m=Math.round((s-70)/30*120);return{h:Math.floor(m/60),m:m%60,past:true}}
+  const m2=Math.round((1-s/100)*120),tot=24*60-m2;
+  return{h:Math.floor(tot/60)%12||12,m:tot%60,past:false}
+}
+function timeToAngle(h,m,isH){return isH?((h%12)+m/60)*30:m*6}
+function timeDisplay(s){
+  if(s>=70){const m=Math.round((s-70)/30*120);return{em:m===0?'Past midnight':`${m} min`,sfx:'past midnight'}}
+  const mins=Math.round((1-s/100)*120);
+  if(mins>=60){const hh=Math.floor(mins/60),mm=mins%60;return{em:`${hh}h ${mm}m`,sfx:'to midnight'}}
+  return{em:`${Math.max(1,mins)} min`,sfx:'to midnight'}
+}
+
+// ── LOAD DATA ────────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await fetch('./data/fragility_output.json');
+    if (!res.ok) throw new Error('not found');
+    DATA = await res.json();
+  } catch(e) {
+    DATA = getMockData();
+  }
+  initAll();
+}
+
+function getMockData() {
+  const scores = [];
+  for (let i=0; i<277; i++) {
+    const yr=2003+Math.floor(i/12), mo=(i%12)+1;
+    const d=`${yr}-${String(mo).padStart(2,'0')}-28`;
+    const s=30+20*Math.sin(i/12)+10*Math.sin(i/4)+5*(yr>=2018?1:0);
+    const sc=Math.min(85,Math.max(10,s));
+    scores.push({date:d,fragility_score:sc,regime:sc>=70?'PONZI':sc>=40?'SPECULATIVE':'HEDGE',
+      components:{rolling_correlation_60d:.5,permutation_entropy_inv:.4,rolling_volatility_30d:.3,rf_prediction_error:.1},
+      correlations:{sp500:.6,dax:.55,ftse:.5,nikkei:.3,bovespa:.45,eu:.58,em:.65},
+      features:{vix:15+5*Math.sin(i/6),dxy:95+3*Math.sin(i/8),brent:70+15*Math.sin(i/5),try_usd:0.2-0.001*i,eur_usd:1.1}
+    });
+  }
+  const shap_a={mean_corr:.003,pe_inv:.002,rolling_volatility:.0025,rf_prediction_error:0};
+  const shap_b={SP500:67.8,BIST100:32.5,EM:16.2,DAX:14.3,VIX:8.9,eigenvalue_ratio:7.2,rolling_volatility:6.8,SHANGHAI:5.5};
+  return {version:'mock',models:{
+    model_2009:{meta:{label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:shap_a,walk_forward:[],performance:{ols:{r2:.93,rmse:15.4,mae:12.3}}},
+    model_2003:{meta:{label:'2003–2026 Extended'},monthly_scores:scores,shap_values:shap_b,walk_forward:[],performance:{ols:{r2:-.06,rmse:.022,mae:.015}}}
+  }};
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function initAll() {
+  // Set scrubber max
+  const len = getScores().length;
+  const scrub = document.getElementById('scrubber');
+  scrub.max = len-1;
+  scrub.value = len-1;
+  currentIdx = len-1;
+  
+  // Draw static elements
+  drawTicks();
+  drawRegimeArcs();
+  drawTimeline();
+  renderCrisisDetection();
+  renderPerf();
+  renderShap();
+  renderRegimeMatrix();
+  renderDistribution();
+  renderFeatureTimeline();
+  renderCrisisArchive();
+  
+  // Update dynamic elements
+  updateAll(currentIdx);
+  
+  // Hide loading
+  const ov = document.getElementById('loading');
+  ov.classList.add('hide');
+  setTimeout(()=>ov.style.display='none', 500);
+  
+  // Event listeners
+  scrub.addEventListener('input', () => {
+    currentIdx = parseInt(scrub.value);
+    updateAll(currentIdx);
+  });
+  
+  // Apply theme
+  applyTheme();
+}
+
+// ── UPDATE ALL ────────────────────────────────────────────────────────────────
+function updateAll(idx) {
+  currentIdx = idx;
+  const s = getScore(idx);
+  const r = getRegime(idx);
+  const d = getDate(idx);
+  const col = regCol(s);
+  const rc = regClass(s);
+  const {em, sfx} = timeDisplay(s);
+  
+  // Hero
+  const he = document.getElementById('hero-em');
+  if(he){he.textContent=em;he.style.color=col;}
+  document.getElementById('hero-sfx').textContent=sfx;
+  document.getElementById('hero-score').textContent=s.toFixed(1);
+  document.getElementById('hero-score').style.color=col;
+  document.getElementById('score-fill').style.width=`${s}%`;
+  document.getElementById('score-fill').style.background=col;
+  document.getElementById('hero-regime').textContent=regLabel(s);
+  
+  // Model label
+  const ml = currentModel==='model_2003'
+    ? 'Random Forest + Elastic Net · 2003–2026 extended'
+    : 'Random Forest + OLS · 2009–2011 original';
+  document.getElementById('hero-model-lbl').textContent=ml;
+  
+  // Driver from SHAP
+  const shap = getShap();
+  const top = Object.entries(shap).sort((a,b)=>b[1]-a[1])[0];
+  if(top){
+    document.getElementById('hero-driver').innerHTML=`Primary driver: <strong>${top[0]}</strong>`;
+    document.getElementById('meta-dot-2').style.background=col;
+  }
+  
+  // Regime pills
+  ['nav-pill','footer-pill'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.className=`rpill ${rc}`;
+    el.textContent=r+(id==='footer-pill'?' REGIME':'');
+  });
+  
+  // Scrubber label
+  document.getElementById('scrubber-lbl').textContent=fmtDateLong(d);
+  document.getElementById('scrubber').value=idx;
+  
+  // Stat strip — show BOTH models at this date
+  const sa = DATA?.models?.model_2009?.monthly_scores?.[Math.min(idx, (DATA?.models?.model_2009?.monthly_scores?.length||1)-1)]?.fragility_score;
+  const sb = DATA?.models?.model_2003?.monthly_scores?.[Math.min(idx, (DATA?.models?.model_2003?.monthly_scores?.length||1)-1)]?.fragility_score;
+  if(sa!=null && sb!=null){
+    const delta=sb-sa;
+    document.getElementById('st-score').textContent=s.toFixed(1);
+    document.getElementById('st-score').className='stat-val '+rc;
+    document.getElementById('st-ma').textContent=sa.toFixed(1);
+    document.getElementById('st-ma').className='stat-val '+(sa>=70?'dn':sa>=40?'':'up');
+    document.getElementById('st-mb').textContent=sb.toFixed(1);
+    document.getElementById('st-mb').className='stat-val '+(sb>=70?'dn':sb>=40?'':'up');
+    document.getElementById('st-delta').textContent=(delta>=0?'+':'')+delta.toFixed(1);
+    document.getElementById('st-delta').className='stat-val '+(delta>3?'dn':'up');
+    document.getElementById('st-delta-note').textContent=delta>3?'B sees more fragility':'Models agree';
+  }
+  
+  // Clock face labels
+  const fd=document.getElementById('face-date');
+  if(fd) fd.textContent=fmtDateLong(d).toUpperCase();
+  const fs=document.getElementById('face-score');
+  if(fs){fs.textContent=`${s.toFixed(1)} / 100`;fs.setAttribute('fill',col);}
+  
+  // Clock glow
+  const glow=document.getElementById('clock-glow');
+  if(glow) glow.style.background=`radial-gradient(circle,${col}1a 0%,transparent 68%)`;
+  document.getElementById('grad-stop')?.setAttribute('stop-color',col);
+  const cl=document.getElementById('crash-lbl');
+  if(cl) cl.setAttribute('fill',s>75?'rgba(220,38,38,0.8)':'rgba(220,38,38,0.3)');
+  
+  // Update clock hands
+  updateClock(s);
+  
+  // Update heatmap
+  updateHeatmap(idx, d);
+  
+  // Update timeline scrubber line
+  updateTimelineLine(idx);
+}
+
+// ── CLOCK ──────────────────────────────────────────────────────────────────────
+function drawTicks(){
+  const g=document.getElementById('ticks');
+  for(let i=0;i<60;i++){
+    const deg=i*6,major=i%5===0;
+    const p1=polar(CX,CY,R_OUT-(major?13:5),deg);
+    const p2=polar(CX,CY,R_OUT,deg);
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1',p1.x);ln.setAttribute('y1',p1.y);
+    ln.setAttribute('x2',p2.x);ln.setAttribute('y2',p2.y);
+    ln.setAttribute('stroke',major?'var(--cn)':'var(--ct)');
+    ln.setAttribute('stroke-width',major?'1.5':'0.8');
+    g.appendChild(ln);
+  }
+}
+
+function drawRegimeArcs(){
+  const g=document.getElementById('regime-arcs');
+  const R=R_OUT+10;
+  [{s:220,e:340,col:'#149e61'},{s:340,e:358,col:'#d97706'},{s:0,e:60,col:'#dc2626'}].forEach(a=>{
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    const st=polar(CX,CY,R,a.s),en=polar(CX,CY,R,a.e);
+    const large=a.e-a.s>180?1:0;
+    path.setAttribute('d',`M${st.x},${st.y} A${R},${R} 0 ${large},1 ${en.x},${en.y}`);
+    path.setAttribute('fill','none');path.setAttribute('stroke',a.col);
+    path.setAttribute('stroke-width','3');path.setAttribute('opacity','0.4');
+    path.setAttribute('stroke-linecap','round');
+    g.appendChild(path);
+  });
+}
+
+function updateClock(s){
+  const col=regCol(s);
+  const{h,m}=scoreToTime(s);
+  const hA=timeToAngle(h,m,true), mA=timeToAngle(h,m,false);
+  function hp(angle,rT,rB){return{tip:polar(CX,CY,rT,angle),base:polar(CX,CY,rB,angle+180)}}
+  const{tip:mT,base:mB}=hp(mA,120,18);
+  const{tip:hT,base:hB}=hp(hA,84,16);
+  const{tip:sT,base:sB}=hp(secondAngle,108,18);
+  function sl(id,p1,p2){const el=document.getElementById(id);if(!el)return;el.setAttribute('x1',p1.x);el.setAttribute('y1',p1.y);el.setAttribute('x2',p2.x);el.setAttribute('y2',p2.y);}
+  sl('minute-hand',mB,mT);sl('hour-hand',hB,hT);sl('second-hand',sB,sT);
+  ['minute-hand','hour-hand'].forEach(id=>{const el=document.getElementById(id);if(el)el.setAttribute('stroke',col);});
+  document.getElementById('pivot')?.setAttribute('fill',col);
+}
+
+setInterval(()=>{secondAngle=(secondAngle+6)%360;updateClock(getScore(currentIdx));},1000);
+
+// ── TIMELINE ─────────────────────────────────────────────────────────────────
+let tlScrubberX = 0;
+function drawTimeline(){
+  const svg=document.getElementById('timeline-svg');
+  const W=1120,H=260,P={t:20,b:32,l:44,r:20};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const scores=getScores();
+  if(!scores.length){svg.innerHTML='';return;}
+  
+  const pts=scores.map((s,i)=>({
+    x:P.l+(i/(scores.length-1))*cW,
+    y:P.t+cH-(s.fragility_score/100)*cH,
+    s:s.fragility_score, r:s.regime, i
+  }));
+  
+  let html=`<defs><clipPath id="tcc"><rect x="${P.l}" y="${P.t}" width="${cW}" height="${cH}"/></clipPath></defs>`;
+  
+  // Grid + threshold lines
+  [0,40,70,100].forEach(v=>{
+    const y=P.t+cH-(v/100)*cH;
+    const isDash=v===40||v===70;
+    html+=`<line x1="${P.l}" y1="${y}" x2="${W-P.r}" y2="${y}" stroke="var(--border)" stroke-width="${isDash?1.5:.7}" stroke-dasharray="${isDash?'6,4':''}"/>`;
+    html+=`<text x="38" y="${y+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v}</text>`;
+  });
+  
+  // Threshold labels
+  html+=`<text x="${P.l+6}" y="${P.t+cH-(70/100)*cH-5}" font-size="8" font-family="IBM Plex Mono,monospace" fill="var(--ponzi)" letter-spacing=".08em">PONZI ≥70</text>`;
+  html+=`<text x="${P.l+6}" y="${P.t+cH-(40/100)*cH-5}" font-size="8" font-family="IBM Plex Mono,monospace" fill="var(--spec)" letter-spacing=".08em">SPECULATIVE ≥40</text>`;
+  
+  // Regime-colored area segments
+  const botY=P.t+cH;
+  let seg=[],lastR=pts[0].r,segs=[];
+  pts.forEach(p=>{if(p.r!==lastR&&seg.length){segs.push({p:seg,r:lastR});seg=[];}seg.push(p);lastR=p.r;});
+  if(seg.length)segs.push({p:seg,r:lastR});
+  segs.forEach(({p:sp,r})=>{
+    const col=REGIME_COLS[r]||'#888';
+    let d=`M${sp[0].x},${botY} L${sp[0].x},${sp[0].y}`;
+    sp.forEach((p,j)=>{if(j)d+=` L${p.x},${p.y}`;});
+    d+=` L${sp[sp.length-1].x},${botY} Z`;
+    html+=`<path d="${d}" fill="${col}" fill-opacity=".28" clip-path="url(#tcc)"/>`;
+  });
+  
+  // Score line
+  let lp=`M${pts[0].x},${pts[0].y}`;
+  pts.forEach((p,i)=>{if(i)lp+=` L${p.x},${p.y}`;});
+  html+=`<path d="${lp}" fill="none" stroke="var(--t)" stroke-width="1" stroke-opacity=".25" clip-path="url(#tcc)"/>`;
+  
+  // Crisis annotations
+  const evts=[
+    {label:'GFC 2008',yr:2008,mo:9,col:'#dc2626'},
+    {label:'TRY Crash',yr:2018,mo:8,col:'#d97706'},
+    {label:'COVID',yr:2020,mo:3,col:'#dc2626'},
+    {label:'Turkey 2021+',yr:2021,mo:3,col:'#d97706'},
+  ];
+  evts.forEach(ev=>{
+    const monthIdx=(ev.yr-2003)*12+(ev.mo-1);
+    if(monthIdx<0||monthIdx>=scores.length)return;
+    const x=P.l+(monthIdx/(scores.length-1))*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${botY}" stroke="${ev.col}" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>`;
+    html+=`<text x="${x+4}" y="${P.t+12}" font-size="8" font-family="IBM Plex Mono,monospace" fill="${ev.col}" opacity=".8">${ev.label}</text>`;
+  });
+  
+  // X-axis years
+  for(let yr=2004;yr<=2026;yr+=3){
+    const mo=(yr-2003)*12;if(mo>=scores.length)continue;
+    const x=P.l+(mo/(scores.length-1))*cW;
+    html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
+  }
+  
+  // Scrubber line
+  html+=`<line id="tl-scrub-line" x1="${P.l}" y1="${P.t}" x2="${P.l}" y2="${botY}" stroke="var(--pu)" stroke-width="1.5" opacity=".7"/>`;
+  
+  svg.innerHTML=html;
+  
+  // Click handler
+  svg.addEventListener('click',function(e){
+    const rect=svg.getBoundingClientRect();
+    const xRel=(e.clientX-rect.left)/rect.width*W;
+    const frac=(xRel-P.l)/cW;
+    const idx=Math.round(frac*(scores.length-1));
+    if(idx>=0&&idx<scores.length) updateAll(Math.max(0,Math.min(scores.length-1,idx)));
+  });
+  
+  // Timeline note
+  const first=scores[0]?.date||'',last=scores[scores.length-1]?.date||'';
+  document.getElementById('timeline-note').textContent=`${fmtDateLong(first)} — ${fmtDateLong(last)} · ${scores.length} monthly observations · Click chart to navigate`;
+  document.getElementById('timeline-subtitle').textContent=`${first.slice(0,4)} — ${last.slice(0,4)}`;
+}
+
+function updateTimelineLine(idx){
+  const el=document.getElementById('tl-scrub-line');if(!el)return;
+  const W=1120,P={t:20,b:32,l:44,r:20},cW=W-P.l-P.r,cH=260-P.t-P.b;
+  const n=getScores().length||1;
+  const x=P.l+(idx/(n-1))*cW;
+  el.setAttribute('x1',x);el.setAttribute('x2',x);
+  el.setAttribute('y2',P.t+cH);
+}
+
+// ── CRISIS DETECTION ──────────────────────────────────────────────────────────
+function renderCrisisDetection(){
+  const crises=[
+    {name:'2010 Greek Crisis',date:'2010-05-31',labelDate:'May 2010'},
+    {name:'2018 TRY Crash',date:'2018-08-31',labelDate:'Aug 2018'},
+    {name:'2020 COVID Shock',date:'2020-03-31',labelDate:'Mar 2020'},
+    {name:'2021+ Turkey Crisis',date:'2021-01-31',labelDate:'Jan 2021'},
+  ];
+  
+  const container=document.getElementById('crisis-detect-chart');
+  container.innerHTML=crises.map(c=>{
+    const sa=getScoreByDate('model_2009',c.date.slice(0,7))||0;
+    const sb=getScoreByDate('model_2003',c.date.slice(0,7))||0;
+    const colA=regCol(sa),colB=regCol(sb);
+    const missA=sa<70,missB=sb<70;
+    const partial = !missA||!missB;
+    const tagA=sa<40?'cd-tag missed':sa<70?'cd-tag partial':'cd-tag caught';
+    const tagB=sb<40?'cd-tag missed':sb<70?'cd-tag partial':'cd-tag caught';
+    const labelA=sa<40?'✕ hedge':sa<70?'~ spec':'✓ ponzi';
+    const labelB=sb<40?'✕ hedge':sb<70?'~ spec':'✓ ponzi';
+    return `<div class="cd-row">
+      <div class="cd-name">${c.name}<span class="cd-date">${c.labelDate}</span></div>
+      <div class="cd-bar-wrap" style="display:flex;align-items:center;gap:8px">
+        <div class="cd-bar-track" style="flex:1">
+          <div class="cd-bar-fill" style="width:${Math.min(sa,100)}%;background:${colA}">
+            <span class="cd-bar-val">${sa.toFixed(1)}</span>
+          </div>
+          <div class="cd-thresh" style="left:70%"></div>
+        </div>
+        <span class="${tagA}">${labelA}</span>
+      </div>
+      <div class="cd-bar-wrap" style="display:flex;align-items:center;gap:8px">
+        <div class="cd-bar-track" style="flex:1">
+          <div class="cd-bar-fill" style="width:${Math.min(sb,100)}%;background:${colB}">
+            <span class="cd-bar-val">${sb.toFixed(1)}</span>
+          </div>
+          <div class="cd-thresh" style="left:70%"></div>
+        </div>
+        <span class="${tagB}">${labelB}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── PERFORMANCE TABLE ──────────────────────────────────────────────────────────
+function renderPerf(){
+  document.getElementById('perf-sub').textContent=`Active: ${DATA?.models[currentModel]?.meta?.label||currentModel}`;
+  const wf=getWF();
+  let rows='';
+  if(wf.length){
+    wf.forEach(split=>{
+      const desc=split.description||split.split||'';
+      // Model B structure: split.metrics.test_r2
+      // Model A structure: split.ols.r2
+      const hasMetrics=!!split.metrics;
+      if(hasMetrics){
+        // MB walk_forward
+        const m=split.metrics;
+        const rm=split.regime_metrics||{};
+        rows+=`<tr><td class="mu" rowspan="1">${desc}</td><td class="mu">RF</td><td>${m.test_r2?.toFixed(3)||'—'}</td><td>${m.test_rmse?.toFixed(4)||'—'}</td><td>${rm.HEDGE?.rmse?.toFixed(4)||'—'}</td><td>${rm.SPECULATIVE?.rmse?.toFixed(4)||'—'}</td></tr>`;
+      } else {
+        // MA walk_forward — has rf, ols, var directly
+        ['ols','var','rf'].forEach(model=>{
+          const pm=split[model];if(!pm)return;
+          const r2=pm.r2?.toFixed(3)||'—',rmse=pm.rmse?.toFixed(2)||'—';
+          const best=model==='ols'&&currentModel==='model_2009';
+          rows+=`<tr><td class="mu">${model==='ols'?desc:''}</td><td class="mu">${model.toUpperCase()}</td><td class="${best?'best':''}">${r2}</td><td>${rmse}</td><td>${pm.hedge_rmse?.toFixed(2)||'—'}</td><td>${pm.spec_rmse?.toFixed(2)||'—'}</td></tr>`;
+        });
+      }
+    });
+  } else {
+    // Fallback: top-level performance
+    const p=getPerf();
+    ['random_forest','ols','var'].forEach(model=>{
+      const pm=p[model];if(!pm)return;
+      rows+=`<tr><td class="mu">Full period</td><td class="mu">${model.replace('_',' ').toUpperCase()}</td><td class="${model==='ols'?'best':''}">${pm.r2?.toFixed(3)||'—'}</td><td>${pm.rmse?.toFixed(4)||'—'}</td><td>${pm.hedge_rmse?.toFixed(4)||'—'}</td><td>${pm.spec_rmse?.toFixed(4)||'—'}</td></tr>`;
+    });
+  }
+  document.getElementById('perf-body').innerHTML=rows||'<tr><td colspan="6" class="mu">No performance data available</td></tr>';
+}
+
+// ── SHAP ────────────────────────────────────────────────────────────────────────
+function renderShap(){
+  document.getElementById('shap-sub').textContent=`${DATA?.models[currentModel]?.meta?.label||currentModel} · mean |SHAP|`;
+  const shap=getShap();
+  const entries=Object.entries(shap).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  if(!entries.length){document.getElementById('shap-body').innerHTML='<p style="font-size:12px;color:var(--t3)">No SHAP data</p>';return;}
+  const max=entries[0][1];
+  document.getElementById('shap-body').innerHTML=entries.map(([k,v])=>`
+    <div class="shap-row">
+      <div class="shap-lbl" title="${k}">${k}</div>
+      <div class="shap-track"><div class="shap-fill" style="width:${max>0?(v/max*100).toFixed(0):0}%"></div></div>
+      <div class="shap-num">${v>1?v.toFixed(1):v.toFixed(4)}</div>
+    </div>`).join('');
+}
+
+// ── REGIME TRANSITION MATRIX ────────────────────────────────────────────────────
+function renderRegimeMatrix(){
+  const scores=getScores();
+  const R=['HEDGE','SPECULATIVE','PONZI'];
+  const counts={};
+  R.forEach(r=>{counts[r]={};R.forEach(t=>counts[r][t]=0);});
+  for(let i=1;i<scores.length;i++){
+    const from=scores[i-1].regime,to=scores[i].regime;
+    if(counts[from]&&counts[from][to]!==undefined)counts[from][to]++;
+  }
+  const matrix=R.map(from=>{
+    const tot=R.reduce((s,t)=>s+counts[from][t],0);
+    return R.map(to=>tot>0?counts[from][to]/tot:0);
+  });
+  
+  const currentR=getRegime(currentIdx);
+  
+  const yellOrRed=(v)=>{
+    if(v===0)return`rgba(128,128,128,0.08)`;
+    const t=Math.pow(v,0.6);
+    const r=Math.round(200+55*t),g=Math.round(240-200*t),b=Math.round(240-230*t);
+    return`rgb(${r},${g},${b})`;
+  };
+  
+  const body=document.getElementById('regime-matrix-body');
+  const labels=['→HEDGE','→SPEC','→PONZI'];
+  let html=`<div class="rmat">
+    <div></div>
+    ${R.map((r,i)=>`<div class="rmat-head">${labels[i]}</div>`).join('')}`;
+  
+  R.forEach((from,fi)=>{
+    const isActive=from===currentR;
+    html+=`<div class="rmat-lbl" style="${isActive?'color:var(--pu);font-weight:500':''}">${from.slice(0,4)}→</div>`;
+    matrix[fi].forEach((v,ti)=>{
+      const bg=yellOrRed(v);
+      const textCol=v>0.5?'#fff':'var(--t)';
+      const border=isActive?'2px solid var(--pu)':'none';
+      html+=`<div class="rmat-cell" style="background:${bg};color:${textCol};border:${border}" title="${from}→${R[ti]}: ${(v*100).toFixed(0)}%">${(v*100).toFixed(0)}%</div>`;
+    });
+  });
+  html+=`</div>`;
+  html+=`<p style="font-size:11px;font-family:var(--fm);color:var(--t3);margin-top:12px;letter-spacing:.04em">Current regime row highlighted. HEDGE→PONZI near-zero: Minsky's point — crises escalate through intermediate states.</p>`;
+  body.innerHTML=html;
+}
+
+// ── SCORE DISTRIBUTION ─────────────────────────────────────────────────────────
+function renderDistribution(){
+  const svg=document.getElementById('dist-svg');
+  const W=540,H=200,P={t:20,b:28,l:32,r:16};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  
+  const scoresA=(DATA?.models?.model_2009?.monthly_scores||[]).map(s=>s.fragility_score).filter(v=>v!=null);
+  const scoresB=(DATA?.models?.model_2003?.monthly_scores||[]).map(s=>s.fragility_score).filter(v=>v!=null);
+  
+  function makeHist(arr,bins=20){
+    const min=0,max=100,bw=(max-min)/bins;
+    const h=Array(bins).fill(0);
+    arr.forEach(v=>{const b=Math.min(bins-1,Math.floor((v-min)/bw));if(b>=0)h[b]++;});
+    return{h,bw,min};
+  }
+  const hA=makeHist(scoresA),hB=makeHist(scoresB);
+  const maxCount=Math.max(...hA.h,...hB.h);
+  
+  let html='';
+  // Grid
+  [0,50,100].forEach(v=>{
+    const x=P.l+(v/100)*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="var(--border)" stroke-width=".7"/>`;
+    html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v}</text>`;
+  });
+  // Threshold
+  [40,70].forEach(v=>{
+    const x=P.l+(v/100)*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${v===70?'var(--ponzi)':'var(--spec)'}" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>`;
+  });
+  // Bars A (behind)
+  hA.h.forEach((count,i)=>{
+    const x=P.l+(i/hA.h.length)*cW;
+    const bw=(cW/hA.h.length)-1;
+    const h2=(count/maxCount)*cH;
+    html+=`<rect x="${x}" y="${P.t+cH-h2}" width="${bw}" height="${h2}" fill="#7132f5" opacity=".25" rx="1"/>`;
+  });
+  // Bars B
+  hB.h.forEach((count,i)=>{
+    const x=P.l+(i/hB.h.length)*cW;
+    const bw=(cW/hB.h.length)-1;
+    const h2=(count/maxCount)*cH;
+    html+=`<rect x="${x}" y="${P.t+cH-h2}" width="${bw}" height="${h2}" fill="#7132f5" opacity=".5" rx="1"/>`;
+  });
+  // Legend
+  html+=`<text x="${P.l+4}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5" opacity=".4">Model A</text>`;
+  html+=`<text x="${P.l+56}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5" opacity=".8">Model B</text>`;
+  // Max A annotation
+  const maxA=Math.max(...scoresA).toFixed(1);
+  const maxB=Math.max(...scoresB).toFixed(1);
+  html+=`<text x="${P.l+(parseFloat(maxA)/100)*cW}" y="${P.t+H/2}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">A max: ${maxA}</text>`;
+  html+=`<text x="${P.l+(parseFloat(maxB)/100)*cW+20}" y="${P.t+H/2+14}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">B max: ${maxB}</text>`;
+  svg.innerHTML=html;
+}
+
+// ── FEATURE TIMELINE ────────────────────────────────────────────────────────────
+function renderFeatureTimeline(){
+  const scores=(DATA?.models?.model_2003?.monthly_scores||[]).filter(s=>s.features&&Object.keys(s.features).length>0);
+  if(!scores.length){document.getElementById('ftl-svg').innerHTML='<text x="10" y="20" fill="var(--t3)" font-size="12" font-family="IBM Plex Mono,monospace">Feature data available in extended dataset only</text>';return;}
+  
+  const FEATS=[
+    {key:'vix',label:'VIX',col:'#dc2626'},
+    {key:'dxy',label:'DXY',col:'#3b82f6'},
+    {key:'brent',label:'Brent',col:'#d97706'},
+    {key:'try_usd',label:'TRY/USD×100',col:'#8b5cf6',scale:100},
+  ];
+  
+  // Legend
+  const leg=document.getElementById('ftl-legend');
+  leg.innerHTML=FEATS.map(f=>`
+    <div class="ftl-item" onclick="toggleFtlFeature('${f.key}')" id="ftl-leg-${f.key}">
+      <div class="ftl-dot" style="background:${f.col}"></div>${f.label}
+    </div>`).join('');
+  
+  const svg=document.getElementById('ftl-svg');
+  const W=1120,H=220,P={t:20,b:28,l:44,r:20};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  
+  let html='';
+  
+  // Crisis annotations
+  const evts=[{label:'TRY Crash',yr:2018,mo:8,col:'#d97706'},{label:'COVID',yr:2020,mo:3,col:'#dc2626'},{label:'Gov. fired',yr:2021,mo:3,col:'#8b5cf6'}];
+  evts.forEach(ev=>{
+    const idx=scores.findIndex(s=>s.date.startsWith(`${ev.yr}-${String(ev.mo).padStart(2,'0')}`));
+    if(idx<0)return;
+    const x=P.l+(idx/(scores.length-1))*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${ev.col}" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>`;
+    html+=`<text x="${x+4}" y="${P.t+12}" font-size="8" font-family="IBM Plex Mono,monospace" fill="${ev.col}" opacity=".8">${ev.label}</text>`;
+  });
+  
+  // Draw each feature line
+  FEATS.forEach(f=>{
+    if(hiddenFeatures.has(f.key))return;
+    const vals=scores.map(s=>(f.scale?s.features[f.key]*(f.scale):s.features[f.key])??null).filter(v=>v!=null);
+    if(!vals.length)return;
+    const min=Math.min(...vals),max=Math.max(...vals);
+    const norm=v=>(v-min)/(max-min+.001);
+    
+    const pts=scores.map((s,i)=>{
+      const raw=f.scale?s.features[f.key]*(f.scale):s.features[f.key];
+      if(raw==null)return null;
+      return{x:P.l+(i/(scores.length-1))*cW,y:P.t+cH-norm(raw)*cH};
+    }).filter(Boolean);
+    
+    if(pts.length<2)return;
+    let path=`M${pts[0].x},${pts[0].y}`;
+    pts.forEach((p,i)=>{if(i)path+=` L${p.x},${p.y}`;});
+    html+=`<path d="${path}" fill="none" stroke="${f.col}" stroke-width="1.5" opacity=".75" id="ftl-line-${f.key}" clip-path="url(#tcc)"/>`;
+  });
+  
+  // X-axis
+  for(let yr=2004;yr<=2026;yr+=3){
+    const idx=scores.findIndex(s=>s.date.startsWith(`${yr}-01`));
+    if(idx<0)continue;
+    const x=P.l+(idx/(scores.length-1))*cW;
+    html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
+  }
+  
+  svg.innerHTML=html;
+}
+
+function toggleFtlFeature(key){
+  if(hiddenFeatures.has(key))hiddenFeatures.delete(key);
+  else hiddenFeatures.add(key);
+  const leg=document.getElementById(`ftl-leg-${key}`);
+  if(leg)leg.style.opacity=hiddenFeatures.has(key)?'0.3':'1';
+  renderFeatureTimeline();
+}
+
+// ── HEATMAP ────────────────────────────────────────────────────────────────────
+function updateHeatmap(idx, dateStr){
+  const body=document.getElementById('hmap-body');
+  document.getElementById('hmap-date').textContent=`As of ${fmtDateLong(dateStr)} · 60-day rolling Pearson vs ISE`;
+  
+  // MA always has correlations, MB has empty dict
+  const srcModel=currentModel==='model_2009'?'model_2009':'model_2009'; // always use MA corrs
+  const maScores=DATA?.models?.model_2009?.monthly_scores||[];
+  const row=maScores[Math.min(idx,maScores.length-1)];
+  const corrs=row?.correlations||{};
+  
+  const IDXS=['sp500','dax','ftse','nikkei','bovespa','eu','em'];
+  const LBLS=['SP500','DAX','FTSE','NIKKEI','BOVESPA','EU','EM'];
+  const vals=IDXS.map(k=>corrs[k]??null);
+  
+  if(vals.every(v=>v===null)){
+    body.innerHTML='<p style="font-size:12px;font-family:var(--fm);color:var(--t3)">Correlation data unavailable for this period (pre-2005 early records). Scrub to 2005+ to see correlations.</p>';
+    return;
+  }
+  
+  function corrCol(v){
+    if(v===null)return'var(--alt)';
+    if(v>=0){const t=v,r=Math.round(200+55*t),g=Math.round(220-160*t),b=Math.round(220-180*t);return`rgb(${r},${g},${b})`;}
+    else{const t=-v,r=Math.round(220-180*t),g=Math.round(220-120*t),b=Math.round(200+55*t);return`rgb(${r},${g},${b})`;}
+  }
+  function textCol(v){return v===null?'var(--t3)':Math.abs(v)>.5?'#fff':'#333';}
+  
+  let html=`<div style="display:grid;grid-template-columns:auto;gap:3px;overflow-x:auto">`;
+  html+=`<div style="display:flex;gap:3px;margin-bottom:3px">`;
+  html+=`<div style="width:80px;font-family:var(--fm);font-size:9px;color:var(--pu);display:flex;align-items:center;justify-content:flex-end;padding-right:8px">vs ISE</div>`;
+  LBLS.forEach(l=>html+=`<div style="width:58px;font-family:var(--fm);font-size:10px;color:var(--t3);text-align:center">${l}</div>`);
+  html+=`</div>`;
+  html+=`<div style="display:flex;gap:3px">`;
+  html+=`<div style="width:80px;font-family:var(--fm);font-size:10px;color:var(--t3);display:flex;align-items:center;justify-content:flex-end;padding-right:8px">Pearson r</div>`;
+  vals.forEach((v,i)=>{
+    const bg=corrCol(v),tc=textCol(v);
+    const vStr=v===null?'n/a':v.toFixed(2);
+    html+=`<div class="hmap-cell" style="width:58px;height:44px;background:${bg};color:${tc}" title="${LBLS[i]} vs ISE: ${vStr}">${vStr}</div>`;
+  });
+  html+=`</div></div>`;
+  html+=`<div style="display:flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--fm);font-size:10px;color:var(--t3)">
+    <span style="color:#4472c4">−1.0</span>
+    <div style="flex:1;max-width:180px;height:4px;border-radius:2px;background:linear-gradient(to right,#4472c4,#ddd,#c0392b)"></div>
+    <span style="color:#c0392b">+1.0</span>
+    <span style="margin-left:6px">Note: Full NxN matrix requires pairwise_correlations in JSON export</span></div>`;
+  
+  body.innerHTML=html;
+}
+
+// ── CRISIS ARCHIVE ────────────────────────────────────────────────────────────
+function renderCrisisArchive(){
+  const crises=[
+    {cl:'',date:'MAY 2010',title:'Greek Debt Crisis · Flash Crash',
+     desc:'Sovereign contagion from Greece drove ISE down 15% in 6 weeks. European counterparty risk spiked sharply.',
+     badge:'Model A: 39.2 (HEDGE) · Model B: 49.2 (SPEC)'},
+    {cl:'s',date:'AUG 2018',title:'Turkish Lira Currency Crisis',
+     desc:'TRY/USD collapsed from 0.285 → 0.172 over 12 months. VIX stayed at 12.5 — global markets were calm. Model A saw no crisis. Model B saw the lira collapse in its TRY/USD lag features.',
+     badge:'Model A: 24.0 (HEDGE) · Model B: 40.5 (SPEC)'},
+    {cl:'',date:'MAR 2020',title:'COVID-19 Synchronized Selloff',
+     desc:'VIX spiked to 57.7. Global correlation spike. ISE vs SP500 hit maximum co-movement. Both models detected this — but Model B scored 77.8 (PONZI) vs Model A\'s 42.5 (SPECULATIVE).',
+     badge:'Model A: 42.5 (SPEC) · Model B: 77.8 (PONZI)'},
+    {cl:'s',date:'2021 — 2026',title:'Ongoing Turkey Economic Crisis',
+     desc:'Unorthodox monetary policy, 85%+ inflation, TRY collapse, CBRT governor firings. Persistent fragility elevation only visible in Model B\'s Turkey-aware features.',
+     badge:'Model A: 27.2 (HEDGE) · Model B: 60.1 (SPEC)'},
+  ];
+  const el=document.getElementById('crisis-archive');
+  el.innerHTML=crises.map(c=>`
+    <div class="cev ${c.cl}">
+      <div class="cev-date">${c.date}</div>
+      <div class="cev-title">${c.title}</div>
+      <div class="cev-desc">${c.desc}</div>
+      <span class="cev-badge ${c.cl}">${c.badge}</span>
+    </div>`).join('');
+}
+
+// ── MODEL SWITCH ──────────────────────────────────────────────────────────────
+function switchModel(id){
+  currentModel=id;
+  const isB=id==='model_2003';
+  document.getElementById('mb-a').className='mtgl-btn'+(id==='model_2009'?' on':'');
+  document.getElementById('mb-b').className='mtgl-btn'+(id==='model_2003'?' on':'');
+  document.getElementById('model-desc').textContent=isB
+    ?'2003–2026 · VIX, DXY, Brent, EUR/USD, TRY/USD · lag features'
+    :'2009–2011 · 7 global indices only · no TRY/USD features';
+  document.getElementById('model-badge').textContent=isB?'Default · Best performance':'Limited · misses 2018+';
+  document.getElementById('hero-model-lbl').textContent=isB
+    ?'RF + Elastic Net · 2003–2026 extended'
+    :'RF + OLS · 2009–2011 original';
+  const len=getScores().length;
+  document.getElementById('scrubber').max=len-1;
+  currentIdx=Math.min(currentIdx,len-1);
+  drawTimeline();
+  renderPerf();
+  renderShap();
+  renderRegimeMatrix();
+  renderDistribution();
+  updateAll(currentIdx);
+}
+
+// ── DRAWER ──────────────────────────────────────────────────────────────────────
+const EXPL={
+  clock:[{t:'What is this clock?',b:'A financial stress meter mapped to the Doomsday Clock metaphor. The closer the hands are to midnight (12 o\'clock), the higher Istanbul Stock Exchange fragility. Score < 40 = HEDGE regime; 40–70 = SPECULATIVE; ≥70 = PONZI.'},{t:'Why does Model A never reach midnight?',b:'Model A\'s maximum score is 59.2 — it physically cannot reach the PONZI threshold of 70. It was trained only on 2009–2011 data (global crisis recovery). It learned to read global contagion patterns. Turkey-specific stress mechanisms are invisible to it.'}],
+  timeline:[{t:'How to read this chart',b:'The filled area colour changes with regime: green (Hedge), amber (Speculative), red (Ponzi). Dashed horizontal lines mark the HEDGE/SPEC boundary (40) and SPEC/PONZI boundary (70). Click anywhere on the chart to jump the clock to that date.'},{t:'Why is Model A always amber/green?',b:'Model A never classifies any period as PONZI because its fragility score caps at 59.2. Model B, trained on extended Turkey-aware data, occasionally reaches red (COVID 2020, max 77.8).'}],
+  detection:[{t:'What does this chart show?',b:'The peak fragility score each model assigned to four major crisis episodes. The dashed line at 70 is the PONZI threshold — below it means the model did not classify this as a crisis.'},{t:'Why 2018 is the key test',b:'During the 2018 TRY crash, global VIX was only 12.5 (markets were calm globally). Model A trained on global crises sees calm VIX and scores 24.0 (HEDGE — no crisis). Model B sees 12 months of lira collapse in its TRY/USD lag features and scores 40.5 (SPECULATIVE — elevated warning).'}],
+  perf:[{t:'What is R² here?',b:'R-squared measures how well the model predicts ISE returns. Model B uses monthly returns (RMSE in % return units ~0.04), Model A uses daily returns (RMSE in fragility score units ~15). The units differ — do not compare RMSE across models directly, only within the same model across splits.'},{t:'Why is RF so bad for Model A?',b:'Model A\'s Random Forest has R² of -11 — worse than predicting the mean. This is because the 2009–2011 training window is extremely small (only 2.5 years of daily data). RF overfits on small samples. OLS regularises better. For Model B, the longer training window (2003–2026) makes RF viable.'}],
+  shap:[{t:'What is SHAP?',b:'SHAP values measure how much each feature contributed to the model\'s prediction for each observation. A high SHAP for SP500 means "US market movements were the main reason I predicted this fragility level."'},{t:'Why does SP500 dominate Model B?',b:'SP500 (67.8) and BIST100 (32.5) dominate because the model is predicting ISE_USD returns — and ISE is deeply correlated with US dollar liquidity cycles. VIX (8.9) and rolling_volatility (6.8) capture the regime-level signals.'}],
+  markov:[{t:'What is a regime transition matrix?',b:'Each cell shows the empirical probability of moving from one regime (row) to another (column) in the following month. Computed directly from the monthly score sequence.'},{t:'What does it tell us about Minsky?',b:'HEDGE→PONZI probability is near zero — financial systems don\'t jump directly from calm to crisis. They transition through SPECULATIVE first. This validates Minsky\'s three-stage model empirically from the data.'}],
+  features:[{t:'Why TRY/USD matters most',b:'The lira rate encodes Turkey\'s monetary policy credibility, current account stress, and political risk all in one variable. When TRY/USD falls (lira weakens), Turkey\'s dollar-denominated debt burden increases, corporate insolvency risk rises, and capital flight begins.'},{t:'Why VIX leads sometimes',b:'For global crises (2008, 2020), VIX spikes before the ISE fragility score rises — making it a useful early warning signal. For Turkey-specific crises (2018, 2021), VIX stays calm while TRY/USD collapses. This is why you need both.'}],
+  heatmap:[{t:'What does this show?',b:'The 60-day rolling Pearson correlation between each major global index and ISE (USD). Red = strong positive correlation (contagion). Blue = negative/uncorrelated. White = no relationship.'},{t:'Why do correlations matter?',b:'During global crises, all correlations spike toward 1.0 — all markets crash together (contagion). During Turkey-specific crises, global correlations stay moderate while ISE USD crashes alone. This divergence is one of Model B\'s key signals.'}],
+};
+function openDrawer(k){
+  const secs=EXPL[k]||EXPL.clock;
+  document.getElementById('drawer-body').innerHTML=secs.map(s=>`<div class="dsect"><div class="dsect-title">${s.t}</div><div class="dsect-text">${s.b}</div></div>`).join('');
+  document.getElementById('drawer').classList.add('open');
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');}
+
+// ── THEME ──────────────────────────────────────────────────────────────────────
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme',darkMode?'dark':'light');
+  const icon=document.getElementById('theme-icon');
+  icon.innerHTML=darkMode
+    ?'<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
+    :'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  setTimeout(()=>{drawTimeline();renderFeatureTimeline();},60);
+}
+document.getElementById('theme-btn').addEventListener('click',()=>{
+  darkMode=!darkMode;applyTheme();
+  window.parent.postMessage({type:'__edit_mode_set_keys',edits:{darkMode}},'*');
+});
+
+// ── TWEAKS ─────────────────────────────────────────────────────────────────────
+window.addEventListener('message',e=>{
+  if(e.data?.type==='__activate_edit_mode')tp.style.display='block';
+  if(e.data?.type==='__deactivate_edit_mode')tp.style.display='none';
+});
+window.parent.postMessage({type:'__edit_mode_available'},'*');
+const tp=document.createElement('div');
+tp.style.cssText='position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--surface);border:1px solid var(--bm);border-radius:12px;padding:16px 18px;box-shadow:0 8px 32px rgba(0,0,0,.14);min-width:200px;display:none;font-family:var(--fn);';
+tp.innerHTML=`<div style="font-size:11px;font-weight:600;margin-bottom:12px;color:var(--t)">Tweaks</div>
+<label style="font-size:11px;color:var(--t2);display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:8px">
+  <input type="checkbox" id="tw-dark" ${TWEAK_DEFAULTS.darkMode?'checked':''}> Dark mode
+</label>`;
+document.body.appendChild(tp);
+tp.querySelector('#tw-dark').addEventListener('change',function(){darkMode=this.checked;applyTheme();window.parent.postMessage({type:'__edit_mode_set_keys',edits:{darkMode}},'*');});
+
+// ── START ──────────────────────────────────────────────────────────────────────
+applyTheme();
+loadData();
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+The Complete Plan: Model B + Dashboard Merge
+What Already Exists (don't rebuild)
+
+Based on reading the three repos :
+
+    Model A (big-data/): fully trained, 7 models + saved .pkl files, all plots done ✅
+
+    ise/ pipeline: Both python/model_a/ and python/model_b/ exist with full code already written
+
+    fragility_output.json: 276/277 monthly scores already generated for both models
+
+    Financial Fragility Clock v2.html: Full design, UI toggle, all chart sections — just wired to fake data
+
+    The single remaining dashboard task: swap hardcoded simulation functions → fetch('data/fragility_output.json')
+
+Phase 1 — Verify & Fix the Existing Pipeline
+
+Before touching the dashboard, you need real data you trust.
+Step 1.1 — Run the pipeline end-to-end
+
+bash
+cd ~/ise
+python -m venv venv && source venv/bin/activate
+pip install pandas numpy scikit-learn statsmodels yfinance fredapi requests joblib
+
+python python/run_pipeline.py
+
+Watch for errors. The orchestrator runs Model A → Model B → export_unified.py → writes data/fragility_output.json.
+Step 1.2 — Spot-check the JSON output
+
+Open data/fragility_output.json and verify these four specific data points — this is the entire academic narrative of the project:
+Date	Model A score	Model B score	Expected regime delta
+2018-08 (TRY crash)	~43 (SPECULATIVE)	~68 (PONZI)	A misses it, B catches it
+2021-01 (Turkey debt crisis onset)	~39 (HEDGE)	~61 (SPECULATIVE)	A underestimates, B reads it correctly
+2009-03 (GFC bottom)	~72 (PONZI)	~70+ (PONZI)	Both should catch it — sanity check
+2020-03 (COVID crash)	~65	~70+	Both should catch it
+
+If the contrast at 2018 and 2021 isn't there, the Model B feature engineering (DXY, BRENT, TRY_USD, CBRT governor dummy) is the thing to fix first .
+Step 1.3 — Verify Model B features are actually wired
+
+Check python/model_b/feature_engineering_b.py has these exactly:
+
+    6-component fixed weights: corr(0.25), pe_inv(0.20), vol(0.15), eigenvalue(0.15), vix(0.15), dxy(0.10) — no dynamic redistribution
+
+    CBRT_GOVERNOR_DUMMY column (shock dates: Mar2019, Jul2019, Nov2020, Mar2021)
+
+    ISE_USD = BIST100 / USDTRY derived correctly
+
+If any are missing or broken, fix them before exporting. The scores are only meaningful if the feature set is correct.
+Phase 2 — Wire Dashboard to Real Data
+
+This is the single biggest visual payoff and the STATUS.md identifies it as the only remaining task .
+Step 2.1 — Understand what needs replacing in v2.html
+
+Four things are currently hardcoded/simulated:
+What	Approx. line	Replace with
+monthToScoreA function	~608–625	Lookup from monthly_scores array (model_2009)
+monthToScoreB function	~608–625	Lookup from monthly_scores array (model_2003)
+heatmapCorr function	~572–593	monthly_scores[i].correlations from JSON
+SHAP hardcoded values	~572–593	models.model_2009.shap_values / model_2003.shap_values
+Step 2.2 — The wiring pattern
+
+At the top of the <script> block, replace all simulated data with:
+
+javascript
+let DATA = null;
+let currentModel = 'model_2009'; // A/B toggle state
+
+async function loadData() {
+  const res = await fetch('data/fragility_output.json');
+  DATA = await res.json();
+  init(); // render everything after data loads
+}
+
+function getScores() {
+  return DATA.models[currentModel].monthly_scores;
+}
+
+function getScore(dateStr) {
+  const scores = getScores();
+  const entry = scores.find(s => s.date.startsWith(dateStr));
+  return entry ? entry.fragility_score : null;
+}
+
+function getRegime(dateStr) {
+  const entry = getScores().find(s => s.date.startsWith(dateStr));
+  return entry ? entry.regime : 'HEDGE';
+}
+
+function getShap() {
+  return DATA.models[currentModel].shap_values;
+}
+
+function getCorrelations(dateStr) {
+  const entry = getScores().find(s => s.date.startsWith(dateStr));
+  return entry ? entry.correlations : {};
+}
+
+document.addEventListener('DOMContentLoaded', loadData);
+
+Then every chart rendering function that currently calls monthToScoreA(date) becomes getScore(date), correlation heatmap calls getCorrelations(date), SHAP bar chart calls getShap().
+Step 2.3 — Wire the A/B toggle
+
+The toggle button already exists in the UI. Just add:
+
+javascript
+document.querySelectorAll('[data-model]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentModel = btn.dataset.model; // 'model_2009' or 'model_2003'
+    renderAll(); // re-render every chart/section
+  });
+});
+
+Phase 3 — section3_extension.ipynb (Model B in notebook form)
+
+This is the big-data/ notebook that bridges Model A (the assignment) to the extension (the Minsky / Financial Fragility Clock work). It lives in big-data/ alongside section2_model_build.ipynb.
+Structure
+
+§0 — Context — what Model A found, why we extend. Minsky's Financial Instability Hypothesis: Hedge → Speculative → Ponzi states. The academic argument for why 2009–2011 ISE training data alone cannot generalise to 2018 or 2021+ crises.
+
+§1 — Data fetch via yfinance — Pull the same 7 indices (SP, DAX, FTSE, NIKKEI, BOVESPA, EU, EM) from 2003 to present plus extras (DXY, BRENT, TRY_USD, VIX). This is the Model B feature space.
+
+python
+import yfinance as yf
+
+tickers = {
+    'SP500':  '^GSPC',
+    'DAX':    '^GDAXI',
+    'FTSE':   '^FTSE',
+    'NIKKEI': '^N225',
+    'BOVESPA':'%5EBVSP',
+    'VIX':    '^VIX',
+    'DXY':    'DX-Y.NYB',
+    'BRENT':  'BZ=F',
+    'USDTRY': 'USDTRY=X',
+    'BIST100':'XU100.IS',
+}
+raw = yf.download(list(tickers.values()), start='2003-01-01', end='2026-04-01')['Adj Close']
+raw.columns = list(tickers.keys())
+
+§2 — Derive ISE_USD — ISE_USD_extended = log_return(BIST100 / USDTRY). Compare the 2009–2011 overlap to verify alignment with Group_5.csv.
+
+§3 — Feature engineering — Monthly resampling, rolling correlations, PE proxy, eigenvalue concentration, the 6-component fragility index formula.
+
+§4 — Apply saved Model A — Load elasticnet.pkl and randomforest.pkl from models/. Feed 2012–2026 data through them. Watch them underestimate 2018 and 2021.
+
+§5 — Train Model B — Retrain on 2003–2026 with the extended feature set. Compare performance metrics to Model A.
+
+§6 — The academic contrast plot — Single figure: fragility score timeline 2003–2026 with Model A (dashed) vs Model B (solid), annotated with: GFC 2008, 2018 TRY crash, 2020 COVID, 2021–2026 Turkey crisis. This is the submission-worthy figure.
+
+§7 — Regime classification — HEDGE/SPECULATIVE/PONZI labelling for both models. Show confusion matrix: where does Model A misclassify a PONZI as SPECULATIVE?
+
+§8 — Export — Writes data/fragility_output.json with the schema the dashboard expects.
+Phase 4 — Dashboard Enhancements (post-real-data)
+
+Once the dashboard is wired to real data, the enhancements that make it submission/presentation quality:
+Visualisations to add/fix
+
+    Crisis annotation overlay — vertical lines on the timeline at GFC, 2018 TRY, COVID, 2021 Turkey, auto-derived from regime transitions in the JSON
+
+    Model comparison panel — side-by-side RMSE/R²/AUC for Model A vs B pulled from performance block in JSON
+
+    Feature importance comparison — horizontal bar chart: what drives Model A (global correlations) vs Model B (DXY, CBRT governance shocks, VIX)
+
+    Rolling correlation heatmap with date slider — this is the thing the React repo apparently had; rebuild it in the HTML dashboard using Chart.js or a simple canvas grid, driven by monthly_scores[i].correlations
+
+Export functionality
+
+Every figure on the dashboard should have a PNG download button — one <canvas>.toBlob() call per chart. For the report write-up, Vansh/Sahar will just click download and attach the plot directly.
+
+javascript
+function addDownloadButton(chartCanvas, filename) {
+  const btn = document.createElement('button');
+  btn.textContent = '↓ Export PNG';
+  btn.onclick = () => {
+    chartCanvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+    });
+  };
+  chartCanvas.parentNode.appendChild(btn);
+}
+
+Presentation mode
+
+A ?mode=present URL parameter that:
+
+    Hides all controls/buttons
+
+    Forces full-screen chart layout
+
+    Enables keyboard arrow navigation between sections
+
+    Each section becomes a "slide"
+
+This is for the 29 April in-person presentation — just open the live Vercel URL with ?mode=present and it becomes a presentation without needing PowerPoint.
+Phase 5 — PLAN.md Updates in big-data/
+
+Update the existing PLAN.md to add:
+
+text
+## Model B Extension (section3_extension.ipynb)
+
+| Task | Status |
+|---|---|
+| yfinance fetch (2003–2026, 10 tickers) | ⬜ |
+| ISE_USD_extended derivation + overlap check | ⬜ |
+| 6-component fragility index (Minsky) | ⬜ |
+| Apply Model A (elasticnet/RF) out-of-sample | ⬜ |
+| Train Model B on extended feature set | ⬜ |
+| Academic contrast plot (Model A vs B timeline) | ⬜ |
+| Regime classification comparison | ⬜ |
+| Export to fragility_output.json | ⬜ |
+
+## Dashboard Merge (ise repo)
+
+| Task | Status |
+|---|---|
+| Run python/run_pipeline.py, verify JSON | ⬜ |
+| Spot-check 2018-08 and 2021-01 scores | ⬜ |
+| Wire v2.html fetch → fragility_output.json | ⬜ |
+| A/B toggle drives real charts | ⬜ |
+| PNG export button on each chart | ⬜ |
+| Presentation mode (?mode=present) | ⬜ |
+
+Execution Order (strictly)
+
+text
+1. cd ise/ → run pipeline → verify JSON scores at 2018 and 2021
+2. If scores look wrong → fix model_b feature engineering first
+3. If scores are good → wire v2.html to real data (Phase 2)
+4. In parallel / after: write section3_extension.ipynb in big-data/
+5. Export from section3_extension.ipynb → overwrites fragility_output.json
+6. Reload dashboard → now driven by notebook output
+7. Add PNG export + presentation mode
+
+The key dependency: everything downstream (dashboard, section3 notebook, report figures) depends on fragility_output.json being correct. Phase 1 is not optional.

@@ -1,0 +1,125 @@
+Model B should be rebuilt as a disciplined extension of Model A, not as a separate speculative pipeline. Model A already showed that Elastic Net was the best regressor, Ridge collapsed to OLS, LASSO was useful for selection, Random Forest was informative but weaker, and ANN overfit on this scale of data, so Model B should inherit those lessons instead of starting from a different modelling philosophy.
+Core principle
+
+The assignment dataset is fundamentally a supervised, multivariate prediction problem with ISE USD returns as the target and global market variables as predictors, so Model B should keep that same core logic and extend it to a wider Turkey-focused and crisis-aware feature space rather than changing the task itself. The ise pipeline already outputs monthly fragility scores, regimes, correlations, features, and model performance into fragility_output.json, so the fix is to improve the model layer while preserving that output contract for the dashboard.
+
+Model B should therefore answer one clean question: “Given the Model A findings, what happens when the same disciplined predictive framework is trained on a longer 2003–2026, Turkey-relevant feature set?” That means consistency of methodology matters more than adding exotic new models.
+What to keep
+
+Keep OLS as the transparent baseline, because Model A already used it successfully and it gives you the cleanest interpretability anchor for the write-up and dashboard comparison. Keep Random Forest as the non-linear benchmark, because even though it did not beat Elastic Net in Model A, it still gave useful importance structure and can capture threshold effects around crisis episodes.
+
+Keep the monthly fragility score + regime labelling layer, because the dashboard is built around monthly_scores, fragility_score, regime, components, and correlations, and the existing JSON schema expects that exact shape. Keep the walk-forward / time-respecting logic from Model A, since the notebook explicitly treated time order and leakage prevention as non-negotiable.
+What to change
+
+The biggest change is that Elastic Net should become the primary Model B engine. Model A found Elastic Net to be the best overall regressor with RMSE 0.005170 and R2=0.8277R2=0.8277, while also preferring sparsity with l1_ratio=0.70, which is exactly the kind of behaviour you want when Model B includes many correlated macro and market features.
+
+Ridge should not be a priority model in Model B. In Model A it was effectively the same as OLS, which tells you L2-only shrinkage was not adding real value in your setup. If you still want it for completeness, keep it as a diagnostic only, not as one of the headline models.
+
+ANN/MLP should be dropped from the core Model B pipeline unless it is strictly a side experiment. Model A already showed it overfit on a relatively small sample and underperformed materially versus the linear regularised models, so carrying it forward as a main engine would repeat an already learned mistake.
+
+VAR should be demoted unless it is needed for legacy compatibility or academic comparison. The current ise JSON performance block expects random_forest, ols, and var, so if you remove VAR entirely you will also need to update the exporter and dashboard logic; otherwise, keep VAR as a legacy comparator but stop treating it as central.
+New Model B stack
+
+The cleanest Model B stack is this:
+Role	Model	Why it belongs
+Baseline	OLS	Transparent benchmark, easy interpretation, continuity with Model A.
+Main model	Elastic Net	Best Model A performer; ideal for correlated extended feature sets.
+Sparse diagnostic	LASSO	Not primary winner, but excellent for feature pruning and narrative about what stops mattering.
+Non-linear challenger	Random Forest	Captures non-linear crisis effects and supports importance plots.
+Regime classifier	Logistic Elastic Net or RF Classifier	Model A already showed classification adds value; use it for Hedge/Speculative/Ponzi or crisis-vs-non-crisis states.
+Legacy comparator	VAR	Keep only if needed to preserve exporter/dashboard expectations.
+
+The important point is that Model B should not be “more models for the sake of more models.” It should be same philosophy, broader data, better-targeted features.
+Recommended target design
+
+Model B should keep a continuous prediction target and a classification target, because Model A already showed that dual framing was useful and the dashboard itself is naturally built around both scores and regimes.
+
+Use these two targets:
+
+    Regression target: monthly or rolling Turkey market stress proxy, ideally still tied to ISE_USD behaviour so the extension remains comparable to Model A.
+
+    Classification target: regime label such as HEDGE, SPECULATIVE, PONZI, or a binary “crisis / not-crisis” flag derived from the fragility score.
+
+This gives you one model family that predicts magnitude and another that predicts state transition, which is much better for the dashboard than a single scalar-only pipeline.
+Feature plan
+
+Model A taught you that correlated features need disciplined shrinkage, not indiscriminate expansion. LASSO in Model A zeroed SP, DAX, and EU, and Elastic Net won by balancing sparsity and stability, which is a strong warning that Model B should not dump every Turkey-related variable into one feature matrix without structure.
+
+So build Model B features in three tiers:
+
+    Carry over the Model A market block — SP, DAX, FTSE, NIKKEI, BOVESPA, EU, EM, plus the same correlation-style logic so comparisons stay valid.
+
+    Add Turkey crisis block — USDTRY / TRYUSD, BIST100-derived USD measure, VIX, DXY, Brent, sovereign/spread proxies, and governance or policy-shock dummies only if they correspond to known Turkey stress mechanisms already referenced in your pipeline notes.
+
+    Add regime mechanics block — rolling volatility, rolling correlations, drawdown, eigenvalue/concentration measures, and model residual/error terms only if they are stable across time and interpretable on the dashboard.
+
+The rule should be: every new feature must justify one of three things — Turkey-specific vulnerability, global contagion transmission, or regime transition detection.
+Model architecture
+
+The best fix is a two-layer pipeline.
+Layer 1: Prediction layer
+
+Train OLS, Elastic Net, LASSO, and Random Forest on the extended feature set to predict the continuous target. Elastic Net becomes the production default; OLS is the sanity baseline; LASSO is the selector; RF is the non-linear challenger.
+Layer 2: Fragility layer
+
+Convert model outputs and engineered regime components into a monthly fragility score and regime label, because the dashboard already expects fragility_score, regime, components, and correlations per month. This layer is where the Minsky framing lives; it should be a transparent scoring system sitting on top of the prediction layer, not a mysterious replacement for it.
+
+This separation is important because your current dashboard is not just plotting raw predictions; it is plotting a structured fragility narrative.
+How to rebuild Model B practically
+Stage 1 — Freeze a proper baseline
+
+Before improving Model B, rebuild a Model A-style baseline inside the Model B data universe: OLS + Elastic Net + RF using only the seven original market variables over the longer date range. This tells you what improvement comes from more history versus what improvement comes from new Turkey-specific features.
+Stage 2 — Add Turkey features incrementally
+
+Do not jump straight to the full current feature set. Add features in blocks: market-only, then market + FX/vol/oil, then market + Turkey macro/policy, then full regime mechanics. Compare Elastic Net and RF at each block so you can say which block actually improved crisis detection rather than assuming all added variables helped.
+Stage 3 — Rebuild the classification leg
+
+Model A already showed the RF classifier produced AUC 0.888 and 82% accuracy, which is a strong signal that the extension should include a proper classifier. For Model B, add either:
+
+    RF Classifier for continuity with Model A, or
+
+    Logistic Elastic Net as the cleaner linear/regularised regime classifier.
+
+If you want one recommendation: use both, but make Logistic Elastic Net the interpretable default and RF Classifier the non-linear challenger.
+Stage 4 — Recompute the fragility score
+
+Once the new prediction models are stable, recalculate the fragility score using fixed, documented component weights, because the dashboard and JSON already expose the components by month and the whole point is to explain why a month is fragile, not just that it is. Avoid dynamic weight redistribution unless you can defend it clearly, because fixed weights are easier to compare across time and across models.
+What not to do
+
+Do not build Model B around ANN again as a mainline model, because Model A already told you that small-to-moderate financial samples plus many correlated variables make MLP performance fragile and harder to defend. Do not let the fragility score become detached from the underlying supervised prediction task, because the assignment remains about modelling and interpretation on financial data, not just building a thematic crisis dashboard.
+
+Do not introduce too many model families at once, because your current dashboard schema and storytelling already support a few strong comparators, and excessive model variety will make the exporter and UI harder to maintain without adding much analytical value.
+The final Model B design
+
+If this were being rebuilt cleanly from scratch, the recommended Model B would be:
+
+    Regression baseline: OLS.
+
+    Primary regression model: Elastic Net.
+
+    Feature-pruning diagnostic: LASSO.
+
+    Non-linear regression challenger: Random Forest.
+
+    Primary classifier: Logistic Elastic Net for regime/crisis state.
+
+    Secondary classifier: RF Classifier.
+
+    Legacy model kept only if exporter/dashboard need it: VAR.
+
+    Removed from core: Ridge as headline model, ANN as headline model.
+
+That gives you a Model B that is directly traceable to what Model A actually taught you, stays compatible with the existing dashboard/export structure, and gives you a much sharper academic story: Model A discovered the right modelling philosophy; Model B applies that philosophy to a broader, Turkey-crisis-aware environment.
+Build order
+
+    Recreate a Model A-style baseline in the extended Model B dataset.
+
+    Make Elastic Net the main regressor and benchmark every feature block against it.
+
+    Keep OLS and RF as comparators; keep LASSO as selector; demote VAR; drop ANN from the core.
+
+    Add a proper regime classifier, ideally Logistic Elastic Net plus RF Classifier.
+
+    Recompute fragility scores and preserve the existing JSON schema so the dashboard wiring stays straightforward.
+
+If you want, next I can turn this into a concrete implementation blueprint: exact files to edit in python/model_b/, what functions to add, what model keys to rename in the exporter, and what the final fragility_output.json schema should look like.
