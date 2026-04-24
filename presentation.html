@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Financial Fragility Clock · Presentation</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237132f5'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='white' stroke-width='2' fill='none'/%3E%3Cline x1='16' y1='6' x2='16' y2='16' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='16' x2='22' y2='12' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0c0c10;--s:#131318;--b:rgba(255,255,255,.07);--bm:rgba(255,255,255,.14);--t:#e8eaf0;--t2:#8b92a8;--t3:#3d4357;--pu:#7132f5;--hedge:#149e61;--spec:#d97706;--ponzi:#dc2626;--cf:#0e0e14;--cn:rgba(255,255,255,.2);--ct:rgba(255,255,255,.09);--fn:'IBM Plex Sans',system-ui,sans-serif;--fs:'IBM Plex Serif',Georgia,serif;--fm:'IBM Plex Mono',monospace}
+/* LIGHT MODE (default) */
+:root{--bg:#f9f8f6;--s:#ffffff;--b:rgba(0,0,0,.07);--bm:rgba(0,0,0,.13);--t:#1a1714;--t2:#5a5450;--t3:#a09894;--pu:#7132f5;--hedge:#149e61;--spec:#d97706;--ponzi:#dc2626;--cf:#ffffff;--cn:rgba(0,0,0,.22);--ct:rgba(0,0,0,.1);--nb:rgba(249,248,246,.92);--track:rgba(0,0,0,.06);--fn:'IBM Plex Sans',system-ui,sans-serif;--fs:'IBM Plex Serif',Georgia,serif;--fm:'IBM Plex Mono',monospace}
+/* DARK MODE */
+[data-theme=dark]{--bg:#0c0c10;--s:#131318;--b:rgba(255,255,255,.07);--bm:rgba(255,255,255,.14);--t:#e8eaf0;--t2:#8b92a8;--t3:#3d4357;--cf:#0e0e14;--cn:rgba(255,255,255,.2);--ct:rgba(255,255,255,.09);--nb:rgba(19,19,24,.9);--track:rgba(255,255,255,.08)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased}
+html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 
 /* STAGE */
 .stage{width:100vw;height:100vh;position:relative;overflow:hidden}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.25,.46,.45,.94),transform .5s cubic-bezier(.25,.46,.45,.94);transform:translateX(60px)}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:72px 80px;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.25,.46,.45,.94),transform .5s cubic-bezier(.25,.46,.45,.94);transform:translateX(60px)}
 .slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
 .slide.prev{transform:translateX(-60px)}
 
 /* NAV */
-.nav-bar{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:16px;background:rgba(19,19,24,.9);backdrop-filter:blur(14px);border:1px solid var(--bm);border-radius:9999px;padding:10px 20px}
-.nav-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--bm);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .15s;font-size:14px}
-.nav-btn:hover{color:var(--t);border-color:var(--pu);background:rgba(113,50,245,.15)}
+.nav-bar{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:12px;background:var(--nb);backdrop-filter:blur(14px);border:1px solid var(--bm);border-radius:9999px;padding:10px 20px}
+.nav-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--bm);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .15s;font-size:14px}
+.nav-btn:hover{color:var(--t);border-color:var(--pu);background:rgba(113,50,245,.12)}
 .slide-counter{font-family:var(--fm);font-size:11px;color:var(--t3);letter-spacing:.08em;min-width:42px;text-align:center}
 .nav-dots{display:flex;gap:6px}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--bm);cursor:pointer;transition:all .2s}
@@ -29,38 +33,26 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
 
 /* COMMON SLIDE ELEMENTS */
 .eyebrow{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--pu);margin-bottom:12px}
-.slide-h{font-family:var(--fs);font-size:clamp(32px,4vw,56px);font-weight:400;letter-spacing:-.03em;line-height:1.08;margin-bottom:16px}
+.slide-h{font-family:var(--fs);font-size:clamp(30px,3.8vw,52px);font-weight:400;letter-spacing:-.03em;line-height:1.08;margin-bottom:16px}
 .slide-h em{font-style:italic;color:var(--t2)}
 .slide-sub{font-size:16px;color:var(--t2);line-height:1.65;max-width:560px}
-.mono{font-family:var(--fm);font-size:12px;color:var(--t3);letter-spacing:.06em}
 
 /* SLIDE LAYOUTS */
-.s-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%;max-width:1200px}
+.s-split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;width:100%;max-width:1200px}
 .s-center{text-align:center;max-width:800px}
 .s-wide{width:100%;max-width:1200px}
 .s-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;width:100%;max-width:1200px}
 
-/* CLOCK (compact) */
+/* CLOCK */
 .clock-wrap{display:flex;flex-direction:column;align-items:center;position:relative}
 .clock-glow{position:absolute;inset:-40px;border-radius:50%;pointer-events:none;transition:background .8s}
 
-/* SCORE DISPLAY */
-.score-hero{font-family:var(--fm);font-size:clamp(48px,6vw,80px);font-weight:500;line-height:1;letter-spacing:-.02em}
-.score-bar{height:4px;border-radius:2px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:12px}
-.score-bar-fill{height:100%;border-radius:2px;transition:width .8s cubic-bezier(.34,1.56,.64,1)}
-
-/* REGIME PILL */
-.big-pill{display:inline-flex;align-items:center;padding:6px 16px;border-radius:9999px;font-family:var(--fm);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:12px}
-.big-pill.hedge{background:rgba(20,158,97,.15);color:#149e61}
-.big-pill.spec{background:rgba(217,119,6,.15);color:#d97706}
-.big-pill.ponzi{background:rgba(220,38,38,.15);color:#dc2626}
-
-/* COMPARISON BAR (crisis detection) */
+/* COMPARISON BARS */
 .cmp-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:20px;align-items:center;margin-bottom:16px}
 .cmp-name{font-size:14px;font-weight:500;text-align:right;color:var(--t2)}
 .cmp-date{font-family:var(--fm);font-size:11px;color:var(--t3);display:block;margin-top:2px}
 .cmp-bar-wrap{position:relative}
-.cmp-track{height:32px;background:rgba(255,255,255,.05);border-radius:6px;overflow:visible;position:relative;border:1px solid var(--b)}
+.cmp-track{height:32px;background:var(--track);border-radius:6px;overflow:visible;position:relative;border:1px solid var(--b)}
 .cmp-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;transition:width .8s}
 .cmp-val{font-family:var(--fm);font-size:13px;font-weight:500;color:#fff;white-space:nowrap}
 .cmp-thresh{position:absolute;top:-3px;bottom:-3px;width:2px;border-radius:1px;background:var(--ponzi);opacity:.5}
@@ -72,9 +64,9 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
 /* SHAP BARS */
 .shap-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .shap-lbl{font-family:var(--fm);font-size:12px;color:var(--t2);width:120px;text-align:right;flex-shrink:0}
-.shap-track{flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.shap-track{flex:1;height:8px;background:var(--track);border-radius:4px;overflow:hidden}
 .shap-fill{height:100%;border-radius:4px;background:var(--pu);transition:width .7s}
-.shap-num{font-family:var(--fm);font-size:11px;color:var(--t3);width:44px;text-align:right}
+.shap-num{font-family:var(--fm);font-size:11px;color:var(--t3);width:52px;text-align:right}
 
 /* METRIC CARDS */
 .metric-card{background:var(--s);border:1px solid var(--b);border-radius:16px;padding:28px;text-align:center}
@@ -83,26 +75,20 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
 .metric-note{font-size:13px;color:var(--t2);margin-top:8px;line-height:1.5}
 
 /* CALLOUT BOX */
-.callout{background:rgba(113,50,245,.1);border:1px solid rgba(113,50,245,.25);border-radius:16px;padding:24px 28px;margin-top:24px}
+.callout{background:rgba(113,50,245,.08);border:1px solid rgba(113,50,245,.22);border-radius:14px;padding:20px 24px;margin-top:20px}
 .callout-title{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:8px}
-.callout-text{font-size:15px;line-height:1.65;color:var(--t2)}
-
-/* TIMELINE MINI */
-.tl-mini{width:100%;height:160px;display:block}
+.callout-text{font-size:14px;line-height:1.65;color:var(--t2)}
 
 /* LOADING */
 .loading-state{font-family:var(--fm);font-size:12px;color:var(--t3);letter-spacing:.1em;animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
-
-/* SLIDE NUMBER */
-.slide-num{position:fixed;bottom:36px;right:40px;font-family:var(--fm);font-size:11px;color:var(--t3);letter-spacing:.06em}
 </style>
 </head>
 <body>
 
 <div class="stage" id="stage">
 
-  <!-- SLIDE 1: THE PROBLEM -->
+  <!-- SLIDE 1: TITLE & CLOCK -->
   <div class="slide active" id="slide-0" data-screen-label="01 The Problem">
     <div class="s-split">
       <div>
@@ -111,7 +97,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
         <p class="slide-sub">Predicting the next stock market crash of the Istanbul Stock Exchange using Minsky's Financial Instability Hypothesis and machine learning.</p>
         <div class="callout">
           <div class="callout-title">Core Question</div>
-          <div class="callout-text">Can a model trained on 2009–2011 post-crisis data detect the ongoing 2018–2026 Turkey economic crisis? What happens when it can't — and how do we fix it?</div>
+          <div class="callout-text">What changes when a global-only model is asked to read a domestic Turkish stress cycle? Model B is not perfect — but it stays materially more sensitive when the crisis mechanism turns local.</div>
         </div>
       </div>
       <div class="clock-wrap">
@@ -119,28 +105,30 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
         <svg width="340" height="360" viewBox="0 0 380 400" id="p-clock">
           <defs><radialGradient id="pGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" id="p-grad-stop" stop-color="#dc2626" stop-opacity="0.15"/><stop offset="100%" stop-color="#dc2626" stop-opacity="0"/></radialGradient></defs>
           <g id="p-arcs"></g>
-          <circle cx="190" cy="195" r="172" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <circle cx="190" cy="195" r="172" fill="none" stroke="var(--b)" stroke-width="1"/>
           <circle cx="190" cy="195" r="155" fill="url(#pGrad)"/>
           <g id="p-ticks"></g>
-          <text x="190" y="14" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(220,38,38,0.6)" letter-spacing="0.22em">CRASH</text>
-          <text x="190" y="382" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.15)" letter-spacing="0.22em">SAFE</text>
+          <text x="190" y="14" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(220,38,38,0.55)" letter-spacing="0.22em">CRASH</text>
+          <text x="190" y="382" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--ct)" letter-spacing="0.22em">SAFE</text>
           <circle cx="190" cy="195" r="135" fill="var(--cf)"/>
-          <circle cx="190" cy="195" r="135" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
-          <text x="190" y="52" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.2)">12</text>
-          <text x="333" y="197" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.2)">3</text>
-          <text x="190" y="342" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.2)">6</text>
-          <text x="47" y="197" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.2)">9</text>
-          <text id="p-face-date" x="190" y="165" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.2)" letter-spacing="0.09em">APR 2026</text>
+          <circle cx="190" cy="195" r="135" fill="none" stroke="var(--ct)" stroke-width="1"/>
+          <text x="190" y="52" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">12</text>
+          <text x="333" y="197" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">3</text>
+          <text x="190" y="342" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">6</text>
+          <text x="47" y="197" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="var(--cn)">9</text>
+          <text id="p-face-date" x="190" y="165" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--cn)" letter-spacing="0.09em">APR 2026</text>
           <text id="p-face-score" x="190" y="232" text-anchor="middle" font-size="13" font-family="IBM Plex Mono,monospace" font-weight="500" fill="#dc2626" letter-spacing="0.04em">— / 100</text>
           <line id="p-second" x1="190" y1="211" x2="190" y2="100" stroke="rgba(220,38,38,0.35)" stroke-width="1" stroke-linecap="round"/>
           <line id="p-minute" x1="190" y1="211" x2="190" y2="95" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"/>
           <line id="p-hour"   x1="190" y1="209" x2="190" y2="128" stroke="#dc2626" stroke-width="4.5" stroke-linecap="round"/>
-          <circle cx="190" cy="195" r="6.5" fill="var(--cf)" stroke="rgba(255,255,255,.1)" stroke-width="1.5"/>
+          <circle cx="190" cy="195" r="6.5" fill="var(--cf)" stroke="var(--ct)" stroke-width="1.5"/>
           <circle cx="190" cy="195" r="3.5" fill="#dc2626" id="p-pivot"/>
         </svg>
         <div style="margin-top:12px;text-align:center">
-          <div id="p-time" style="font-family:var(--fs);font-size:28px;font-weight:300;color:var(--t)">Loading...</div>
+          <div id="p-time" style="font-family:var(--fs);font-size:26px;font-weight:300;color:var(--t)">Loading…</div>
           <div id="p-regime" style="font-family:var(--fm);font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-top:6px;color:var(--spec)">— REGIME</div>
+          <div id="p-trajectory" style="font-family:var(--fm);font-size:12px;color:var(--t3);margin-top:10px;letter-spacing:.03em">—</div>
+          <div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:3px;opacity:.6;letter-spacing:.05em">3-MONTH TREND · NOT A FORECAST</div>
         </div>
       </div>
     </div>
@@ -150,27 +138,27 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
   <div class="slide" id="slide-1" data-screen-label="02 The Data">
     <div class="s-wide">
       <p class="eyebrow">The Dataset</p>
-      <h2 class="slide-h" style="margin-bottom:24px">Two models. Two stories.<br><em>One city.</em></h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:32px">
-        <div style="background:var(--s);border:1px solid var(--b);border-radius:16px;padding:28px">
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Model A · 2009–2011 Original</div>
-          <div style="font-family:var(--fm);font-size:48px;font-weight:500;color:var(--spec);line-height:1">59.2</div>
-          <div style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:4px;margin-bottom:16px">Maximum fragility score ever reached</div>
-          <div style="font-size:14px;color:var(--t2);line-height:1.65">7 global indices. Trained on global crisis recovery. Cannot see Turkey-specific fragility.</div>
-          <div style="margin-top:12px;font-family:var(--fm);font-size:11px;padding:6px 12px;background:rgba(220,38,38,.1);border-radius:6px;color:var(--ponzi);display:inline-block">Never reaches PONZI threshold (70)</div>
+      <h2 class="slide-h" style="margin-bottom:20px">Two models. Two stories.<br><em>One city.</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:24px">
+        <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;padding:24px">
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:14px">Model A · 2009–2011 Original</div>
+          <div style="font-family:var(--fm);font-size:44px;font-weight:500;color:var(--spec);line-height:1" id="p-a-card-value">—</div>
+          <div style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:4px;margin-bottom:14px" id="p-a-card-note">Selected late-crisis score</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.65">Global baseline. Strong for shared contagion episodes, but consistently lower once Turkey-specific stress begins to dominate.</div>
+          <div style="margin-top:12px;font-family:var(--fm);font-size:11px;padding:5px 10px;background:var(--b);border-radius:5px;color:var(--t2);display:inline-block">Best read as benchmark, not final answer</div>
         </div>
-        <div style="background:var(--s);border:1px solid rgba(113,50,245,.3);border-radius:16px;padding:28px">
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:16px">Model B · 2003–2026 Extended ↑</div>
-          <div style="font-family:var(--fm);font-size:48px;font-weight:500;color:var(--ponzi);line-height:1">77.8</div>
-          <div style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:4px;margin-bottom:16px">Maximum fragility score (2020 COVID)</div>
-          <div style="font-size:14px;color:var(--t2);line-height:1.65">14 features: VIX, DXY, Brent, EUR/USD, TRY/USD + lag features. Turkey-aware.</div>
-          <div style="margin-top:12px;font-family:var(--fm);font-size:11px;padding:6px 12px;background:rgba(20,158,97,.1);border-radius:6px;color:var(--hedge);display:inline-block">Crosses PONZI threshold at COVID 2020</div>
+        <div style="background:var(--s);border:1px solid rgba(113,50,245,.28);border-radius:14px;padding:24px">
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:14px">Model B · 2003–2026 Extended ↑</div>
+          <div style="font-family:var(--fm);font-size:44px;font-weight:500;color:var(--pu);line-height:1" id="p-b-card-value">—</div>
+          <div style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:4px;margin-bottom:14px" id="p-b-card-note">Selected late-crisis score</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.65">Extended context. VIX and USDTRY-related features keep the system more elevated through Turkey-specific stress episodes.</div>
+          <div style="margin-top:12px;font-family:var(--fm);font-size:11px;padding:5px 10px;background:rgba(113,50,245,.1);border-radius:5px;color:var(--pu);display:inline-block">Cleanest separation appears in late 2021</div>
         </div>
       </div>
-      <div style="background:var(--s);border:1px solid var(--b);border-radius:16px;overflow:hidden">
-        <svg id="p-timeline" width="100%" height="160" viewBox="0 0 1120 160" preserveAspectRatio="none" style="display:block;" class="loading-state"></svg>
+      <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;overflow:hidden">
+        <svg id="p-timeline" width="100%" height="150" viewBox="0 0 1120 150" preserveAspectRatio="none" style="display:block;" class="loading-state"></svg>
       </div>
-      <p style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:8px">Fragility scores 2003–2026 · Both models · Regime-colored areas · Dashed = 40/70 thresholds</p>
+      <p style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:8px">Fragility scores 2003–2026 · Both models · Regime-coloured areas · Dashes = 40/70 thresholds</p>
     </div>
   </div>
 
@@ -178,8 +166,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
   <div class="slide" id="slide-2" data-screen-label="03 Crisis Test">
     <div class="s-wide">
       <p class="eyebrow">The Decisive Test</p>
-      <h2 class="slide-h" style="margin-bottom:8px">Model A fails Turkey.<br><em>Model B sees it.</em></h2>
-      <p style="font-size:15px;color:var(--t2);margin-bottom:28px">Four crisis episodes. Real fragility scores. Dashed line = PONZI threshold (70). Model A trained on 2009–2011 misses Turkey-specific crises entirely.</p>
+      <h2 class="slide-h" style="margin-bottom:6px">Model A underreads Turkey.<br><em>Model B stays higher.</em></h2>
+      <p style="font-size:14px;color:var(--t2);margin-bottom:24px;max-width:720px">Four crisis episodes. Real fragility scores. The gap between the two models across different crisis mechanisms is the evidence.</p>
       <div class="cmp-row" style="margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--b)">
         <div></div>
         <div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">Model A · 2009–2011</div>
@@ -187,8 +175,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
       </div>
       <div id="p-crises"></div>
       <div class="callout">
-        <div class="callout-title">Why 2018 Is The Key</div>
-        <div class="callout-text">During the 2018 TRY crash, VIX was only <strong style="color:var(--t)">12.5</strong> — global markets were calm. Model A saw calm global indicators: score <strong style="color:var(--spec)">24.0 (HEDGE)</strong>. Model B saw 12 months of lira collapse (TRY/USD: 0.285→0.172): score <strong style="color:var(--spec)">40.5 (SPECULATIVE)</strong>. Different mechanisms. Different data. Different answer.</div>
+        <div class="callout-title">What The Evidence Actually Supports</div>
+        <div class="callout-text">2020 is the strongest threshold-crossing case: Model B reaches 71.1 while Model A stays below 70. <strong style="color:var(--t)">November 2021</strong> is the cleanest divergence case: Model B is 19.4 points higher than Model A during Turkey-specific stress. 2018 shows an early warning difference rather than a total binary miss.</div>
       </div>
     </div>
   </div>
@@ -197,52 +185,144 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
   <div class="slide" id="slide-3" data-screen-label="04 What Drives It">
     <div class="s-wide">
       <p class="eyebrow">Explainability</p>
-      <h2 class="slide-h" style="margin-bottom:24px">What drives<br><em>each model?</em></h2>
+      <h2 class="slide-h" style="margin-bottom:20px">What drives<br><em>each model?</em></h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
         <div>
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Model A · SHAP Feature Importance</div>
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:14px">Model A · SHAP Feature Importance</div>
           <div id="p-shap-a"></div>
-          <div style="margin-top:16px;padding:14px 16px;background:rgba(255,255,255,.04);border-radius:10px;font-size:13px;color:var(--t2);line-height:1.6">Model A's important features are all <strong style="color:var(--t)">engineered signals</strong> from market data: rolling correlation and volatility. No Turkey-specific variables.</div>
+          <div style="margin-top:14px;padding:14px 16px;background:var(--b);border-radius:10px;font-size:13px;color:var(--t2);line-height:1.6">Model A is dominated by broad market structure. Its strongest global driver is EM, useful for contagion but not enough for Turkey-specific stress.</div>
         </div>
         <div>
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:16px">Model B · SHAP Feature Importance</div>
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:14px">Model B · SHAP Feature Importance</div>
           <div id="p-shap-b"></div>
-          <div style="margin-top:16px;padding:14px 16px;background:rgba(113,50,245,.08);border:1px solid rgba(113,50,245,.2);border-radius:10px;font-size:13px;color:var(--t2);line-height:1.6">SP500 and BIST100 dominate, but VIX and volatility add critical regime-level signals. The extended dataset gives the model richer structural context.</div>
+          <div style="margin-top:14px;padding:14px 16px;background:rgba(113,50,245,.07);border:1px solid rgba(113,50,245,.18);border-radius:10px;font-size:13px;color:var(--t2);line-height:1.6">Model B still uses global context, but adds VIX and USDTRY-related volatility into the top ranks — making the extension more credible than a "more of the same" model.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 5: CONCLUSIONS -->
-  <div class="slide" id="slide-4" data-screen-label="05 Conclusions">
+  <!-- SLIDE 5: SCORE DISTRIBUTION & REGIME DWELL [NEW] -->
+  <div class="slide" id="slide-4" data-screen-label="05 Score Distribution">
     <div class="s-wide">
-      <p class="eyebrow">Conclusions &amp; Implications</p>
-      <h2 class="slide-h" style="margin-bottom:32px">What we found.<br><em>What it means.</em></h2>
-      <div class="s-3col" style="margin-bottom:32px">
-        <div class="metric-card">
-          <div class="metric-val" style="color:var(--pu)">+18.4</div>
-          <div class="metric-lbl">Score Δ at 2020 COVID</div>
-          <div class="metric-note">Model B scored 77.8 vs Model A's 42.5. Only Model B crossed the PONZI threshold.</div>
+      <p class="eyebrow">Score Distribution</p>
+      <h2 class="slide-h" style="margin-bottom:20px">Where each model<br><em>spends its time</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+        <div>
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Score Histogram · Both Models · 2003–2026</div>
+          <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;overflow:hidden">
+            <svg id="p-dist" width="100%" height="190" viewBox="0 0 540 190" preserveAspectRatio="none" style="display:block;"></svg>
+          </div>
+          <p style="font-family:var(--fm);font-size:11px;color:var(--t3);margin-top:8px">Grey = Model A · Purple = Model B · Dashes at 40 &amp; 70</p>
         </div>
-        <div class="metric-card">
-          <div class="metric-val" style="color:var(--spec)">+16.5</div>
-          <div class="metric-lbl">Score Δ at 2021 Turkey</div>
-          <div class="metric-note">Model A: 27.2 (HEDGE). Model B: 60.1 (SPECULATIVE). Persistent fragility elevation only visible to Model B.</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-val" style="color:var(--hedge)">VIX = 12.5</div>
-          <div class="metric-lbl">Global VIX at 2018 TRY crash</div>
-          <div class="metric-note">Global markets were calm. Only TRY/USD features (in Model B) signalled the crisis.</div>
+        <div>
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Months in Each Regime · Full Coverage Period</div>
+          <div id="p-dwell"></div>
+          <div class="callout">
+            <div class="callout-title">What This Tells Us</div>
+            <div class="callout-text">Model B spends more months in the Speculative and Ponzi bands because it captures Turkey-specific stress. The distribution shift is evidence that the extended features add persistent fragility signal — not noise.</div>
+          </div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    </div>
+  </div>
+
+  <!-- SLIDE 6: MODEL GAP TIMELINE [NEW] -->
+  <div class="slide" id="slide-5" data-screen-label="06 Divergence Gap">
+    <div class="s-wide">
+      <p class="eyebrow">Divergence Analysis</p>
+      <h2 class="slide-h" style="margin-bottom:16px">Model B − Model A<br><em>over two decades</em></h2>
+      <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;overflow:hidden;margin-bottom:12px">
+        <svg id="p-gap" width="100%" height="180" viewBox="0 0 1120 180" preserveAspectRatio="none" style="display:block;"></svg>
+      </div>
+      <div style="display:flex;gap:16px;font-family:var(--fm);font-size:10px;color:var(--t3);margin-bottom:20px">
+        <span style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:12px;height:2px;background:#7132f5;border-radius:1px;vertical-align:middle"></span>B above A (purple area)</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:12px;height:2px;background:#dc2626;border-radius:1px;vertical-align:middle"></span>B below A</span>
+        <span>Dashed verticals = crisis events</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div style="background:var(--s);border:1px solid var(--b);border-radius:12px;padding:18px">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:6px">Aug 2018 · TRY Crisis</div>
+          <div style="font-family:var(--fm);font-size:26px;font-weight:500;color:var(--spec)" id="p-gap-2018">—</div>
+          <div style="font-size:12px;color:var(--t2);margin-top:4px">B − A points gap</div>
+        </div>
+        <div style="background:var(--s);border:1px solid rgba(113,50,245,.25);border-radius:12px;padding:18px">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--pu);margin-bottom:6px">Nov 2021 · Turkey Stress</div>
+          <div style="font-family:var(--fm);font-size:26px;font-weight:500;color:var(--pu)" id="p-gap-2021">—</div>
+          <div style="font-size:12px;color:var(--t2);margin-top:4px">Peak divergence month</div>
+        </div>
+        <div style="background:var(--s);border:1px solid rgba(220,38,38,.2);border-radius:12px;padding:18px">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ponzi);margin-bottom:6px">Mar 2020 · COVID Shock</div>
+          <div style="font-family:var(--fm);font-size:26px;font-weight:500;color:var(--ponzi)" id="p-gap-2020">—</div>
+          <div style="font-size:12px;color:var(--t2);margin-top:4px">Threshold crossing gap</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: ALGORITHM VALIDATION [NEW] -->
+  <div class="slide" id="slide-6" data-screen-label="07 Algorithm Validation">
+    <div class="s-wide">
+      <p class="eyebrow">Technical Validation</p>
+      <h2 class="slide-h" style="margin-bottom:20px">Cross-algorithm<br><em>performance check</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+        <div>
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">In-Sample R² · All Algorithms · Both Models</div>
+          <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;overflow:hidden">
+            <table id="p-algo-tbl" style="width:100%;border-collapse:collapse">
+              <thead>
+                <tr style="border-bottom:1px solid var(--b)">
+                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:10px 14px;text-align:left;font-weight:400">Algorithm</th>
+                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:10px 14px;text-align:left;font-weight:400">Model A R²</th>
+                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--pu);padding:10px 14px;text-align:left;font-weight:400">Model B R²</th>
+                </tr>
+              </thead>
+              <tbody id="p-algo-body"></tbody>
+            </table>
+          </div>
+          <div style="margin-top:12px;font-size:13px;color:var(--t2);line-height:1.6">R² is on the raw return-prediction task. Modest values are expected — the fragility score is a composite signal, not a return forecast. Consistency across algorithms is what matters.</div>
+        </div>
+        <div>
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model B · By Crisis Split</div>
+          <div id="p-wf-body"></div>
+          <div class="callout">
+            <div class="callout-title">Academic Interpretation</div>
+            <div class="callout-text">Negative walk-forward R² is not a failure — it marks a structural break, which is itself informative. The 2021 split reliably breaks all models. What matters is that Model B sustains a higher fragility signal during those periods.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: CONCLUSIONS -->
+  <div class="slide" id="slide-7" data-screen-label="08 Conclusions">
+    <div class="s-wide">
+      <p class="eyebrow">Conclusions &amp; Implications</p>
+      <h2 class="slide-h" style="margin-bottom:28px">What we found.<br><em>What it means.</em></h2>
+      <div class="s-3col" style="margin-bottom:28px">
+        <div class="metric-card">
+          <div class="metric-val" style="color:var(--pu)" id="p-metric-1">—</div>
+          <div class="metric-lbl">Late-2021 Gap</div>
+          <div class="metric-note" id="p-metric-1-note">Selected divergence month</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" style="color:var(--spec)" id="p-metric-2">—</div>
+          <div class="metric-lbl">2020 Threshold Test</div>
+          <div class="metric-note" id="p-metric-2-note">Selected crisis threshold result</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" style="color:var(--hedge)" id="p-metric-3">—</div>
+          <div class="metric-lbl">Top Mean-SHAP Driver</div>
+          <div class="metric-note" id="p-metric-3-note">Global context variable shared by both models</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
         <div class="callout">
           <div class="callout-title">Academic Finding</div>
-          <div class="callout-text">A model trained on a global crisis (2009–2011) learns global contagion patterns. It systematically misses country-specific crises driven by political-monetary mechanisms. Minsky's framework requires local institutional data to be actionable.</div>
+          <div class="callout-text">A global-only training window teaches useful contagion structure, but it underreacts when the stress mechanism becomes country-specific. The contribution of Model B is not perfection — it is a more coherent and sustained fragility signal when Turkey decouples from the wider market narrative.</div>
         </div>
-        <div style="background:rgba(20,158,97,.07);border:1px solid rgba(20,158,97,.2);border-radius:16px;padding:24px 28px">
+        <div style="background:rgba(20,158,97,.07);border:1px solid rgba(20,158,97,.2);border-radius:14px;padding:20px 24px">
           <div style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--hedge);margin-bottom:8px">Practical Implication</div>
-          <div style="font-size:15px;line-height:1.65;color:var(--t2)">Adding TRY/USD lags, VIX, DXY, and Brent to the feature set — all freely available — transforms a model that misses Turkey's biggest crisis into one that detects it 3–6 months in advance.</div>
+          <div style="font-size:14px;line-height:1.65;color:var(--t2)">Adding extended market context and Turkey-relevant stress features does not make forecasting easy, but it makes the system more useful for interpretation: the fragility signal remains elevated where the global-only baseline would tell a calmer story.</div>
         </div>
       </div>
     </div>
@@ -254,18 +334,21 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
 <div class="nav-bar">
   <button class="nav-btn" id="prev-btn" onclick="goSlide(currentSlide-1)">←</button>
   <div class="nav-dots" id="nav-dots"></div>
-  <span class="slide-counter" id="slide-counter">1 / 5</span>
+  <span class="slide-counter" id="slide-counter">1 / 8</span>
   <button class="nav-btn" id="next-btn" onclick="goSlide(currentSlide+1)">→</button>
   <a href="dashboard.html" class="nav-home">↗ Dashboard</a>
+  <a href="reports.html" class="nav-home">⬇ Report</a>
+  <button class="nav-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle dark/light mode" style="font-size:12px">◑</button>
 </div>
 
 <script>
-const TOTAL = 5;
+const TOTAL = 8;
 let currentSlide = 0;
 let DATA = null;
 let secAngle = 0;
+let darkMode = false;
 
-// ── NAVIGATION ──────────────────────────────────────────────────────────────
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
 function goSlide(n) {
   if (n < 0 || n >= TOTAL) return;
   const prev = document.getElementById(`slide-${currentSlide}`);
@@ -293,17 +376,27 @@ for (let i = 0; i < TOTAL; i++) {
   dotsEl.appendChild(d);
 }
 
-// ── HELPERS ─────────────────────────────────────────────────────────────────
+// ── THEME ────────────────────────────────────────────────────────────────────
+function toggleTheme() {
+  darkMode = !darkMode;
+  document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
 const regCol = s => s>=70?'#dc2626':s>=40?'#d97706':'#149e61';
 const regLabel = s => s>=70?'PONZI FINANCE':s>=40?'SPECULATIVE FINANCE':'HEDGE FINANCE';
 const regClass = s => s>=70?'ponzi':s>=40?'spec':'hedge';
+const regimeFromScore = s => s>=70?'PONZI':s>=40?'SPECULATIVE':'HEDGE';
 function polar(cx,cy,r,deg){const rad=(deg-90)*Math.PI/180;return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}}
 function scoreToTime(s){if(s>=70){const m=Math.round((s-70)/30*120);return{h:Math.floor(m/60),m:m%60,past:true}}const m2=Math.round((1-s/100)*120),tot=24*60-m2;return{h:Math.floor(tot/60)%12||12,m:tot%60,past:false}}
 function timeToAngle(h,m,isH){return isH?((h%12)+m/60)*30:m*6}
 function timeDisplay(s){if(s>=70){const m=Math.round((s-70)/30*120);return m===0?'PAST MIDNIGHT':`${m} MIN PAST MIDNIGHT`}const mins=Math.round((1-s/100)*120);if(mins>=60){const hh=Math.floor(mins/60),mm=mins%60;return`${hh}H ${mm}M TO MIDNIGHT`}return`${Math.max(1,mins)} MIN TO MIDNIGHT`}
-function fmtDateLong(d){if(!d)return'—';const dt=new Date(d);return dt.toLocaleDateString('en-US',{year:'numeric',month:'short'});}
+function monthKey(d){return (d||'').slice(0,7)}
+function monthNum(d){const [y,m]=monthKey(d).split('-').map(Number);if(!y||!m)return null;return y*12+(m-1)}
+function fmtDateLong(d){const key=monthKey(d);if(!key)return'—';const [y,m]=key.split('-').map(Number);const dt=new Date(Date.UTC(y,(m||1)-1,1));return dt.toLocaleDateString('en-US',{year:'numeric',month:'short',timeZone:'UTC'});}
+function prettyFeature(key){return({VIX_lag1m:'VIX lag 1m',VIX_lag3m:'VIX lag 3m',USDTRY_lag1m:'USDTRY lag 1m',USDTRY_lag3m:'USDTRY lag 3m',usdtry_vol:'USDTRY volatility',rolling_vol:'Rolling volatility',mean_corr:'Mean correlation',eigenvalue_ratio:'Eigenvalue ratio',pe:'Perm. entropy',rf_prediction_error:'RF pred. error',pe_inv:'Inverse entropy'}[key]||key)}
 
-// ── CLOCK ───────────────────────────────────────────────────────────────────
+// ── CLOCK ────────────────────────────────────────────────────────────────────
 function drawClockTicks() {
   const g = document.getElementById('p-ticks');
   for(let i=0;i<60;i++){
@@ -312,7 +405,7 @@ function drawClockTicks() {
     const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
     ln.setAttribute('x1',p1.x);ln.setAttribute('y1',p1.y);
     ln.setAttribute('x2',p2.x);ln.setAttribute('y2',p2.y);
-    ln.setAttribute('stroke',major?'rgba(255,255,255,.2)':'rgba(255,255,255,.09)');
+    ln.setAttribute('stroke',major?'var(--cn)':'var(--ct)');
     ln.setAttribute('stroke-width',major?'1.5':'0.8');
     g.appendChild(ln);
   }
@@ -323,7 +416,7 @@ function drawClockTicks() {
     const st=polar(190,195,182,a.s),en=polar(190,195,182,a.e);
     p.setAttribute('d',`M${st.x},${st.y} A182,182 0 0,1 ${en.x},${en.y}`);
     p.setAttribute('fill','none');p.setAttribute('stroke',a.c);
-    p.setAttribute('stroke-width','3');p.setAttribute('opacity','0.4');p.setAttribute('stroke-linecap','round');
+    p.setAttribute('stroke-width','3');p.setAttribute('opacity','0.45');p.setAttribute('stroke-linecap','round');
     ga.appendChild(p);
   });
 }
@@ -341,7 +434,7 @@ function updatePClock(s){
   document.getElementById('p-face-score').textContent=`${s.toFixed(1)} / 100`;
   document.getElementById('p-face-score').setAttribute('fill',col);
   document.getElementById('p-grad-stop')?.setAttribute('stop-color',col);
-  document.getElementById('p-glow').style.background=`radial-gradient(circle,${col}22 0%,transparent 68%)`;
+  document.getElementById('p-glow').style.background=`radial-gradient(circle,${col}20 0%,transparent 70%)`;
   document.getElementById('p-time').textContent=timeDisplay(s);
   document.getElementById('p-time').style.color=col;
   document.getElementById('p-regime').textContent=regLabel(s);
@@ -350,7 +443,7 @@ function updatePClock(s){
 
 setInterval(()=>{secAngle=(secAngle+6)%360;if(DATA){const latest=DATA.models.model_2003.monthly_scores;updatePClock(latest[latest.length-1].fragility_score);}},1000);
 
-// ── LOAD + RENDER ────────────────────────────────────────────────────────────
+// ── LOAD + RENDER ─────────────────────────────────────────────────────────────
 async function loadData() {
   try {
     const res = await fetch('./data/fragility_output.json');
@@ -366,122 +459,388 @@ function getMock(){
   const scores=[];
   for(let i=0;i<277;i++){const yr=2003+Math.floor(i/12),mo=(i%12)+1;const d=`${yr}-${String(mo).padStart(2,'0')}-28`;const s=Math.min(85,Math.max(10,30+20*Math.sin(i/12)+10*Math.sin(i/4)));scores.push({date:d,fragility_score:s,regime:s>=70?'PONZI':s>=40?'SPECULATIVE':'HEDGE',components:{},correlations:{},features:{}});}
   const sa=scores.map(s=>({...s,fragility_score:Math.min(59,s.fragility_score*.72+5)}));
-  return{models:{model_2009:{meta:{label:'Model A'},monthly_scores:sa,shap_values:{mean_corr:.003,pe_inv:.002,rolling_volatility:.0025,rf_prediction_error:0},walk_forward:[],performance:{}},model_2003:{meta:{label:'Model B'},monthly_scores:scores,shap_values:{SP500:67.8,BIST100:32.5,EM:16.2,DAX:14.3,VIX:8.9,eigenvalue_ratio:7.2,rolling_volatility:6.8},walk_forward:[],performance:{}}}};
-}
-
-function renderAll(){
-  // Clock — show latest Model B score
-  const latestB = DATA.models.model_2003.monthly_scores.slice(-1)[0];
-  drawClockTicks();
-  updatePClock(latestB.fragility_score);
-  const d = latestB.date.slice(0,7);
-  document.getElementById('p-face-date').textContent=d.replace('-','/').toUpperCase();
-
-  // Timeline (slide 2)
-  renderTimeline();
-
-  // Crisis bars (slide 3)
-  renderCrises();
-
-  // SHAP (slide 4)
-  renderShap('p-shap-a', DATA.models.model_2009.shap_values, 6);
-  renderShap('p-shap-b', DATA.models.model_2003.shap_values, 8);
+  const wfA=[
+    {split:1,description:'GFC 2008',ols:{r2:.39,rmse:.09},elastic_net:{r2:.41,rmse:.09},lasso:{r2:.40,rmse:.09},rf:{r2:.52,rmse:.08}},
+    {split:2,description:'2018 TRY',ols:{r2:.18,rmse:.10},elastic_net:{r2:.19,rmse:.10},lasso:{r2:.18,rmse:.10},rf:{r2:.12,rmse:.10}},
+    {split:3,description:'COVID 2020',ols:{r2:.74,rmse:.07},elastic_net:{r2:.75,rmse:.07},lasso:{r2:.74,rmse:.07},rf:{r2:.48,rmse:.08}},
+    {split:4,description:'2021–24 Turkey',ols:{r2:-.15,rmse:.12},elastic_net:{r2:-.14,rmse:.12},lasso:{r2:-.15,rmse:.12},rf:{r2:-.27,rmse:.13}},
+  ];
+  const wfB=[
+    {split:1,description:'2018 TRY',ols:{r2:.21,rmse:.10},elastic_net:{r2:.22,rmse:.10},lasso:{r2:.21,rmse:.10},rf:{r2:.24,rmse:.10}},
+    {split:2,description:'COVID 2020',ols:{r2:.69,rmse:.08},elastic_net:{r2:.70,rmse:.07},lasso:{r2:.69,rmse:.07},rf:{r2:.42,rmse:.09}},
+    {split:3,description:'2021–24 Turkey',ols:{r2:-.31,rmse:.13},elastic_net:{r2:-.29,rmse:.13},lasso:{r2:-.31,rmse:.13},rf:{r2:-.09,rmse:.12}},
+  ];
+  return{models:{
+    model_2009:{meta:{label:'Model A'},monthly_scores:sa,shap_values:{EM:0.027,SP500:0.019,FTSE:0.015,NIKKEI:0.011,EU:0.010,BOVESPA:0.009,DAX:0.001},walk_forward:wfA,performance:{ols:{r2:.041,rmse:.098,mae:.080},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.065,rmse:.097,mae:.077},random_forest:{r2:.138,rmse:.093,mae:.074}}},
+    model_2003:{meta:{label:'Model B'},monthly_scores:scores,shap_values:{EM:0.018,BOVESPA:0.008,FTSE:0.004,VIX_lag1m:0.004,SP500:0.004,usdtry_vol:0.003,EU:0.003,DAX:0.003,rolling_vol:0.002,USDTRY_lag1m:0.001},walk_forward:wfB,performance:{ols:{r2:.094,rmse:.096,mae:.076},elastic_net:{r2:.090,rmse:.096,mae:.075},lasso:{r2:.095,rmse:.096,mae:.075},random_forest:{r2:.138,rmse:.093,mae:.074}}}
+  }};
 }
 
 function getScoreByDate(model, datePrefix) {
   const s = DATA?.models[model]?.monthly_scores;
   if (!s) return null;
-  const row = s.find(r => r.date.startsWith(datePrefix));
+  const row = s.find(r => monthKey(r.date) === monthKey(datePrefix));
   return row ? row.fragility_score : null;
 }
 
+function updateTrajectory() {
+  const scores = DATA.models.model_2003.monthly_scores;
+  const current = scores[scores.length - 1].fragility_score;
+  const el = document.getElementById('p-trajectory');
+  if (!el) return;
+
+  if (current >= 70) {
+    el.textContent = 'Currently in Ponzi regime — threshold already crossed';
+    el.style.color = 'var(--ponzi)';
+    return;
+  }
+
+  // Average monthly change over last 3 months
+  const window3 = scores.slice(-4).map(s => s.fragility_score);
+  const changes = window3.slice(1).map((v, i) => v - window3[i]);
+  const slope = changes.reduce((a, b) => a + b, 0) / changes.length;
+
+  if (slope <= 0) {
+    el.textContent = `Score ${slope < -0.2 ? 'declining' : 'stable'} — no threshold crossing projected`;
+    el.style.color = 'var(--hedge)';
+    return;
+  }
+
+  const months = Math.ceil((70 - current) / slope);
+  if (months > 120) {
+    el.textContent = 'No near-term threshold crossing at current rate';
+    el.style.color = 'var(--t3)';
+    return;
+  }
+
+  const urgency = months <= 6 ? 'var(--ponzi)' : months <= 18 ? 'var(--spec)' : 'var(--t3)';
+  el.textContent = `At current trend: Ponzi threshold in ~${months} month${months === 1 ? '' : 's'}`;
+  el.style.color = urgency;
+}
+
+function renderAll(){
+  const latestB = DATA.models.model_2003.monthly_scores.slice(-1)[0];
+  drawClockTicks();
+  updatePClock(latestB.fragility_score);
+  updateTrajectory();
+  document.getElementById('p-face-date').textContent = fmtDateLong(latestB.date).toUpperCase();
+
+  renderTimeline();
+  renderCrises();
+  renderShap('p-shap-a', DATA.models.model_2009.shap_values, 6);
+  renderShap('p-shap-b', DATA.models.model_2003.shap_values, 8);
+  renderDistribution();
+  renderDwell();
+  renderGapTimeline();
+  renderAlgoTable();
+  renderWFHeatmap();
+
+  const scoreA202111 = getScoreByDate('model_2009', '2021-11');
+  const scoreB202111 = getScoreByDate('model_2003', '2021-11');
+  const scoreA202003 = getScoreByDate('model_2009', '2020-03');
+  const scoreB202003 = getScoreByDate('model_2003', '2020-03');
+  const topB = Object.entries(DATA.models.model_2003.shap_values || {}).sort((a,b)=>b[1]-a[1])[0];
+
+  if(scoreA202111!=null && scoreB202111!=null){
+    document.getElementById('p-a-card-value').textContent=scoreA202111.toFixed(1);
+    document.getElementById('p-a-card-note').textContent='Model A score · Nov 2021';
+    document.getElementById('p-b-card-value').textContent=scoreB202111.toFixed(1);
+    document.getElementById('p-b-card-note').textContent=`Model B score · Nov 2021 · Δ +${(scoreB202111-scoreA202111).toFixed(1)}`;
+    document.getElementById('p-metric-1').textContent=`+${(scoreB202111-scoreA202111).toFixed(1)}`;
+    document.getElementById('p-metric-1-note').textContent=`Nov 2021: Model B ${scoreB202111.toFixed(1)} vs Model A ${scoreA202111.toFixed(1)}`;
+  }
+  if(scoreA202003!=null && scoreB202003!=null){
+    document.getElementById('p-metric-2').textContent=`${scoreB202003.toFixed(1)}`;
+    document.getElementById('p-metric-2-note').textContent=`Mar 2020: Model B crosses 70 while Model A remains at ${scoreA202003.toFixed(1)}`;
+  }
+  if(topB){
+    document.getElementById('p-metric-3').textContent=prettyFeature(topB[0]);
+    document.getElementById('p-metric-3-note').textContent='Top global context variable in the extended model';
+  }
+}
+
+// ── SLIDE 2: TIMELINE ────────────────────────────────────────────────────────
 function renderTimeline(){
   const svg = document.getElementById('p-timeline');
   const scoresA = DATA.models.model_2009.monthly_scores;
   const scoresB = DATA.models.model_2003.monthly_scores;
-  const W=1120,H=160,P={t:16,b:24,l:8,r:8};
+  const W=1120,H=150,P={t:14,b:22,l:8,r:8};
   const cW=W-P.l-P.r,cH=H-P.t-P.b;
-  const n=scoresB.length;
+  const firstMonth=monthNum(scoresB[0].date);
+  const lastMonth=monthNum(scoresB[scoresB.length-1].date);
+  const span=Math.max(1,(lastMonth??0)-(firstMonth??0));
+  const xForDate=d=>P.l+(((monthNum(d)??firstMonth)-firstMonth)/span)*cW;
 
   let html=`<defs><clipPath id="ptc"><rect x="${P.l}" y="${P.t}" width="${cW}" height="${cH}"/></clipPath></defs>`;
-
-  // Threshold lines
   [40,70].forEach(v=>{
     const y=P.t+cH-(v/100)*cH;
     const col=v===70?'rgba(220,38,38,.4)':'rgba(217,119,6,.3)';
     html+=`<line x1="${P.l}" y1="${y}" x2="${W-P.r}" y2="${y}" stroke="${col}" stroke-width="1" stroke-dasharray="4,3"/>`;
   });
 
-  // Model B colored area
-  let seg=[],lastR=scoresB[0].regime,segs=[];
-  scoresB.forEach((s,i)=>{if(s.regime!==lastR&&seg.length){segs.push({p:seg,r:lastR});seg=[];}seg.push({x:P.l+(i/(n-1))*cW,y:P.t+cH-(s.fragility_score/100)*cH,i});lastR=s.regime;});
+  // Model B coloured area
+  let seg=[],lastR=regimeFromScore(scoresB[0].fragility_score),segs=[];
+  scoresB.forEach(s=>{
+    const band=regimeFromScore(s.fragility_score);
+    if(band!==lastR&&seg.length){segs.push({p:seg,r:lastR});seg=[];}
+    seg.push({x:xForDate(s.date),y:P.t+cH-(s.fragility_score/100)*cH});
+    lastR=band;
+  });
   if(seg.length)segs.push({p:seg,r:lastR});
   const cols={HEDGE:'#149e61',SPECULATIVE:'#d97706',PONZI:'#dc2626'};
   segs.forEach(({p:sp,r})=>{
     let d=`M${sp[0].x},${P.t+cH} L${sp[0].x},${sp[0].y}`;
     sp.forEach((pt,i)=>{if(i)d+=` L${pt.x},${pt.y}`;});
     d+=` L${sp[sp.length-1].x},${P.t+cH} Z`;
-    html+=`<path d="${d}" fill="${cols[r]}" fill-opacity=".3" clip-path="url(#ptc)"/>`;
+    html+=`<path d="${d}" fill="${cols[r]}" fill-opacity=".28" clip-path="url(#ptc)"/>`;
   });
 
-  // Model A line (dashed, muted)
-  let lpA=`M${P.l},${P.t+cH-(scoresA[0].fragility_score/100)*cH}`;
-  scoresA.forEach((s,i)=>{if(i)lpA+=` L${P.l+(i/(n-1))*cW},${P.t+cH-(s.fragility_score/100)*cH}`;});
-  html+=`<path d="${lpA}" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="4,3" clip-path="url(#ptc)"/>`;
+  // Model A line (dashed)
+  let lpA=`M${xForDate(scoresA[0].date)},${P.t+cH-(scoresA[0].fragility_score/100)*cH}`;
+  scoresA.forEach((s,i)=>{if(i)lpA+=` L${xForDate(s.date)},${P.t+cH-(s.fragility_score/100)*cH}`;});
+  html+=`<path d="${lpA}" fill="none" stroke="var(--t3)" stroke-width="1" stroke-dasharray="4,3" clip-path="url(#ptc)"/>`;
 
-  // Model B line
-  let lpB=`M${P.l},${P.t+cH-(scoresB[0].fragility_score/100)*cH}`;
-  scoresB.forEach((s,i)=>{if(i)lpB+=` L${P.l+(i/(n-1))*cW},${P.t+cH-(s.fragility_score/100)*cH}`;});
-  html+=`<path d="${lpB}" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5" clip-path="url(#ptc)"/>`;
+  // Model B line (solid)
+  let lpB=`M${xForDate(scoresB[0].date)},${P.t+cH-(scoresB[0].fragility_score/100)*cH}`;
+  scoresB.forEach((s,i)=>{if(i)lpB+=` L${xForDate(s.date)},${P.t+cH-(s.fragility_score/100)*cH}`;});
+  html+=`<path d="${lpB}" fill="none" stroke="var(--t2)" stroke-width="1.5" clip-path="url(#ptc)"/>`;
 
-  // Year labels
+  [{date:'2018-08',label:'2018',col:'rgba(217,119,6,.6)'},{date:'2020-03',label:'2020',col:'rgba(220,38,38,.6)'},{date:'2021-11',label:'2021',col:'rgba(113,50,245,.65)'}].forEach(ev=>{
+    const x=xForDate(ev.date);
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${ev.col}" stroke-width="1" stroke-dasharray="3,3"/>`;
+    html+=`<text x="${x+4}" y="${P.t+11}" font-size="8" font-family="IBM Plex Mono,monospace" fill="${ev.col}">${ev.label}</text>`;
+  });
   for(let yr=2004;yr<=2026;yr+=3){
-    const mo=(yr-2003)*12;if(mo>=n)continue;
-    const x=P.l+(mo/(n-1))*cW;
-    html+=`<text x="${x}" y="${H-6}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.25)">${yr}</text>`;
+    const x=xForDate(`${yr}-01`);
+    html+=`<text x="${x}" y="${H-5}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
   }
-  // Legend
-  html+=`<text x="${P.l+8}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.25)">— Model A (dashed)</text>`;
-  html+=`<text x="${P.l+140}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.5)">— Model B (solid)</text>`;
-
+  html+=`<text x="${P.l+8}" y="${P.t+12}" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">— Model A (dashed)</text>`;
+  html+=`<text x="${P.l+142}" y="${P.t+12}" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t2)">— Model B (solid)</text>`;
   svg.innerHTML=html;
 }
 
+// ── SLIDE 3: CRISIS BARS ──────────────────────────────────────────────────────
 function renderCrises(){
   const crises=[
-    {name:'2010 Greek Crisis',date:'2010-05-31',lbl:'May 2010'},
-    {name:'2018 TRY Crash',date:'2018-08-31',lbl:'Aug 2018'},
-    {name:'2020 COVID Shock',date:'2020-03-31',lbl:'Mar 2020'},
-    {name:'2021+ Turkey Crisis',date:'2021-01-31',lbl:'Jan 2021'},
+    {name:'2010 Greek Crisis',date:'2010-05',lbl:'May 2010'},
+    {name:'2018 TRY Crash',date:'2018-08',lbl:'Aug 2018'},
+    {name:'2020 COVID Shock',date:'2020-03',lbl:'Mar 2020'},
+    {name:'Late-2021 Turkey Stress',date:'2021-11',lbl:'Nov 2021'},
   ];
   const container=document.getElementById('p-crises');
   container.innerHTML=crises.map(c=>{
-    const sa=getScoreByDate('model_2009',c.date.slice(0,7))||0;
-    const sb=getScoreByDate('model_2003',c.date.slice(0,7))||0;
+    const sa=getScoreByDate('model_2009',c.date)||0;
+    const sb=getScoreByDate('model_2003',c.date)||0;
+    const delta=sb-sa;
     const colA=regCol(sa),colB=regCol(sb);
-    const tagA=sa>=70?'<span class="cmp-tag catch">✓ PONZI</span>':sa>=40?'<span class="cmp-tag part">~ SPEC</span>':'<span class="cmp-tag miss">✕ HEDGE</span>';
-    const tagB=sb>=70?'<span class="cmp-tag catch">✓ PONZI</span>':sb>=40?'<span class="cmp-tag part">~ SPEC</span>':'<span class="cmp-tag miss">✕ HEDGE</span>';
+    const tagA=sa>=70?'<span class="cmp-tag catch">threshold</span>':sa>=40?'<span class="cmp-tag part">elevated</span>':'<span class="cmp-tag miss">low</span>';
+    const tagB=sb>=70?'<span class="cmp-tag catch">threshold</span>':sb>=40?'<span class="cmp-tag part">elevated</span>':'<span class="cmp-tag miss">low</span>';
     return `<div class="cmp-row">
-      <div class="cmp-name">${c.name}<span class="cmp-date">${c.lbl}</span></div>
+      <div class="cmp-name">${c.name}<span class="cmp-date">${c.lbl} · Δ B−A ${(delta>=0?'+':'')+delta.toFixed(1)}</span></div>
       <div style="display:flex;align-items:center;gap:8px"><div class="cmp-track" style="flex:1"><div class="cmp-fill" style="width:${Math.min(sa,100)}%;background:${colA}"><span class="cmp-val">${sa.toFixed(1)}</span></div><div class="cmp-thresh" style="left:70%"></div></div>${tagA}</div>
       <div style="display:flex;align-items:center;gap:8px"><div class="cmp-track" style="flex:1"><div class="cmp-fill" style="width:${Math.min(sb,100)}%;background:${colB}"><span class="cmp-val">${sb.toFixed(1)}</span></div><div class="cmp-thresh" style="left:70%"></div></div>${tagB}</div>
     </div>`;
   }).join('');
 }
 
+// ── SLIDE 4: SHAP ─────────────────────────────────────────────────────────────
 function renderShap(containerId, shap, topN){
   const entries=Object.entries(shap||{}).sort((a,b)=>b[1]-a[1]).slice(0,topN);
   if(!entries.length){document.getElementById(containerId).innerHTML='<p style="font-size:12px;color:var(--t3)">No SHAP data</p>';return;}
   const max=entries[0][1];
   document.getElementById(containerId).innerHTML=entries.map(([k,v])=>`
     <div class="shap-row">
-      <div class="shap-lbl" title="${k}">${k}</div>
+      <div class="shap-lbl" title="${k}">${prettyFeature(k)}</div>
       <div class="shap-track"><div class="shap-fill" style="width:${max>0?(v/max*100).toFixed(0):0}%"></div></div>
       <div class="shap-num">${v>1?v.toFixed(1):v.toFixed(4)}</div>
     </div>`).join('');
 }
 
-// Init
+// ── SLIDE 5: DISTRIBUTION ─────────────────────────────────────────────────────
+function renderDistribution(){
+  const svg=document.getElementById('p-dist');if(!svg)return;
+  const W=540,H=190,P={t:18,b:26,l:10,r:10};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const scoresA=(DATA?.models?.model_2009?.monthly_scores||[]).map(s=>s.fragility_score);
+  const scoresB=(DATA?.models?.model_2003?.monthly_scores||[]).map(s=>s.fragility_score);
+  if(!scoresA.length&&!scoresB.length){svg.innerHTML='';return;}
+  const bins=20,bw=100/bins;
+  function makeHist(arr){const h=new Array(bins).fill(0);arr.forEach(v=>{const b=Math.min(bins-1,Math.floor(v/bw));if(b>=0)h[b]++;});return h;}
+  const hA=makeHist(scoresA),hB=makeHist(scoresB);
+  const maxCount=Math.max(...hA,...hB,1);
+  let html='';
+  [0,40,70,100].forEach(v=>{
+    const x=P.l+(v/100)*cW;
+    const isDash=v===40||v===70;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${isDash?(v===70?'var(--ponzi)':'var(--spec)'):'var(--b)'}" stroke-width="${isDash?1:.7}" stroke-dasharray="${isDash?'3,3':''}"/>`;
+    html+=`<text x="${x}" y="${H-6}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v}</text>`;
+  });
+  const bwPx=cW/bins;
+  hA.forEach((count,i)=>{
+    const x=P.l+i*bwPx,h2=(count/maxCount)*cH;
+    html+=`<rect x="${x+1}" y="${P.t+cH-h2}" width="${bwPx-2}" height="${h2}" fill="#94a3b8" opacity=".75" rx="1"/>`;
+  });
+  hB.forEach((count,i)=>{
+    const x=P.l+i*bwPx,h2=(count/maxCount)*cH;
+    html+=`<rect x="${x+1}" y="${P.t+cH-h2}" width="${bwPx-2}" height="${h2*.9}" fill="#7132f5" opacity=".82" rx="1"/>`;
+  });
+  html+=`<text x="${P.l+8}" y="${P.t+13}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#94a3b8">■ Model A</text>`;
+  html+=`<text x="${P.l+72}" y="${P.t+13}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5">■ Model B</text>`;
+  svg.innerHTML=html;
+}
+
+// ── SLIDE 5: DWELL ────────────────────────────────────────────────────────────
+function renderDwell(){
+  const body=document.getElementById('p-dwell');if(!body)return;
+  const models=[
+    {id:'model_2009',label:'Model A · Baseline 2009–2011'},
+    {id:'model_2003',label:'Model B · Extended 2003–2026'},
+  ];
+  let html='';
+  models.forEach(m=>{
+    const sc=(DATA?.models[m.id]?.monthly_scores||[]).map(s=>regimeFromScore(s.fragility_score));
+    const total=sc.length||1;
+    const hPct=Math.round(sc.filter(r=>r==='HEDGE').length/total*100);
+    const sPct=Math.round(sc.filter(r=>r==='SPECULATIVE').length/total*100);
+    const pPct=100-hPct-sPct;
+    html+=`<div style="margin-bottom:22px">
+      <div style="font-family:var(--fm);font-size:10px;color:var(--t2);margin-bottom:8px;letter-spacing:.04em">${m.label} · ${total} months</div>
+      <div style="height:30px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px">
+        <div style="width:${hPct}%;background:var(--hedge);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;font-weight:500;color:#fff;white-space:nowrap;overflow:hidden">${hPct>10?hPct+'%':''}</div>
+        <div style="width:${sPct}%;background:var(--spec);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;font-weight:500;color:#fff;white-space:nowrap;overflow:hidden">${sPct>10?sPct+'%':''}</div>
+        <div style="width:${pPct}%;background:var(--ponzi);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;font-weight:500;color:#fff;white-space:nowrap;overflow:hidden">${pPct>10?pPct+'%':''}</div>
+      </div>
+      <div style="display:flex;gap:14px;font-family:var(--fm);font-size:10px">
+        <span style="color:var(--hedge)">Hedge: ${hPct}%</span>
+        <span style="color:var(--spec)">Spec: ${sPct}%</span>
+        <span style="color:var(--ponzi)">Ponzi: ${pPct}%</span>
+      </div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+
+// ── SLIDE 6: GAP TIMELINE ────────────────────────────────────────────────────
+function renderGapTimeline(){
+  const svg=document.getElementById('p-gap');if(!svg)return;
+  const W=1120,H=180,P={t:18,b:26,l:44,r:16};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const scoresA=DATA?.models?.model_2009?.monthly_scores||[];
+  const scoresB=DATA?.models?.model_2003?.monthly_scores||[];
+  const pairs=[];
+  scoresB.forEach(b=>{
+    const a=scoresA.find(a=>monthKey(a.date)===monthKey(b.date));
+    if(a)pairs.push({date:b.date,gap:b.fragility_score-a.fragility_score});
+  });
+  if(!pairs.length){svg.innerHTML='';return;}
+  const gaps=pairs.map(p=>p.gap);
+  const range=Math.max(Math.abs(Math.min(...gaps)),Math.abs(Math.max(...gaps)),1);
+  const toY=v=>P.t+cH/2-(v/(range*2))*cH;
+  const zeroY=toY(0);
+  let html='';
+  html+=`<line x1="${P.l}" y1="${zeroY}" x2="${W-P.r}" y2="${zeroY}" stroke="var(--bm)" stroke-width="1"/>`;
+  html+=`<text x="40" y="${zeroY+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">0</text>`;
+  [{mo:'2018-08',lbl:'2018'},{mo:'2020-03',lbl:'2020'},{mo:'2021-11',lbl:'2021'}].forEach(ev=>{
+    const idx=pairs.findIndex(p=>monthKey(p.date)===ev.mo);if(idx<0)return;
+    const x=P.l+(idx/(pairs.length-1))*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="var(--t3)" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>`;
+    html+=`<text x="${x+4}" y="${P.t+12}" font-size="8" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${ev.lbl}</text>`;
+  });
+  const pts=pairs.map((p,i)=>({x:P.l+(i/(pairs.length-1))*cW,y:toY(p.gap),g:p.gap}));
+  let posPath='',negPath='';
+  pts.forEach((p,i)=>{
+    if(i===0){posPath=`M${p.x},${zeroY}`;negPath=`M${p.x},${zeroY}`;}
+    posPath+=` L${p.x},${p.g>=0?p.y:zeroY}`;
+    negPath+=` L${p.x},${p.g<0?p.y:zeroY}`;
+  });
+  posPath+=` L${pts[pts.length-1].x},${zeroY} Z`;
+  negPath+=` L${pts[pts.length-1].x},${zeroY} Z`;
+  html+=`<path d="${posPath}" fill="#7132f5" fill-opacity=".22"/>`;
+  html+=`<path d="${negPath}" fill="#dc2626" fill-opacity=".22"/>`;
+  let line=`M${pts[0].x},${pts[0].y}`;
+  pts.forEach((p,i)=>{if(i)line+=` L${p.x},${p.y}`;});
+  html+=`<path d="${line}" fill="none" stroke="#7132f5" stroke-width="1.5"/>`;
+  [Math.round(range),0,-Math.round(range)].forEach(v=>{
+    html+=`<text x="40" y="${toY(v)+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v>0?'+':''}${v}</text>`;
+  });
+  const firstYear=parseInt(pairs[0].date,10);
+  const lastYear=parseInt(pairs[pairs.length-1].date,10);
+  for(let yr=firstYear;yr<=lastYear;yr+=4){
+    const idx=pairs.findIndex(p=>p.date.startsWith(`${yr}-`));if(idx<0)continue;
+    const x=P.l+(idx/(pairs.length-1))*cW;
+    html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
+  }
+  svg.innerHTML=html;
+
+  // Populate gap stat cards
+  [['2018-08','p-gap-2018'],['2021-11','p-gap-2021'],['2020-03','p-gap-2020']].forEach(([mo,elId])=>{
+    const sa=getScoreByDate('model_2009',mo);
+    const sb=getScoreByDate('model_2003',mo);
+    const el=document.getElementById(elId);
+    if(el&&sa!=null&&sb!=null){const g=sb-sa;el.textContent=(g>=0?'+':'')+g.toFixed(1);}
+  });
+}
+
+// ── SLIDE 7: ALGO TABLE ───────────────────────────────────────────────────────
+function renderAlgoTable(){
+  const algos=[
+    {key:'ols',label:'OLS'},
+    {key:'elastic_net',label:'Elastic Net'},
+    {key:'lasso',label:'Lasso'},
+    {key:'random_forest',label:'Random Forest'},
+  ];
+  const perfA=DATA?.models?.model_2009?.performance||{};
+  const perfB=DATA?.models?.model_2003?.performance||{};
+  const fmtR2=v=>v==null?'—':v.toFixed(3);
+  const colR2=v=>v==null?'color:var(--t3)':v>0.1?`color:var(--hedge)`:v>0?'color:var(--t2)':'color:var(--ponzi)';
+  let html='';
+  algos.forEach(a=>{
+    const r2A=perfA[a.key]?.r2;
+    const r2B=perfB[a.key]?.r2;
+    html+=`<tr style="border-bottom:1px solid var(--b)">
+      <td style="font-family:var(--fm);font-size:12px;padding:10px 14px;font-weight:500;color:var(--t)">${a.label}</td>
+      <td style="font-family:var(--fm);font-size:13px;padding:10px 14px;${colR2(r2A)}">${fmtR2(r2A)}</td>
+      <td style="font-family:var(--fm);font-size:13px;padding:10px 14px;${colR2(r2B)}">${fmtR2(r2B)}</td>
+    </tr>`;
+  });
+  const body=document.getElementById('p-algo-body');
+  if(body)body.innerHTML=html||'<tr><td colspan="3" style="padding:16px;color:var(--t3);font-size:12px">Performance data not available</td></tr>';
+}
+
+// ── SLIDE 7: WALK-FORWARD HEATMAP ─────────────────────────────────────────────
+function renderWFHeatmap(){
+  const body=document.getElementById('p-wf-body');if(!body)return;
+  const wf=DATA?.models?.model_2003?.walk_forward||[];
+  if(!wf.length){body.innerHTML='<p style="font-size:12px;color:var(--t3);font-family:var(--fm)">Walk-forward data not available.</p>';return;}
+  const algos=['ols','elastic_net','lasso','rf'];
+  const algoLabels={ols:'OLS',elastic_net:'E.Net',lasso:'Lasso',rf:'RF'};
+  function r2Bg(v){
+    if(v==null)return'var(--b)';
+    if(v<0){const t=Math.min(1,-v/0.5);return`rgb(${Math.round(220-20*t)},${Math.round(80-30*t)},${Math.round(80-20*t)})`;}
+    const t=Math.min(1,v/0.75);return`rgb(${Math.round(220-180*t)},${Math.round(200-40*t)},${Math.round(80-40*t)})`;
+  }
+  function r2Fg(v){return v==null?'var(--t3)':Math.abs(v)>0.12?'#fff':'var(--t)';}
+  let html=`<div style="display:grid;grid-template-columns:auto repeat(${algos.length},1fr);gap:3px;margin-bottom:4px">`;
+  html+=`<div></div>`;
+  algos.forEach(a=>html+=`<div style="font-family:var(--fm);font-size:9px;color:var(--t3);text-align:center;padding:3px 2px;letter-spacing:.04em">${algoLabels[a]}</div>`);
+  wf.forEach(sp=>{
+    const desc=sp.description||sp.split||'';
+    html+=`<div style="font-family:var(--fm);font-size:10px;color:var(--t2);display:flex;align-items:center;padding-right:8px;white-space:nowrap">${desc}</div>`;
+    algos.forEach(a=>{
+      const r2=sp[a]?.r2;
+      const val=r2!=null?r2.toFixed(2):'—';
+      html+=`<div style="border-radius:4px;padding:8px 4px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;font-weight:500;background:${r2Bg(r2)};color:${r2Fg(r2)}" title="${desc} · ${algoLabels[a]} · R²=${val}">${val}</div>`;
+    });
+  });
+  html+=`</div>`;
+  html+=`<div style="display:flex;gap:12px;font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:6px">
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgb(200,60,60);display:inline-block"></span>R² &lt; 0 · structural break</span>
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgb(60,190,60);display:inline-block"></span>R² &gt; 0.5 · strong fit</span>
+  </div>`;
+  body.innerHTML=html;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
 drawClockTicks();
 loadData();
 window.postMessage({slideIndexChanged: 0}, '*');

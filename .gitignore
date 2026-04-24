@@ -1,0 +1,25 @@
+# Context and planning dumps
+context-dump/
+*.md
+*.txt
+
+# Exclude old/planning HTML files
+"Financial Fragility Clock v2.html"
+pipeline-execution-plan.html
+pipeline-schema.html
+
+# Keep actual frontend files tracked
+!dashboard.html
+!index.html
+!presentation.html
+!reports.html
+!README.md
+
+# Security & IDE
+.env
+.claude/
+.codex/
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.DS_Store

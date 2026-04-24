@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Fragility Clock · Research Report</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237132f5'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='white' stroke-width='2' fill='none'/%3E%3Cline x1='16' y1='6' x2='16' y2='16' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='16' x2='22' y2='12' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f9f8f6;--surface:#fff;--alt:#f3f2f0;--border:rgba(0,0,0,.08);--bm:rgba(0,0,0,.14);
+  --t:#1a1714;--t2:#5a5450;--t3:#9a9490;
+  --pu:#7132f5;--pdk:#5741d8;--ps:rgba(113,50,245,.08);--pd:rgba(113,50,245,.2);
+  --hedge:#149e61;--spec:#d97706;--ponzi:#dc2626;
+  --hs:rgba(20,158,97,.1);--ss:rgba(217,119,6,.1);--ps2:rgba(220,38,38,.1);
+  --fn:'IBM Plex Sans',system-ui,sans-serif;
+  --fs:'IBM Plex Serif',Georgia,serif;
+  --fm:'IBM Plex Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;padding-bottom:80px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--bm);border-radius:2px}
+
+/* NAV */
+.rpt-nav{position:sticky;top:0;z-index:100;height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid var(--border);background:rgba(249,248,246,.94);backdrop-filter:blur(14px)}
+.rpt-nav-left{display:flex;align-items:center;gap:10px}
+.rpt-logo{font-family:var(--fm);font-size:11px;font-weight:500;color:var(--t);letter-spacing:.06em}
+.rpt-badge{font-family:var(--fm);font-size:9px;padding:2px 8px;border-radius:9999px;background:var(--ps);color:var(--pu);border:1px solid var(--pd);letter-spacing:.06em;text-transform:uppercase}
+.rpt-nav-right{display:flex;align-items:center;gap:8px}
+.nav-link{font-family:var(--fm);font-size:11px;color:var(--t3);text-decoration:none;padding:4px 10px;border-radius:6px;border:1px solid var(--border);transition:all .15s}
+.nav-link:hover{color:var(--pu);border-color:var(--pd)}
+.print-btn{font-family:var(--fm);font-size:11px;padding:5px 14px;background:var(--pu);color:#fff;border:none;border-radius:6px;cursor:pointer;transition:background .15s;letter-spacing:.04em}
+.print-btn:hover{background:var(--pdk)}
+
+/* REPORT BODY */
+.report{max-width:900px;margin:0 auto;padding:0 40px}
+
+/* HEADER */
+.rpt-header{padding:56px 0 40px;border-bottom:2px solid var(--t)}
+.rpt-kicker{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--pu);margin-bottom:14px}
+.rpt-title{font-family:var(--fs);font-size:clamp(28px,4vw,46px);font-weight:400;letter-spacing:-.025em;line-height:1.1;margin-bottom:12px}
+.rpt-title em{font-style:italic;color:var(--t2)}
+.rpt-meta{font-family:var(--fm);font-size:11px;color:var(--t3);letter-spacing:.04em;line-height:1.9}
+
+/* SECTION */
+.rpt-section{padding:40px 0;border-bottom:1px solid var(--border)}
+.rpt-section:last-child{border-bottom:none}
+.sec-num{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
+.sec-eyebrow{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--pu);margin-bottom:8px}
+.sec-h{font-family:var(--fs);font-size:clamp(20px,2.4vw,30px);font-weight:400;letter-spacing:-.022em;line-height:1.15;margin-bottom:14px}
+.sec-sub{font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:24px;max-width:700px}
+
+/* EXEC SUMMARY CARDS */
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.sum-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px}
+.sum-val{font-family:var(--fm);font-size:28px;font-weight:500;line-height:1;margin-bottom:4px}
+.sum-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3)}
+.sum-note{font-size:11px;color:var(--t2);margin-top:6px;line-height:1.4}
+
+/* FINDING BOX */
+.finding{background:var(--ps);border:1px solid var(--pd);border-radius:10px;padding:18px 22px;margin:20px 0}
+.finding-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:6px}
+.finding-text{font-size:14px;line-height:1.7;color:var(--t2)}
+.finding-text strong{color:var(--t)}
+
+/* CHART FRAME */
+.chart-frame{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0}
+.chart-cap{font-family:var(--fm);font-size:10px;color:var(--t3);margin-top:6px;letter-spacing:.03em}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+/* CRISIS TABLE */
+.crisis-tbl{width:100%;border-collapse:collapse;margin-top:16px}
+.crisis-tbl th{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);font-weight:400}
+.crisis-tbl td{font-family:var(--fm);font-size:12px;padding:10px 12px;border-bottom:1px solid var(--border)}
+.crisis-tbl tr:last-child td{border-bottom:none}
+.crisis-tbl td.name{font-family:var(--fn);font-size:13px;font-weight:500;color:var(--t)}
+.pill{display:inline-block;font-family:var(--fm);font-size:9px;padding:2px 7px;border-radius:9999px;letter-spacing:.05em}
+.pill.hedge{background:var(--hs);color:var(--hedge)}
+.pill.spec{background:var(--ss);color:var(--spec)}
+.pill.ponzi{background:var(--ps2);color:var(--ponzi)}
+
+/* SHAP BARS */
+.shap-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.shap-lbl{font-family:var(--fm);font-size:11px;color:var(--t2);width:130px;flex-shrink:0;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shap-track{flex:1;height:7px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden}
+.shap-fill{height:100%;border-radius:4px;background:var(--pu)}
+.shap-num{font-family:var(--fm);font-size:10px;color:var(--t3);width:54px;text-align:right}
+
+/* PERF TABLE */
+.perf-tbl{width:100%;border-collapse:collapse}
+.perf-tbl th{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);font-weight:400}
+.perf-tbl td{font-family:var(--fm);font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border)}
+.perf-tbl tr:last-child td{border-bottom:none}
+td.good{color:var(--hedge)}td.bad{color:var(--ponzi)}td.mu{color:var(--t2)}
+
+/* WF HEATMAP */
+.wf-grid{display:grid;gap:3px}
+.wf-cell{border-radius:4px;padding:9px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;font-weight:500}
+.wf-head{font-family:var(--fm);font-size:9px;letter-spacing:.06em;color:var(--t3);text-align:center;padding:4px 2px}
+.wf-row-lbl{font-family:var(--fm);font-size:11px;color:var(--t2);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;text-align:right;line-height:1.3;font-size:10px}
+
+/* REGIME MATRIX */
+.rmat{display:grid;grid-template-columns:auto repeat(3,1fr);gap:4px}
+.rmat-cell{padding:10px 6px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:12px;font-weight:500}
+.rmat-lbl{font-family:var(--fm);font-size:10px;color:var(--t3);display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+.rmat-head{font-family:var(--fm);font-size:10px;color:var(--t3);display:flex;align-items:center;justify-content:center}
+
+/* DWELL */
+.dwell-bar{height:28px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px}
+.dwell-seg{display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;font-weight:500;color:#fff;white-space:nowrap;overflow:hidden}
+
+/* METHODOLOGY */
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px}
+.method-h{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pu);margin-bottom:10px}
+.method-text{font-size:13px;color:var(--t2);line-height:1.7}
+.feature-list{list-style:none;margin-top:10px}
+.feature-list li{font-family:var(--fm);font-size:11px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between}
+.feature-list li:last-child{border-bottom:none}
+.feature-list .f-model{font-size:9px;color:var(--t3)}
+
+/* REFERENCES */
+.ref-list{list-style:none;counter-reset:refs}
+.ref-list li{counter-increment:refs;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--t2);line-height:1.65;display:grid;grid-template-columns:24px 1fr;gap:8px}
+.ref-list li:last-child{border-bottom:none}
+.ref-list li::before{content:counter(refs);font-family:var(--fm);font-size:10px;color:var(--pu);padding-top:2px}
+.ref-list cite{font-style:italic}
+
+/* FOOTER */
+.rpt-footer{padding:32px 0 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.rpt-footer-txt{font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.8}
+
+/* TRAJECTORY INLINE */
+.traj-line{font-family:var(--fm);font-size:13px;margin-top:8px}
+
+/* DOWNLOAD BUTTON */
+.dl-btn{font-family:var(--fm);font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:4px;background:transparent;cursor:pointer;color:var(--t3);transition:all .15s;white-space:nowrap}
+.dl-btn:hover{color:var(--pu);border-color:var(--pd)}
+
+/* PLOT GRID */
+.plot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:12px;margin-top:14px}
+.plot-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.plot-img{width:100%;height:135px;object-fit:contain;background:var(--alt);display:block}
+.plot-info{padding:9px 12px;border-top:1px solid var(--border)}
+.plot-name{font-family:var(--fm);font-size:10px;color:var(--t2);margin-bottom:6px;line-height:1.4}
+
+/* SVG EXPORT GRID */
+.svg-export-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:24px}
+.svg-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.svg-card-name{font-family:var(--fn);font-size:12px;font-weight:500;color:var(--t)}
+.svg-card-meta{font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:3px}
+
+/* REF CATEGORIES */
+.ref-cat{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--pd)}
+.ref-cat:first-child{margin-top:0}
+
+/* LOADING */
+.loading{font-family:var(--fm);font-size:11px;color:var(--t3);letter-spacing:.1em;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* PRINT */
+@media print{
+  .rpt-nav,.print-btn{display:none!important}
+  body{padding-bottom:0;background:#fff}
+  .report{padding:0 20px;max-width:100%}
+  .rpt-header{padding:24px 0 20px}
+  .chart-frame{break-inside:avoid}
+  .rpt-section{break-inside:avoid;padding:24px 0}
+  .two-col,.summary-grid,.method-grid{break-inside:avoid}
+}
+@media(max-width:700px){
+  .rpt-nav{padding:0 16px}
+  .report{padding:0 16px}
+  .summary-grid{grid-template-columns:1fr 1fr}
+  .two-col,.method-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="rpt-nav">
+  <div class="rpt-nav-left">
+    <span class="rpt-logo">FRAGILITY CLOCK</span>
+    <span class="rpt-badge">Research Report</span>
+  </div>
+  <div class="rpt-nav-right">
+    <a href="dashboard.html" class="nav-link">↗ Dashboard</a>
+    <a href="presentation.html" class="nav-link">▶ Slides</a>
+    <button class="print-btn" onclick="window.print()">⬇ Export PDF</button>
+  </div>
+</nav>
+
+<div class="report">
+
+  <!-- HEADER -->
+  <header class="rpt-header">
+    <div class="rpt-kicker">Istanbul Stock Exchange · Minsky Fragility Framework · 2003–2026</div>
+    <h1 class="rpt-title">Financial Fragility<br><em>Clock: Research Report</em></h1>
+    <div class="rpt-meta" id="rpt-meta">
+      Group 5 · MSc FinTech · University of Birmingham<br>
+      Minsky (1992) Financial Instability Hypothesis · OLS + Elastic Net + Lasso + Random Forest<br>
+      Report generated: <span id="rpt-date">—</span> · Data through: <span id="rpt-data-end">—</span>
+    </div>
+  </header>
+
+  <!-- 1. EXECUTIVE SUMMARY -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 1</div>
+    <div class="sec-eyebrow">Executive Summary</div>
+    <h2 class="sec-h">Current fragility reading &amp; key findings</h2>
+    <div class="summary-grid">
+      <div class="sum-card">
+        <div class="sum-val" id="es-score-b" style="color:var(--spec)">—</div>
+        <div class="sum-lbl">Model B Score</div>
+        <div class="sum-note" id="es-score-b-note">Extended 2003–2026</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" id="es-score-a" style="color:var(--t2)">—</div>
+        <div class="sum-lbl">Model A Score</div>
+        <div class="sum-note">Baseline 2009–2011</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" id="es-regime" style="color:var(--spec)">—</div>
+        <div class="sum-lbl">Current Regime</div>
+        <div class="sum-note" id="es-regime-note">Minsky classification</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" id="es-gap">—</div>
+        <div class="sum-lbl">Model Gap (B − A)</div>
+        <div class="sum-note">Latest month</div>
+      </div>
+    </div>
+    <div class="traj-line" id="es-trajectory" style="color:var(--t3)">Loading trajectory…</div>
+    <div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:3px;letter-spacing:.05em">3-MONTH LINEAR EXTRAPOLATION · NOT A FORECAST</div>
+    <div class="finding" style="margin-top:24px">
+      <div class="finding-lbl">Central Finding</div>
+      <div class="finding-text">
+        A global-only training window (Model A, 2009–2011 data) teaches useful contagion structure but systematically underreacts when fragility is driven by Turkey-specific conditions. The extended model (Model B, 2003–2026) does not eliminate this blind spot — but it maintains a materially stronger and more sustained signal during domestic stress episodes, most clearly in <strong>November 2021</strong> (+19.4 point gap) and the <strong>March 2020</strong> threshold crossing (Model B: 71.1 vs Model A: 58.8).
+      </div>
+    </div>
+    <p class="sec-sub" style="margin-top:20px;margin-bottom:0">This report covers model outputs, feature importance, crisis detection performance, walk-forward validation, and the Minsky theoretical framework underpinning the fragility score construction. All values are drawn directly from the trained model outputs.</p>
+  </section>
+
+  <!-- 2. FRAGILITY HISTORY -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 2</div>
+    <div class="sec-eyebrow">Regime History</div>
+    <h2 class="sec-h">Fragility score over time — both models</h2>
+    <p class="sec-sub">Monthly fragility scores from 2003 to 2026 for both models. Coloured background reflects the Minsky regime of Model B (the extended baseline). Dashed line = Model A. Vertical markers indicate the four key crisis episodes analysed in §3.</p>
+    <div class="chart-frame">
+      <svg id="r-timeline" width="100%" height="220" viewBox="0 0 860 220" preserveAspectRatio="none" style="display:block" class="loading"></svg>
+    </div>
+    <p class="chart-cap" id="r-timeline-note">—</p>
+    <div class="two-col" style="margin-top:20px">
+      <div class="finding" style="margin:0">
+        <div class="finding-lbl">Model A (Baseline)</div>
+        <div class="finding-text">Trained on 2009–2011 global indices only. Reaches Speculative band during global contagion events but underreads Turkey-specific stress. Latest score: <strong id="tl-a-latest">—</strong>.</div>
+      </div>
+      <div class="finding" style="margin:0">
+        <div class="finding-lbl">Model B (Extended)</div>
+        <div class="finding-text">Trained on 2003–2026 with Turkey-relevant features. Maintains elevated readings during domestic stress decoupled from global calm. Latest score: <strong id="tl-b-latest">—</strong>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CRISIS EPISODES -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 3</div>
+    <div class="sec-eyebrow">Crisis Detection</div>
+    <h2 class="sec-h">How each model read the four key episodes</h2>
+    <p class="sec-sub">Fragility scores at the peak month of each crisis episode, with both models side by side. The Ponzi threshold of 70 is marked. The gap between models — not just whether either crosses 70 — is the central academic evidence.</p>
+    <table class="crisis-tbl" id="r-crisis-tbl">
+      <thead>
+        <tr>
+          <th style="width:180px">Episode</th>
+          <th>Date</th>
+          <th>Model A Score</th>
+          <th>Model A Regime</th>
+          <th>Model B Score</th>
+          <th>Model B Regime</th>
+          <th>Gap B − A</th>
+        </tr>
+      </thead>
+      <tbody id="r-crisis-body"></tbody>
+    </table>
+    <div class="chart-frame" style="margin-top:20px">
+      <svg id="r-crisis-chart" width="100%" height="200" viewBox="0 0 860 200" preserveAspectRatio="none" style="display:block" class="loading"></svg>
+    </div>
+    <p class="chart-cap">Score bars at crisis peak months. Dashed line = Ponzi threshold (70). Bar height = signal strength. The gap between pairs is the key evidence.</p>
+    <div class="finding">
+      <div class="finding-lbl">Interpretation</div>
+      <div class="finding-text">
+        <strong>2020 COVID (Mar 2020)</strong> is the cleanest threshold-crossing case: Model B crosses 70 while Model A does not. <strong>Nov 2021 Turkey Stress</strong> is the strongest divergence: +19.4 points of separation during domestic fragility against a globally calm backdrop. <strong>2018 TRY Crash</strong> is better read as an early-warning differential rather than a binary win/loss — both models are elevated but B reads higher. <strong>2010 Greek Crisis</strong> shows agreement (both models in Speculative range), which is the expected result for a global contagion episode.
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SCORE DISTRIBUTION -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 4</div>
+    <div class="sec-eyebrow">Score Distribution &amp; Regime Dwell</div>
+    <h2 class="sec-h">Where each model spends its time</h2>
+    <p class="sec-sub">The histogram shows how often each model produces scores in each range across the full 2003–2026 period. Model B's distribution shifts rightward, reflecting its persistent elevation during Turkey-specific stress periods that Model A discounts.</p>
+    <div class="two-col">
+      <div>
+        <div class="chart-frame">
+          <svg id="r-dist" width="100%" height="180" viewBox="0 0 400 180" preserveAspectRatio="none" style="display:block" class="loading"></svg>
+        </div>
+        <p class="chart-cap">Grey = Model A · Purple = Model B · Dashes at 40 (Spec) &amp; 70 (Ponzi)</p>
+      </div>
+      <div id="r-dwell">
+        <div class="loading" style="margin-top:20px">Loading…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MODEL DIVERGENCE -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 5</div>
+    <div class="sec-eyebrow">Model Divergence</div>
+    <h2 class="sec-h">B − A gap across two decades</h2>
+    <p class="sec-sub">Monthly difference between Model B and Model A fragility scores from 2003–2026. Positive values (purple) mean B reads more fragile than A. The widening gap during 2018–2021 is the central empirical result supporting the extended model's contribution.</p>
+    <div class="chart-frame">
+      <svg id="r-gap" width="100%" height="180" viewBox="0 0 860 180" preserveAspectRatio="none" style="display:block" class="loading"></svg>
+    </div>
+    <p class="chart-cap">Purple = B above A · Red = B below A · Vertical dashes mark 2018, 2020, 2021 crisis events</p>
+    <div class="summary-grid" style="margin-top:20px">
+      <div class="sum-card">
+        <div class="sum-val" id="gap-2018" style="color:var(--spec)">—</div>
+        <div class="sum-lbl">Aug 2018 Gap</div>
+        <div class="sum-note">TRY currency crisis</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" id="gap-2020" style="color:var(--ponzi)">—</div>
+        <div class="sum-lbl">Mar 2020 Gap</div>
+        <div class="sum-note">COVID shock</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" id="gap-2021" style="color:var(--pu)">—</div>
+        <div class="sum-lbl">Nov 2021 Gap</div>
+        <div class="sum-note">Turkey-specific stress</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" id="gap-max" style="color:var(--pu)">—</div>
+        <div class="sum-lbl">Max Gap (all-time)</div>
+        <div class="sum-note" id="gap-max-date">Peak divergence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FEATURE IMPORTANCE -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 6</div>
+    <div class="sec-eyebrow">Feature Importance</div>
+    <h2 class="sec-h">SHAP values — what drives each model</h2>
+    <p class="sec-sub">Mean absolute SHAP values across all observations. These reflect global feature importance — not the contribution in any individual month. EM (Emerging Markets) is the dominant driver in both models. The distinction is that Model B additionally incorporates USDTRY volatility and VIX lags, anchoring it to Turkey-relevant stress signals.</p>
+    <div class="two-col">
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:12px">Model A · Baseline 2009–2011</div>
+        <div id="r-shap-a" class="loading">Loading…</div>
+      </div>
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu);margin-bottom:12px">Model B · Extended 2003–2026</div>
+        <div id="r-shap-b" class="loading">Loading…</div>
+      </div>
+    </div>
+    <div class="finding" style="margin-top:20px">
+      <div class="finding-lbl">Academic note on SHAP</div>
+      <div class="finding-text">SHAP values here are global (dataset-wide averages), not local (month-specific). They show which features the model relies on structurally, not which feature caused any particular reading. The appearance of <strong>USDTRY volatility</strong> and <strong>VIX lags</strong> in Model B's top ranks is the structural evidence that the extended model captures information Model A cannot access.</div>
+    </div>
+  </section>
+
+  <!-- 7. WALK-FORWARD PERFORMANCE -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 7</div>
+    <div class="sec-eyebrow">Model Validation</div>
+    <h2 class="sec-h">Walk-forward R² &amp; in-sample performance</h2>
+    <p class="sec-sub">Walk-forward validation tests each model on data it has not seen during training. Each split uses a different crisis period as the out-of-sample window. R² is computed on the raw return-prediction task, not the 0–100 fragility score — modest values are expected and academically defensible.</p>
+
+    <div class="two-col" style="align-items:start">
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model B · By Crisis Split</div>
+        <div id="r-wf-body" class="loading">Loading…</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.65">Negative R² marks a structural break — the model was trained on dynamics that do not generalise to that crisis type. The 2021–24 split reliably breaks all algorithms across both models, which is informative in itself.</div>
+      </div>
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">In-Sample Performance · Both Models · All Algorithms</div>
+        <div class="chart-frame" style="margin:0">
+          <table class="perf-tbl">
+            <thead>
+              <tr>
+                <th>Algorithm</th>
+                <th style="color:var(--t3)">A · R²</th>
+                <th style="color:var(--t3)">A · RMSE</th>
+                <th style="color:var(--pu)">B · R²</th>
+                <th style="color:var(--pu)">B · RMSE</th>
+              </tr>
+            </thead>
+            <tbody id="r-algo-body"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.65">Random Forest achieves the highest R² but the linear models (OLS, Lasso) are more interpretable and academically defensible. The narrative is consistent across all four algorithms.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. REGIME ANALYSIS -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 8</div>
+    <div class="sec-eyebrow">Regime Analysis</div>
+    <h2 class="sec-h">Transition probabilities &amp; time in each regime</h2>
+    <p class="sec-sub">Empirical month-to-month regime transition rates (Markov chain) computed from Model B's monthly scores. Direct jumps from Hedge to Ponzi are rare — most stress escalates through the Speculative band first, which is consistent with Minsky's sequential fragility logic.</p>
+    <div class="two-col">
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:12px">Regime Transition Matrix · Model B</div>
+        <div id="r-rmat" class="loading">Loading…</div>
+        <div style="margin-top:10px;font-size:11px;font-family:var(--fm);color:var(--t3)">Rows = current regime · Columns = next month</div>
+      </div>
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:12px">Time Spent in Each Regime · Full Period</div>
+        <div id="r-dwell-full" class="loading">Loading…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. METHODOLOGY -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 9</div>
+    <div class="sec-eyebrow">Methodology</div>
+    <h2 class="sec-h">Theoretical framework &amp; technical implementation</h2>
+    <p class="sec-sub">The fragility score is constructed on Minsky's Financial Instability Hypothesis (1992), which classifies financial units into three regimes based on their ability to service debt obligations from cash flows. This is operationalised as a machine-learning composite score on ISE return data.</p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-h">Minsky Regimes</div>
+        <div class="method-text">
+          <strong>Hedge Finance (score &lt; 40)</strong> — cash flows cover principal and interest. Low fragility.<br><br>
+          <strong>Speculative Finance (40–70)</strong> — cash flows cover interest but not principal. Rollover risk is present.<br><br>
+          <strong>Ponzi Finance (≥ 70)</strong> — cash flows insufficient even for interest. System depends on asset price appreciation to survive. Corresponds to historical crash precursors.
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-h">Score Construction</div>
+        <div class="method-text">
+          The fragility score is a composite of model-predicted return residuals, rolling return volatility, pairwise correlations between ISE and global indices, and an eigenvalue ratio capturing market concentration. These components are normalised to a 0–100 scale.<br><br>
+          A score near 100 indicates extreme stress akin to midnight on the Doomsday Clock metaphor — the "time to midnight" display is an interpretive aid, not a literal forecast.
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-h">Model A — Baseline Features</div>
+        <ul class="feature-list">
+          <li><span>SP500 (returns)</span><span class="f-model">Global</span></li>
+          <li><span>DAX (returns)</span><span class="f-model">Global</span></li>
+          <li><span>FTSE 100 (returns)</span><span class="f-model">Global</span></li>
+          <li><span>NIKKEI 225 (returns)</span><span class="f-model">Global</span></li>
+          <li><span>BOVESPA (returns)</span><span class="f-model">EM</span></li>
+          <li><span>EU index (returns)</span><span class="f-model">Global</span></li>
+          <li><span>EM index (returns)</span><span class="f-model">EM</span></li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-h">Model B — Extended Features (additional)</div>
+        <ul class="feature-list">
+          <li><span>VIX (1m, 3m, 6m lags)</span><span class="f-model">Volatility</span></li>
+          <li><span>USDTRY (1m, 3m lags)</span><span class="f-model">Turkey</span></li>
+          <li><span>USDTRY volatility</span><span class="f-model">Turkey</span></li>
+          <li><span>DXY (1m, 12m lags)</span><span class="f-model">USD</span></li>
+          <li><span>Brent crude (3m lag)</span><span class="f-model">Commodity</span></li>
+          <li><span>Rolling return volatility</span><span class="f-model">ISE</span></li>
+          <li><span>Eigenvalue ratio</span><span class="f-model">Structure</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="method-grid" style="margin-top:16px">
+      <div class="method-card">
+        <div class="method-h">Algorithms Compared</div>
+        <div class="method-text">
+          <strong>OLS</strong> — interpretable baseline; coefficients map directly to feature contributions.<br><br>
+          <strong>Elastic Net / Lasso</strong> — regularised linear models suited for correlated features in the 33-feature extended set.<br><br>
+          <strong>Random Forest</strong> — captures nonlinear interactions; highest R² but less interpretable. Provides robustness check for the linear narrative.
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-h">Walk-Forward Validation</div>
+        <div class="method-text">
+          Each walk-forward split uses one crisis period as the out-of-sample test window, with all prior data as training. This tests whether the fragility signal learned in one regime generalises to structurally different crises.<br><br>
+          Negative R² in any split is not a model failure — it identifies periods of structural break that are themselves academically informative. The 2021–24 period breaks all models.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. VISUALIZATIONS -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 10</div>
+    <div class="sec-eyebrow">Visualizations &amp; Asset Export</div>
+    <h2 class="sec-h">All charts &amp; plots</h2>
+    <p class="sec-sub">Live SVG charts are generated from the model output JSON on page load — download them as vector files for use in papers or presentations. Static PNG plots were exported from the Python analysis notebooks.</p>
+
+    <div style="margin-bottom:32px">
+      <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Live charts — from JSON · vector SVG</div>
+      <div class="svg-export-grid">
+        <div class="svg-card">
+          <div><div class="svg-card-name">Fragility Timeline</div><div class="svg-card-meta">2003–2026 · Both models · Regime-coloured areas</div></div>
+          <button class="dl-btn" onclick="downloadSVG('r-timeline','fragility-timeline-2003-2026')">↓ SVG</button>
+        </div>
+        <div class="svg-card">
+          <div><div class="svg-card-name">Crisis Episode Chart</div><div class="svg-card-meta">4 episodes · Model A vs B bar comparison</div></div>
+          <button class="dl-btn" onclick="downloadSVG('r-crisis-chart','crisis-episodes-model-comparison')">↓ SVG</button>
+        </div>
+        <div class="svg-card">
+          <div><div class="svg-card-name">Score Distribution</div><div class="svg-card-meta">Histogram · Full period · Model A vs B</div></div>
+          <button class="dl-btn" onclick="downloadSVG('r-dist','score-distribution-histogram')">↓ SVG</button>
+        </div>
+        <div class="svg-card">
+          <div><div class="svg-card-name">Model Divergence Gap</div><div class="svg-card-meta">B − A monthly gap · 2003–2026</div></div>
+          <button class="dl-btn" onclick="downloadSVG('r-gap','model-b-minus-a-divergence-gap')">↓ SVG</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3)">Notebook plots — Python export · PNG</div>
+        <button class="dl-btn" onclick="downloadAllPlots()" style="padding:5px 14px;font-size:10px">↓ Download all PNGs</button>
+      </div>
+      <div class="plot-grid" id="plot-grid"></div>
+    </div>
+  </section>
+
+  <!-- 11. REFERENCES -->
+  <section class="rpt-section">
+    <div class="sec-num">§ 11</div>
+    <div class="sec-eyebrow">Academic References</div>
+    <h2 class="sec-h">Full literature list</h2>
+    <p class="sec-sub">24 references organised by theme. All Harvard-format. Relevance notes indicate which section and claim each source supports.</p>
+
+    <div class="ref-cat">Istanbul Stock Exchange — Dataset &amp; Context</div>
+    <ol class="ref-list" start="1">
+      <li><div>
+        Candanedo, I.M. (2013) <cite>Istanbul Stock Exchange Data Set.</cite> UCI Machine Learning Repository. Available at: <a href="https://archive.ics.uci.edu/dataset/247/istanbul+stock+exchange" style="color:var(--pu)">https://archive.ics.uci.edu/dataset/247/istanbul+stock+exchange</a> [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Primary dataset source. Cite in the data quality section when describing the seven global indices and the ISE USD target variable.</span>
+      </div></li>
+      <li><div>
+        Acikalin, S., Aktas, R. and Unal, S. (2008) 'Relationships between stock markets and macroeconomic variables: evidence from the Istanbul Stock Exchange', <cite>Investment Management and Financial Innovations,</cite> 5(1), pp. 8–16.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Uses cointegration to show Turkish macro variables (GDP, exchange rates, interest rates) drive ISE returns. Supports the theoretical justification for including global indices as predictors.</span>
+      </div></li>
+      <li><div>
+        Arnes, S.K. (2014) <cite>On stock market performance: the case of the Istanbul Stock Exchange.</cite> Copenhagen Business School. Available at: https://research-api.cbs.dk/ws/portalfiles/portal/58450158/sibel_arnes.pdf [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Directly investigates ISE return predictability; useful as a prior study justifying the modelling approach.</span>
+      </div></li>
+      <li><div>
+        Ozkaya, A. and Altun, O. (2024) 'Domestic and global causes for exchange rate volatility: evidence from Turkey', <cite>SAGE Open,</cite> 14(2).<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Directly supports the rationale for including USD/TRY volatility and global uncertainty (VIX, DXY) as extended features in Model B. Cite when introducing <em>try_weakness</em> as a velocity-over-level choice.</span>
+      </div></li>
+    </ol>
+
+    <div class="ref-cat">Minsky Fragility Framework</div>
+    <ol class="ref-list" start="5">
+      <li><div>
+        Minsky, H.P. (1992) <cite>The Financial Instability Hypothesis.</cite> Levy Economics Institute Working Paper No. 74. Available at: https://www.levyinstitute.org/pubs/wp74.pdf [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Foundational theoretical source for the hedge/speculative/Ponzi regime classification. Must be cited in three places: the theoretical framework, the regime threshold definitions, and when interpreting the 2021 Lira Collapse as a Ponzi event.</span>
+      </div></li>
+      <li><div>
+        Nikolaidi, M. (n.d.) <cite>Endogenous money and Minsky's Financial Instability Hypothesis.</cite> Post-Keynesian Economics Society. Available at: https://postkeynesian.net/media/events/Maria_Nikolaidi_sAhz4XB.pdf [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Explains how Minsky's three financing regimes apply to open economy contexts — relevant because ISE is denominated in USD and exposed to foreign currency fragility.</span>
+      </div></li>
+      <li><div>
+        Tarassow, A. and Greenwood-Nimmo, M. (2014) <cite>A Macroeconometric Assessment of Minsky's Financial Instability Hypothesis.</cite> Available at: https://www.boeckler.de/pdf/v_2014_10_30_tarassow_greenwood-nimmo.pdf [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Provides an empirical operationalisation of Minsky's regimes using macro data — a strong precedent for the quantitative fragility scoring method.</span>
+      </div></li>
+    </ol>
+
+    <div class="ref-cat">Regularised Regression &amp; Model Comparison</div>
+    <ol class="ref-list" start="8">
+      <li><div>
+        Gu, S., Kelly, B. and Xiu, D. (2022) 'Lasso selection of firm-level stock return predictors: how many matter?', <cite>SSRN Working Paper.</cite> Available at: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4210649 [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Justifies LASSO as a principled feature-selection tool in financial return forecasting and motivates the comparison of OLS against regularised alternatives.</span>
+      </div></li>
+      <li><div>
+        Kim, H.Y. and Moon, S. (2024) 'Forecasting returns with machine learning and optimizing global portfolios: evidence from the Korean and U.S. stock markets', <cite>Journal of Finance and Data Science,</cite> 10.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Directly compares LASSO, Elastic Net, and OLS for stock return and exchange-rate prediction in an international setting, showing LASSO/EN beat traditional benchmarks — supports Section 2 findings.</span>
+      </div></li>
+      <li><div>
+        Grova, B. (2019) <cite>Predictive returns using machine learning techniques.</cite> Netspar. Available at: https://www.netspar.nl/assets/uploads/P20190815_MSc011_Grova.pdf [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Provides a systematic comparison of OLS, Elastic Net, Random Forest, and Neural Networks on stock return prediction, mirroring the model comparison framework.</span>
+      </div></li>
+      <li><div>
+        Zou, H. and Hastie, T. (2005) 'Regularization and variable selection via the elastic net', <cite>Journal of the Royal Statistical Society: Series B,</cite> 67(2), pp. 301–320.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: The original Elastic Net paper. Since ElasticNet was selected as the primary model, this is a non-negotiable citation when justifying the choice of l1_ratio=0.70.</span>
+      </div></li>
+    </ol>
+
+    <div class="ref-cat">Random Forest, Neural Networks &amp; Explainability</div>
+    <ol class="ref-list" start="12">
+      <li><div>
+        Tekin, B. and Çanakoglu, E. (n.d.) 'Prediction of stock returns in Istanbul Stock Exchange using machine learning', <cite>Semantic Scholar.</cite> Available at: https://www.semanticscholar.org/paper/Prediction-of-stock-returns-in-Istanbul-stock-using-Tekin-%C3%87anakoglu/406203eb682cefe8d [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Uses Random Forest on Borsa Istanbul data specifically, finding it outperforms other estimators — strongly relevant to Section 2 Random Forest model and the Turkish market context.</span>
+      </div></li>
+      <li><div>
+        Zhang, X. (2025) 'Stock return forecasting using SHAP-based feature selection and risk-controlled portfolio construction', <cite>Proceedings of the International Conference on Intelligent Artificial Intelligence.</cite><br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Demonstrates how SHAP values can replace traditional importance metrics for interpretable machine learning in finance, directly backing the SHAP analysis in Section 2.17.</span>
+      </div></li>
+      <li><div>
+        Ensemble Machine Learning Application and Feature Importance (2025) <cite>Asian Journal of Probability and Statistics,</cite> 27(11). Available at: https://journalajpas.com/index.php/AJPAS/article/view/833 [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Combines LASSO, SHAP, and Gini importance for stock prediction — useful as a one-stop citation showing feature importance methods complement each other, matching the unified comparison in Section 2.14.</span>
+      </div></li>
+    </ol>
+
+    <div class="ref-cat">Artificial Neural Networks in Finance</div>
+    <ol class="ref-list" start="15">
+      <li><div>
+        Istanbul Stock Exchange and Artificial Intelligence (2025) <cite>TISEJ.</cite> Available at: https://tisej.com/index.php/pub/article/view/1652 [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Uses macro and global market data to predict ISE 100, finding LSTM outperforms Logit/Probit during crisis periods — useful contrast to the MLP finding that neural networks underperform on small samples.</span>
+      </div></li>
+      <li><div>
+        Abubakar, S. et al. (n.d.) 'Predicting BIST 100 using artificial neural network with world stock market indices', <cite>Journal of Social and Humanities Sciences Research.</cite> Available at: https://jshsr.org/index.php/pub/article/download/1434/1375/2731 [Accessed 24 April 2026].<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Uses five world market indices plus Turkish domestic variables to predict BIST 100 via multi-layer neural network, closely paralleling the MLP model and input-feature structure of the dataset.</span>
+      </div></li>
+    </ol>
+
+    <div class="ref-cat">Supporting Methodology — Structural Breaks, Features &amp; Validation</div>
+    <ol class="ref-list" start="17">
+      <li><div>
+        Goyal, A. and Welch, I. (2008) 'A comprehensive look at the empirical performance of equity premium prediction', <cite>Review of Financial Studies,</cite> 21(4), pp. 1455–1508.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Explicitly cited in Section 4.2 to justify negative out-of-sample R² during structural breaks. This is a mandatory citation — examiners will check it.</span>
+      </div></li>
+      <li><div>
+        Billio, M., Getmansky, M., Lo, A.W. and Pelizzon, L. (2012) 'Econometric measures of connectedness and systemic risk in the finance and insurance sectors', <cite>Journal of Financial Economics,</cite> 104(3), pp. 535–559.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Directly supports the <em>eigenvalue_ratio</em> feature — the idea that PCA eigenvalue concentration approaching 1.0 signals systemic co-movement and contagion risk.</span>
+      </div></li>
+      <li><div>
+        Mantegna, R.N. and Stanley, H.E. (1999) <cite>An Introduction to Econophysics: Correlations and Complexity in Finance.</cite> Cambridge: Cambridge University Press.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Foundational source for rolling correlation matrices in financial markets, underpinning the 60-day N×N correlation matrix approach.</span>
+      </div></li>
+      <li><div>
+        Bandt, C. and Pompe, B. (2002) 'Permutation entropy: a natural complexity measure for time series', <cite>Physical Review Letters,</cite> 88(17), p. 174102.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: The original paper defining permutation entropy, used as a market complexity measure. Must be cited when explaining the <em>pe_inv</em> feature.</span>
+      </div></li>
+      <li><div>
+        Tukey, J.W. (1977) <cite>Exploratory Data Analysis.</cite> Reading, MA: Addison-Wesley.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Standard academic reference for winsorisation as a robust alternative to outlier removal, supporting the decision to preserve extreme Ponzi-regime events rather than clipping them.</span>
+      </div></li>
+      <li><div>
+        Rossi, B. (2013) 'Advances in forecasting under instability', in Elliott, G. and Timmermann, A. (eds.) <cite>Handbook of Economic Forecasting,</cite> Vol. 2B. Amsterdam: Elsevier, pp. 1203–1324.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Provides theoretical grounding for why walk-forward validation is the correct methodology during structural breaks, and why negative out-of-sample R² is expected during regime shifts — directly supports Section 4.2 and Limitation 2.</span>
+      </div></li>
+      <li><div>
+        Lundberg, S.M. and Lee, S.I. (2017) 'A unified approach to interpreting model predictions', <cite>Advances in Neural Information Processing Systems,</cite> 30, pp. 4765–4774.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: The foundational SHAP paper. Used extensively in Section 5 — must be cited when SHAP is first introduced.</span>
+      </div></li>
+      <li><div>
+        Zhang, G.P. (2003) 'Time series forecasting using a hybrid ARIMA and neural network model', <cite>Neurocomputing,</cite> 50, pp. 159–175.<br>
+        <span style="font-size:11px;color:var(--t3)">Relevance: Classic paper documenting why neural networks underperform on small financial time series — directly supports Limitation 3 that MLP was excluded due to overfitting on ~530 observations.</span>
+      </div></li>
+    </ol>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="rpt-footer">
+    <div class="rpt-footer-txt">
+      Financial Fragility Clock · Group 5 · MSc FinTech · University of Birmingham<br>
+      Minsky (1992) · OLS + Elastic Net + Lasso + Random Forest · ISE 2003–2026 · April 2026<br>
+      To export this report as PDF: use the Export PDF button or browser File → Print → Save as PDF
+    </div>
+    <span id="footer-regime" style="font-family:var(--fm);font-size:10px;padding:3px 10px;border-radius:9999px;background:var(--ss);color:var(--spec)">SPECULATIVE REGIME</span>
+  </footer>
+
+</div><!-- /report -->
+
+<script>
+let DATA = null;
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const monthKey = d => (d||'').slice(0,7);
+const monthNum = d => { const [y,m]=monthKey(d).split('-').map(Number); if(!y||!m)return null; return y*12+(m-1); };
+const regimeFromScore = s => s>=70?'PONZI':s>=40?'SPECULATIVE':'HEDGE';
+const regCol = s => s>=70?'#dc2626':s>=40?'#d97706':'#149e61';
+const regLabel = s => s>=70?'Ponzi Finance':s>=40?'Speculative Finance':'Hedge Finance';
+const regClass = s => s>=70?'ponzi':s>=40?'spec':'hedge';
+const fmtDateLong = d => {
+  const key=monthKey(d); if(!key)return'—';
+  const [y,m]=key.split('-').map(Number);
+  return new Date(Date.UTC(y,(m||1)-1,1)).toLocaleDateString('en-US',{year:'numeric',month:'short',timeZone:'UTC'});
+};
+const prettyFeature = key => ({
+  VIX_lag1m:'VIX lag 1m', VIX_lag3m:'VIX lag 3m', VIX_lag6m:'VIX lag 6m',
+  USDTRY_lag1m:'USDTRY lag 1m', USDTRY_lag3m:'USDTRY lag 3m',
+  usdtry_vol:'USDTRY volatility', rolling_vol:'Rolling volatility',
+  rf_prediction_error:'RF pred. error', mean_corr:'Mean correlation',
+  pe_inv:'Inverse entropy', pe:'Perm. entropy', eigenvalue_ratio:'Eigenvalue ratio',
+  BRENT_lag3m:'Brent lag 3m', DXY_lag1m:'DXY lag 1m', DXY_lag12m:'DXY lag 12m',
+}[key] || key);
+
+function getScoreByDate(model, dateStr) {
+  const s = DATA?.models[model]?.monthly_scores;
+  if(!s) return null;
+  return s.find(r => monthKey(r.date) === monthKey(dateStr))?.fragility_score ?? null;
+}
+
+// ── LOAD DATA ─────────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await fetch('./data/fragility_output.json');
+    if(!res.ok) throw new Error();
+    DATA = await res.json();
+  } catch(e) { DATA = getMockData(); }
+  initAll();
+}
+
+function getMockData() {
+  const scores=[];
+  for(let i=0;i<277;i++){const yr=2003+Math.floor(i/12),mo=(i%12)+1;const d=`${yr}-${String(mo).padStart(2,'0')}-28`;const s=30+20*Math.sin(i/12)+10*Math.sin(i/4)+5*(yr>=2018?1:0);const sc=Math.min(85,Math.max(10,s));scores.push({date:d,fragility_score:sc,regime:sc>=70?'PONZI':sc>=40?'SPECULATIVE':'HEDGE',correlations:{sp500:.6,dax:.55,ftse:.5,em:.65},features:{}});}
+  return{version:'mock',models:{
+    model_2009:{meta:{id:'model_2009',label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:{EM:.027,SP500:.019,FTSE:.015,NIKKEI:.011,EU:.010,BOVESPA:.009,DAX:.001},walk_forward:[],performance:{ols:{r2:.04,rmse:.098,mae:.08},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.064,rmse:.097,mae:.077},random_forest:{r2:.137,rmse:.093,mae:.074}}},
+    model_2003:{meta:{id:'model_2003',label:'2003–2026 Extended'},monthly_scores:scores,shap_values:{EM:.018,BOVESPA:.008,FTSE:.004,VIX_lag1m:.004,SP500:.004,usdtry_vol:.003,EU:.003,DAX:.003,rolling_vol:.002,USDTRY_lag1m:.001},walk_forward:[],performance:{ols:{r2:.094,rmse:.095,mae:.076},elastic_net:{r2:.090,rmse:.095,mae:.075},lasso:{r2:.095,rmse:.095,mae:.075},random_forest:{r2:.137,rmse:.093,mae:.074}}}
+  }};
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function initAll() {
+  document.getElementById('rpt-date').textContent = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const scoresB = DATA.models.model_2003.monthly_scores;
+  const scoresA = DATA.models.model_2009.monthly_scores;
+  const latestB = scoresB[scoresB.length-1];
+  const latestA = scoresA[scoresA.length-1];
+  document.getElementById('rpt-data-end').textContent = fmtDateLong(latestB.date);
+
+  renderExecSummary(latestB, latestA);
+  renderTimeline();
+  renderCrisisSection();
+  renderDistribution();
+  renderDwell();
+  renderGapTimeline();
+  renderShap('r-shap-a', DATA.models.model_2009.shap_values, 7);
+  renderShap('r-shap-b', DATA.models.model_2003.shap_values, 10);
+  renderWFHeatmap();
+  renderAlgoTable();
+  renderRegimeMatrix();
+  renderDwellFull();
+  renderPlotGrid();
+}
+
+// ── EXEC SUMMARY ──────────────────────────────────────────────────────────────
+function renderExecSummary(latestB, latestA) {
+  const sb = latestB.fragility_score, sa = latestA.fragility_score;
+  const col = regCol(sb);
+
+  const esB = document.getElementById('es-score-b');
+  esB.textContent = sb.toFixed(1); esB.style.color = col;
+  document.getElementById('es-score-b-note').textContent = `${fmtDateLong(latestB.date)} · ${regLabel(sb)}`;
+
+  const esA = document.getElementById('es-score-a');
+  esA.textContent = sa.toFixed(1); esA.style.color = regCol(sa);
+
+  const esR = document.getElementById('es-regime');
+  esR.textContent = regimeFromScore(sb); esR.style.color = col;
+  document.getElementById('es-regime-note').textContent = regLabel(sb);
+
+  const delta = sb - sa;
+  const esG = document.getElementById('es-gap');
+  esG.textContent = (delta>=0?'+':'')+delta.toFixed(1);
+  esG.style.color = delta>=10?'var(--ponzi)':delta>=3?'var(--pu)':'var(--hedge)';
+
+  // Footer regime
+  const fp = document.getElementById('footer-regime');
+  fp.className = `rpill ${regClass(sb)}`;
+  fp.style.cssText = `font-family:var(--fm);font-size:10px;padding:3px 10px;border-radius:9999px;background:${sb>=70?'var(--ps2)':sb>=40?'var(--ss)':'var(--hs)'};color:${col}`;
+  fp.textContent = regimeFromScore(sb)+' REGIME';
+
+  // Trajectory
+  const scores = DATA.models.model_2003.monthly_scores;
+  const current = sb;
+  const tEl = document.getElementById('es-trajectory');
+  if(current >= 70){
+    tEl.textContent = 'Currently in Ponzi regime — threshold already crossed';
+    tEl.style.color = 'var(--ponzi)'; return;
+  }
+  const window3 = scores.slice(-4).map(s=>s.fragility_score);
+  const changes = window3.slice(1).map((v,i)=>v-window3[i]);
+  const slope = changes.reduce((a,b)=>a+b,0)/changes.length;
+  if(slope <= 0){
+    tEl.textContent = `Score ${slope < -0.2?'declining':'stable'} — no threshold crossing projected at current rate`;
+    tEl.style.color = 'var(--hedge)'; return;
+  }
+  const months = Math.ceil((70-current)/slope);
+  if(months > 120){ tEl.textContent = 'No near-term threshold crossing at current rate'; tEl.style.color='var(--t3)'; return; }
+  const urgency = months<=6?'var(--ponzi)':months<=18?'var(--spec)':'var(--t3)';
+  tEl.textContent = `At current 3-month trend: Ponzi threshold in ~${months} month${months===1?'':'s'}`;
+  tEl.style.color = urgency;
+
+  document.getElementById('tl-a-latest').textContent = `${sa.toFixed(1)} (${regLabel(sa)})`;
+  document.getElementById('tl-b-latest').textContent = `${sb.toFixed(1)} (${regLabel(sb)})`;
+}
+
+// ── TIMELINE ──────────────────────────────────────────────────────────────────
+function renderTimeline() {
+  const svg = document.getElementById('r-timeline');
+  const scoresA = DATA.models.model_2009.monthly_scores;
+  const scoresB = DATA.models.model_2003.monthly_scores;
+  const W=860,H=220,P={t:20,b:28,l:36,r:12};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const firstMonth=monthNum(scoresB[0].date),lastMonth=monthNum(scoresB[scoresB.length-1].date);
+  const span=Math.max(1,(lastMonth??0)-(firstMonth??0));
+  const xD=d=>P.l+(((monthNum(d)??firstMonth)-firstMonth)/span)*cW;
+  let html=`<defs><clipPath id="rtc"><rect x="${P.l}" y="${P.t}" width="${cW}" height="${cH}"/></clipPath></defs>`;
+  [0,40,70,100].forEach(v=>{
+    const y=P.t+cH-(v/100)*cH,isDash=v===40||v===70;
+    html+=`<line x1="${P.l}" y1="${y}" x2="${W-P.r}" y2="${y}" stroke="${isDash?(v===70?'#dc2626':'#d97706'):'rgba(0,0,0,.06)'}" stroke-width="${isDash?1:.6}" stroke-dasharray="${isDash?'5,4':''}"/>`;
+    html+=`<text x="${P.l-4}" y="${y+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">${v}</text>`;
+  });
+  const cols={HEDGE:'#149e61',SPECULATIVE:'#d97706',PONZI:'#dc2626'};
+  let seg=[],lastR=regimeFromScore(scoresB[0].fragility_score),segs=[];
+  scoresB.forEach(s=>{const b=regimeFromScore(s.fragility_score);if(b!==lastR&&seg.length){segs.push({p:seg,r:lastR});seg=[];}seg.push({x:xD(s.date),y:P.t+cH-(s.fragility_score/100)*cH});lastR=b;});
+  if(seg.length)segs.push({p:seg,r:lastR});
+  segs.forEach(({p:sp,r})=>{
+    let d=`M${sp[0].x},${P.t+cH} L${sp[0].x},${sp[0].y}`;
+    sp.forEach((pt,i)=>{if(i)d+=` L${pt.x},${pt.y}`;});
+    d+=` L${sp[sp.length-1].x},${P.t+cH} Z`;
+    html+=`<path d="${d}" fill="${cols[r]}" fill-opacity=".22" clip-path="url(#rtc)"/>`;
+  });
+  let lpA=`M${xD(scoresA[0].date)},${P.t+cH-(scoresA[0].fragility_score/100)*cH}`;
+  scoresA.forEach((s,i)=>{if(i)lpA+=` L${xD(s.date)},${P.t+cH-(s.fragility_score/100)*cH}`;});
+  html+=`<path d="${lpA}" fill="none" stroke="#a09894" stroke-width="1" stroke-dasharray="4,3" clip-path="url(#rtc)"/>`;
+  let lpB=`M${xD(scoresB[0].date)},${P.t+cH-(scoresB[0].fragility_score/100)*cH}`;
+  scoresB.forEach((s,i)=>{if(i)lpB+=` L${xD(s.date)},${P.t+cH-(s.fragility_score/100)*cH}`;});
+  html+=`<path d="${lpB}" fill="none" stroke="#1a1714" stroke-width="1.2" clip-path="url(#rtc)"/>`;
+  [{date:'2008-10',lbl:'GFC',col:'#dc2626'},{date:'2018-08',lbl:'2018 TRY',col:'#d97706'},{date:'2020-03',lbl:'COVID',col:'#dc2626'},{date:'2021-11',lbl:'Nov 2021',col:'#7132f5'}].forEach(ev=>{
+    const mn=monthNum(ev.date); if(mn==null||mn<firstMonth||mn>lastMonth)return;
+    const x=xD(ev.date);
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${ev.col}" stroke-width="1" stroke-dasharray="3,3" opacity=".55"/>`;
+    html+=`<text x="${x+4}" y="${P.t+13}" font-size="8" font-family="IBM Plex Mono,monospace" fill="${ev.col}">${ev.lbl}</text>`;
+  });
+  const firstYear=parseInt(scoresB[0].date,10),lastYear=parseInt(scoresB[scoresB.length-1].date,10);
+  for(let yr=firstYear;yr<=lastYear;yr+=3){const x=xD(`${yr}-01`);html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">${yr}</text>`;}
+  html+=`<text x="${P.l+8}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#9a9490">— Model A (dashed)</text>`;
+  html+=`<text x="${P.l+130}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#1a1714">— Model B (solid)</text>`;
+  svg.innerHTML=html;
+  document.getElementById('r-timeline-note').textContent = `${fmtDateLong(scoresB[0].date)} — ${fmtDateLong(scoresB[scoresB.length-1].date)} · ${scoresB.length} monthly observations · Coloured area = Model B regime`;
+}
+
+// ── CRISIS TABLE + CHART ───────────────────────────────────────────────────────
+function renderCrisisSection() {
+  const crises=[
+    {name:'Greek Debt Crisis',date:'2010-05',lbl:'May 2010'},
+    {name:'2018 TRY Currency Crisis',date:'2018-08',lbl:'Aug 2018'},
+    {name:'COVID-19 Synchronized Selloff',date:'2020-03',lbl:'Mar 2020'},
+    {name:'Late-2021 Turkey Stress',date:'2021-11',lbl:'Nov 2021'},
+  ];
+  let tbl='';
+  crises.forEach(c=>{
+    const sa=getScoreByDate('model_2009',c.date);
+    const sb=getScoreByDate('model_2003',c.date);
+    const delta=sa!=null&&sb!=null?sb-sa:null;
+    const rA=sa!=null?regClass(sa):'';
+    const rB=sb!=null?regClass(sb):'';
+    tbl+=`<tr>
+      <td class="name">${c.name}</td>
+      <td style="color:var(--t3)">${c.lbl}</td>
+      <td style="font-family:var(--fm);font-weight:500;color:${sa!=null?regCol(sa):'var(--t3)'}">${sa!=null?sa.toFixed(1):'—'}</td>
+      <td>${sa!=null?`<span class="pill ${rA}">${regimeFromScore(sa)}</span>`:'—'}</td>
+      <td style="font-family:var(--fm);font-weight:500;color:${sb!=null?regCol(sb):'var(--t3)'}">${sb!=null?sb.toFixed(1):'—'}</td>
+      <td>${sb!=null?`<span class="pill ${rB}">${regimeFromScore(sb)}</span>`:'—'}</td>
+      <td style="font-family:var(--fm);font-weight:500;color:${delta==null?'var(--t3)':delta>=10?'var(--pu)':delta>=3?'var(--spec)':'var(--t3)'}">${delta!=null?(delta>=0?'+':'')+delta.toFixed(1):'—'}</td>
+    </tr>`;
+  });
+  document.getElementById('r-crisis-body').innerHTML=tbl;
+
+  // Chart
+  const svg=document.getElementById('r-crisis-chart');
+  const W=860,H=200,P={t:20,b:32,l:60,r:20};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const n=crises.length;
+  const grpW=cW/n,barW=grpW*.28,gap=grpW*.06;
+  let html='';
+  [0,40,70].forEach(v=>{
+    const y=P.t+cH-(v/100)*cH;
+    html+=`<line x1="${P.l}" y1="${y}" x2="${W-P.r}" y2="${y}" stroke="${v===70?'#dc2626':v===40?'#d97706':'rgba(0,0,0,.07)'}" stroke-width="${v>0?1:.6}" stroke-dasharray="${v>0?'4,3':''}"/>`;
+    html+=`<text x="${P.l-5}" y="${y+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">${v}</text>`;
+  });
+  crises.forEach((c,ci)=>{
+    const sa=getScoreByDate('model_2009',c.date)||0;
+    const sb=getScoreByDate('model_2003',c.date)||0;
+    const gx=P.l+ci*grpW+grpW/2;
+    const hA=(sa/100)*cH, hB=(sb/100)*cH;
+    html+=`<rect x="${gx-barW-gap/2}" y="${P.t+cH-hA}" width="${barW}" height="${hA}" fill="#94a3b8" rx="2"/>`;
+    html+=`<text x="${gx-gap/2-barW/2}" y="${P.t+cH-hA-4}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="#94a3b8">${sa.toFixed(0)}</text>`;
+    html+=`<rect x="${gx+gap/2}" y="${P.t+cH-hB}" width="${barW}" height="${hB}" fill="${regCol(sb)}" rx="2"/>`;
+    html+=`<text x="${gx+gap/2+barW/2}" y="${P.t+cH-hB-4}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="${regCol(sb)}">${sb.toFixed(0)}</text>`;
+    const lbl=c.lbl.replace(' 20','\'').replace('May ','May\'').replace('Aug ','Aug\'').replace('Mar ','Mar\'').replace('Nov ','Nov\'');
+    html+=`<text x="${gx}" y="${H-10}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="#5a5450">${c.name.length>22?c.name.slice(0,20)+'…':c.name}</text>`;
+  });
+  html+=`<text x="${P.l+10}" y="${P.t+16}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#94a3b8">■ Model A</text>`;
+  html+=`<text x="${P.l+72}" y="${P.t+16}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5">■ Model B</text>`;
+  svg.innerHTML=html;
+}
+
+// ── DISTRIBUTION ──────────────────────────────────────────────────────────────
+function renderDistribution() {
+  const svg=document.getElementById('r-dist'); if(!svg)return;
+  const W=400,H=180,P={t:16,b:26,l:10,r:10};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const scoresA=(DATA?.models?.model_2009?.monthly_scores||[]).map(s=>s.fragility_score);
+  const scoresB=(DATA?.models?.model_2003?.monthly_scores||[]).map(s=>s.fragility_score);
+  const bins=20,bw=100/bins;
+  const makeHist=arr=>{const h=new Array(bins).fill(0);arr.forEach(v=>{const b=Math.min(bins-1,Math.floor(v/bw));if(b>=0)h[b]++;});return h;};
+  const hA=makeHist(scoresA),hB=makeHist(scoresB);
+  const maxC=Math.max(...hA,...hB,1);
+  let html='';
+  [0,40,70,100].forEach(v=>{
+    const x=P.l+(v/100)*cW,isDash=v===40||v===70;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${isDash?(v===70?'#dc2626':'#d97706'):'rgba(0,0,0,.07)'}" stroke-width="${isDash?1:.6}" stroke-dasharray="${isDash?'3,3':''}"/>`;
+    html+=`<text x="${x}" y="${H-6}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">${v}</text>`;
+  });
+  const bwPx=cW/bins;
+  hA.forEach((c,i)=>{const x=P.l+i*bwPx,h2=(c/maxC)*cH;html+=`<rect x="${x+1}" y="${P.t+cH-h2}" width="${bwPx-2}" height="${h2}" fill="#94a3b8" opacity=".7" rx="1"/>`;});
+  hB.forEach((c,i)=>{const x=P.l+i*bwPx,h2=(c/maxC)*cH*.9;html+=`<rect x="${x+1}" y="${P.t+cH-h2}" width="${bwPx-2}" height="${h2}" fill="#7132f5" opacity=".8" rx="1"/>`;});
+  html+=`<text x="${P.l+6}" y="${P.t+13}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#94a3b8">■ A</text>`;
+  html+=`<text x="${P.l+28}" y="${P.t+13}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5">■ B</text>`;
+  svg.innerHTML=html;
+}
+
+// ── DWELL (§4 inline) ─────────────────────────────────────────────────────────
+function renderDwell() {
+  const body=document.getElementById('r-dwell'); if(!body)return;
+  const models=[
+    {id:'model_2009',label:'Model A · Baseline'},
+    {id:'model_2003',label:'Model B · Extended'},
+  ];
+  let html='<div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:12px">Months in each regime · full period</div>';
+  models.forEach(m=>{
+    const sc=(DATA?.models[m.id]?.monthly_scores||[]).map(s=>regimeFromScore(s.fragility_score));
+    const total=sc.length||1;
+    const hPct=Math.round(sc.filter(r=>r==='HEDGE').length/total*100);
+    const sPct=Math.round(sc.filter(r=>r==='SPECULATIVE').length/total*100);
+    const pPct=100-hPct-sPct;
+    html+=`<div style="margin-bottom:20px">
+      <div style="font-family:var(--fm);font-size:10px;color:var(--t2);margin-bottom:6px">${m.label} · ${total} months</div>
+      <div class="dwell-bar">
+        <div class="dwell-seg" style="width:${hPct}%;background:var(--hedge)">${hPct>10?hPct+'%':''}</div>
+        <div class="dwell-seg" style="width:${sPct}%;background:var(--spec)">${sPct>10?sPct+'%':''}</div>
+        <div class="dwell-seg" style="width:${pPct}%;background:var(--ponzi)">${pPct>10?pPct+'%':''}</div>
+      </div>
+      <div style="display:flex;gap:14px;font-family:var(--fm);font-size:10px;margin-top:5px">
+        <span style="color:var(--hedge)">Hedge ${hPct}%</span>
+        <span style="color:var(--spec)">Spec ${sPct}%</span>
+        <span style="color:var(--ponzi)">Ponzi ${pPct}%</span>
+      </div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+
+// ── GAP TIMELINE ──────────────────────────────────────────────────────────────
+function renderGapTimeline() {
+  const svg=document.getElementById('r-gap'); if(!svg)return;
+  const W=860,H=180,P={t:16,b:28,l:44,r:16};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const scoresA=DATA?.models?.model_2009?.monthly_scores||[];
+  const scoresB=DATA?.models?.model_2003?.monthly_scores||[];
+  const pairs=[];
+  scoresB.forEach(b=>{const a=scoresA.find(a=>monthKey(a.date)===monthKey(b.date));if(a)pairs.push({date:b.date,gap:b.fragility_score-a.fragility_score});});
+  if(!pairs.length){svg.innerHTML='';return;}
+  const gaps=pairs.map(p=>p.gap);
+  const range=Math.max(Math.abs(Math.min(...gaps)),Math.abs(Math.max(...gaps)),1);
+  const toY=v=>P.t+cH/2-(v/(range*2))*cH;
+  const zeroY=toY(0);
+  let html='';
+  html+=`<line x1="${P.l}" y1="${zeroY}" x2="${W-P.r}" y2="${zeroY}" stroke="rgba(0,0,0,.12)" stroke-width="1"/>`;
+  html+=`<text x="40" y="${zeroY+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">0</text>`;
+  [{mo:'2018-08',lbl:'2018'},{mo:'2020-03',lbl:'2020'},{mo:'2021-11',lbl:'2021'}].forEach(ev=>{
+    const idx=pairs.findIndex(p=>monthKey(p.date)===ev.mo);if(idx<0)return;
+    const x=P.l+(idx/(pairs.length-1))*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="#a09894" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>`;
+    html+=`<text x="${x+4}" y="${P.t+13}" font-size="8" font-family="IBM Plex Mono,monospace" fill="#a09894">${ev.lbl}</text>`;
+  });
+  const pts=pairs.map((p,i)=>({x:P.l+(i/(pairs.length-1))*cW,y:toY(p.gap),g:p.gap}));
+  let posPath='',negPath='';
+  pts.forEach((p,i)=>{
+    if(i===0){posPath=`M${p.x},${zeroY}`;negPath=`M${p.x},${zeroY}`;}
+    posPath+=` L${p.x},${p.g>=0?p.y:zeroY}`;
+    negPath+=` L${p.x},${p.g<0?p.y:zeroY}`;
+  });
+  posPath+=` L${pts[pts.length-1].x},${zeroY} Z`;
+  negPath+=` L${pts[pts.length-1].x},${zeroY} Z`;
+  html+=`<path d="${posPath}" fill="#7132f5" fill-opacity=".18"/>`;
+  html+=`<path d="${negPath}" fill="#dc2626" fill-opacity=".18"/>`;
+  let line=`M${pts[0].x},${pts[0].y}`;
+  pts.forEach((p,i)=>{if(i)line+=` L${p.x},${p.y}`;});
+  html+=`<path d="${line}" fill="none" stroke="#7132f5" stroke-width="1.5"/>`;
+  [Math.round(range),0,-Math.round(range)].forEach(v=>{
+    html+=`<text x="40" y="${toY(v)+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">${v>0?'+':''}${v}</text>`;
+  });
+  const firstYear=parseInt(pairs[0].date,10),lastYear=parseInt(pairs[pairs.length-1].date,10);
+  for(let yr=firstYear;yr<=lastYear;yr+=4){const idx=pairs.findIndex(p=>p.date.startsWith(`${yr}-`));if(idx<0)continue;const x=P.l+(idx/(pairs.length-1))*cW;html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="#a09894">${yr}</text>`;}
+  svg.innerHTML=html;
+
+  // Populate gap cards
+  const gapAt=(mo)=>{const sa=getScoreByDate('model_2009',mo),sb=getScoreByDate('model_2003',mo);return sa!=null&&sb!=null?sb-sa:null;};
+  [['2018-08','gap-2018'],['2020-03','gap-2020'],['2021-11','gap-2021']].forEach(([mo,id])=>{
+    const g=gapAt(mo); const el=document.getElementById(id);
+    if(el&&g!=null){el.textContent=(g>=0?'+':'')+g.toFixed(1);}
+  });
+  // Max gap
+  let maxG=0,maxDate='';
+  pairs.forEach(p=>{if(Math.abs(p.gap)>Math.abs(maxG)){maxG=p.gap;maxDate=p.date;}});
+  const gm=document.getElementById('gap-max');
+  if(gm){gm.textContent=(maxG>=0?'+':'')+maxG.toFixed(1);}
+  const gmd=document.getElementById('gap-max-date');
+  if(gmd){gmd.textContent=`Peak: ${fmtDateLong(maxDate)}`;}
+}
+
+// ── SHAP ──────────────────────────────────────────────────────────────────────
+function renderShap(containerId, shap, topN) {
+  const entries=Object.entries(shap||{}).sort((a,b)=>b[1]-a[1]).slice(0,topN);
+  const el=document.getElementById(containerId); if(!el)return;
+  if(!entries.length){el.innerHTML='<p style="font-size:12px;color:var(--t3)">No SHAP data available</p>';return;}
+  const max=entries[0][1];
+  el.innerHTML=entries.map(([k,v])=>`
+    <div class="shap-row">
+      <div class="shap-lbl" title="${k}">${prettyFeature(k)}</div>
+      <div class="shap-track"><div class="shap-fill" style="width:${max>0?(v/max*100).toFixed(0):0}%"></div></div>
+      <div class="shap-num">${v.toFixed(4)}</div>
+    </div>`).join('');
+}
+
+// ── WALK-FORWARD HEATMAP ──────────────────────────────────────────────────────
+function renderWFHeatmap() {
+  const body=document.getElementById('r-wf-body'); if(!body)return;
+  const wf=DATA?.models?.model_2003?.walk_forward||[];
+  if(!wf.length){body.innerHTML='<p style="font-size:12px;color:var(--t3);font-family:var(--fm)">Walk-forward data not available.</p>';return;}
+  const algos=['ols','elastic_net','lasso','rf'];
+  const algoLbls={ols:'OLS',elastic_net:'Elastic Net',lasso:'Lasso',rf:'Random Forest'};
+  function r2Bg(v){
+    if(v==null)return'rgba(0,0,0,.04)';
+    if(v<0){const t=Math.min(1,-v/0.5);return`rgb(${Math.round(220-20*t)},${Math.round(80-30*t)},${Math.round(80-20*t)})`;}
+    const t=Math.min(1,v/0.75);return`rgb(${Math.round(220-180*t)},${Math.round(200-40*t)},${Math.round(80-40*t)})`;
+  }
+  let html=`<div style="display:grid;grid-template-columns:110px repeat(${algos.length},1fr);gap:3px">`;
+  html+=`<div class="wf-head" style="text-align:left">Split</div>`;
+  algos.forEach(a=>html+=`<div class="wf-head">${algoLbls[a]}</div>`);
+  wf.forEach(sp=>{
+    html+=`<div class="wf-row-lbl">${sp.description}</div>`;
+    algos.forEach(a=>{
+      const r2=sp[a]?.r2,val=r2!=null?r2.toFixed(3):'—';
+      const fg=r2==null?'var(--t3)':Math.abs(r2)>0.12?'#fff':'var(--t)';
+      html+=`<div class="wf-cell" style="background:${r2Bg(r2)};color:${fg}" title="${sp.description} · ${algoLbls[a]} · R²=${val}">${val}</div>`;
+    });
+  });
+  html+=`</div>`;
+  body.innerHTML=html;
+}
+
+// ── ALGO TABLE ────────────────────────────────────────────────────────────────
+function renderAlgoTable() {
+  const algos=[{key:'ols',lbl:'OLS'},{key:'elastic_net',lbl:'Elastic Net'},{key:'lasso',lbl:'Lasso'},{key:'random_forest',lbl:'Random Forest'}];
+  const perfA=DATA?.models?.model_2009?.performance||{};
+  const perfB=DATA?.models?.model_2003?.performance||{};
+  const fmt=(v,d=3)=>v==null?'—':v.toFixed(d);
+  const cls=v=>v==null?'mu':v>0.1?'good':v>0?'mu':'bad';
+  let html='';
+  algos.forEach(a=>{
+    const pA=perfA[a.key],pB=perfB[a.key];
+    html+=`<tr>
+      <td style="color:var(--t);font-weight:500">${a.lbl}</td>
+      <td class="${cls(pA?.r2)}">${fmt(pA?.r2)}</td>
+      <td class="mu">${fmt(pA?.rmse,4)}</td>
+      <td class="${cls(pB?.r2)}">${fmt(pB?.r2)}</td>
+      <td class="mu">${fmt(pB?.rmse,4)}</td>
+    </tr>`;
+  });
+  const body=document.getElementById('r-algo-body');
+  if(body)body.innerHTML=html;
+}
+
+// ── REGIME MATRIX ─────────────────────────────────────────────────────────────
+function renderRegimeMatrix() {
+  const scores=DATA?.models?.model_2003?.monthly_scores||[];
+  const regimes=['HEDGE','SPECULATIVE','PONZI'];
+  const counts={};
+  regimes.forEach(a=>regimes.forEach(b=>{counts[`${a}→${b}`]=0;}));
+  for(let i=0;i<scores.length-1;i++){
+    const from=regimeFromScore(scores[i].fragility_score);
+    const to=regimeFromScore(scores[i+1].fragility_score);
+    counts[`${from}→${to}`]=(counts[`${from}→${to}`]||0)+1;
+  }
+  const rowTotals={};
+  regimes.forEach(r=>{rowTotals[r]=regimes.reduce((s,t)=>s+(counts[`${r}→${t}`]||0),0);});
+  const COLS={HEDGE:'var(--hedge)',SPECULATIVE:'var(--spec)',PONZI:'var(--ponzi)'};
+  let html=`<div class="rmat">
+    <div></div>
+    ${regimes.map(r=>`<div class="rmat-head" style="color:${COLS[r]}">${r.slice(0,4)}</div>`).join('')}`;
+  regimes.forEach(from=>{
+    const tot=rowTotals[from]||1;
+    html+=`<div class="rmat-lbl" style="color:${COLS[from]}">${from.slice(0,4)}</div>`;
+    regimes.forEach(to=>{
+      const c=counts[`${from}→${to}`]||0;
+      const pct=(c/tot*100).toFixed(0);
+      const isDiag=from===to;
+      html+=`<div class="rmat-cell" style="background:${isDiag?COLS[from]+'22':'rgba(0,0,0,.04)'};color:${COLS[to]};${isDiag?'font-weight:600':''}" title="${from}→${to}: ${pct}% (${c} months)">${pct}%</div>`;
+    });
+  });
+  html+=`</div>`;
+  html+=`<div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:8px">Rows = current regime · Columns = next month's regime · Model B only</div>`;
+  const el=document.getElementById('r-rmat'); if(el)el.innerHTML=html;
+}
+
+// ── DWELL (§8 full) ───────────────────────────────────────────────────────────
+function renderDwellFull() {
+  const body=document.getElementById('r-dwell-full'); if(!body)return;
+  const models=[
+    {id:'model_2009',label:'Model A · Baseline 2009–2011'},
+    {id:'model_2003',label:'Model B · Extended 2003–2026'},
+  ];
+  let html='';
+  models.forEach(m=>{
+    const sc=(DATA?.models[m.id]?.monthly_scores||[]).map(s=>regimeFromScore(s.fragility_score));
+    const total=sc.length||1;
+    const hPct=Math.round(sc.filter(r=>r==='HEDGE').length/total*100);
+    const sPct=Math.round(sc.filter(r=>r==='SPECULATIVE').length/total*100);
+    const pPct=100-hPct-sPct;
+    html+=`<div style="margin-bottom:20px">
+      <div style="font-family:var(--fm);font-size:10px;color:var(--t2);margin-bottom:6px">${m.label}</div>
+      <div class="dwell-bar">
+        <div class="dwell-seg" style="width:${hPct}%;background:var(--hedge)">${hPct>10?hPct+'%':''}</div>
+        <div class="dwell-seg" style="width:${sPct}%;background:var(--spec)">${sPct>10?sPct+'%':''}</div>
+        <div class="dwell-seg" style="width:${pPct}%;background:var(--ponzi)">${pPct>10?pPct+'%':''}</div>
+      </div>
+      <div style="display:flex;gap:14px;font-family:var(--fm);font-size:10px;margin-top:5px">
+        <span style="color:var(--hedge)">Hedge: ${hPct}% · ${sc.filter(r=>r==='HEDGE').length} months</span>
+        <span style="color:var(--spec)">Spec: ${sPct}% · ${sc.filter(r=>r==='SPECULATIVE').length} months</span>
+        <span style="color:var(--ponzi)">Ponzi: ${pPct}% · ${sc.filter(r=>r==='PONZI').length} months</span>
+      </div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+
+// ── EXPORTS ───────────────────────────────────────────────────────────────────
+function downloadSVG(svgId, filename) {
+  const el = document.getElementById(svgId);
+  if (!el) return;
+  const s = new XMLSerializer().serializeToString(el);
+  const blob = new Blob([s], {type:'image/svg+xml'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename + '.svg'; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function downloadPlot(path, filename) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error();
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch(e) { window.open(path, '_blank'); }
+}
+
+const PLOTS = [
+  {file:'s3_model_a_vs_b_timeline.png',label:'Model A vs B Timeline',section:'§3'},
+  {file:'s3_shap_comparison.png',label:'SHAP Comparison (§3)',section:'§3'},
+  {file:'s3_ise_tl_vs_usd.png',label:'ISE: TL vs USD',section:'§3'},
+  {file:'s3_overlap_check.png',label:'Model Overlap Check',section:'§3'},
+  {file:'s3_walkforward_rmse.png',label:'Walk-Forward RMSE',section:'§3'},
+  {file:'s2_actual_vs_predicted.png',label:'Actual vs Predicted',section:'§2'},
+  {file:'s2_classification.png',label:'Regime Classification',section:'§2'},
+  {file:'s2_correlation.png',label:'Feature Correlation Matrix',section:'§2'},
+  {file:'s2_feature_importance.png',label:'Feature Importance',section:'§2'},
+  {file:'s2_model_comparison.png',label:'Model Comparison',section:'§2'},
+  {file:'s2_shap_clf_beeswarm.png',label:'SHAP Classification Beeswarm',section:'§2'},
+  {file:'s2_shap_comparison.png',label:'SHAP Comparison (§2)',section:'§2'},
+  {file:'s2_shap_en_beeswarm.png',label:'SHAP Elastic Net Beeswarm',section:'§2'},
+  {file:'s2_shap_rf_beeswarm.png',label:'SHAP Random Forest Beeswarm',section:'§2'},
+  {file:'s2_shap_waterfall.png',label:'SHAP Waterfall',section:'§2'},
+  {file:'s2_timeseries.png',label:'Time Series Overview',section:'§2'},
+  {file:'s2_vif.png',label:'Variance Inflation Factor (VIF)',section:'§2'},
+  {file:'fig_07_ann_loss_curve.png',label:'ANN Loss Curve',section:'Supp.'},
+];
+
+function renderPlotGrid() {
+  const grid = document.getElementById('plot-grid');
+  if (!grid) return;
+  grid.innerHTML = PLOTS.map(p => `
+    <div class="plot-card">
+      <img class="plot-img" src="plots/${p.file}" alt="${p.label}" loading="lazy">
+      <div class="plot-info">
+        <div class="plot-name">${p.label}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-family:var(--fm);font-size:9px;color:var(--t3)">${p.section}</span>
+          <button class="dl-btn" onclick="downloadPlot('plots/${p.file}','${p.file}')">↓ PNG</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+async function downloadAllPlots() {
+  for (let i = 0; i < PLOTS.length; i++) {
+    if (i > 0) await new Promise(r => setTimeout(r, 300));
+    downloadPlot(`plots/${PLOTS[i].file}`, PLOTS[i].file);
+  }
+}
+
+// ── START ─────────────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>

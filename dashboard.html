@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Financial Fragility Clock · ISE 2003–2026</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237132f5'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='white' stroke-width='2' fill='none'/%3E%3Cline x1='16' y1='6' x2='16' y2='16' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='16' x2='22' y2='12' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f9f8f6;--surface:#fff;--alt:#f3f2f0;--border:rgba(0,0,0,.07);--bm:rgba(0,0,0,.13);--t:#1a1714;--t2:#5a5450;--t3:#a09894;--pu:#7132f5;--pdk:#5741d8;--ps:rgba(113,50,245,.09);--pd:rgba(113,50,245,.22);--hedge:#149e61;--spec:#d97706;--ponzi:#dc2626;--hs:rgba(20,158,97,.11);--ss:rgba(217,119,6,.11);--ps2:rgba(220,38,38,.11);--cf:#fff;--cn:rgba(0,0,0,.22);--ct:rgba(0,0,0,.1);--sh:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.07);--r:4px;--rl:12px;--fs:'IBM Plex Serif',Georgia,serif;--fn:'IBM Plex Sans',system-ui,sans-serif;--fm:'IBM Plex Mono',monospace}
 [data-theme=dark]{--bg:#0c0c10;--surface:#131318;--alt:#1a1a22;--border:rgba(255,255,255,.07);--bm:rgba(255,255,255,.14);--t:#e8eaf0;--t2:#8b92a8;--t3:#3d4357;--ps:rgba(113,50,245,.15);--cf:#0e0e14;--cn:rgba(255,255,255,.2);--ct:rgba(255,255,255,.09);--sh:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.5)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}body{font-family:var(--fn);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;transition:background .3s,color .3s}
+html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;transition:background .3s,color .3s;padding-bottom:64px}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--bm);border-radius:3px}
 
 /* NAV */
@@ -28,14 +30,19 @@ html{scroll-behavior:smooth}body{font-family:var(--fn);background:var(--bg);colo
 .ibtn:hover{color:var(--pu);border-color:var(--pd);background:var(--ps)}
 a.ibtn{text-decoration:none;font-size:13px;font-weight:500}
 
-/* MODEL BANNER */
-.mbanner{border-bottom:1px solid var(--border);background:var(--surface);padding:0 40px;display:flex;align-items:center;gap:16px;height:44px;flex-wrap:nowrap;overflow-x:auto}
-.mbanner-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
-.mtgl{display:inline-flex;background:var(--alt);border-radius:var(--r);padding:3px;gap:1px}
-.mtgl-btn{font-family:var(--fm);font-size:11px;padding:5px 14px;border-radius:3px;border:none;background:transparent;color:var(--t2);cursor:pointer;transition:all .2s;letter-spacing:.04em;white-space:nowrap}
-.mtgl-btn.on{background:var(--surface);color:var(--pu);box-shadow:var(--sh)}
-.mbanner-desc{font-size:11px;color:var(--t3);font-family:var(--fm);white-space:nowrap}
-.mbanner-badge{margin-left:auto;font-family:var(--fm);font-size:10px;padding:3px 10px;border-radius:9999px;background:var(--ps);color:var(--pu);white-space:nowrap;flex-shrink:0}
+/* MODEL TOGGLE — nav pill */
+.model-seg{display:inline-flex;background:var(--alt);border-radius:var(--r);padding:3px;gap:1px;border:1px solid var(--border)}
+.mseg-btn{font-family:var(--fm);font-size:10px;padding:4px 10px;border-radius:2px;border:none;background:transparent;color:var(--t3);cursor:pointer;transition:all .18s;letter-spacing:.06em;line-height:1.2;white-space:nowrap}
+.mseg-btn small{display:block;font-size:8px;opacity:.7;letter-spacing:.04em}
+.mseg-btn.on{background:var(--surface);color:var(--pu);box-shadow:var(--sh)}
+.mseg-btn.on small{opacity:1}
+
+/* TOGGLE SWITCH (dark mode) */
+.toggle-switch{position:relative;display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-family:var(--fm);font-size:10px;color:var(--t3)}
+.toggle-track{width:32px;height:18px;border-radius:9px;background:var(--alt);border:1px solid var(--bm);position:relative;transition:background .2s,border-color .2s;flex-shrink:0}
+.toggle-track.on{background:var(--pu);border-color:var(--pu)}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;transition:left .2s,box-shadow .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-track.on .toggle-thumb{left:16px}
 
 /* LAYOUT */
 .section{max-width:1200px;margin:0 auto;padding:72px 40px}
@@ -49,7 +56,7 @@ a.ibtn{text-decoration:none;font-size:13px;font-weight:500}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 
 /* HERO */
-.hero{min-height:calc(100vh - 96px);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.hero{min-height:calc(100vh - 52px - 64px);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .hero-clock-wrap{display:flex;flex-direction:column;align-items:center;position:relative}
 .clock-glow{position:absolute;inset:-50px;border-radius:50%;pointer-events:none;transition:background .8s}
 .clock-svg{width:100%;max-width:380px;height:auto;overflow:visible}
@@ -69,12 +76,14 @@ a.ibtn{text-decoration:none;font-size:13px;font-weight:500}
 .btn-s{font-family:var(--fn);font-size:13px;font-weight:500;padding:9px 18px;background:transparent;color:var(--t);border:1px solid var(--bm);border-radius:var(--r);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,color .15s;text-decoration:none}
 .btn-s:hover{border-color:var(--pu);color:var(--pu)}
 
-/* SCRUBBER */
-.scrubber{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 40px;display:flex;align-items:center;gap:18px;max-width:1200px;margin:0 auto}
-.scrubber-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+/* STICKY SCRUBBER */
+.sticky-scrub{position:fixed;bottom:0;left:0;right:0;z-index:200;height:64px;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 40px;gap:16px;box-shadow:0 -4px 24px rgba(0,0,0,.06)}
+.ss-label{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+.ss-date{font-family:var(--fm);font-size:12px;color:var(--pu);white-space:nowrap;min-width:90px}
 input[type=range].slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--bm);border-radius:1px;cursor:pointer;outline:none}
-input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;background:var(--pu);border-radius:50%;border:2.5px solid var(--surface);box-shadow:0 0 0 1.5px var(--pu);cursor:pointer}
-.scrubber-val{font-family:var(--fm);font-size:12px;color:var(--pu);white-space:nowrap;min-width:90px;text-align:right}
+input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--pu);border-radius:50%;border:2.5px solid var(--surface);box-shadow:0 0 0 1.5px var(--pu);cursor:pointer}
+.ss-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.ss-score-badge{font-family:var(--fm);font-size:11px;padding:3px 10px;border-radius:9999px;white-space:nowrap;transition:background .3s,color .3s}
 
 /* STAT STRIP */
 .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);max-width:1200px;margin:0 auto}
@@ -103,10 +112,10 @@ input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:13p
 
 /* SHAP */
 .shap-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
-.shap-lbl{font-family:var(--fm);font-size:11px;color:var(--t2);width:100px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shap-lbl{font-family:var(--fm);font-size:11px;color:var(--t2);width:120px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .shap-track{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
 .shap-fill{height:100%;border-radius:4px;background:var(--pu);transition:width .7s ease}
-.shap-num{font-family:var(--fm);font-size:10px;color:var(--t3);width:42px;text-align:right}
+.shap-num{font-family:var(--fm);font-size:10px;color:var(--t3);width:48px;text-align:right}
 
 /* HEATMAP */
 .hmap-cell{border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;font-weight:500;cursor:default;transition:transform .15s;position:relative}
@@ -136,7 +145,7 @@ input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:13p
 .ftl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
 /* DRAWER */
-.drawer{position:fixed;top:96px;right:0;z-index:300;width:360px;height:calc(100vh - 96px);background:var(--surface);border-left:1px solid var(--border);box-shadow:-12px 0 40px rgba(0,0,0,.1);transform:translateX(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);display:flex;flex-direction:column}
+.drawer{position:fixed;top:52px;right:0;z-index:300;width:360px;height:calc(100vh - 52px - 64px);background:var(--surface);border-left:1px solid var(--border);box-shadow:-12px 0 40px rgba(0,0,0,.1);transform:translateX(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);display:flex;flex-direction:column}
 .drawer.open{transform:translateX(0)}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
 .drawer-title{font-size:13px;font-weight:600}
@@ -158,6 +167,24 @@ input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:13p
 .cev-badge{display:inline-flex;align-items:center;margin-top:7px;font-family:var(--fm);font-size:10px;padding:2px 8px;border-radius:9999px;background:var(--ps2);color:var(--ponzi)}
 .cev-badge.s{background:var(--ss);color:var(--spec)}.cev-badge.h{background:var(--hs);color:var(--hedge)}
 
+/* REPORTS: WF heatmap */
+.wf-grid{display:grid;gap:3px}
+.wf-cell{border-radius:4px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--fm);font-size:12px;font-weight:500;cursor:default;transition:transform .15s}
+.wf-cell:hover{transform:scale(1.04);z-index:2}
+.wf-head{font-family:var(--fm);font-size:9px;letter-spacing:.08em;color:var(--t3);text-align:center;padding:6px 4px}
+.wf-row-lbl{font-family:var(--fm);font-size:11px;color:var(--t2);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;text-align:right;line-height:1.3}
+
+/* REPORTS: gap timeline */
+.gap-legend{display:flex;gap:16px;font-family:var(--fm);font-size:10px;color:var(--t3);margin-top:8px}
+.gap-legend span{display:flex;align-items:center;gap:6px}
+
+/* REPORTS: regime dwell */
+.dwell-bar{height:36px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px}
+.dwell-seg{display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;font-weight:500;color:#fff;transition:width .6s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;overflow:hidden}
+
+/* REPORTS: algo table */
+.algo-badge{display:inline-block;font-family:var(--fm);font-size:9px;padding:2px 7px;border-radius:9999px;letter-spacing:.05em}
+
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:12px}
 .footer-txt{font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.7}
@@ -170,8 +197,8 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 
 /* RESPONSIVE */
 @media(max-width:1024px){.hero{grid-template-columns:1fr;min-height:auto;gap:48px;padding-top:48px}.hero-info{order:-1}.grid2,.grid3{grid-template-columns:1fr}}
-@media(max-width:900px){.nav{padding:0 20px}.nav-links{display:none}.section{padding:56px 20px}.fw .inner{padding:56px 20px}.stat-strip{grid-template-columns:1fr 1fr}.scrubber{padding:14px 20px}.mbanner{padding:0 16px}.cd-row{grid-template-columns:90px 1fr 1fr;gap:10px}}
-@media(max-width:640px){.stat-strip{grid-template-columns:1fr 1fr}.cd-row{grid-template-columns:1fr;gap:4px}.cd-name{text-align:left}.mbanner-desc,.mbanner-badge{display:none}.nav-logo-name{display:none}}
+@media(max-width:900px){.nav{padding:0 20px}.nav-links{display:none}.section{padding:56px 20px}.fw .inner{padding:56px 20px}.stat-strip{grid-template-columns:1fr 1fr}.sticky-scrub{padding:0 16px}.cd-row{grid-template-columns:90px 1fr 1fr;gap:10px}}
+@media(max-width:640px){.stat-strip{grid-template-columns:1fr 1fr}.cd-row{grid-template-columns:1fr;gap:4px}.cd-name{text-align:left}.nav-logo-name{display:none}.mseg-btn small{display:none}}
 </style>
 </head>
 <body>
@@ -187,28 +214,26 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
   <div class="nav-links">
     <a href="#clock" class="nav-a active">Clock</a>
     <a href="#timeline" class="nav-a">Timeline</a>
-    <a href="#detection" class="nav-a">Crisis Test</a>
-    <a href="#models" class="nav-a">Models</a>
+    <a href="#detection" class="nav-a">Crisis Detection</a>
+    <a href="#models" class="nav-a">Performance</a>
     <a href="#features" class="nav-a">Features</a>
     <a href="#history" class="nav-a">Archive</a>
   </div>
   <div class="nav-right">
     <span class="rpill spec" id="nav-pill">SPECULATIVE</span>
+    <!-- Model toggle -->
+    <div class="model-seg" title="Switch between the two trained models">
+      <button class="mseg-btn" id="mp-a" onclick="switchModel('model_2009')">A<small>2009–11</small></button>
+      <button class="mseg-btn on" id="mp-b" onclick="switchModel('model_2003')">B<small>2003–26</small></button>
+    </div>
     <a href="presentation.html" class="ibtn" title="Presentation mode" style="font-size:11px;padding:0 8px;width:auto">▶ Present</a>
-    <button class="ibtn" id="theme-btn" title="Toggle dark mode"><svg id="theme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+    <a href="reports.html" class="ibtn" title="Research report" style="font-size:11px;padding:0 8px;width:auto">⬇ Report</a>
+    <!-- Dark mode toggle -->
+    <label class="toggle-switch" title="Toggle dark mode" id="theme-toggle">
+      <div class="toggle-track" id="theme-track"><div class="toggle-thumb"></div></div>
+    </label>
   </div>
 </nav>
-
-<!-- MODEL BANNER -->
-<div class="mbanner">
-  <span class="mbanner-lbl">Dataset</span>
-  <div class="mtgl">
-    <button class="mtgl-btn" id="mb-a" onclick="switchModel('model_2009')">2009–2011 Original</button>
-    <button class="mtgl-btn on" id="mb-b" onclick="switchModel('model_2003')">2003–2026 Extended</button>
-  </div>
-  <span class="mbanner-desc" id="model-desc">2003–2026 · VIX, DXY, Brent, EUR/USD, TRY/USD · lag features</span>
-  <span class="mbanner-badge" id="model-badge">Default · Best performance</span>
-</div>
 
 <!-- HERO -->
 <section class="section" id="clock">
@@ -246,40 +271,37 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
     </div>
     <div class="hero-info">
       <div>
-        <p class="eyebrow">Istanbul Stock Exchange · Minsky Framework</p>
+        <p class="eyebrow">Istanbul Stock Exchange · Minsky Fragility Framework</p>
         <h1 class="hero-time"><em id="hero-em" style="color:var(--spec)">—</em><br><span id="hero-sfx">to midnight</span></h1>
       </div>
       <div class="score-block">
-        <div class="score-lbl">Fragility Score</div>
+        <div class="score-lbl">Fragility Score <span id="hero-model-badge" style="font-size:9px;letter-spacing:.06em;color:var(--pu);margin-left:6px">MODEL B</span></div>
         <div class="score-num" id="hero-score">—</div>
-        <div class="score-bar"><div class="score-bar-fill" id="score-fill" style="width:0%"></div></div>
+        <div class="score-bar" style="position:relative;overflow:visible"><div class="score-bar-fill" id="score-fill" style="width:0%"></div><div style="position:absolute;left:70%;top:-3px;bottom:-3px;width:1.5px;background:var(--ponzi);border-radius:1px;opacity:0.45" title="Ponzi threshold (70)"></div></div>
       </div>
       <div class="meta-list">
         <div class="meta-item"><div class="meta-dot" style="background:var(--pu)"></div><span>Regime: <strong id="hero-regime">—</strong></span></div>
-        <div class="meta-item"><div class="meta-dot" id="meta-dot-2" style="background:var(--spec)"></div><span id="hero-driver">Primary driver loading...</span></div>
+        <div class="meta-item"><div class="meta-dot" id="meta-dot-2" style="background:var(--spec)"></div><span id="hero-driver">Top mean-SHAP driver loading...</span></div>
         <div class="meta-item"><div class="meta-dot" style="background:var(--t3)"></div><span id="hero-model-lbl">—</span></div>
       </div>
+      <div id="hero-trajectory" style="padding:10px 14px;background:var(--alt);border:1px solid var(--border);border-radius:var(--r);font-family:var(--fm)">
+        <div style="font-size:9px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px">3-Month Trend · Not a Forecast</div>
+        <div id="trajectory-text" style="font-size:12px;color:var(--t2)">—</div>
+      </div>
       <div class="cta-row">
-        <button class="btn-p" onclick="openDrawer('clock')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>Explain this</button>
+        <button class="btn-p" onclick="openDrawer('clock')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>How to read this</button>
         <a href="#timeline" class="btn-s">Explore timeline ↓</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SCRUBBER -->
-<div class="scrubber">
-  <span class="scrubber-lbl">Scrub time</span>
-  <input type="range" class="slider" id="scrubber" min="0" max="100" value="100">
-  <span class="scrubber-val" id="scrubber-lbl">—</span>
-</div>
-
 <!-- STAT STRIP -->
 <div class="stat-strip">
-  <div class="stat"><div class="stat-lbl">Fragility Score</div><div class="stat-val pu" id="st-score">—</div><div class="stat-note" id="st-score-note">current model</div></div>
-  <div class="stat"><div class="stat-lbl">Model A Score</div><div class="stat-val" id="st-ma">—</div><div class="stat-note">2009–2011 trained</div></div>
-  <div class="stat"><div class="stat-lbl">Model B Score</div><div class="stat-val" id="st-mb">—</div><div class="stat-note">2003–2026 extended</div></div>
-  <div class="stat"><div class="stat-lbl">Score Δ (B−A)</div><div class="stat-val" id="st-delta">—</div><div class="stat-note" id="st-delta-note">B sees more fragility</div></div>
+  <div class="stat"><div class="stat-lbl">Active Score</div><div class="stat-val pu" id="st-score">—</div><div class="stat-note" id="st-score-note">selected model & month</div></div>
+  <div class="stat"><div class="stat-lbl">Baseline A <span style="font-size:8px;opacity:.7">2009–11</span></div><div class="stat-val" id="st-ma">—</div><div class="stat-note">global indices only</div></div>
+  <div class="stat"><div class="stat-lbl">Extended B <span style="font-size:8px;opacity:.7">2003–26</span></div><div class="stat-val" id="st-mb">—</div><div class="stat-note">Turkey-aware features</div></div>
+  <div class="stat"><div class="stat-lbl">Model Gap (B−A)</div><div class="stat-val" id="st-delta">—</div><div class="stat-note" id="st-delta-note">how far apart the models read</div></div>
 </div>
 
 <!-- REGIME TIMELINE -->
@@ -292,11 +314,11 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
         <div style="display:flex;gap:16px;font-family:var(--fm);font-size:10px;letter-spacing:.05em">
-          <span style="color:var(--hedge)">● Hedge (&lt;40)</span>
-          <span style="color:var(--spec)">● Speculative (40–70)</span>
-          <span style="color:var(--ponzi)">● Ponzi (≥70)</span>
+          <span style="color:var(--hedge)">● Hedge &lt;40</span>
+          <span style="color:var(--spec)">● Speculative 40–70</span>
+          <span style="color:var(--ponzi)">● Ponzi ≥70</span>
         </div>
-        <div style="font-family:var(--fm);font-size:9px;color:var(--t3)">Click chart to scrub · dashed lines = regime thresholds</div>
+        <div style="font-family:var(--fm);font-size:9px;color:var(--t3)">Click chart to navigate · dashes = regime thresholds · drag scrubber at bottom</div>
         <button class="btn-x" onclick="openDrawer('timeline')">? Plain English</button>
       </div>
     </div>
@@ -309,39 +331,39 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 
 <!-- CRISIS DETECTION -->
 <section id="detection" class="section">
-  <p class="eyebrow">The Core Question</p>
-  <h2 class="sh">Which model detected<br><em>Turkey's crises?</em></h2>
-  <p class="sub" style="margin-bottom:32px">Model A trained on 2009–2011 (global recovery). Model B trained on 2003–2026 (includes TRY collapse). Dashed line = PONZI threshold (70). The 2018 and 2021 crises are the decisive test.</p>
+  <p class="eyebrow">Model Comparison</p>
+  <h2 class="sh">Which model flagged<br><em>Turkey's crises?</em></h2>
+  <p class="sub" style="margin-bottom:32px">Model A is the global-only baseline trained on 2009–2011 data. Model B extends the feature set across a full 23-year window with Turkey-specific indicators. The meaningful question is not just whether either crosses 70 — it's whether Model B sustains a materially stronger signal during domestic stress, especially late 2021.</p>
   <div class="card">
     <div class="card-head">
-      <div><div class="card-title">Crisis Detection — Model A vs Model B · Real Fragility Scores</div><div class="card-sub">Higher score = stronger crisis signal. Threshold = 70.</div></div>
+      <div><div class="card-title">Crisis Episodes — Baseline A vs Extended B</div><div class="card-sub">Score height = stress signal strength. The gap between bars is the key evidence.</div></div>
       <button class="btn-x" onclick="openDrawer('detection')">? Explain</button>
     </div>
     <div class="card-body">
       <div style="display:grid;grid-template-columns:130px 1fr 1fr;gap:16px;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--border)">
         <div></div>
-        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">Model A · 2009–2011</div>
-        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--pu)">Model B · 2003–2026</div>
+        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">Model A · Baseline 2009–11</div>
+        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--pu)">Model B · Extended 2003–26</div>
       </div>
       <div id="crisis-detect-chart"></div>
       <div style="margin-top:16px;padding:14px 16px;background:var(--ps);border:1px solid var(--pd);border-radius:var(--rl);font-size:13px;color:var(--t2)">
         <span style="font-family:var(--fm);font-size:9px;color:var(--pu);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:5px">Key Finding</span>
-        At the 2018 TRY Crisis, global VIX was only 12.5 (markets were calm). Model A saw calm global markets and scored 24.0 (HEDGE). Model B saw 12 months of lira collapse (try_usd: 0.285→0.172) and scored 40.5 (SPECULATIVE). The mechanism difference — not just the magnitude — is what separates the models.
+        The clearest contrast is <strong style="color:var(--t)">November 2021</strong>: Model A reads 33.5 while Model B reads 53.0 — a <strong style="color:var(--pu)">+19.4 point gap</strong> during a period of Turkey-specific stress but global calm. 2020 is the threshold-crossing case; 2018 is better read as an early warning divergence than a binary win/loss.
       </div>
     </div>
   </div>
 </section>
 
-<!-- MODEL LAB -->
+<!-- MODEL PERFORMANCE -->
 <section id="models" class="fw" style="background:var(--surface)">
   <div class="inner">
-    <p class="eyebrow">Model Laboratory</p>
-    <h2 class="sh" style="margin-bottom:8px">Performance &amp; explainability</h2>
-    <p class="sub" style="margin-bottom:32px">Three-model comparison per walk-forward split. SHAP shows which features drive each model's fragility predictions.</p>
+    <p class="eyebrow">Model Performance</p>
+    <h2 class="sh" style="margin-bottom:8px">Walk-forward accuracy<br><em>&amp; feature importance</em></h2>
+    <p class="sub" style="margin-bottom:32px">Walk-forward scores show where prediction breaks down under structural change. SHAP values here reflect global feature importance across the full dataset — not a claim about what drove any single month.</p>
     <div class="grid2" style="margin-bottom:20px">
       <div class="card">
         <div class="card-head">
-          <div><div class="card-title">Walk-Forward Performance</div><div class="card-sub" id="perf-sub">Active: 2003–2026 extended</div></div>
+          <div><div class="card-title">Walk-Forward Performance</div><div class="card-sub" id="perf-sub">Active: Extended 2003–2026</div></div>
           <button class="btn-x" onclick="openDrawer('perf')">? Explain</button>
         </div>
         <div class="card-body" style="padding:0">
@@ -353,24 +375,23 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
       </div>
       <div class="card">
         <div class="card-head">
-          <div><div class="card-title">SHAP Feature Importance</div><div class="card-sub" id="shap-sub">Active model · mean |SHAP|</div></div>
+          <div><div class="card-title">SHAP Feature Importance</div><div class="card-sub" id="shap-sub">Active model · mean |SHAP| across all months</div></div>
           <button class="btn-x" onclick="openDrawer('shap')">? Explain</button>
         </div>
         <div class="card-body" id="shap-body"></div>
       </div>
     </div>
-    <!-- Regime Transition Matrix -->
     <div class="grid2">
       <div class="card">
         <div class="card-head">
-          <div><div class="card-title">Regime Transition Matrix</div><div class="card-sub">Empirical Markov chain from monthly score sequence</div></div>
+          <div><div class="card-title">Regime Transition Probabilities</div><div class="card-sub">Empirical month-to-month transition rates (Markov chain)</div></div>
           <button class="btn-x" onclick="openDrawer('markov')">? Explain</button>
         </div>
         <div class="card-body" id="regime-matrix-body"></div>
       </div>
       <div class="card">
         <div class="card-head">
-          <div><div class="card-title">Score Distribution by Model</div><div class="card-sub">Full 2003–2026 range · Model A vs Model B</div></div>
+          <div><div class="card-title">Score Distribution by Model</div><div class="card-sub">Full 2003–2026 range · where each model spends its time</div></div>
         </div>
         <div class="card-body" style="padding:0">
           <svg id="dist-svg" width="100%" height="200" viewBox="0 0 540 200" preserveAspectRatio="none" style="display:block;"></svg>
@@ -384,10 +405,10 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 <section id="features" class="section">
   <p class="eyebrow">Feature Analysis</p>
   <h2 class="sh" style="margin-bottom:8px">What Model B sees<br><em>that Model A cannot</em></h2>
-  <p class="sub" style="margin-bottom:32px">VIX, DXY, Brent, EUR/USD, TRY/USD and their lags over time. These features are available in Model B only. The 2018 TRY story is written in TRY/USD — not in global indices.</p>
+  <p class="sub" style="margin-bottom:32px">VIX, DXY, Brent and TRY/USD help explain why the extended model stays more elevated during Turkey-specific episodes. The strongest separation between the two models appears in 2021, not just at the 2018 shock peak.</p>
   <div class="card" style="margin-bottom:20px">
     <div class="card-head">
-      <div><div class="card-title">Turkey-Specific Features Over Time (Model B)</div><div class="card-sub">Monthly values from extended dataset · click legend to toggle</div></div>
+      <div><div class="card-title">Turkey-Specific Features Over Time (Model B only)</div><div class="card-sub">Monthly values, each feature independently scaled · click legend to show/hide</div></div>
       <button class="btn-x" onclick="openDrawer('features')">? Explain</button>
     </div>
     <div class="card-body">
@@ -395,26 +416,85 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
       <svg id="ftl-svg" width="100%" height="220" viewBox="0 0 1120 220" preserveAspectRatio="none" style="display:block;"></svg>
     </div>
   </div>
-  <!-- Correlations heatmap (Model A) -->
   <div class="card">
     <div class="card-head">
-      <div><div class="card-title">ISE vs Global Indices — Rolling Correlation</div><div class="card-sub" id="hmap-date">60-day Pearson · scrub timeline to update</div></div>
+      <div><div class="card-title">ISE vs Global Indices — Rolling Correlation</div><div class="card-sub" id="hmap-date">60-day Pearson correlation · scrub timeline to update</div></div>
       <button class="btn-x" onclick="openDrawer('heatmap')">? Explain</button>
     </div>
     <div class="card-body" id="hmap-body"></div>
   </div>
 </section>
 
-<!-- HISTORY -->
-<section id="history" class="fw" style="background:var(--surface)">
-  <div class="inner" style="display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start">
+<!-- REPORTS (NEW) -->
+<section id="reports" class="fw" style="background:var(--surface)">
+  <div class="inner">
+    <p class="eyebrow">Reports</p>
+    <h2 class="sh" style="margin-bottom:8px">Diagnostic deep-dive<br><em>across all algorithms</em></h2>
+    <p class="sub" style="margin-bottom:36px">A full cross-section of walk-forward R² for every algorithm and crisis period, the month-by-month gap between models, regime dwell-time, and algorithm performance comparison.</p>
+
+    <!-- Walk-forward R² heatmap -->
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-head">
+        <div><div class="card-title">Walk-Forward R² — All Algorithms × All Crisis Splits</div><div class="card-sub">Green = strong predictive fit · Red = structural break (R² &lt; 0) · Hover for value</div></div>
+        <div style="display:flex;gap:6px">
+          <button class="btn-x" id="wf-btn-a" onclick="setWFModel('model_2009')">Model A</button>
+          <button class="btn-x" id="wf-btn-b" onclick="setWFModel('model_2003')" style="background:var(--pu);color:#fff;border-color:var(--pu)">Model B</button>
+        </div>
+      </div>
+      <div class="card-body" id="wf-heatmap-body"></div>
+    </div>
+
+    <!-- Gap timeline + regime dwell side by side -->
+    <div class="grid2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Model B − Model A Score Gap</div><div class="card-sub">Monthly divergence · positive = B reads more fragile</div></div>
+          <button class="btn-x" onclick="openDrawer('gap')">? Explain</button>
+        </div>
+        <div class="card-body" style="padding:0">
+          <svg id="gap-svg" width="100%" height="200" viewBox="0 0 540 200" preserveAspectRatio="none" style="display:block;"></svg>
+        </div>
+        <div class="gap-legend" style="padding:0 16px 14px">
+          <span><span style="display:inline-block;width:10px;height:2px;background:var(--pu);border-radius:1px"></span> B above A</span>
+          <span><span style="display:inline-block;width:10px;height:2px;background:var(--ponzi);border-radius:1px"></span> B below A</span>
+          <span style="color:var(--t3)">Dashes = crisis events</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Time Spent in Each Regime</div><div class="card-sub">% of months in Hedge / Speculative / Ponzi — full coverage period</div></div>
+        </div>
+        <div class="card-body" id="dwell-body"></div>
+      </div>
+    </div>
+
+    <!-- Algorithm comparison table -->
+    <div class="card">
+      <div class="card-head">
+        <div><div class="card-title">Algorithm Comparison — Overall In-Sample Performance</div><div class="card-sub">OLS · Elastic Net · Lasso · Random Forest — both models side by side</div></div>
+        <button class="btn-x" onclick="openDrawer('algos')">? Explain</button>
+      </div>
+      <div class="card-body" style="padding:0">
+        <table class="tbl" id="algo-tbl">
+          <thead><tr><th>Algorithm</th><th colspan="3" style="color:var(--t3)">Model A · Baseline</th><th colspan="3" style="color:var(--pu)">Model B · Extended</th></tr>
+          <tr><th></th><th>R²</th><th>RMSE</th><th>MAE</th><th>R²</th><th>RMSE</th><th>MAE</th></tr></thead>
+          <tbody id="algo-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS ARCHIVE -->
+<section id="history" class="section">
+  <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start">
     <div>
       <p class="eyebrow">Crisis Archive</p>
-      <h2 class="sh">Historical analogues<br><em>&amp; fragility signals</em></h2>
-      <p class="sub" style="margin-top:16px">Key crisis episodes annotated with real fragility scores from both models. The contrast between Model A and Model B scores at each crisis date is the empirical core of the submission.</p>
+      <h2 class="sh">Key episodes<br><em>&amp; what the models saw</em></h2>
+      <p class="sub" style="margin-top:16px">Four annotated crisis episodes with real fragility scores from both models. The story is the changing gap between A and B across different crisis mechanisms — not a single headline date.</p>
       <div style="margin-top:24px;padding:16px 18px;background:var(--ps);border:1px solid var(--pd);border-radius:var(--rl)">
-        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--pu);margin-bottom:6px;text-transform:uppercase">Academic Narrative</div>
-        <div style="font-size:13px;line-height:1.7;color:var(--t2)">Model A was trained on a global crisis. It learned to read contagion through global index co-movement. When a Turkey-specific crisis struck in 2018 with global markets calm (VIX=12.5), Model A saw nothing. Model B saw 12 months of lira collapse in its TRY/USD lag features.</div>
+        <div style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--pu);margin-bottom:6px;text-transform:uppercase">Academic Framing</div>
+        <div style="font-size:13px;line-height:1.7;color:var(--t2)">Model A remains useful as the global-contagion baseline. It underreacts when fragility is driven by Turkey-specific conditions. Model B does not "solve" every month — it is more useful because it stays persistently higher when local stress decouples from calm global markets.</div>
       </div>
     </div>
     <div class="cline" id="crisis-archive"></div>
@@ -422,9 +502,19 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 </section>
 
 <footer>
-  <div class="footer-txt">Financial Fragility Clock · Group 5 · MSc FinTech · University of Birmingham<br>Minsky (1992) · OLS + Elastic Net + Random Forest · ISE 2003–2026 · April 2026</div>
+  <div class="footer-txt">Financial Fragility Clock · Group 5 · MSc FinTech · University of Birmingham<br>Minsky (1992) · OLS + Elastic Net + Lasso + Random Forest · ISE 2003–2026 · April 2026</div>
   <span class="rpill spec" id="footer-pill">SPECULATIVE REGIME</span>
 </footer>
+
+<!-- STICKY SCRUBBER -->
+<div class="sticky-scrub">
+  <span class="ss-label">Navigate</span>
+  <span class="ss-date" id="scrubber-lbl">—</span>
+  <input type="range" class="slider" id="scrubber" min="0" max="100" value="100">
+  <div class="ss-right">
+    <span class="ss-score-badge spec" id="ss-badge">— / 100</span>
+  </div>
+</div>
 
 <!-- DRAWER -->
 <div class="drawer" id="drawer">
@@ -433,54 +523,77 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 </div>
 
 <script>
-// ── TWEAK DEFAULTS ──────────────────────────────────────────────────────────
+// ── TWEAK DEFAULTS ───────────────────────────────────────────────────────────
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "darkMode": false
 }/*EDITMODE-END*/;
 
-// ── CONSTANTS ───────────────────────────────────────────────────────────────
+// ── CONSTANTS ────────────────────────────────────────────────────────────────
 const CX=190, CY=195, R_OUT=172;
 const REGIME_COLS = {HEDGE:'#149e61', SPECULATIVE:'#d97706', PONZI:'#dc2626'};
-const REGIME_CLASS = {HEDGE:'hedge', SPECULATIVE:'spec', PONZI:'ponzi'};
 
-// ── STATE ───────────────────────────────────────────────────────────────────
+// ── STATE ────────────────────────────────────────────────────────────────────
 let DATA = null;
 let currentModel = 'model_2003';
 let currentIdx = 0;
 let darkMode = TWEAK_DEFAULTS.darkMode;
 let secondAngle = 0;
 let hiddenFeatures = new Set();
+let wfModel = 'model_2003';
 
-// ── DATA ACCESS ──────────────────────────────────────────────────────────────
+// ── DATA ACCESS ───────────────────────────────────────────────────────────────
 const getScores    = () => DATA?.models[currentModel]?.monthly_scores || [];
 const getScore     = i  => getScores()[i]?.fragility_score ?? 0;
-const getRegime    = i  => getScores()[i]?.regime ?? 'HEDGE';
 const getDate      = i  => getScores()[i]?.date ?? '';
-const getCorrs     = i  => getScores()[i]?.correlations ?? {};
-const getFeats     = i  => getScores()[i]?.features ?? {};
 const getShap      = () => DATA?.models[currentModel]?.shap_values ?? {};
 const getWF        = () => DATA?.models[currentModel]?.walk_forward ?? [];
-const getPerf      = () => DATA?.models[currentModel]?.performance ?? {};
+const monthKey     = d  => (d || '').slice(0,7);
+const monthNum     = d  => {
+  const [y,m] = monthKey(d).split('-').map(Number);
+  if (!y || !m) return null;
+  return y * 12 + (m - 1);
+};
 
 function getScoreByDate(model, dateStr) {
   const s = DATA?.models[model]?.monthly_scores;
   if (!s) return null;
-  const row = s.find(r => r.date.startsWith(dateStr));
+  const key = monthKey(dateStr);
+  const row = s.find(r => monthKey(r.date) === key);
   return row ? row.fragility_score : null;
 }
+function getRowByDate(model, dateStr) {
+  const s = DATA?.models[model]?.monthly_scores;
+  if (!s) return null;
+  const key = monthKey(dateStr);
+  return s.find(r => monthKey(r.date) === key) || null;
+}
 
-// ── HELPERS ──────────────────────────────────────────────────────────────────
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const regimeFromScore = s => s>=70?'PONZI':s>=40?'SPECULATIVE':'HEDGE';
 const regCol = s => s>=70?'#dc2626':s>=40?'#d97706':'#149e61';
 const regLabel = s => s>=70?'Ponzi Finance':s>=40?'Speculative Finance':'Hedge Finance';
 const regClass = s => s>=70?'ponzi':s>=40?'spec':'hedge';
-const fmtDate = d => { if(!d) return '—'; const p=d.split('-'); return p[0]+'-'+(p[1]||''); };
-const fmtDateLong = d => { if(!d) return '—'; const dt=new Date(d); return dt.toLocaleDateString('en-US',{year:'numeric',month:'short'}); };
+const fmtDateLong = d => {
+  const key = monthKey(d);
+  if(!key) return '—';
+  const [y,m] = key.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, (m || 1) - 1, 1));
+  return dt.toLocaleDateString('en-US',{year:'numeric',month:'short', timeZone:'UTC'});
+};
+const prettyFeature = key => ({
+  VIX_lag1m:'VIX lag 1m', VIX_lag3m:'VIX lag 3m', VIX_lag6m:'VIX lag 6m',
+  USDTRY_lag1m:'USDTRY lag 1m', USDTRY_lag3m:'USDTRY lag 3m',
+  usdtry_vol:'USDTRY volatility', rolling_vol:'Rolling volatility',
+  rf_prediction_error:'RF prediction error', mean_corr:'Mean correlation',
+  pe_inv:'Inverse entropy', pe:'Perm. entropy', eigenvalue_ratio:'Eigenvalue ratio',
+  BRENT_lag3m:'Brent lag 3m', DXY_lag1m:'DXY lag 1m', DXY_lag12m:'DXY lag 12m',
+}[key] || key);
 
 function polar(cx,cy,r,deg){const rad=(deg-90)*Math.PI/180;return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}}
 function scoreToTime(s){
-  if(s>=70){const m=Math.round((s-70)/30*120);return{h:Math.floor(m/60),m:m%60,past:true}}
+  if(s>=70){const m=Math.round((s-70)/30*120);return{h:Math.floor(m/60),m:m%60}}
   const m2=Math.round((1-s/100)*120),tot=24*60-m2;
-  return{h:Math.floor(tot/60)%12||12,m:tot%60,past:false}
+  return{h:Math.floor(tot/60)%12||12,m:tot%60}
 }
 function timeToAngle(h,m,isH){return isH?((h%12)+m/60)*30:m*6}
 function timeDisplay(s){
@@ -490,14 +603,18 @@ function timeDisplay(s){
   return{em:`${Math.max(1,mins)} min`,sfx:'to midnight'}
 }
 
-// ── LOAD DATA ────────────────────────────────────────────────────────────────
+// ── LOAD DATA ─────────────────────────────────────────────────────────────────
 async function loadData() {
   try {
     const res = await fetch('./data/fragility_output.json');
     if (!res.ok) throw new Error('not found');
     DATA = await res.json();
   } catch(e) {
-    DATA = getMockData();
+    try {
+      const res2 = await fetch('./uploads/fragility_output-31cd57fd.json');
+      if (!res2.ok) throw new Error('not found');
+      DATA = await res2.json();
+    } catch(e2) { DATA = getMockData(); }
   }
   initAll();
 }
@@ -510,29 +627,26 @@ function getMockData() {
     const s=30+20*Math.sin(i/12)+10*Math.sin(i/4)+5*(yr>=2018?1:0);
     const sc=Math.min(85,Math.max(10,s));
     scores.push({date:d,fragility_score:sc,regime:sc>=70?'PONZI':sc>=40?'SPECULATIVE':'HEDGE',
-      components:{rolling_correlation_60d:.5,permutation_entropy_inv:.4,rolling_volatility_30d:.3,rf_prediction_error:.1},
       correlations:{sp500:.6,dax:.55,ftse:.5,nikkei:.3,bovespa:.45,eu:.58,em:.65},
-      features:{vix:15+5*Math.sin(i/6),dxy:95+3*Math.sin(i/8),brent:70+15*Math.sin(i/5),try_usd:0.2-0.001*i,eur_usd:1.1}
+      features:{vix:15+5*Math.sin(i/6),dxy:95+3*Math.sin(i/8),brent:70+15*Math.sin(i/5),try_usd:0.2-0.001*i}
     });
   }
-  const shap_a={mean_corr:.003,pe_inv:.002,rolling_volatility:.0025,rf_prediction_error:0};
-  const shap_b={SP500:67.8,BIST100:32.5,EM:16.2,DAX:14.3,VIX:8.9,eigenvalue_ratio:7.2,rolling_volatility:6.8,SHANGHAI:5.5};
   return {version:'mock',models:{
-    model_2009:{meta:{label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:shap_a,walk_forward:[],performance:{ols:{r2:.93,rmse:15.4,mae:12.3}}},
-    model_2003:{meta:{label:'2003–2026 Extended'},monthly_scores:scores,shap_values:shap_b,walk_forward:[],performance:{ols:{r2:-.06,rmse:.022,mae:.015}}}
+    model_2009:{meta:{id:'model_2009',label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:{EM:.027,SP500:.019,FTSE:.015,NIKKEI:.011,EU:.010,BOVESPA:.009,DAX:.001},walk_forward:[],performance:{ols:{r2:.04,rmse:.098,mae:.08},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.064,rmse:.097,mae:.077},random_forest:{r2:.137,rmse:.093,mae:.074}}},
+    model_2003:{meta:{id:'model_2003',label:'2003–2026 Extended'},monthly_scores:scores,shap_values:{EM:.018,BOVESPA:.008,FTSE:.004,VIX_lag1m:.004,SP500:.004,usdtry_vol:.003,EU:.003,DAX:.003,rolling_vol:.002,USDTRY_lag1m:.001},walk_forward:[],performance:{ols:{r2:.094,rmse:.095,mae:.076},elastic_net:{r2:.090,rmse:.095,mae:.075},lasso:{r2:.095,rmse:.095,mae:.075},random_forest:{r2:.137,rmse:.093,mae:.074}}}
   }};
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 function initAll() {
-  // Set scrubber max
   const len = getScores().length;
   const scrub = document.getElementById('scrubber');
   scrub.max = len-1;
-  scrub.value = len-1;
-  currentIdx = len-1;
-  
-  // Draw static elements
+  const apr2020 = getScores().findIndex(s => s.date.startsWith('2020-04'));
+  const defaultIdx = apr2020 >= 0 ? apr2020 : len-1;
+  scrub.value = defaultIdx;
+  currentIdx = defaultIdx;
+
   drawTicks();
   drawRegimeArcs();
   drawTimeline();
@@ -543,22 +657,13 @@ function initAll() {
   renderDistribution();
   renderFeatureTimeline();
   renderCrisisArchive();
-  
-  // Update dynamic elements
+  renderReports();
   updateAll(currentIdx);
-  
-  // Hide loading
-  const ov = document.getElementById('loading');
-  ov.classList.add('hide');
-  setTimeout(()=>ov.style.display='none', 500);
-  
-  // Event listeners
-  scrub.addEventListener('input', () => {
-    currentIdx = parseInt(scrub.value);
-    updateAll(currentIdx);
-  });
-  
-  // Apply theme
+
+  document.getElementById('loading').classList.add('hide');
+  setTimeout(()=>document.getElementById('loading').style.display='none', 500);
+
+  scrub.addEventListener('input', () => { currentIdx=parseInt(scrub.value); updateAll(currentIdx); });
   applyTheme();
 }
 
@@ -566,12 +671,14 @@ function initAll() {
 function updateAll(idx) {
   currentIdx = idx;
   const s = getScore(idx);
-  const r = getRegime(idx);
   const d = getDate(idx);
   const col = regCol(s);
   const rc = regClass(s);
   const {em, sfx} = timeDisplay(s);
-  
+  const dateKey = monthKey(d);
+  const sa = getScoreByDate('model_2009', dateKey);
+  const sb = getScoreByDate('model_2003', dateKey);
+
   // Hero
   const he = document.getElementById('hero-em');
   if(he){he.textContent=em;he.style.color=col;}
@@ -581,73 +688,87 @@ function updateAll(idx) {
   document.getElementById('score-fill').style.width=`${s}%`;
   document.getElementById('score-fill').style.background=col;
   document.getElementById('hero-regime').textContent=regLabel(s);
-  
-  // Model label
+  document.getElementById('hero-model-badge').textContent=currentModel==='model_2003'?'MODEL B':'MODEL A';
+
   const ml = currentModel==='model_2003'
-    ? 'Random Forest + Elastic Net · 2003–2026 extended'
-    : 'Random Forest + OLS · 2009–2011 original';
+    ? 'Extended features · 23-year training window'
+    : 'Global-only baseline · 2009–2011 training window';
   document.getElementById('hero-model-lbl').textContent=ml;
-  
-  // Driver from SHAP
+
   const shap = getShap();
   const top = Object.entries(shap).sort((a,b)=>b[1]-a[1])[0];
   if(top){
-    document.getElementById('hero-driver').innerHTML=`Primary driver: <strong>${top[0]}</strong>`;
+    document.getElementById('hero-driver').innerHTML=`Top SHAP driver: <strong>${prettyFeature(top[0])}</strong>`;
     document.getElementById('meta-dot-2').style.background=col;
   }
-  
-  // Regime pills
+
   ['nav-pill','footer-pill'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(!el) return;
+    const el=document.getElementById(id);if(!el)return;
     el.className=`rpill ${rc}`;
-    el.textContent=r+(id==='footer-pill'?' REGIME':'');
+    el.textContent=regimeFromScore(s)+(id==='footer-pill'?' REGIME':'');
   });
-  
-  // Scrubber label
+
+  // Sticky scrubber
   document.getElementById('scrubber-lbl').textContent=fmtDateLong(d);
   document.getElementById('scrubber').value=idx;
-  
-  // Stat strip — show BOTH models at this date
-  const sa = DATA?.models?.model_2009?.monthly_scores?.[Math.min(idx, (DATA?.models?.model_2009?.monthly_scores?.length||1)-1)]?.fragility_score;
-  const sb = DATA?.models?.model_2003?.monthly_scores?.[Math.min(idx, (DATA?.models?.model_2003?.monthly_scores?.length||1)-1)]?.fragility_score;
+  const badge=document.getElementById('ss-badge');
+  badge.textContent=`${s.toFixed(1)} / 100`;
+  badge.className=`ss-score-badge rpill ${rc}`;
+
+  // Stat strip
+  document.getElementById('st-score').textContent=s.toFixed(1);
+  document.getElementById('st-score').className='stat-val '+rc;
+  document.getElementById('st-score-note').textContent=`${currentModel==='model_2003'?'Extended B':'Baseline A'} · ${fmtDateLong(d)}`;
+  if(sa!=null){document.getElementById('st-ma').textContent=sa.toFixed(1);document.getElementById('st-ma').className='stat-val '+regClass(sa);}
+  else{document.getElementById('st-ma').textContent='—';document.getElementById('st-ma').className='stat-val';}
+  if(sb!=null){document.getElementById('st-mb').textContent=sb.toFixed(1);document.getElementById('st-mb').className='stat-val '+regClass(sb);}
+  else{document.getElementById('st-mb').textContent='—';document.getElementById('st-mb').className='stat-val';}
   if(sa!=null && sb!=null){
     const delta=sb-sa;
-    document.getElementById('st-score').textContent=s.toFixed(1);
-    document.getElementById('st-score').className='stat-val '+rc;
-    document.getElementById('st-ma').textContent=sa.toFixed(1);
-    document.getElementById('st-ma').className='stat-val '+(sa>=70?'dn':sa>=40?'':'up');
-    document.getElementById('st-mb').textContent=sb.toFixed(1);
-    document.getElementById('st-mb').className='stat-val '+(sb>=70?'dn':sb>=40?'':'up');
     document.getElementById('st-delta').textContent=(delta>=0?'+':'')+delta.toFixed(1);
-    document.getElementById('st-delta').className='stat-val '+(delta>3?'dn':'up');
-    document.getElementById('st-delta-note').textContent=delta>3?'B sees more fragility':'Models agree';
+    document.getElementById('st-delta').className='stat-val '+(delta>=10?'dn':delta>=3?'pu':'up');
+    document.getElementById('st-delta-note').textContent=delta>=10?'Strong divergence — B far more elevated':delta>=3?'B consistently reads higher':'Models broadly aligned this month';
+  } else {
+    document.getElementById('st-delta').textContent='—';
+    document.getElementById('st-delta').className='stat-val';
+    document.getElementById('st-delta-note').textContent='Shared coverage begins Apr 2007';
   }
-  
-  // Clock face labels
-  const fd=document.getElementById('face-date');
-  if(fd) fd.textContent=fmtDateLong(d).toUpperCase();
-  const fs=document.getElementById('face-score');
-  if(fs){fs.textContent=`${s.toFixed(1)} / 100`;fs.setAttribute('fill',col);}
-  
-  // Clock glow
-  const glow=document.getElementById('clock-glow');
-  if(glow) glow.style.background=`radial-gradient(circle,${col}1a 0%,transparent 68%)`;
+
+  // Clock face
+  const fd=document.getElementById('face-date');if(fd)fd.textContent=fmtDateLong(d).toUpperCase();
+  const fs=document.getElementById('face-score');if(fs){fs.textContent=`${s.toFixed(1)} / 100`;fs.setAttribute('fill',col);}
+  const glow=document.getElementById('clock-glow');if(glow)glow.style.background=`radial-gradient(circle,${col}1a 0%,transparent 68%)`;
   document.getElementById('grad-stop')?.setAttribute('stop-color',col);
-  const cl=document.getElementById('crash-lbl');
-  if(cl) cl.setAttribute('fill',s>75?'rgba(220,38,38,0.8)':'rgba(220,38,38,0.3)');
-  
-  // Update clock hands
+  const cl=document.getElementById('crash-lbl');if(cl)cl.setAttribute('fill',s>75?'rgba(220,38,38,0.8)':'rgba(220,38,38,0.3)');
   updateClock(s);
-  
-  // Update heatmap
+  updateTrajectory(idx);
   updateHeatmap(idx, d);
-  
-  // Update timeline scrubber line
   updateTimelineLine(idx);
 }
 
-// ── CLOCK ──────────────────────────────────────────────────────────────────────
+// ── TRAJECTORY ───────────────────────────────────────────────────────────────
+function updateTrajectory(idx) {
+  const el = document.getElementById('trajectory-text');
+  if (!el) return;
+  const scores = getScores();
+  if (idx < 3) { el.textContent = 'Not enough history for trend'; el.style.color = 'var(--t3)'; return; }
+  const s = scores[idx].fragility_score;
+  if (s >= 70) { el.textContent = 'Ponzi regime — threshold already crossed'; el.style.color = 'var(--ponzi)'; return; }
+  const window4 = [scores[idx-3], scores[idx-2], scores[idx-1], scores[idx]].map(r => r.fragility_score);
+  const changes = window4.slice(1).map((v, i) => v - window4[i]);
+  const slope = changes.reduce((a, b) => a + b, 0) / changes.length;
+  if (slope <= 0) {
+    el.textContent = `Score ${slope < -0.5 ? 'declining' : 'stable'} — no threshold crossing projected`;
+    el.style.color = 'var(--hedge)'; return;
+  }
+  const months = Math.ceil((70 - s) / slope);
+  if (months > 120) { el.textContent = 'No near-term Ponzi crossing at current rate'; el.style.color = 'var(--t3)'; return; }
+  const urgency = months <= 6 ? 'var(--ponzi)' : months <= 18 ? 'var(--spec)' : 'var(--t3)';
+  el.textContent = `At this rate: Ponzi threshold in ~${months} month${months === 1 ? '' : 's'}`;
+  el.style.color = urgency;
+}
+
+// ── CLOCK ─────────────────────────────────────────────────────────────────────
 function drawTicks(){
   const g=document.getElementById('ticks');
   for(let i=0;i<60;i++){
@@ -662,26 +783,22 @@ function drawTicks(){
     g.appendChild(ln);
   }
 }
-
 function drawRegimeArcs(){
-  const g=document.getElementById('regime-arcs');
-  const R=R_OUT+10;
+  const g=document.getElementById('regime-arcs');const R=R_OUT+10;
   [{s:220,e:340,col:'#149e61'},{s:340,e:358,col:'#d97706'},{s:0,e:60,col:'#dc2626'}].forEach(a=>{
     const path=document.createElementNS('http://www.w3.org/2000/svg','path');
     const st=polar(CX,CY,R,a.s),en=polar(CX,CY,R,a.e);
     const large=a.e-a.s>180?1:0;
     path.setAttribute('d',`M${st.x},${st.y} A${R},${R} 0 ${large},1 ${en.x},${en.y}`);
     path.setAttribute('fill','none');path.setAttribute('stroke',a.col);
-    path.setAttribute('stroke-width','3');path.setAttribute('opacity','0.4');
-    path.setAttribute('stroke-linecap','round');
+    path.setAttribute('stroke-width','3');path.setAttribute('opacity','0.4');path.setAttribute('stroke-linecap','round');
     g.appendChild(path);
   });
 }
-
 function updateClock(s){
   const col=regCol(s);
   const{h,m}=scoreToTime(s);
-  const hA=timeToAngle(h,m,true), mA=timeToAngle(h,m,false);
+  const hA=timeToAngle(h,m,true),mA=timeToAngle(h,m,false);
   function hp(angle,rT,rB){return{tip:polar(CX,CY,rT,angle),base:polar(CX,CY,rB,angle+180)}}
   const{tip:mT,base:mB}=hp(mA,120,18);
   const{tip:hT,base:hB}=hp(hA,84,16);
@@ -691,39 +808,28 @@ function updateClock(s){
   ['minute-hand','hour-hand'].forEach(id=>{const el=document.getElementById(id);if(el)el.setAttribute('stroke',col);});
   document.getElementById('pivot')?.setAttribute('fill',col);
 }
-
 setInterval(()=>{secondAngle=(secondAngle+6)%360;updateClock(getScore(currentIdx));},1000);
 
-// ── TIMELINE ─────────────────────────────────────────────────────────────────
-let tlScrubberX = 0;
+// ── TIMELINE ──────────────────────────────────────────────────────────────────
 function drawTimeline(){
   const svg=document.getElementById('timeline-svg');
   const W=1120,H=260,P={t:20,b:32,l:44,r:20};
   const cW=W-P.l-P.r,cH=H-P.t-P.b;
   const scores=getScores();
   if(!scores.length){svg.innerHTML='';return;}
-  
-  const pts=scores.map((s,i)=>({
-    x:P.l+(i/(scores.length-1))*cW,
-    y:P.t+cH-(s.fragility_score/100)*cH,
-    s:s.fragility_score, r:s.regime, i
-  }));
-  
+  const firstMonth=monthNum(scores[0].date);
+  const lastMonth=monthNum(scores[scores.length-1].date);
+  const span=Math.max(1,(lastMonth??0)-(firstMonth??0));
+  const xForDate=d=>P.l+(((monthNum(d)??firstMonth)-firstMonth)/span)*cW;
+  const pts=scores.map((s,i)=>({x:xForDate(s.date),y:P.t+cH-(s.fragility_score/100)*cH,s:s.fragility_score,r:regimeFromScore(s.fragility_score),i}));
   let html=`<defs><clipPath id="tcc"><rect x="${P.l}" y="${P.t}" width="${cW}" height="${cH}"/></clipPath></defs>`;
-  
-  // Grid + threshold lines
   [0,40,70,100].forEach(v=>{
-    const y=P.t+cH-(v/100)*cH;
-    const isDash=v===40||v===70;
+    const y=P.t+cH-(v/100)*cH;const isDash=v===40||v===70;
     html+=`<line x1="${P.l}" y1="${y}" x2="${W-P.r}" y2="${y}" stroke="var(--border)" stroke-width="${isDash?1.5:.7}" stroke-dasharray="${isDash?'6,4':''}"/>`;
     html+=`<text x="38" y="${y+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v}</text>`;
   });
-  
-  // Threshold labels
   html+=`<text x="${P.l+6}" y="${P.t+cH-(70/100)*cH-5}" font-size="8" font-family="IBM Plex Mono,monospace" fill="var(--ponzi)" letter-spacing=".08em">PONZI ≥70</text>`;
-  html+=`<text x="${P.l+6}" y="${P.t+cH-(40/100)*cH-5}" font-size="8" font-family="IBM Plex Mono,monospace" fill="var(--spec)" letter-spacing=".08em">SPECULATIVE ≥40</text>`;
-  
-  // Regime-colored area segments
+  html+=`<text x="${P.l+6}" y="${P.t+cH-(40/100)*cH-5}" font-size="8" font-family="IBM Plex Mono,monospace" fill="var(--spec)" letter-spacing=".08em">SPEC ≥40</text>`;
   const botY=P.t+cH;
   let seg=[],lastR=pts[0].r,segs=[];
   pts.forEach(p=>{if(p.r!==lastR&&seg.length){segs.push({p:seg,r:lastR});seg=[];}seg.push(p);lastR=p.r;});
@@ -735,286 +841,224 @@ function drawTimeline(){
     d+=` L${sp[sp.length-1].x},${botY} Z`;
     html+=`<path d="${d}" fill="${col}" fill-opacity=".28" clip-path="url(#tcc)"/>`;
   });
-  
-  // Score line
   let lp=`M${pts[0].x},${pts[0].y}`;
   pts.forEach((p,i)=>{if(i)lp+=` L${p.x},${p.y}`;});
   html+=`<path d="${lp}" fill="none" stroke="var(--t)" stroke-width="1" stroke-opacity=".25" clip-path="url(#tcc)"/>`;
-  
-  // Crisis annotations
-  const evts=[
-    {label:'GFC 2008',yr:2008,mo:9,col:'#dc2626'},
-    {label:'TRY Crash',yr:2018,mo:8,col:'#d97706'},
-    {label:'COVID',yr:2020,mo:3,col:'#dc2626'},
-    {label:'Turkey 2021+',yr:2021,mo:3,col:'#d97706'},
-  ];
-  evts.forEach(ev=>{
-    const monthIdx=(ev.yr-2003)*12+(ev.mo-1);
-    if(monthIdx<0||monthIdx>=scores.length)return;
-    const x=P.l+(monthIdx/(scores.length-1))*cW;
+  [{label:'GFC',date:'2008-10',col:'#dc2626'},{label:'TRY',date:'2018-08',col:'#d97706'},{label:'COVID',date:'2020-03',col:'#dc2626'},{label:'Nov 2021',date:'2021-11',col:'#8b5cf6'}].forEach(ev=>{
+    const mn=monthNum(ev.date);if(mn==null||mn<firstMonth||mn>lastMonth)return;
+    const x=xForDate(ev.date);
     html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${botY}" stroke="${ev.col}" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>`;
     html+=`<text x="${x+4}" y="${P.t+12}" font-size="8" font-family="IBM Plex Mono,monospace" fill="${ev.col}" opacity=".8">${ev.label}</text>`;
   });
-  
-  // X-axis years
-  for(let yr=2004;yr<=2026;yr+=3){
-    const mo=(yr-2003)*12;if(mo>=scores.length)continue;
-    const x=P.l+(mo/(scores.length-1))*cW;
+  const firstYear=parseInt(scores[0].date.slice(0,4),10);
+  const lastYear=parseInt(scores[scores.length-1].date.slice(0,4),10);
+  for(let yr=firstYear;yr<=lastYear;yr+=3){
+    const x=xForDate(`${yr}-01`);
     html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
   }
-  
-  // Scrubber line
   html+=`<line id="tl-scrub-line" x1="${P.l}" y1="${P.t}" x2="${P.l}" y2="${botY}" stroke="var(--pu)" stroke-width="1.5" opacity=".7"/>`;
-  
   svg.innerHTML=html;
-  
-  // Click handler
   svg.addEventListener('click',function(e){
     const rect=svg.getBoundingClientRect();
     const xRel=(e.clientX-rect.left)/rect.width*W;
     const frac=(xRel-P.l)/cW;
     const idx=Math.round(frac*(scores.length-1));
-    if(idx>=0&&idx<scores.length) updateAll(Math.max(0,Math.min(scores.length-1,idx)));
+    if(idx>=0&&idx<scores.length)updateAll(Math.max(0,Math.min(scores.length-1,idx)));
   });
-  
-  // Timeline note
   const first=scores[0]?.date||'',last=scores[scores.length-1]?.date||'';
-  document.getElementById('timeline-note').textContent=`${fmtDateLong(first)} — ${fmtDateLong(last)} · ${scores.length} monthly observations · Click chart to navigate`;
+  document.getElementById('timeline-note').textContent=`${fmtDateLong(first)} — ${fmtDateLong(last)} · ${scores.length} monthly observations · Click chart or drag bottom scrubber to navigate`;
   document.getElementById('timeline-subtitle').textContent=`${first.slice(0,4)} — ${last.slice(0,4)}`;
 }
-
 function updateTimelineLine(idx){
   const el=document.getElementById('tl-scrub-line');if(!el)return;
-  const W=1120,P={t:20,b:32,l:44,r:20},cW=W-P.l-P.r,cH=260-P.t-P.b;
-  const n=getScores().length||1;
-  const x=P.l+(idx/(n-1))*cW;
-  el.setAttribute('x1',x);el.setAttribute('x2',x);
-  el.setAttribute('y2',P.t+cH);
+  const W=1120,P={t:20,b:32,l:44,r:20},cH=260-P.t-P.b;
+  const scores=getScores();if(!scores.length)return;
+  const firstMonth=monthNum(scores[0].date);const lastMonth=monthNum(scores[scores.length-1].date);
+  const span=Math.max(1,(lastMonth??0)-(firstMonth??0));
+  const cW=W-P.l-P.r;
+  const x=P.l+(((monthNum(getDate(idx))??firstMonth)-firstMonth)/span)*cW;
+  el.setAttribute('x1',x);el.setAttribute('x2',x);el.setAttribute('y2',P.t+cH);
 }
 
 // ── CRISIS DETECTION ──────────────────────────────────────────────────────────
 function renderCrisisDetection(){
   const crises=[
-    {name:'2010 Greek Crisis',date:'2010-05-31',labelDate:'May 2010'},
-    {name:'2018 TRY Crash',date:'2018-08-31',labelDate:'Aug 2018'},
-    {name:'2020 COVID Shock',date:'2020-03-31',labelDate:'Mar 2020'},
-    {name:'2021+ Turkey Crisis',date:'2021-01-31',labelDate:'Jan 2021'},
+    {name:'Greek Crisis',date:'2010-05',tag:'partial'},
+    {name:'2018 TRY Crash',date:'2018-08',tag:'partial'},
+    {name:'COVID-19',date:'2020-03',tag:'caught'},
+    {name:'Nov 2021 Stress',date:'2021-11',tag:'partial'},
   ];
-  
-  const container=document.getElementById('crisis-detect-chart');
-  container.innerHTML=crises.map(c=>{
-    const sa=getScoreByDate('model_2009',c.date.slice(0,7))||0;
-    const sb=getScoreByDate('model_2003',c.date.slice(0,7))||0;
-    const colA=regCol(sa),colB=regCol(sb);
-    const missA=sa<70,missB=sb<70;
-    const partial = !missA||!missB;
-    const tagA=sa<40?'cd-tag missed':sa<70?'cd-tag partial':'cd-tag caught';
-    const tagB=sb<40?'cd-tag missed':sb<70?'cd-tag partial':'cd-tag caught';
-    const labelA=sa<40?'✕ hedge':sa<70?'~ spec':'✓ ponzi';
-    const labelB=sb<40?'✕ hedge':sb<70?'~ spec':'✓ ponzi';
-    return `<div class="cd-row">
-      <div class="cd-name">${c.name}<span class="cd-date">${c.labelDate}</span></div>
-      <div class="cd-bar-wrap" style="display:flex;align-items:center;gap:8px">
-        <div class="cd-bar-track" style="flex:1">
-          <div class="cd-bar-fill" style="width:${Math.min(sa,100)}%;background:${colA}">
-            <span class="cd-bar-val">${sa.toFixed(1)}</span>
+  const max=100;
+  let html='';
+  crises.forEach(c=>{
+    const sa=getScoreByDate('model_2009',c.date);
+    const sb=getScoreByDate('model_2003',c.date);
+    const tagA=sa==null?'':sa>=70?'caught':sa>=40?'partial':'missed';
+    const tagB=sb==null?'':sb>=70?'caught':sb>=40?'partial':'missed';
+    const tagLbl={caught:'Ponzi ≥70',partial:'Spec 40–70',missed:'Below 40'};
+    html+=`<div class="cd-row">
+      <div><div class="cd-name">${c.name}</div><div class="cd-date">${c.date}</div></div>
+      <div class="cd-bar-wrap">
+        <div class="cd-bar-track">
+          <div class="cd-bar-fill" style="width:${sa==null?0:(sa/max*100)}%;background:#94a3b8">
+            ${sa!=null?`<span class="cd-bar-val">${sa.toFixed(1)}</span>`:''}
           </div>
           <div class="cd-thresh" style="left:70%"></div>
         </div>
-        <span class="${tagA}">${labelA}</span>
+        ${sa!=null?`<span class="cd-tag ${tagA}" style="display:inline-block;margin-top:4px">${tagLbl[tagA]||''}</span>`:''}
       </div>
-      <div class="cd-bar-wrap" style="display:flex;align-items:center;gap:8px">
-        <div class="cd-bar-track" style="flex:1">
-          <div class="cd-bar-fill" style="width:${Math.min(sb,100)}%;background:${colB}">
-            <span class="cd-bar-val">${sb.toFixed(1)}</span>
+      <div class="cd-bar-wrap">
+        <div class="cd-bar-track">
+          <div class="cd-bar-fill" style="width:${sb==null?0:(sb/max*100)}%;background:var(--pu)">
+            ${sb!=null?`<span class="cd-bar-val">${sb.toFixed(1)}</span>`:''}
           </div>
           <div class="cd-thresh" style="left:70%"></div>
         </div>
-        <span class="${tagB}">${labelB}</span>
+        ${sb!=null?`<span class="cd-tag ${tagB}" style="display:inline-block;margin-top:4px">${tagLbl[tagB]||''}</span>`:''}
       </div>
     </div>`;
-  }).join('');
+  });
+  document.getElementById('crisis-detect-chart').innerHTML=html;
 }
 
-// ── PERFORMANCE TABLE ──────────────────────────────────────────────────────────
+// ── PERFORMANCE TABLE ─────────────────────────────────────────────────────────
 function renderPerf(){
-  document.getElementById('perf-sub').textContent=`Active: ${DATA?.models[currentModel]?.meta?.label||currentModel}`;
   const wf=getWF();
-  let rows='';
-  if(wf.length){
-    wf.forEach(split=>{
-      const desc=split.description||split.split||'';
-      // Model B structure: split.metrics.test_r2
-      // Model A structure: split.ols.r2
-      const hasMetrics=!!split.metrics;
-      if(hasMetrics){
-        // MB walk_forward
-        const m=split.metrics;
-        const rm=split.regime_metrics||{};
-        rows+=`<tr><td class="mu" rowspan="1">${desc}</td><td class="mu">RF</td><td>${m.test_r2?.toFixed(3)||'—'}</td><td>${m.test_rmse?.toFixed(4)||'—'}</td><td>${rm.HEDGE?.rmse?.toFixed(4)||'—'}</td><td>${rm.SPECULATIVE?.rmse?.toFixed(4)||'—'}</td></tr>`;
-      } else {
-        // MA walk_forward — has rf, ols, var directly
-        ['ols','var','rf'].forEach(model=>{
-          const pm=split[model];if(!pm)return;
-          const r2=pm.r2?.toFixed(3)||'—',rmse=pm.rmse?.toFixed(2)||'—';
-          const best=model==='ols'&&currentModel==='model_2009';
-          rows+=`<tr><td class="mu">${model==='ols'?desc:''}</td><td class="mu">${model.toUpperCase()}</td><td class="${best?'best':''}">${r2}</td><td>${rmse}</td><td>${pm.hedge_rmse?.toFixed(2)||'—'}</td><td>${pm.spec_rmse?.toFixed(2)||'—'}</td></tr>`;
-        });
-      }
+  const isB=currentModel==='model_2003';
+  document.getElementById('perf-sub').textContent=isB?'Active: Extended 2003–2026':'Active: Baseline 2009–2011';
+  let html='';
+  wf.forEach(sp=>{
+    const algos=['ols','elastic_net','lasso','rf'];
+    algos.forEach((alg,ai)=>{
+      const p=sp[alg];if(!p)return;
+      const r2=p.r2?.toFixed(3);
+      const rmse=p.rmse?.toFixed(4);
+      const hr=p.hedge_rmse?.toFixed(4);
+      const sr=p.spec_rmse?.toFixed(4);
+      const algLabel={ols:'OLS',elastic_net:'Elastic Net',lasso:'Lasso',rf:'Random Forest'}[alg];
+      const r2c=p.r2>0.4?'good':p.r2>0?'mu':'bad';
+      html+=`<tr>
+        ${ai===0?`<td rowspan="4" style="font-weight:500;vertical-align:top;padding-top:14px">${sp.description}</td>`:''}
+        <td class="mu">${algLabel}</td>
+        <td class="${r2c}">${r2}</td>
+        <td class="mu">${rmse}</td>
+        <td class="mu">${hr??'—'}</td>
+        <td class="mu">${sr??'—'}</td>
+      </tr>`;
     });
-  } else {
-    // Fallback: top-level performance
-    const p=getPerf();
-    ['random_forest','ols','var'].forEach(model=>{
-      const pm=p[model];if(!pm)return;
-      rows+=`<tr><td class="mu">Full period</td><td class="mu">${model.replace('_',' ').toUpperCase()}</td><td class="${model==='ols'?'best':''}">${pm.r2?.toFixed(3)||'—'}</td><td>${pm.rmse?.toFixed(4)||'—'}</td><td>${pm.hedge_rmse?.toFixed(4)||'—'}</td><td>${pm.spec_rmse?.toFixed(4)||'—'}</td></tr>`;
-    });
-  }
-  document.getElementById('perf-body').innerHTML=rows||'<tr><td colspan="6" class="mu">No performance data available</td></tr>';
+    html+=`<tr><td colspan="6" style="height:8px;border:none"></td></tr>`;
+  });
+  document.getElementById('perf-body').innerHTML=html||'<tr><td colspan="6" style="padding:16px;color:var(--t3);font-size:12px">Walk-forward splits not available for this model</td></tr>';
 }
 
-// ── SHAP ────────────────────────────────────────────────────────────────────────
+// ── SHAP ──────────────────────────────────────────────────────────────────────
 function renderShap(){
-  document.getElementById('shap-sub').textContent=`${DATA?.models[currentModel]?.meta?.label||currentModel} · mean |SHAP|`;
   const shap=getShap();
-  const entries=Object.entries(shap).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  if(!entries.length){document.getElementById('shap-body').innerHTML='<p style="font-size:12px;color:var(--t3)">No SHAP data</p>';return;}
+  const isB=currentModel==='model_2003';
+  document.getElementById('shap-sub').textContent=isB?'Extended model · 20 features shown':'Baseline model · 7 global indices';
+  const entries=Object.entries(shap).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  if(!entries.length){document.getElementById('shap-body').innerHTML='<p style="font-size:12px;color:var(--t3)">No SHAP data available</p>';return;}
   const max=entries[0][1];
-  document.getElementById('shap-body').innerHTML=entries.map(([k,v])=>`
-    <div class="shap-row">
-      <div class="shap-lbl" title="${k}">${k}</div>
-      <div class="shap-track"><div class="shap-fill" style="width:${max>0?(v/max*100).toFixed(0):0}%"></div></div>
-      <div class="shap-num">${v>1?v.toFixed(1):v.toFixed(4)}</div>
-    </div>`).join('');
+  let html='';
+  entries.forEach(([k,v])=>{
+    const pct=(v/max*100).toFixed(0);
+    html+=`<div class="shap-row">
+      <div class="shap-lbl">${prettyFeature(k)}</div>
+      <div class="shap-track"><div class="shap-fill" style="width:${pct}%"></div></div>
+      <div class="shap-num">${v.toFixed(4)}</div>
+    </div>`;
+  });
+  document.getElementById('shap-body').innerHTML=html;
 }
 
-// ── REGIME TRANSITION MATRIX ────────────────────────────────────────────────────
+// ── REGIME MATRIX ─────────────────────────────────────────────────────────────
 function renderRegimeMatrix(){
   const scores=getScores();
-  const R=['HEDGE','SPECULATIVE','PONZI'];
+  const regimes=['HEDGE','SPECULATIVE','PONZI'];
   const counts={};
-  R.forEach(r=>{counts[r]={};R.forEach(t=>counts[r][t]=0);});
-  for(let i=1;i<scores.length;i++){
-    const from=scores[i-1].regime,to=scores[i].regime;
-    if(counts[from]&&counts[from][to]!==undefined)counts[from][to]++;
+  regimes.forEach(a=>regimes.forEach(b=>{counts[`${a}→${b}`]=0;}));
+  for(let i=0;i<scores.length-1;i++){
+    const from=regimeFromScore(scores[i].fragility_score);
+    const to=regimeFromScore(scores[i+1].fragility_score);
+    counts[`${from}→${to}`]=(counts[`${from}→${to}`]||0)+1;
   }
-  const matrix=R.map(from=>{
-    const tot=R.reduce((s,t)=>s+counts[from][t],0);
-    return R.map(to=>tot>0?counts[from][to]/tot:0);
-  });
-  
-  const currentR=getRegime(currentIdx);
-  
-  const yellOrRed=(v)=>{
-    if(v===0)return`rgba(128,128,128,0.08)`;
-    const t=Math.pow(v,0.6);
-    const r=Math.round(200+55*t),g=Math.round(240-200*t),b=Math.round(240-230*t);
-    return`rgb(${r},${g},${b})`;
-  };
-  
-  const body=document.getElementById('regime-matrix-body');
-  const labels=['→HEDGE','→SPEC','→PONZI'];
+  const rowTotals={};
+  regimes.forEach(r=>{rowTotals[r]=regimes.reduce((s,t)=>s+(counts[`${r}→${t}`]||0),0);});
+  const COLS={HEDGE:'var(--hedge)',SPECULATIVE:'var(--spec)',PONZI:'var(--ponzi)'};
   let html=`<div class="rmat">
     <div></div>
-    ${R.map((r,i)=>`<div class="rmat-head">${labels[i]}</div>`).join('')}`;
-  
-  R.forEach((from,fi)=>{
-    const isActive=from===currentR;
-    html+=`<div class="rmat-lbl" style="${isActive?'color:var(--pu);font-weight:500':''}">${from.slice(0,4)}→</div>`;
-    matrix[fi].forEach((v,ti)=>{
-      const bg=yellOrRed(v);
-      const textCol=v>0.5?'#fff':'var(--t)';
-      const border=isActive?'2px solid var(--pu)':'none';
-      html+=`<div class="rmat-cell" style="background:${bg};color:${textCol};border:${border}" title="${from}→${R[ti]}: ${(v*100).toFixed(0)}%">${(v*100).toFixed(0)}%</div>`;
+    ${regimes.map(r=>`<div class="rmat-head" style="color:${COLS[r]}">${r.slice(0,4)}</div>`).join('')}`;
+  regimes.forEach(from=>{
+    const tot=rowTotals[from]||1;
+    html+=`<div class="rmat-lbl" style="color:${COLS[from]}">${from.slice(0,4)}</div>`;
+    regimes.forEach(to=>{
+      const c=counts[`${from}→${to}`]||0;
+      const pct=(c/tot*100).toFixed(0);
+      const alpha=Math.round(c/tot*0.9*255).toString(16).padStart(2,'0');
+      const bg=`${COLS[to]}${alpha}` ; // approximate
+      const isDiag=from===to;
+      html+=`<div class="rmat-cell" style="background:${isDiag?COLS[from]+'22':'var(--alt)'};color:${COLS[to]};${isDiag?'font-weight:600':''}" title="${from} → ${to}: ${pct}% (${c} months)">${pct}%</div>`;
     });
   });
-  html+=`</div>`;
-  html+=`<p style="font-size:11px;font-family:var(--fm);color:var(--t3);margin-top:12px;letter-spacing:.04em">Current regime row highlighted. HEDGE→PONZI near-zero: Minsky's point — crises escalate through intermediate states.</p>`;
-  body.innerHTML=html;
+  html+=`</div><div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:10px">Rows = current regime · Columns = next month's regime</div>`;
+  document.getElementById('regime-matrix-body').innerHTML=html;
 }
 
-// ── SCORE DISTRIBUTION ─────────────────────────────────────────────────────────
+// ── DISTRIBUTION ──────────────────────────────────────────────────────────────
 function renderDistribution(){
   const svg=document.getElementById('dist-svg');
-  const W=540,H=200,P={t:20,b:28,l:32,r:16};
+  const W=540,H=200,P={t:20,b:28,l:44,r:20};
   const cW=W-P.l-P.r,cH=H-P.t-P.b;
-  
-  const scoresA=(DATA?.models?.model_2009?.monthly_scores||[]).map(s=>s.fragility_score).filter(v=>v!=null);
-  const scoresB=(DATA?.models?.model_2003?.monthly_scores||[]).map(s=>s.fragility_score).filter(v=>v!=null);
-  
-  function makeHist(arr,bins=20){
-    const min=0,max=100,bw=(max-min)/bins;
-    const h=Array(bins).fill(0);
-    arr.forEach(v=>{const b=Math.min(bins-1,Math.floor((v-min)/bw));if(b>=0)h[b]++;});
-    return{h,bw,min};
-  }
+  const scoresA=(DATA?.models?.model_2009?.monthly_scores||[]).map(s=>s.fragility_score);
+  const scoresB=(DATA?.models?.model_2003?.monthly_scores||[]).map(s=>s.fragility_score);
+  if(!scoresA.length&&!scoresB.length){svg.innerHTML='';return;}
+  const bins=20,min=0,max=100,bw=(max-min)/bins;
+  function makeHist(arr){const h=new Array(bins).fill(0);arr.forEach(v=>{const b=Math.min(bins-1,Math.floor((v-min)/bw));if(b>=0)h[b]++;});return h;}
   const hA=makeHist(scoresA),hB=makeHist(scoresB);
-  const maxCount=Math.max(...hA.h,...hB.h);
-  
+  const maxCount=Math.max(...hA,...hB);
   let html='';
-  // Grid
   [0,50,100].forEach(v=>{
     const x=P.l+(v/100)*cW;
     html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="var(--border)" stroke-width=".7"/>`;
     html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v}</text>`;
   });
-  // Threshold
   [40,70].forEach(v=>{
     const x=P.l+(v/100)*cW;
     html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${v===70?'var(--ponzi)':'var(--spec)'}" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>`;
   });
-  // Bars A (behind)
-  hA.h.forEach((count,i)=>{
-    const x=P.l+(i/hA.h.length)*cW;
-    const bw=(cW/hA.h.length)-1;
-    const h2=(count/maxCount)*cH;
-    html+=`<rect x="${x}" y="${P.t+cH-h2}" width="${bw}" height="${h2}" fill="#7132f5" opacity=".25" rx="1"/>`;
+  hA.forEach((count,i)=>{
+    const x=P.l+(i/hA.length)*cW,bwPx=(cW/hA.length)-1,h2=(count/maxCount)*cH;
+    html+=`<rect x="${x}" y="${P.t+cH-h2}" width="${bwPx}" height="${h2}" fill="#94a3b8" opacity=".55" rx="1"/>`;
   });
-  // Bars B
-  hB.h.forEach((count,i)=>{
-    const x=P.l+(i/hB.h.length)*cW;
-    const bw=(cW/hB.h.length)-1;
-    const h2=(count/maxCount)*cH;
-    html+=`<rect x="${x}" y="${P.t+cH-h2}" width="${bw}" height="${h2}" fill="#7132f5" opacity=".5" rx="1"/>`;
+  hB.forEach((count,i)=>{
+    const x=P.l+(i/hB.length)*cW,bwPx=(cW/hB.length)-1,h2=(count/maxCount)*cH;
+    html+=`<rect x="${x}" y="${P.t+cH-h2}" width="${bwPx}" height="${h2}" fill="#7132f5" opacity=".78" rx="1"/>`;
   });
-  // Legend
-  html+=`<text x="${P.l+4}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5" opacity=".4">Model A</text>`;
-  html+=`<text x="${P.l+56}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5" opacity=".8">Model B</text>`;
-  // Max A annotation
-  const maxA=Math.max(...scoresA).toFixed(1);
-  const maxB=Math.max(...scoresB).toFixed(1);
-  html+=`<text x="${P.l+(parseFloat(maxA)/100)*cW}" y="${P.t+H/2}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">A max: ${maxA}</text>`;
-  html+=`<text x="${P.l+(parseFloat(maxB)/100)*cW+20}" y="${P.t+H/2+14}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">B max: ${maxB}</text>`;
+  html+=`<text x="${P.l+4}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#94a3b8">Model A</text>`;
+  html+=`<text x="${P.l+58}" y="${P.t+14}" font-size="9" font-family="IBM Plex Mono,monospace" fill="#7132f5">Model B</text>`;
   svg.innerHTML=html;
 }
 
-// ── FEATURE TIMELINE ────────────────────────────────────────────────────────────
+// ── FEATURE TIMELINE ──────────────────────────────────────────────────────────
 function renderFeatureTimeline(){
   const scores=(DATA?.models?.model_2003?.monthly_scores||[]).filter(s=>s.features&&Object.keys(s.features).length>0);
   if(!scores.length){document.getElementById('ftl-svg').innerHTML='<text x="10" y="20" fill="var(--t3)" font-size="12" font-family="IBM Plex Mono,monospace">Feature data available in extended dataset only</text>';return;}
-  
   const FEATS=[
     {key:'vix',label:'VIX',col:'#dc2626'},
     {key:'dxy',label:'DXY',col:'#3b82f6'},
     {key:'brent',label:'Brent',col:'#d97706'},
     {key:'try_usd',label:'TRY/USD×100',col:'#8b5cf6',scale:100},
   ];
-  
-  // Legend
   const leg=document.getElementById('ftl-legend');
   leg.innerHTML=FEATS.map(f=>`
     <div class="ftl-item" onclick="toggleFtlFeature('${f.key}')" id="ftl-leg-${f.key}">
       <div class="ftl-dot" style="background:${f.col}"></div>${f.label}
     </div>`).join('');
-  
   const svg=document.getElementById('ftl-svg');
   const W=1120,H=220,P={t:20,b:28,l:44,r:20};
   const cW=W-P.l-P.r,cH=H-P.t-P.b;
-  
   let html='';
-  
-  // Crisis annotations
-  const evts=[{label:'TRY Crash',yr:2018,mo:8,col:'#d97706'},{label:'COVID',yr:2020,mo:3,col:'#dc2626'},{label:'Gov. fired',yr:2021,mo:3,col:'#8b5cf6'}];
+  const evts=[{label:'TRY Crash',yr:2018,mo:8,col:'#d97706'},{label:'COVID',yr:2020,mo:3,col:'#dc2626'},{label:'Nov 2021',yr:2021,mo:11,col:'#8b5cf6'}];
   evts.forEach(ev=>{
     const idx=scores.findIndex(s=>s.date.startsWith(`${ev.yr}-${String(ev.mo).padStart(2,'0')}`));
     if(idx<0)return;
@@ -1022,134 +1066,285 @@ function renderFeatureTimeline(){
     html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="${ev.col}" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>`;
     html+=`<text x="${x+4}" y="${P.t+12}" font-size="8" font-family="IBM Plex Mono,monospace" fill="${ev.col}" opacity=".8">${ev.label}</text>`;
   });
-  
-  // Draw each feature line
   FEATS.forEach(f=>{
     if(hiddenFeatures.has(f.key))return;
     const vals=scores.map(s=>(f.scale?s.features[f.key]*(f.scale):s.features[f.key])??null).filter(v=>v!=null);
     if(!vals.length)return;
     const min=Math.min(...vals),max=Math.max(...vals);
     const norm=v=>(v-min)/(max-min+.001);
-    
     const pts=scores.map((s,i)=>{
       const raw=f.scale?s.features[f.key]*(f.scale):s.features[f.key];
       if(raw==null)return null;
       return{x:P.l+(i/(scores.length-1))*cW,y:P.t+cH-norm(raw)*cH};
     }).filter(Boolean);
-    
     if(pts.length<2)return;
     let path=`M${pts[0].x},${pts[0].y}`;
     pts.forEach((p,i)=>{if(i)path+=` L${p.x},${p.y}`;});
-    html+=`<path d="${path}" fill="none" stroke="${f.col}" stroke-width="1.5" opacity=".75" id="ftl-line-${f.key}" clip-path="url(#tcc)"/>`;
+    html+=`<path d="${path}" fill="none" stroke="${f.col}" stroke-width="1.5" opacity=".75" id="ftl-line-${f.key}"/>`;
   });
-  
-  // X-axis
   for(let yr=2004;yr<=2026;yr+=3){
     const idx=scores.findIndex(s=>s.date.startsWith(`${yr}-01`));
     if(idx<0)continue;
     const x=P.l+(idx/(scores.length-1))*cW;
     html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
   }
-  
   svg.innerHTML=html;
 }
-
 function toggleFtlFeature(key){
-  if(hiddenFeatures.has(key))hiddenFeatures.delete(key);
-  else hiddenFeatures.add(key);
+  if(hiddenFeatures.has(key))hiddenFeatures.delete(key);else hiddenFeatures.add(key);
   const leg=document.getElementById(`ftl-leg-${key}`);
   if(leg)leg.style.opacity=hiddenFeatures.has(key)?'0.3':'1';
   renderFeatureTimeline();
 }
 
-// ── HEATMAP ────────────────────────────────────────────────────────────────────
+// ── HEATMAP ───────────────────────────────────────────────────────────────────
 function updateHeatmap(idx, dateStr){
-  const body=document.getElementById('hmap-body');
-  document.getElementById('hmap-date').textContent=`As of ${fmtDateLong(dateStr)} · 60-day rolling Pearson vs ISE`;
-  
-  // MA always has correlations, MB has empty dict
-  const srcModel=currentModel==='model_2009'?'model_2009':'model_2009'; // always use MA corrs
-  const maScores=DATA?.models?.model_2009?.monthly_scores||[];
-  const row=maScores[Math.min(idx,maScores.length-1)];
+  document.getElementById('hmap-date').textContent=`As of ${fmtDateLong(dateStr)} · 60-day rolling Pearson vs ISE (USD)`;
+  const row=getRowByDate(currentModel,dateStr)||getRowByDate('model_2009',dateStr)||getRowByDate('model_2003',dateStr);
   const corrs=row?.correlations||{};
-  
   const IDXS=['sp500','dax','ftse','nikkei','bovespa','eu','em'];
   const LBLS=['SP500','DAX','FTSE','NIKKEI','BOVESPA','EU','EM'];
   const vals=IDXS.map(k=>corrs[k]??null);
-  
   if(vals.every(v=>v===null)){
-    body.innerHTML='<p style="font-size:12px;font-family:var(--fm);color:var(--t3)">Correlation data unavailable for this period (pre-2005 early records). Scrub to 2005+ to see correlations.</p>';
+    document.getElementById('hmap-body').innerHTML='<p style="font-size:12px;font-family:var(--fm);color:var(--t3)">Correlation data not available for this period (pre-2005). Scrub to 2005 or later to see values.</p>';
     return;
   }
-  
   function corrCol(v){
     if(v===null)return'var(--alt)';
     if(v>=0){const t=v,r=Math.round(200+55*t),g=Math.round(220-160*t),b=Math.round(220-180*t);return`rgb(${r},${g},${b})`;}
     else{const t=-v,r=Math.round(220-180*t),g=Math.round(220-120*t),b=Math.round(200+55*t);return`rgb(${r},${g},${b})`;}
   }
-  function textCol(v){return v===null?'var(--t3)':Math.abs(v)>.5?'#fff':'#333';}
-  
-  let html=`<div style="display:grid;grid-template-columns:auto;gap:3px;overflow-x:auto">`;
-  html+=`<div style="display:flex;gap:3px;margin-bottom:3px">`;
-  html+=`<div style="width:80px;font-family:var(--fm);font-size:9px;color:var(--pu);display:flex;align-items:center;justify-content:flex-end;padding-right:8px">vs ISE</div>`;
-  LBLS.forEach(l=>html+=`<div style="width:58px;font-family:var(--fm);font-size:10px;color:var(--t3);text-align:center">${l}</div>`);
+  function textCol(v){return v===null?'var(--t3)':Math.abs(v)>.45?'#fff':'#333';}
+  const cellW=76,cellH=72,lblW=52;
+  let html=`<div style="overflow-x:auto"><div style="display:inline-block;min-width:${lblW+IDXS.length*(cellW+4)}px">`;
+  // Header row: empty label cell + index names
+  html+=`<div style="display:flex;gap:4px;margin-bottom:4px">`;
+  html+=`<div style="width:${lblW}px;flex-shrink:0"></div>`;
+  LBLS.forEach(l=>html+=`<div style="width:${cellW}px;font-family:var(--fm);font-size:9px;color:var(--t2);text-align:center;letter-spacing:.05em;font-weight:500">${l}</div>`);
   html+=`</div>`;
-  html+=`<div style="display:flex;gap:3px">`;
-  html+=`<div style="width:80px;font-family:var(--fm);font-size:10px;color:var(--t3);display:flex;align-items:center;justify-content:flex-end;padding-right:8px">Pearson r</div>`;
+  // Data row: ISE label + colored cells
+  html+=`<div style="display:flex;gap:4px;align-items:center">`;
+  html+=`<div style="width:${lblW}px;flex-shrink:0;font-family:var(--fm);font-size:9px;color:var(--pu);text-align:right;padding-right:8px;letter-spacing:.06em;font-weight:500">ISE</div>`;
   vals.forEach((v,i)=>{
-    const bg=corrCol(v),tc=textCol(v);
     const vStr=v===null?'n/a':v.toFixed(2);
-    html+=`<div class="hmap-cell" style="width:58px;height:44px;background:${bg};color:${tc}" title="${LBLS[i]} vs ISE: ${vStr}">${vStr}</div>`;
+    html+=`<div title="${LBLS[i]} ↔ ISE: ${vStr}" style="width:${cellW}px;height:${cellH}px;background:${corrCol(v)};color:${textCol(v)};border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:default">
+      <span style="font-family:var(--fm);font-size:14px;font-weight:600">${vStr}</span>
+      <span style="font-family:var(--fm);font-size:8px;opacity:.7">${v===null?'no data':v>=.6?'strong':v>=.3?'moderate':v>0?'weak':v>-.3?'inverse':'neg'}</span>
+    </div>`;
   });
   html+=`</div></div>`;
   html+=`<div style="display:flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--fm);font-size:10px;color:var(--t3)">
-    <span style="color:#4472c4">−1.0</span>
-    <div style="flex:1;max-width:180px;height:4px;border-radius:2px;background:linear-gradient(to right,#4472c4,#ddd,#c0392b)"></div>
-    <span style="color:#c0392b">+1.0</span>
-    <span style="margin-left:6px">Note: Full NxN matrix requires pairwise_correlations in JSON export</span></div>`;
-  
-  body.innerHTML=html;
+    <span style="color:rgb(40,100,220)">−1 inverse</span>
+    <div style="flex:1;max-width:180px;height:5px;border-radius:3px;background:linear-gradient(to right,rgb(40,100,220),#ddd,rgb(255,60,60))"></div>
+    <span style="color:rgb(255,60,60)">+1 contagion</span>
+    <span style="margin-left:6px;color:var(--t3)">· 60-day rolling Pearson vs ISE (USD)</span>
+  </div>`;
+  document.getElementById('hmap-body').innerHTML=html;
 }
 
 // ── CRISIS ARCHIVE ────────────────────────────────────────────────────────────
 function renderCrisisArchive(){
   const crises=[
-    {cl:'',date:'MAY 2010',title:'Greek Debt Crisis · Flash Crash',
-     desc:'Sovereign contagion from Greece drove ISE down 15% in 6 weeks. European counterparty risk spiked sharply.',
-     badge:'Model A: 39.2 (HEDGE) · Model B: 49.2 (SPEC)'},
-    {cl:'s',date:'AUG 2018',title:'Turkish Lira Currency Crisis',
-     desc:'TRY/USD collapsed from 0.285 → 0.172 over 12 months. VIX stayed at 12.5 — global markets were calm. Model A saw no crisis. Model B saw the lira collapse in its TRY/USD lag features.',
-     badge:'Model A: 24.0 (HEDGE) · Model B: 40.5 (SPEC)'},
-    {cl:'',date:'MAR 2020',title:'COVID-19 Synchronized Selloff',
-     desc:'VIX spiked to 57.7. Global correlation spike. ISE vs SP500 hit maximum co-movement. Both models detected this — but Model B scored 77.8 (PONZI) vs Model A\'s 42.5 (SPECULATIVE).',
-     badge:'Model A: 42.5 (SPEC) · Model B: 77.8 (PONZI)'},
-    {cl:'s',date:'2021 — 2026',title:'Ongoing Turkey Economic Crisis',
-     desc:'Unorthodox monetary policy, 85%+ inflation, TRY collapse, CBRT governor firings. Persistent fragility elevation only visible in Model B\'s Turkey-aware features.',
-     badge:'Model A: 27.2 (HEDGE) · Model B: 60.1 (SPEC)'},
-  ];
-  const el=document.getElementById('crisis-archive');
-  el.innerHTML=crises.map(c=>`
+    {cl:'',date:'2010-05',title:'Greek Debt Crisis · Flash Crash',desc:'Both models move into the speculative band — fits a global contagion episode. Neither model is wrong here; they simply agree.'},
+    {cl:'s',date:'2018-08',title:'Turkish Lira Currency Crisis',desc:'Best framed as a differential warning: both models are elevated, but the extended model stays higher because it carries Turkey-relevant market stress features (USDTRY volatility, DXY lags).'},
+    {cl:'',date:'2020-03',title:'COVID-19 Synchronized Selloff',desc:'The clean threshold-crossing case. Model B moves into the Ponzi band; Model A remains below 70. A concrete win for the extended feature set.'},
+    {cl:'s',date:'2021-11',title:'Late-2021 Turkey Stress',desc:'The clearest month-level divergence: global calm + domestic fragility pull the two models 19 points apart. Model B stays elevated; Model A does not register the stress.'},
+  ].map(c=>{
+    const sa=getScoreByDate('model_2009',c.date);
+    const sb=getScoreByDate('model_2003',c.date);
+    const delta=(sa!=null&&sb!=null)?sb-sa:null;
+    const aBand=sa==null?'n/a':regLabel(sa).replace(' Finance','');
+    const bBand=sb==null?'n/a':regLabel(sb).replace(' Finance','');
+    return{...c,dateLabel:fmtDateLong(c.date).toUpperCase(),badge:sa==null||sb==null?'Shared coverage not available':`A: ${sa.toFixed(1)} (${aBand}) · B: ${sb.toFixed(1)} (${bBand}) · Δ ${(delta>=0?'+':'')+delta.toFixed(1)}`};
+  });
+  document.getElementById('crisis-archive').innerHTML=crises.map(c=>`
     <div class="cev ${c.cl}">
-      <div class="cev-date">${c.date}</div>
+      <div class="cev-date">${c.dateLabel}</div>
       <div class="cev-title">${c.title}</div>
       <div class="cev-desc">${c.desc}</div>
       <span class="cev-badge ${c.cl}">${c.badge}</span>
     </div>`).join('');
 }
 
+// ── REPORTS ───────────────────────────────────────────────────────────────────
+function renderReports(){
+  renderWFHeatmap();
+  renderGapTimeline();
+  renderDwell();
+  renderAlgoTable();
+}
+
+function setWFModel(m){
+  wfModel=m;
+  document.getElementById('wf-btn-a').style.cssText=m==='model_2009'?'background:var(--pu);color:#fff;border-color:var(--pu)':'';
+  document.getElementById('wf-btn-b').style.cssText=m==='model_2003'?'background:var(--pu);color:#fff;border-color:var(--pu)':'';
+  renderWFHeatmap();
+}
+
+function renderWFHeatmap(){
+  const wf=DATA?.models[wfModel]?.walk_forward||[];
+  const body=document.getElementById('wf-heatmap-body');
+  if(!wf.length){body.innerHTML='<p style="font-size:12px;font-family:var(--fm);color:var(--t3)">Walk-forward data not available for this model.</p>';return;}
+  const algos=['ols','elastic_net','lasso','rf'];
+  const algoLabels={ols:'OLS',elastic_net:'Elastic Net',lasso:'Lasso',rf:'Random Forest'};
+  // Color: R²: -0.4 → 0 → 0.8
+  function r2Color(v){
+    if(v==null)return'var(--alt)';
+    if(v<0){const t=Math.min(1,-v/0.5);const r=Math.round(220-20*t);const g=Math.round(80-30*t);const b=Math.round(80-20*t);return`rgb(${r},${g},${b})`;}
+    const t=Math.min(1,v/0.75);const r=Math.round(220-180*t);const g=Math.round(200-40*t);const b=Math.round(80-40*t);return`rgb(${r},${g},${b})`;
+  }
+  function r2TextColor(v){return v==null?'var(--t3)':Math.abs(v)>0.15?'#fff':'var(--t)';}
+  const colCount=algos.length+1;
+  let html=`<div style="display:grid;grid-template-columns:160px repeat(${algos.length},1fr);gap:3px;overflow-x:auto">`;
+  html+=`<div class="wf-head"></div>`;
+  algos.forEach(a=>html+=`<div class="wf-head">${algoLabels[a]}</div>`);
+  wf.forEach(sp=>{
+    html+=`<div class="wf-row-lbl">${sp.description}</div>`;
+    algos.forEach(a=>{
+      const p=sp[a];
+      const r2=p?.r2;
+      const bg=r2Color(r2);const tc=r2TextColor(r2);
+      const val=r2!=null?r2.toFixed(3):'—';
+      html+=`<div class="wf-cell" style="background:${bg};color:${tc}" title="${sp.description} · ${algoLabels[a]} · R²=${val}">
+        <span>${val}</span>
+        <span style="font-size:9px;opacity:.7;margin-top:2px">R²</span>
+      </div>`;
+    });
+  });
+  html+=`</div>`;
+  html+=`<div style="display:flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--fm);font-size:10px;color:var(--t3)">
+    <div style="display:flex;align-items:center;gap:4px"><div style="width:14px;height:14px;border-radius:3px;background:rgb(220,80,80)"></div>R² &lt; 0 · structural break</div>
+    <div style="display:flex;align-items:center;gap:4px"><div style="width:14px;height:14px;border-radius:3px;background:rgb(100,180,80)"></div>R² &gt; 0.5 · strong fit</div>
+    <div style="margin-left:auto">Negative R² indicates the period behaves like a structural break — this is itself an informative academic result</div>
+  </div>`;
+  body.innerHTML=html;
+}
+
+function renderGapTimeline(){
+  const svg=document.getElementById('gap-svg');
+  const W=540,H=200,P={t:20,b:28,l:44,r:20};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const scoresA=DATA?.models?.model_2009?.monthly_scores||[];
+  const scoresB=DATA?.models?.model_2003?.monthly_scores||[];
+  // Build shared timeline
+  const pairs=[];
+  scoresB.forEach(b=>{
+    const a=scoresA.find(a=>monthKey(a.date)===monthKey(b.date));
+    if(a)pairs.push({date:b.date,gap:b.fragility_score-a.fragility_score});
+  });
+  if(!pairs.length){svg.innerHTML='';return;}
+  const gaps=pairs.map(p=>p.gap);
+  const minGap=Math.min(...gaps),maxGap=Math.max(...gaps);
+  const range=Math.max(Math.abs(minGap),Math.abs(maxGap));
+  const toY=v=>P.t+cH/2-(v/(range*2))*cH;
+  const zeroY=toY(0);
+  let html='';
+  // Zero line
+  html+=`<line x1="${P.l}" y1="${zeroY}" x2="${W-P.r}" y2="${zeroY}" stroke="var(--border)" stroke-width="1"/>`;
+  html+=`<text x="40" y="${zeroY+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">0</text>`;
+  // Crisis lines
+  const crisisMonths=['2018-08','2020-03','2021-11'];
+  crisisMonths.forEach(mo=>{
+    const idx=pairs.findIndex(p=>monthKey(p.date)===mo);
+    if(idx<0)return;
+    const x=P.l+(idx/(pairs.length-1))*cW;
+    html+=`<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="var(--t3)" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>`;
+  });
+  // Area fill
+  const pts=pairs.map((p,i)=>({x:P.l+(i/(pairs.length-1))*cW,y:toY(p.gap),g:p.gap}));
+  // Positive area
+  let posPath='',negPath='';
+  pts.forEach((p,i)=>{
+    if(i===0){posPath=`M${p.x},${zeroY}`;negPath=`M${p.x},${zeroY}`;}
+    const py=p.y,zy=zeroY;
+    posPath+=` L${p.x},${p.g>=0?py:zy}`;
+    negPath+=` L${p.x},${p.g<0?py:zy}`;
+  });
+  posPath+=` L${pts[pts.length-1].x},${zeroY} Z`;
+  negPath+=` L${pts[pts.length-1].x},${zeroY} Z`;
+  html+=`<path d="${posPath}" fill="var(--pu)" fill-opacity=".25"/>`;
+  html+=`<path d="${negPath}" fill="var(--ponzi)" fill-opacity=".25"/>`;
+  // Line
+  let line=`M${pts[0].x},${pts[0].y}`;
+  pts.forEach((p,i)=>{if(i)line+=` L${p.x},${p.y}`;});
+  html+=`<path d="${line}" fill="none" stroke="var(--pu)" stroke-width="1.5"/>`;
+  // Y axis labels
+  [Math.round(range),0,-Math.round(range)].forEach(v=>{
+    html+=`<text x="40" y="${toY(v)+4}" text-anchor="end" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${v>0?'+':''}${v}</text>`;
+  });
+  // X axis
+  const firstYear=parseInt(pairs[0].date.slice(0,4),10);
+  const lastYear=parseInt(pairs[pairs.length-1].date.slice(0,4),10);
+  for(let yr=firstYear;yr<=lastYear;yr+=4){
+    const idx=pairs.findIndex(p=>p.date.startsWith(`${yr}-`));
+    if(idx<0)continue;
+    const x=P.l+(idx/(pairs.length-1))*cW;
+    html+=`<text x="${x}" y="${H-8}" text-anchor="middle" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">${yr}</text>`;
+  }
+  svg.innerHTML=html;
+}
+
+function renderDwell(){
+  const body=document.getElementById('dwell-body');
+  const models=[
+    {id:'model_2009',label:'Model A · Baseline',col:'#94a3b8'},
+    {id:'model_2003',label:'Model B · Extended',col:'#7132f5'},
+  ];
+  let html='';
+  models.forEach(m=>{
+    const scores=(DATA?.models[m.id]?.monthly_scores||[]).map(s=>regimeFromScore(s.fragility_score));
+    const total=scores.length||1;
+    const hPct=Math.round(scores.filter(r=>r==='HEDGE').length/total*100);
+    const sPct=Math.round(scores.filter(r=>r==='SPECULATIVE').length/total*100);
+    const pPct=100-hPct-sPct;
+    html+=`<div style="margin-bottom:18px">
+      <div style="font-family:var(--fm);font-size:10px;color:var(--t2);margin-bottom:6px;letter-spacing:.04em">${m.label}</div>
+      <div class="dwell-bar">
+        <div class="dwell-seg" style="width:${hPct}%;background:var(--hedge);min-width:${hPct>5?'0':'0'}px">${hPct>6?hPct+'%':''}</div>
+        <div class="dwell-seg" style="width:${sPct}%;background:var(--spec)">${sPct>6?sPct+'%':''}</div>
+        <div class="dwell-seg" style="width:${pPct}%;background:var(--ponzi)">${pPct>6?pPct+'%':''}</div>
+      </div>
+      <div style="display:flex;gap:12px;font-family:var(--fm);font-size:10px;color:var(--t3)">
+        <span style="color:var(--hedge)">Hedge: ${hPct}%</span>
+        <span style="color:var(--spec)">Spec: ${sPct}%</span>
+        <span style="color:var(--ponzi)">Ponzi: ${pPct}%</span>
+        <span style="margin-left:auto">${total} months</span>
+      </div>
+    </div>`;
+  });
+  body.innerHTML=html;
+}
+
+function renderAlgoTable(){
+  const algos=[
+    {key:'ols',label:'OLS'},
+    {key:'elastic_net',label:'Elastic Net'},
+    {key:'lasso',label:'Lasso'},
+    {key:'random_forest',label:'Random Forest'},
+  ];
+  const perfA=DATA?.models?.model_2009?.performance||{};
+  const perfB=DATA?.models?.model_2003?.performance||{};
+  let html='';
+  algos.forEach(a=>{
+    const pA=perfA[a.key]||perfA[a.key.replace('_','')]||null;
+    const pB=perfB[a.key]||null;
+    function cell(p,metric){if(!p||p[metric]==null)return'<td class="mu">—</td>';const v=p[metric];const fmt=v.toFixed(metric==='r2'?3:4);const cls=metric==='r2'?(v>0.1?'good':v>0?'mu':'bad'):'mu';return`<td class="${cls}">${fmt}</td>`;}
+    html+=`<tr>
+      <td style="font-weight:500">${a.label}</td>
+      ${cell(pA,'r2')}${cell(pA,'rmse')}${cell(pA,'mae')}
+      ${cell(pB,'r2')}${cell(pB,'rmse')}${cell(pB,'mae')}
+    </tr>`;
+  });
+  document.getElementById('algo-body').innerHTML=html;
+}
+
 // ── MODEL SWITCH ──────────────────────────────────────────────────────────────
 function switchModel(id){
   currentModel=id;
   const isB=id==='model_2003';
-  document.getElementById('mb-a').className='mtgl-btn'+(id==='model_2009'?' on':'');
-  document.getElementById('mb-b').className='mtgl-btn'+(id==='model_2003'?' on':'');
-  document.getElementById('model-desc').textContent=isB
-    ?'2003–2026 · VIX, DXY, Brent, EUR/USD, TRY/USD · lag features'
-    :'2009–2011 · 7 global indices only · no TRY/USD features';
-  document.getElementById('model-badge').textContent=isB?'Default · Best performance':'Limited · misses 2018+';
-  document.getElementById('hero-model-lbl').textContent=isB
-    ?'RF + Elastic Net · 2003–2026 extended'
-    :'RF + OLS · 2009–2011 original';
+  document.getElementById('mp-a').className='mseg-btn'+(id==='model_2009'?' on':'');
+  document.getElementById('mp-b').className='mseg-btn'+(id==='model_2003'?' on':'');
+  document.getElementById('perf-sub').textContent=isB?'Active: Extended 2003–2026':'Active: Baseline 2009–2011';
   const len=getScores().length;
   document.getElementById('scrubber').max=len-1;
   currentIdx=Math.min(currentIdx,len-1);
@@ -1161,16 +1356,48 @@ function switchModel(id){
   updateAll(currentIdx);
 }
 
-// ── DRAWER ──────────────────────────────────────────────────────────────────────
+// ── DRAWER ────────────────────────────────────────────────────────────────────
 const EXPL={
-  clock:[{t:'What is this clock?',b:'A financial stress meter mapped to the Doomsday Clock metaphor. The closer the hands are to midnight (12 o\'clock), the higher Istanbul Stock Exchange fragility. Score < 40 = HEDGE regime; 40–70 = SPECULATIVE; ≥70 = PONZI.'},{t:'Why does Model A never reach midnight?',b:'Model A\'s maximum score is 59.2 — it physically cannot reach the PONZI threshold of 70. It was trained only on 2009–2011 data (global crisis recovery). It learned to read global contagion patterns. Turkey-specific stress mechanisms are invisible to it.'}],
-  timeline:[{t:'How to read this chart',b:'The filled area colour changes with regime: green (Hedge), amber (Speculative), red (Ponzi). Dashed horizontal lines mark the HEDGE/SPEC boundary (40) and SPEC/PONZI boundary (70). Click anywhere on the chart to jump the clock to that date.'},{t:'Why is Model A always amber/green?',b:'Model A never classifies any period as PONZI because its fragility score caps at 59.2. Model B, trained on extended Turkey-aware data, occasionally reaches red (COVID 2020, max 77.8).'}],
-  detection:[{t:'What does this chart show?',b:'The peak fragility score each model assigned to four major crisis episodes. The dashed line at 70 is the PONZI threshold — below it means the model did not classify this as a crisis.'},{t:'Why 2018 is the key test',b:'During the 2018 TRY crash, global VIX was only 12.5 (markets were calm globally). Model A trained on global crises sees calm VIX and scores 24.0 (HEDGE — no crisis). Model B sees 12 months of lira collapse in its TRY/USD lag features and scores 40.5 (SPECULATIVE — elevated warning).'}],
-  perf:[{t:'What is R² here?',b:'R-squared measures how well the model predicts ISE returns. Model B uses monthly returns (RMSE in % return units ~0.04), Model A uses daily returns (RMSE in fragility score units ~15). The units differ — do not compare RMSE across models directly, only within the same model across splits.'},{t:'Why is RF so bad for Model A?',b:'Model A\'s Random Forest has R² of -11 — worse than predicting the mean. This is because the 2009–2011 training window is extremely small (only 2.5 years of daily data). RF overfits on small samples. OLS regularises better. For Model B, the longer training window (2003–2026) makes RF viable.'}],
-  shap:[{t:'What is SHAP?',b:'SHAP values measure how much each feature contributed to the model\'s prediction for each observation. A high SHAP for SP500 means "US market movements were the main reason I predicted this fragility level."'},{t:'Why does SP500 dominate Model B?',b:'SP500 (67.8) and BIST100 (32.5) dominate because the model is predicting ISE_USD returns — and ISE is deeply correlated with US dollar liquidity cycles. VIX (8.9) and rolling_volatility (6.8) capture the regime-level signals.'}],
-  markov:[{t:'What is a regime transition matrix?',b:'Each cell shows the empirical probability of moving from one regime (row) to another (column) in the following month. Computed directly from the monthly score sequence.'},{t:'What does it tell us about Minsky?',b:'HEDGE→PONZI probability is near zero — financial systems don\'t jump directly from calm to crisis. They transition through SPECULATIVE first. This validates Minsky\'s three-stage model empirically from the data.'}],
-  features:[{t:'Why TRY/USD matters most',b:'The lira rate encodes Turkey\'s monetary policy credibility, current account stress, and political risk all in one variable. When TRY/USD falls (lira weakens), Turkey\'s dollar-denominated debt burden increases, corporate insolvency risk rises, and capital flight begins.'},{t:'Why VIX leads sometimes',b:'For global crises (2008, 2020), VIX spikes before the ISE fragility score rises — making it a useful early warning signal. For Turkey-specific crises (2018, 2021), VIX stays calm while TRY/USD collapses. This is why you need both.'}],
-  heatmap:[{t:'What does this show?',b:'The 60-day rolling Pearson correlation between each major global index and ISE (USD). Red = strong positive correlation (contagion). Blue = negative/uncorrelated. White = no relationship.'},{t:'Why do correlations matter?',b:'During global crises, all correlations spike toward 1.0 — all markets crash together (contagion). During Turkey-specific crises, global correlations stay moderate while ISE USD crashes alone. This divergence is one of Model B\'s key signals.'}],
+  clock:[
+    {t:'Reading the clock',b:'The closer the hands sit to midnight (12), the higher the fragility score. Midnight = score 70 — the Ponzi threshold, not 100. A score of 70 points the hands exactly at 12; scores above 70 push the hands past midnight. The three arc segments on the outer ring mark the Hedge (green, &lt;40), Speculative (amber, 40–70), and Ponzi (red, ≥70) zones. Switch models A/B in the top-right toggle.'},
+    {t:'Model A vs Model B',b:'Model A is the 2009–2011 global-only baseline: 7 index features. Model B extends to 33 features including USDTRY volatility, VIX lags, and DXY lags, trained on 2003–2026. B tends to stay higher when domestic Turkish stress decouples from calm global markets.'}
+  ],
+  timeline:[
+    {t:'Reading the chart',b:'The filled area changes colour with the regime band: green (Hedge &lt;40), amber (Speculative 40–70), red (Ponzi ≥70). Dashed horizontal lines mark the 40 and 70 thresholds. Click anywhere on the chart to jump to that month, or drag the scrubber at the bottom of the screen.'},
+    {t:'Why click to navigate?',b:'The timeline and the bottom scrubber are linked. Either one updates the clock, stats, heatmap, and scrubber position simultaneously.'}
+  ],
+  detection:[
+    {t:'What this shows',b:'Fragility scores for each model at four key crisis moments. The bar height is the score; the dashed line is the 70-point Ponzi threshold. The gap between bars — not just whether either bar clears 70 — is the evidence.'},
+    {t:'What matters most',b:'2020 is the clearest threshold-crossing case (Model B crosses 70; Model A does not). November 2021 is the strongest divergence case: almost 20 points of separation during Turkey-specific stress against a calm global backdrop.'}
+  ],
+  perf:[
+    {t:'What R² means here',b:'These R² values are measured on the return-prediction task — the raw model output — not the 0–100 fragility score. That is why numbers can look modest even when the fragility narrative is academically useful.'},
+    {t:'Negative R²',b:'Negative R² in a crisis split means the period behaves like a structural break. This is not good predictive performance, but it is itself informative: it tells you the model was trained on data that does not generalise to that specific regime type.'}
+  ],
+  shap:[
+    {t:'What SHAP is',b:'SHAP values summarise average feature contribution across all observations. Presented here as global importance — not as proof that one feature caused the reading in any specific month.'},
+    {t:'What stands out',b:'EM (Emerging Markets index) is the top driver in both models. In Model B, USDTRY volatility and VIX lags also appear prominently, which supports the Turkey-aware interpretation.'}
+  ],
+  markov:[
+    {t:'What is a transition matrix?',b:'Each cell shows the empirical probability of the regime changing from the row\'s label to the column\'s label in the following month.'},
+    {t:'What it tells us',b:'Large direct jumps from Hedge to Ponzi are rare. Most stress escalates through the Speculative band first — consistent with Minsky\'s sequential fragility logic.'}
+  ],
+  features:[
+    {t:'Why TRY/USD matters',b:'The lira rate compresses monetary credibility, external financing stress, and domestic political risk into a single variable. This is information Model A simply cannot access.'},
+    {t:'2018 vs 2021',b:'2018 is an early-warning divergence — both models are elevated but B is higher. Late 2021 is the cleaner separation: B stays elevated even as global markets are calm and Model A barely registers the stress.'}
+  ],
+  heatmap:[
+    {t:'Reading correlations',b:'Red = strong positive correlation (ISE moves with global markets, contagion). Blue = uncorrelated or inverse. During global crises, all correlations spike toward +1.0. During Turkey-specific crises, global correlations stay moderate while ISE falls alone — a key signal for Model B.'},
+    {t:'How to use this',b:'Scrub the timeline to any month and this updates in real time. Compare 2020 (red, global crash) vs 2021 (mixed, Turkey-specific) to see the correlation structure change.'}
+  ],
+  gap:[
+    {t:'Reading the gap chart',b:'Positive values (purple area) mean Model B reads higher fragility than Model A. Negative values mean A reads higher. The most important region is late 2021, where B persistently sits above A even without global market stress.'},
+    {t:'Why this matters',b:'A large positive gap during periods of Turkey-specific stress is the central evidence that the extended feature set adds information the global-only baseline cannot capture.'}
+  ],
+  algos:[
+    {t:'Algorithm comparison',b:'OLS is the interpretable baseline. Elastic Net and Lasso add regularisation to handle the 33-feature space. Random Forest captures nonlinear relationships. All four are compared on R², RMSE, and MAE across both models.'},
+    {t:'What to look for',b:'Random Forest tends to have the highest R² overall, but the linear models (especially Lasso) are more interpretable and academically defensible for the published narrative. The choice of algorithm affects the numeric score but the regime-band picture remains broadly consistent.'}
+  ]
 };
 function openDrawer(k){
   const secs=EXPL[k]||EXPL.clock;
@@ -1179,36 +1406,52 @@ function openDrawer(k){
 }
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');}
 
-// ── THEME ──────────────────────────────────────────────────────────────────────
+// ── THEME ─────────────────────────────────────────────────────────────────────
 function applyTheme(){
   document.documentElement.setAttribute('data-theme',darkMode?'dark':'light');
-  const icon=document.getElementById('theme-icon');
-  icon.innerHTML=darkMode
-    ?'<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
-    :'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  setTimeout(()=>{drawTimeline();renderFeatureTimeline();},60);
+  const track=document.getElementById('theme-track');
+  if(track){if(darkMode)track.classList.add('on');else track.classList.remove('on');}
+  setTimeout(()=>{drawTimeline();renderFeatureTimeline();renderGapTimeline();},60);
 }
-document.getElementById('theme-btn').addEventListener('click',()=>{
+document.getElementById('theme-toggle').addEventListener('click',()=>{
   darkMode=!darkMode;applyTheme();
   window.parent.postMessage({type:'__edit_mode_set_keys',edits:{darkMode}},'*');
 });
 
-// ── TWEAKS ─────────────────────────────────────────────────────────────────────
+// ── TWEAKS ────────────────────────────────────────────────────────────────────
 window.addEventListener('message',e=>{
   if(e.data?.type==='__activate_edit_mode')tp.style.display='block';
   if(e.data?.type==='__deactivate_edit_mode')tp.style.display='none';
 });
 window.parent.postMessage({type:'__edit_mode_available'},'*');
 const tp=document.createElement('div');
-tp.style.cssText='position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--surface);border:1px solid var(--bm);border-radius:12px;padding:16px 18px;box-shadow:0 8px 32px rgba(0,0,0,.14);min-width:200px;display:none;font-family:var(--fn);';
-tp.innerHTML=`<div style="font-size:11px;font-weight:600;margin-bottom:12px;color:var(--t)">Tweaks</div>
-<label style="font-size:11px;color:var(--t2);display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:8px">
-  <input type="checkbox" id="tw-dark" ${TWEAK_DEFAULTS.darkMode?'checked':''}> Dark mode
-</label>`;
+tp.style.cssText='position:fixed;bottom:80px;right:20px;z-index:9999;background:var(--surface);border:1px solid var(--bm);border-radius:12px;padding:16px 18px;box-shadow:0 8px 32px rgba(0,0,0,.14);min-width:220px;display:none;font-family:var(--fn);';
+tp.innerHTML=`
+<div style="font-size:11px;font-weight:600;margin-bottom:14px;color:var(--t)">Tweaks</div>
+<div style="margin-bottom:12px">
+  <div style="font-size:10px;font-family:var(--fm);color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Appearance</div>
+  <label style="font-size:12px;color:var(--t2);display:flex;align-items:center;justify-content:space-between;cursor:pointer">
+    Dark mode
+    <div class="toggle-track" id="tw-track" style="flex-shrink:0"><div class="toggle-thumb"></div></div>
+  </label>
+</div>
+<div>
+  <div style="font-size:10px;font-family:var(--fm);color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Active Dataset</div>
+  <div class="model-seg" style="width:100%">
+    <button class="mseg-btn" id="tw-ma" onclick="switchModel('model_2009');syncTweakModel()" style="flex:1">A<small>2009–11</small></button>
+    <button class="mseg-btn on" id="tw-mb" onclick="switchModel('model_2003');syncTweakModel()" style="flex:1">B<small>2003–26</small></button>
+  </div>
+</div>`;
 document.body.appendChild(tp);
-tp.querySelector('#tw-dark').addEventListener('change',function(){darkMode=this.checked;applyTheme();window.parent.postMessage({type:'__edit_mode_set_keys',edits:{darkMode}},'*');});
+function syncTweakModel(){
+  document.getElementById('tw-ma').className='mseg-btn'+(currentModel==='model_2009'?' on':'');
+  document.getElementById('tw-mb').className='mseg-btn'+(currentModel==='model_2003'?' on':'');
+}
+const twTrack=tp.querySelector('#tw-track');
+function syncTweakTheme(){if(darkMode)twTrack.classList.add('on');else twTrack.classList.remove('on');}
+twTrack.addEventListener('click',()=>{darkMode=!darkMode;applyTheme();syncTweakTheme();window.parent.postMessage({type:'__edit_mode_set_keys',edits:{darkMode}},'*');});
 
-// ── START ──────────────────────────────────────────────────────────────────────
+// ── START ─────────────────────────────────────────────────────────────────────
 applyTheme();
 loadData();
 </script>
