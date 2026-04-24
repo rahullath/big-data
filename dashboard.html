@@ -206,7 +206,41 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 /* RESPONSIVE */
 @media(max-width:1024px){.hero{grid-template-columns:1fr;min-height:auto;gap:48px;padding-top:48px}.hero-info{order:-1}.grid2,.grid3{grid-template-columns:1fr}}
 @media(max-width:900px){.nav{padding:0 20px}.nav-links{display:none}.section{padding:56px 20px}.fw .inner{padding:56px 20px}.stat-strip{grid-template-columns:1fr 1fr}.sticky-scrub{padding:0 16px}.cd-row{grid-template-columns:90px 1fr 1fr;gap:10px}}
-@media(max-width:640px){.stat-strip{grid-template-columns:1fr 1fr}.cd-row{grid-template-columns:1fr;gap:4px}.cd-name{text-align:left}.nav-logo-name{display:none}.mseg-btn small{display:none}}
+@media(max-width:640px){
+  /* existing */
+  .stat-strip{grid-template-columns:1fr 1fr}.cd-row{grid-template-columns:1fr;gap:4px}.cd-name{text-align:left}.nav-logo-name{display:none}.mseg-btn small{display:none}
+  /* Nav: hide Present + Report links to stop overflow */
+  .nav-right a.ibtn{display:none}
+  /* Drawer: full-width on phone */
+  .drawer{width:100%;border-left:none;box-shadow:0 -8px 40px rgba(0,0,0,.18)}
+  /* Chart cards: enable horizontal scroll so labels stay readable */
+  #timeline .card,#features .card,#models .card,#reports .card{overflow-x:auto !important}
+  #timeline-svg{min-width:520px;height:200px}
+  #ftl-svg{min-width:480px;height:180px}
+  #gap-svg,#dist-svg{min-width:320px;height:160px}
+  /* Stat strip: tighter */
+  .stat{padding:16px 14px}.stat-val{font-size:22px}
+  /* Hero */
+  .score-num{font-size:36px}
+  .clock-svg{max-width:260px !important}
+  /* CTA row: stack buttons */
+  .cta-row{flex-direction:column}
+  .cta-row .btn-p,.cta-row .btn-s{justify-content:center;width:100%}
+  /* Scrubber: drop the Navigate label to save room */
+  .ss-label{display:none}
+  /* Slider hint: allow wrap so it doesn't overflow viewport */
+  .slider-hint{white-space:normal;max-width:calc(100vw - 32px);text-align:center;flex-wrap:wrap;justify-content:center}
+  /* Footer */
+  footer{padding:16px 20px}
+  /* Section padding */
+  .section{padding:40px 16px}.fw .inner{padding:40px 16px}
+}
+@media(max-width:400px){
+  /* Ultra-small: hide regime pill to stop nav crunch */
+  #nav-pill{display:none}
+  .stat-val{font-size:18px}.stat{padding:12px 10px}
+  .mseg-btn{padding:3px 7px}
+}
 </style>
 </head>
 <body>
