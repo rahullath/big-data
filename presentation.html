@@ -134,8 +134,55 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
     </div>
   </div>
 
-  <!-- SLIDE 2: THE DATA -->
-  <div class="slide" id="slide-1" data-screen-label="02 The Data">
+  <!-- SLIDE 2: METHODOLOGY -->
+  <div class="slide" id="slide-1" data-screen-label="02 Methodology">
+    <div class="s-wide">
+      <p class="eyebrow">Pipeline Overview</p>
+      <h2 class="slide-h" style="margin-bottom:20px">How we built it.<br><em>What we tested.</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px">
+        <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;padding:22px">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Step 1 · Data</div>
+          <div style="font-size:16px;font-family:var(--fs);font-weight:400;margin-bottom:10px">Two sources</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.65">
+            <strong style="color:var(--spec)">Model A:</strong> <code>group5_clean_data.csv</code><br>536 daily returns · Jan 2009–Aug 2011<br>ISE + 7 global market indices<br><br>
+            <strong style="color:var(--pu)">Model B:</strong> yfinance 2003–2026<br>260+ monthly obs · 30+ features<br>TRY velocity, VIX lags, DXY, CBRT dummy
+          </div>
+        </div>
+        <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;padding:22px">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Step 2 · Six Models</div>
+          <div style="font-size:16px;font-family:var(--fs);font-weight:400;margin-bottom:10px">Trained &amp; compared</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.7">
+            OLS &nbsp;·&nbsp; Ridge &nbsp;·&nbsp; LASSO<br>Elastic Net &nbsp;·&nbsp; Random Forest &nbsp;·&nbsp; ANN/MLP<br><br>
+            <span style="font-family:var(--fm);font-size:11px;color:var(--t3)">Ridge → degenerate to OLS (α→0, no regularisation benefit).<br>ANN → excluded: CV RMSE 6× test RMSE on 536 rows (Zhang, 2003).</span>
+          </div>
+        </div>
+        <div style="background:var(--s);border:1px solid rgba(113,50,245,.25);border-radius:14px;padding:22px">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--pu);margin-bottom:10px">Step 3 · Validation</div>
+          <div style="font-size:16px;font-family:var(--fs);font-weight:400;margin-bottom:10px">Walk-forward</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.65">
+            4 out-of-sample crisis windows:<br>GFC 2008 · TRY 2018 · COVID 2020 · Turkey 2021–24<br><br>
+            Train on pre-crisis data → test on crisis period → compare R² across models and windows
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;padding:18px 24px;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center">
+        <div>
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:6px">Step 4 · Output</div>
+          <div style="font-family:var(--fs);font-size:20px;font-weight:400;line-height:1.25">Fragility Score<br><span style="font-family:var(--fm);font-size:28px;color:var(--spec)">0 – 100</span></div>
+        </div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.7">
+          A composite signal — prediction errors, rolling volatility, feature correlations — normalised to 0–100 and mapped to Minsky's three regimes:
+          <span style="font-family:var(--fm);color:var(--hedge)"> 0–39 Hedge</span> ·
+          <span style="font-family:var(--fm);color:var(--spec)"> 40–69 Speculative</span> ·
+          <span style="font-family:var(--fm);color:var(--ponzi)"> 70–100 Ponzi</span>.<br>
+          <span style="font-family:var(--fm);font-size:11px;color:var(--t3)">In-sample R² of 4–14% is the EMH baseline — daily returns are near-random by construction. Walk-forward R² on crisis windows (38–74%) is the operative performance measure.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: THE DATA -->
+  <div class="slide" id="slide-2" data-screen-label="03 The Data">
     <div class="s-wide">
       <p class="eyebrow">The Dataset</p>
       <h2 class="slide-h" style="margin-bottom:20px">Two models. Two stories.<br><em>One city.</em></h2>
@@ -162,8 +209,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
     </div>
   </div>
 
-  <!-- SLIDE 3: THE CRISIS TEST -->
-  <div class="slide" id="slide-2" data-screen-label="03 Crisis Test">
+  <!-- SLIDE 4: THE CRISIS TEST -->
+  <div class="slide" id="slide-3" data-screen-label="04 Crisis Test">
     <div class="s-wide">
       <p class="eyebrow">The Decisive Test</p>
       <h2 class="slide-h" style="margin-bottom:6px">Model A underreads Turkey.<br><em>Model B stays higher.</em></h2>
@@ -181,8 +228,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
     </div>
   </div>
 
-  <!-- SLIDE 4: SHAP + FEATURES -->
-  <div class="slide" id="slide-3" data-screen-label="04 What Drives It">
+  <!-- SLIDE 5: SHAP + FEATURES -->
+  <div class="slide" id="slide-4" data-screen-label="05 What Drives It">
     <div class="s-wide">
       <p class="eyebrow">Explainability</p>
       <h2 class="slide-h" style="margin-bottom:20px">What drives<br><em>each model?</em></h2>
@@ -201,8 +248,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
     </div>
   </div>
 
-  <!-- SLIDE 5: SCORE DISTRIBUTION & REGIME DWELL [NEW] -->
-  <div class="slide" id="slide-4" data-screen-label="05 Score Distribution">
+  <!-- SLIDE 6: SCORE DISTRIBUTION & REGIME DWELL -->
+  <div class="slide" id="slide-5" data-screen-label="06 Score Distribution">
     <div class="s-wide">
       <p class="eyebrow">Score Distribution</p>
       <h2 class="slide-h" style="margin-bottom:20px">Where each model<br><em>spends its time</em></h2>
@@ -226,8 +273,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
     </div>
   </div>
 
-  <!-- SLIDE 6: MODEL GAP TIMELINE [NEW] -->
-  <div class="slide" id="slide-5" data-screen-label="06 Divergence Gap">
+  <!-- SLIDE 7: MODEL GAP TIMELINE -->
+  <div class="slide" id="slide-6" data-screen-label="07 Divergence Gap">
     <div class="s-wide">
       <p class="eyebrow">Divergence Analysis</p>
       <h2 class="slide-h" style="margin-bottom:16px">Model B − Model A<br><em>over two decades</em></h2>
@@ -259,8 +306,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
     </div>
   </div>
 
-  <!-- SLIDE 7: ALGORITHM VALIDATION [NEW] -->
-  <div class="slide" id="slide-6" data-screen-label="07 Algorithm Validation">
+  <!-- SLIDE 8: ALGORITHM VALIDATION -->
+  <div class="slide" id="slide-7" data-screen-label="08 Algorithm Validation">
     <div class="s-wide">
       <p class="eyebrow">Technical Validation</p>
       <h2 class="slide-h" style="margin-bottom:20px">Cross-algorithm<br><em>performance check</em></h2>
@@ -286,15 +333,15 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
           <div id="p-wf-body"></div>
           <div class="callout">
             <div class="callout-title">Academic Interpretation</div>
-            <div class="callout-text">Negative walk-forward R² is not a failure — it marks a structural break, which is itself informative. The 2021 split reliably breaks all models. What matters is that Model B sustains a higher fragility signal during those periods.</div>
+            <div class="callout-text">Negative walk-forward R² is not a failure — it marks a structural break, which is itself informative. The 2021 split reliably breaks all models.<br><br><strong style="color:var(--t)">On the in-sample R² (left table):</strong> 4–14% is the EMH baseline — daily market returns are near-random. This measures variance in ISE returns explained, not the features. Walk-forward R² on crisis windows (38–74%) is the operative measure.<br><br><strong style="color:var(--t)">Ridge &amp; ANN:</strong> Ridge converged to OLS (α→0). ANN CV gap was 6× test RMSE on 536 rows — excluded per Zhang (2003) overfitting criterion. Both documented in Section 2 notebooks.</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 8: CONCLUSIONS -->
-  <div class="slide" id="slide-7" data-screen-label="08 Conclusions">
+  <!-- SLIDE 9: CONCLUSIONS -->
+  <div class="slide" id="slide-8" data-screen-label="09 Conclusions">
     <div class="s-wide">
       <p class="eyebrow">Conclusions &amp; Implications</p>
       <h2 class="slide-h" style="margin-bottom:28px">What we found.<br><em>What it means.</em></h2>
@@ -334,7 +381,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
 <div class="nav-bar">
   <button class="nav-btn" id="prev-btn" onclick="goSlide(currentSlide-1)">←</button>
   <div class="nav-dots" id="nav-dots"></div>
-  <span class="slide-counter" id="slide-counter">1 / 8</span>
+  <span class="slide-counter" id="slide-counter">1 / 9</span>
   <button class="nav-btn" id="next-btn" onclick="goSlide(currentSlide+1)">→</button>
   <a href="dashboard.html" class="nav-home">↗ Dashboard</a>
   <a href="reports.html" class="nav-home">⬇ Report</a>
@@ -342,7 +389,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
 </div>
 
 <script>
-const TOTAL = 8;
+const TOTAL = 9;
 let currentSlide = 0;
 let DATA = null;
 let secAngle = 0;

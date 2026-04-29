@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-24T01:48:39.529105Z",
+  "generated_at": "2026-04-29T11:28:24.662336Z",
   "models": {
     "model_2009": {
       "meta": {
@@ -21,34 +21,34 @@
       },
       "performance": {
         "ols": {
-          "r2": 0.040601,
-          "rmse": 0.098408,
-          "mae": 0.079985
+          "r2": 0.042088,
+          "rmse": 0.09838,
+          "mae": 0.0799
         },
         "elastic_net": {
-          "r2": 0.078961,
-          "rmse": 0.09642,
-          "mae": 0.076338
+          "r2": 0.080132,
+          "rmse": 0.096406,
+          "mae": 0.076262
         },
         "lasso": {
-          "r2": 0.064503,
-          "rmse": 0.097174,
-          "mae": 0.076985
+          "r2": 0.065793,
+          "rmse": 0.097155,
+          "mae": 0.07691
         },
         "random_forest": {
-          "r2": 0.137515,
-          "rmse": 0.093305,
-          "mae": 0.073921
+          "r2": 0.138314,
+          "rmse": 0.093307,
+          "mae": 0.073928
         }
       },
       "shap_values": {
-        "EM": 0.027478,
-        "SP500": 0.019937,
-        "FTSE": 0.015458,
-        "NIKKEI": 0.011354,
-        "EU": 0.010326,
-        "BOVESPA": 0.009687,
-        "DAX": 0.001277
+        "EM": 0.02767,
+        "SP500": 0.019776,
+        "FTSE": 0.015201,
+        "NIKKEI": 0.01153,
+        "EU": 0.01023,
+        "BOVESPA": 0.009536,
+        "DAX": 0.001278
       },
       "walk_forward": [
         {
@@ -91,7 +91,7 @@
           "split": "split_2018_try",
           "description": "2018 TRY Crisis",
           "ols": {
-            "r2": 0.177707,
+            "r2": 0.177708,
             "rmse": 0.124527,
             "mae": 0.099537,
             "hedge_rmse": 0.085492,
@@ -99,7 +99,7 @@
             "ponzi_rmse": 0.142098
           },
           "elastic_net": {
-            "r2": 0.056306,
+            "r2": 0.056307,
             "rmse": 0.133404,
             "mae": 0.106212,
             "hedge_rmse": 0.074991,
@@ -107,7 +107,7 @@
             "ponzi_rmse": 0.157329
           },
           "lasso": {
-            "r2": 0.056306,
+            "r2": 0.056307,
             "rmse": 0.133404,
             "mae": 0.106212,
             "hedge_rmse": 0.074991,
@@ -199,7 +199,7 @@
       "monthly_scores": [
         {
           "date": "2007-04",
-          "fragility_score": 35.315663,
+          "fragility_score": 35.315828,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.615215,
@@ -208,7 +208,7 @@
             "nikkei": 0.046691,
             "bovespa": 0.502257,
             "eu": 0.508963,
-            "em": 0.580917
+            "em": 0.580913
           },
           "features": {
             "vix": 12.947143,
@@ -219,7 +219,7 @@
         },
         {
           "date": "2007-05",
-          "fragility_score": 30.721426,
+          "fragility_score": 30.721492,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.455227,
@@ -228,7 +228,7 @@
             "nikkei": 0.11781,
             "bovespa": 0.373735,
             "eu": 0.458159,
-            "em": 0.433776
+            "em": 0.433774
           },
           "features": {
             "vix": 13.299565,
@@ -239,7 +239,7 @@
         },
         {
           "date": "2007-06",
-          "fragility_score": 31.06607,
+          "fragility_score": 31.066134,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.30376,
@@ -248,7 +248,7 @@
             "nikkei": 0.260233,
             "bovespa": 0.342928,
             "eu": 0.545425,
-            "em": 0.366213
+            "em": 0.36621
           },
           "features": {
             "vix": 14.947619,
@@ -259,7 +259,7 @@
         },
         {
           "date": "2007-07",
-          "fragility_score": 48.7025,
+          "fragility_score": 48.702484,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.461667,
@@ -268,7 +268,7 @@
             "nikkei": 0.368519,
             "bovespa": 0.488239,
             "eu": 0.70837,
-            "em": 0.569039
+            "em": 0.569035
           },
           "features": {
             "vix": 17.166364,
@@ -279,7 +279,7 @@
         },
         {
           "date": "2007-08",
-          "fragility_score": 63.049044,
+          "fragility_score": 63.049057,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.525729,
@@ -288,7 +288,7 @@
             "nikkei": 0.142387,
             "bovespa": 0.675858,
             "eu": 0.74497,
-            "em": 0.716301
+            "em": 0.716302
           },
           "features": {
             "vix": 25.026087,
@@ -299,7 +299,7 @@
         },
         {
           "date": "2007-09",
-          "fragility_score": 47.063139,
+          "fragility_score": 47.063159,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.571657,
@@ -319,7 +319,7 @@
         },
         {
           "date": "2007-10",
-          "fragility_score": 42.729562,
+          "fragility_score": 42.729582,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.551812,
@@ -328,7 +328,7 @@
             "nikkei": 0.161796,
             "bovespa": 0.593117,
             "eu": 0.772745,
-            "em": 0.646267
+            "em": 0.646266
           },
           "features": {
             "vix": 19.115652,
@@ -339,7 +339,7 @@
         },
         {
           "date": "2007-11",
-          "fragility_score": 56.434219,
+          "fragility_score": 56.434226,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.57708,
@@ -348,7 +348,7 @@
             "nikkei": 0.39257,
             "bovespa": 0.538766,
             "eu": 0.77849,
-            "em": 0.573527
+            "em": 0.573526
           },
           "features": {
             "vix": 25.639545,
@@ -359,7 +359,7 @@
         },
         {
           "date": "2007-12",
-          "fragility_score": 57.173642,
+          "fragility_score": 57.173619,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.573668,
@@ -368,7 +368,7 @@
             "nikkei": 0.383849,
             "bovespa": 0.571378,
             "eu": 0.753873,
-            "em": 0.630478
+            "em": 0.630476
           },
           "features": {
             "vix": 21.505714,
@@ -379,7 +379,7 @@
         },
         {
           "date": "2008-01",
-          "fragility_score": 54.073295,
+          "fragility_score": 54.07327,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.294668,
@@ -388,7 +388,7 @@
             "nikkei": 0.424471,
             "bovespa": 0.692176,
             "eu": 0.809983,
-            "em": 0.446643
+            "em": 0.446642
           },
           "features": {
             "vix": 25.731305,
@@ -399,7 +399,7 @@
         },
         {
           "date": "2008-02",
-          "fragility_score": 69.051648,
+          "fragility_score": 69.051612,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.200941,
@@ -408,7 +408,7 @@
             "nikkei": 0.412949,
             "bovespa": 0.62925,
             "eu": 0.789186,
-            "em": 0.373963
+            "em": 0.373962
           },
           "features": {
             "vix": 25.435238,
@@ -419,7 +419,7 @@
         },
         {
           "date": "2008-03",
-          "fragility_score": 54.753933,
+          "fragility_score": 54.753889,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.333587,
@@ -428,7 +428,7 @@
             "nikkei": 0.41973,
             "bovespa": 0.616761,
             "eu": 0.760665,
-            "em": 0.459492
+            "em": 0.459491
           },
           "features": {
             "vix": 27.080476,
@@ -439,7 +439,7 @@
         },
         {
           "date": "2008-04",
-          "fragility_score": 44.510886,
+          "fragility_score": 44.510851,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.460298,
@@ -448,7 +448,7 @@
             "nikkei": 0.384437,
             "bovespa": 0.51311,
             "eu": 0.722667,
-            "em": 0.519499
+            "em": 0.519497
           },
           "features": {
             "vix": 21.562727,
@@ -459,7 +459,7 @@
         },
         {
           "date": "2008-05",
-          "fragility_score": 49.556,
+          "fragility_score": 49.555932,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.460036,
@@ -468,7 +468,7 @@
             "nikkei": 0.472596,
             "bovespa": 0.440217,
             "eu": 0.679923,
-            "em": 0.513868
+            "em": 0.513866
           },
           "features": {
             "vix": 18.36,
@@ -479,7 +479,7 @@
         },
         {
           "date": "2008-06",
-          "fragility_score": 48.617233,
+          "fragility_score": 48.617228,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.354088,
@@ -488,7 +488,7 @@
             "nikkei": 0.263916,
             "bovespa": 0.373331,
             "eu": 0.579094,
-            "em": 0.378183
+            "em": 0.378182
           },
           "features": {
             "vix": 22.110476,
@@ -499,7 +499,7 @@
         },
         {
           "date": "2008-07",
-          "fragility_score": 44.805707,
+          "fragility_score": 44.805681,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.318287,
@@ -508,7 +508,7 @@
             "nikkei": 0.198977,
             "bovespa": 0.358256,
             "eu": 0.592766,
-            "em": 0.307794
+            "em": 0.307792
           },
           "features": {
             "vix": 24.341304,
@@ -519,7 +519,7 @@
         },
         {
           "date": "2008-08",
-          "fragility_score": 34.770096,
+          "fragility_score": 34.770106,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.162987,
@@ -528,7 +528,7 @@
             "nikkei": 0.138329,
             "bovespa": 0.197508,
             "eu": 0.46058,
-            "em": 0.151765
+            "em": 0.151762
           },
           "features": {
             "vix": 20.695714,
@@ -539,7 +539,7 @@
         },
         {
           "date": "2008-09",
-          "fragility_score": 67.374755,
+          "fragility_score": 67.374793,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.443936,
@@ -548,7 +548,7 @@
             "nikkei": 0.350222,
             "bovespa": 0.460961,
             "eu": 0.733837,
-            "em": 0.531061
+            "em": 0.53106
           },
           "features": {
             "vix": 29.802727,
@@ -559,7 +559,7 @@
         },
         {
           "date": "2008-10",
-          "fragility_score": 71.945721,
+          "fragility_score": 71.945751,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.590355,
@@ -579,7 +579,7 @@
         },
         {
           "date": "2008-11",
-          "fragility_score": 64.952409,
+          "fragility_score": 64.95245,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.629795,
@@ -588,7 +588,7 @@
             "nikkei": 0.443352,
             "bovespa": 0.649446,
             "eu": 0.768505,
-            "em": 0.648748
+            "em": 0.648749
           },
           "features": {
             "vix": 62.2535,
@@ -599,7 +599,7 @@
         },
         {
           "date": "2008-12",
-          "fragility_score": 57.129435,
+          "fragility_score": 57.129469,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.63103,
@@ -608,7 +608,7 @@
             "nikkei": 0.380121,
             "bovespa": 0.636668,
             "eu": 0.698221,
-            "em": 0.620613
+            "em": 0.620614
           },
           "features": {
             "vix": 52.048696,
@@ -619,7 +619,7 @@
         },
         {
           "date": "2009-01",
-          "fragility_score": 48.306269,
+          "fragility_score": 48.306293,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.568066,
@@ -628,7 +628,7 @@
             "nikkei": 0.139577,
             "bovespa": 0.478966,
             "eu": 0.728101,
-            "em": 0.531366
+            "em": 0.531368
           },
           "features": {
             "vix": 44.535,
@@ -639,7 +639,7 @@
         },
         {
           "date": "2009-02",
-          "fragility_score": 49.826631,
+          "fragility_score": 49.826628,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.498976,
@@ -648,7 +648,7 @@
             "nikkei": 0.141089,
             "bovespa": 0.54556,
             "eu": 0.638826,
-            "em": 0.598201
+            "em": 0.598202
           },
           "features": {
             "vix": 45.4385,
@@ -659,7 +659,7 @@
         },
         {
           "date": "2009-03",
-          "fragility_score": 53.261315,
+          "fragility_score": 53.261295,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.625002,
@@ -679,7 +679,7 @@
         },
         {
           "date": "2009-04",
-          "fragility_score": 63.53234,
+          "fragility_score": 63.532331,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.72216,
@@ -688,7 +688,7 @@
             "nikkei": 0.180375,
             "bovespa": 0.739073,
             "eu": 0.776735,
-            "em": 0.754664
+            "em": 0.754663
           },
           "features": {
             "vix": 37.994091,
@@ -699,7 +699,7 @@
         },
         {
           "date": "2009-05",
-          "fragility_score": 52.831414,
+          "fragility_score": 52.831428,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.628593,
@@ -708,7 +708,7 @@
             "nikkei": 0.02241,
             "bovespa": 0.615557,
             "eu": 0.654956,
-            "em": 0.703335
+            "em": 0.703334
           },
           "features": {
             "vix": 32.009048,
@@ -719,7 +719,7 @@
         },
         {
           "date": "2009-06",
-          "fragility_score": 51.616469,
+          "fragility_score": 51.616483,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.607729,
@@ -739,7 +739,7 @@
         },
         {
           "date": "2009-07",
-          "fragility_score": 45.238904,
+          "fragility_score": 45.23891,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.466613,
@@ -748,7 +748,7 @@
             "nikkei": 0.081569,
             "bovespa": 0.440924,
             "eu": 0.516088,
-            "em": 0.623987
+            "em": 0.623988
           },
           "features": {
             "vix": 26.240435,
@@ -759,7 +759,7 @@
         },
         {
           "date": "2009-08",
-          "fragility_score": 46.608865,
+          "fragility_score": 46.608873,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.620506,
@@ -779,7 +779,7 @@
         },
         {
           "date": "2009-09",
-          "fragility_score": 37.058578,
+          "fragility_score": 37.058535,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.507887,
@@ -788,7 +788,7 @@
             "nikkei": 0.052,
             "bovespa": 0.497479,
             "eu": 0.4931,
-            "em": 0.562299
+            "em": 0.562297
           },
           "features": {
             "vix": 24.941818,
@@ -799,7 +799,7 @@
         },
         {
           "date": "2009-10",
-          "fragility_score": 39.416026,
+          "fragility_score": 39.416021,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.571207,
@@ -808,7 +808,7 @@
             "nikkei": 0.034365,
             "bovespa": 0.491634,
             "eu": 0.638642,
-            "em": 0.609058
+            "em": 0.609059
           },
           "features": {
             "vix": 24.252273,
@@ -819,7 +819,7 @@
         },
         {
           "date": "2009-11",
-          "fragility_score": 50.756532,
+          "fragility_score": 50.756539,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.548875,
@@ -828,7 +828,7 @@
             "nikkei": 0.105197,
             "bovespa": 0.495151,
             "eu": 0.748167,
-            "em": 0.612495
+            "em": 0.612496
           },
           "features": {
             "vix": 23.62619,
@@ -839,7 +839,7 @@
         },
         {
           "date": "2009-12",
-          "fragility_score": 40.480861,
+          "fragility_score": 40.480851,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.497983,
@@ -848,7 +848,7 @@
             "nikkei": 0.225745,
             "bovespa": 0.464812,
             "eu": 0.752288,
-            "em": 0.5977
+            "em": 0.597699
           },
           "features": {
             "vix": 21.162609,
@@ -868,7 +868,7 @@
             "nikkei": 0.331188,
             "bovespa": 0.414271,
             "eu": 0.597241,
-            "em": 0.495532
+            "em": 0.495531
           },
           "features": {
             "vix": 20.5065,
@@ -879,7 +879,7 @@
         },
         {
           "date": "2010-02",
-          "fragility_score": 60.699425,
+          "fragility_score": 60.699457,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.541407,
@@ -899,7 +899,7 @@
         },
         {
           "date": "2010-03",
-          "fragility_score": 38.672185,
+          "fragility_score": 38.672188,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.523291,
@@ -919,7 +919,7 @@
         },
         {
           "date": "2010-04",
-          "fragility_score": 36.308431,
+          "fragility_score": 36.308432,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.543853,
@@ -928,7 +928,7 @@
             "nikkei": 0.267165,
             "bovespa": 0.462433,
             "eu": 0.634351,
-            "em": 0.62947
+            "em": 0.629472
           },
           "features": {
             "vix": 17.426364,
@@ -939,7 +939,7 @@
         },
         {
           "date": "2010-05",
-          "fragility_score": 55.922039,
+          "fragility_score": 55.922041,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.734967,
@@ -948,7 +948,7 @@
             "nikkei": 0.513091,
             "bovespa": 0.635924,
             "eu": 0.87136,
-            "em": 0.746368
+            "em": 0.746367
           },
           "features": {
             "vix": 31.93619,
@@ -959,7 +959,7 @@
         },
         {
           "date": "2010-06",
-          "fragility_score": 55.326731,
+          "fragility_score": 55.326729,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.747383,
@@ -979,7 +979,7 @@
         },
         {
           "date": "2010-07",
-          "fragility_score": 49.864034,
+          "fragility_score": 49.864059,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.643131,
@@ -999,7 +999,7 @@
         },
         {
           "date": "2010-08",
-          "fragility_score": 43.36581,
+          "fragility_score": 43.365848,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.549764,
@@ -1008,7 +1008,7 @@
             "nikkei": 0.282367,
             "bovespa": 0.502865,
             "eu": 0.754875,
-            "em": 0.586474
+            "em": 0.586475
           },
           "features": {
             "vix": 24.745909,
@@ -1019,7 +1019,7 @@
         },
         {
           "date": "2010-09",
-          "fragility_score": 35.972417,
+          "fragility_score": 35.972401,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.452848,
@@ -1028,7 +1028,7 @@
             "nikkei": 0.209058,
             "bovespa": 0.48902,
             "eu": 0.542345,
-            "em": 0.506861
+            "em": 0.50686
           },
           "features": {
             "vix": 22.462727,
@@ -1039,7 +1039,7 @@
         },
         {
           "date": "2010-10",
-          "fragility_score": 31.314055,
+          "fragility_score": 31.314062,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.312549,
@@ -1059,7 +1059,7 @@
         },
         {
           "date": "2010-11",
-          "fragility_score": 38.2047,
+          "fragility_score": 38.204689,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.30308,
@@ -1068,7 +1068,7 @@
             "nikkei": 0.113368,
             "bovespa": 0.374344,
             "eu": 0.446662,
-            "em": 0.343192
+            "em": 0.343188
           },
           "features": {
             "vix": 20.071364,
@@ -1079,7 +1079,7 @@
         },
         {
           "date": "2010-12",
-          "fragility_score": 42.788361,
+          "fragility_score": 42.788382,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.317234,
@@ -1088,7 +1088,7 @@
             "nikkei": 0.135445,
             "bovespa": 0.381413,
             "eu": 0.444946,
-            "em": 0.363926
+            "em": 0.363921
           },
           "features": {
             "vix": 17.521739,
@@ -1099,7 +1099,7 @@
         },
         {
           "date": "2011-01",
-          "fragility_score": 35.897518,
+          "fragility_score": 35.897514,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.323211,
@@ -1108,7 +1108,7 @@
             "nikkei": 0.219966,
             "bovespa": 0.426801,
             "eu": 0.438528,
-            "em": 0.372639
+            "em": 0.372634
           },
           "features": {
             "vix": 17.227143,
@@ -1119,7 +1119,7 @@
         },
         {
           "date": "2011-02",
-          "fragility_score": 32.788118,
+          "fragility_score": 32.788066,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.338137,
@@ -1128,7 +1128,7 @@
             "nikkei": 0.479929,
             "bovespa": 0.217818,
             "eu": 0.365243,
-            "em": 0.34604
+            "em": 0.346039
           },
           "features": {
             "vix": 17.38,
@@ -1139,7 +1139,7 @@
         },
         {
           "date": "2011-03",
-          "fragility_score": 51.817588,
+          "fragility_score": 51.817546,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.379725,
@@ -1148,7 +1148,7 @@
             "nikkei": 0.112962,
             "bovespa": 0.173727,
             "eu": 0.34833,
-            "em": 0.359742
+            "em": 0.359739
           },
           "features": {
             "vix": 20.723478,
@@ -1159,7 +1159,7 @@
         },
         {
           "date": "2011-04",
-          "fragility_score": 27.433482,
+          "fragility_score": 27.433401,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.390694,
@@ -1168,7 +1168,7 @@
             "nikkei": 0.057765,
             "bovespa": 0.258523,
             "eu": 0.342485,
-            "em": 0.349244
+            "em": 0.34924
           },
           "features": {
             "vix": 16.17,
@@ -1179,7 +1179,7 @@
         },
         {
           "date": "2011-05",
-          "fragility_score": 33.108628,
+          "fragility_score": 33.108561,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.260661,
@@ -1188,7 +1188,7 @@
             "nikkei": 0.015014,
             "bovespa": 0.329858,
             "eu": 0.211844,
-            "em": 0.311607
+            "em": 0.311604
           },
           "features": {
             "vix": 16.869091,
@@ -1199,7 +1199,7 @@
         },
         {
           "date": "2011-06",
-          "fragility_score": 29.588572,
+          "fragility_score": 29.588514,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.224376,
@@ -1219,7 +1219,7 @@
         },
         {
           "date": "2011-07",
-          "fragility_score": 24.194103,
+          "fragility_score": 24.194081,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.096075,
@@ -1228,7 +1228,7 @@
             "nikkei": 0.014971,
             "bovespa": 0.293982,
             "eu": 0.059493,
-            "em": 0.259087
+            "em": 0.259088
           },
           "features": {
             "vix": 19.067619,
@@ -1239,7 +1239,7 @@
         },
         {
           "date": "2011-08",
-          "fragility_score": 48.056478,
+          "fragility_score": 48.056517,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.492948,
@@ -1248,7 +1248,7 @@
             "nikkei": 0.289385,
             "bovespa": 0.470629,
             "eu": 0.419935,
-            "em": 0.528352
+            "em": 0.528353
           },
           "features": {
             "vix": 35.02913,
@@ -1259,7 +1259,7 @@
         },
         {
           "date": "2011-09",
-          "fragility_score": 51.643254,
+          "fragility_score": 51.643226,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.401949,
@@ -1268,7 +1268,7 @@
             "nikkei": 0.359905,
             "bovespa": 0.476882,
             "eu": 0.486041,
-            "em": 0.418751
+            "em": 0.41875
           },
           "features": {
             "vix": 36.411363,
@@ -1279,7 +1279,7 @@
         },
         {
           "date": "2011-10",
-          "fragility_score": 48.697059,
+          "fragility_score": 48.697043,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.277207,
@@ -1288,7 +1288,7 @@
             "nikkei": 0.300034,
             "bovespa": 0.395992,
             "eu": 0.576807,
-            "em": 0.332802
+            "em": 0.332801
           },
           "features": {
             "vix": 32.829048,
@@ -1299,7 +1299,7 @@
         },
         {
           "date": "2011-11",
-          "fragility_score": 60.740736,
+          "fragility_score": 60.740722,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.33873,
@@ -1308,7 +1308,7 @@
             "nikkei": 0.447799,
             "bovespa": 0.48723,
             "eu": 0.61899,
-            "em": 0.371794
+            "em": 0.371792
           },
           "features": {
             "vix": 32.034545,
@@ -1319,7 +1319,7 @@
         },
         {
           "date": "2011-12",
-          "fragility_score": 64.054093,
+          "fragility_score": 64.054104,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.559942,
@@ -1339,7 +1339,7 @@
         },
         {
           "date": "2012-01",
-          "fragility_score": 41.033293,
+          "fragility_score": 41.03328,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.516838,
@@ -1348,7 +1348,7 @@
             "nikkei": 0.288191,
             "bovespa": 0.518765,
             "eu": 0.61316,
-            "em": 0.538948
+            "em": 0.538947
           },
           "features": {
             "vix": 20.403182,
@@ -1359,7 +1359,7 @@
         },
         {
           "date": "2012-02",
-          "fragility_score": 35.474972,
+          "fragility_score": 35.474986,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.459706,
@@ -1379,7 +1379,7 @@
         },
         {
           "date": "2012-03",
-          "fragility_score": 35.143726,
+          "fragility_score": 35.143709,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.242352,
@@ -1388,7 +1388,7 @@
             "nikkei": 0.189997,
             "bovespa": 0.483235,
             "eu": 0.453401,
-            "em": 0.383132
+            "em": 0.38313
           },
           "features": {
             "vix": 16.167273,
@@ -1399,7 +1399,7 @@
         },
         {
           "date": "2012-04",
-          "fragility_score": 39.753132,
+          "fragility_score": 39.753151,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.366163,
@@ -1408,7 +1408,7 @@
             "nikkei": 0.414968,
             "bovespa": 0.395218,
             "eu": 0.360327,
-            "em": 0.435199
+            "em": 0.435195
           },
           "features": {
             "vix": 17.769524,
@@ -1419,7 +1419,7 @@
         },
         {
           "date": "2012-05",
-          "fragility_score": 38.803343,
+          "fragility_score": 38.80333,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.380411,
@@ -1428,7 +1428,7 @@
             "nikkei": 0.418324,
             "bovespa": 0.166417,
             "eu": 0.393489,
-            "em": 0.312409
+            "em": 0.312405
           },
           "features": {
             "vix": 21.034783,
@@ -1439,7 +1439,7 @@
         },
         {
           "date": "2012-06",
-          "fragility_score": 39.598943,
+          "fragility_score": 39.598929,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.343252,
@@ -1448,7 +1448,7 @@
             "nikkei": 0.381098,
             "bovespa": 0.19989,
             "eu": 0.491424,
-            "em": 0.324404
+            "em": 0.3244
           },
           "features": {
             "vix": 21.130952,
@@ -1459,7 +1459,7 @@
         },
         {
           "date": "2012-07",
-          "fragility_score": 42.735939,
+          "fragility_score": 42.735909,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.356525,
@@ -1468,7 +1468,7 @@
             "nikkei": 0.478438,
             "bovespa": 0.299042,
             "eu": 0.637434,
-            "em": 0.39727
+            "em": 0.397268
           },
           "features": {
             "vix": 17.524091,
@@ -1479,7 +1479,7 @@
         },
         {
           "date": "2012-08",
-          "fragility_score": 47.288896,
+          "fragility_score": 47.288903,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.412017,
@@ -1488,7 +1488,7 @@
             "nikkei": 0.298387,
             "bovespa": 0.404253,
             "eu": 0.643984,
-            "em": 0.456937
+            "em": 0.456935
           },
           "features": {
             "vix": 15.689565,
@@ -1499,7 +1499,7 @@
         },
         {
           "date": "2012-09",
-          "fragility_score": 40.164868,
+          "fragility_score": 40.164931,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.387481,
@@ -1508,7 +1508,7 @@
             "nikkei": 0.281842,
             "bovespa": 0.359447,
             "eu": 0.668068,
-            "em": 0.438627
+            "em": 0.438628
           },
           "features": {
             "vix": 15.394,
@@ -1519,7 +1519,7 @@
         },
         {
           "date": "2012-10",
-          "fragility_score": 30.805468,
+          "fragility_score": 30.805535,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.034422,
@@ -1528,7 +1528,7 @@
             "nikkei": 0.139601,
             "bovespa": 0.089294,
             "eu": 0.40834,
-            "em": 0.128461
+            "em": 0.128464
           },
           "features": {
             "vix": 16.409565,
@@ -1539,7 +1539,7 @@
         },
         {
           "date": "2012-11",
-          "fragility_score": 28.71125,
+          "fragility_score": 28.71128,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.07394,
@@ -1548,7 +1548,7 @@
             "nikkei": 0.061614,
             "bovespa": 0.022443,
             "eu": 0.344327,
-            "em": 0.123142
+            "em": 0.123147
           },
           "features": {
             "vix": 16.638636,
@@ -1559,7 +1559,7 @@
         },
         {
           "date": "2012-12",
-          "fragility_score": 20.496845,
+          "fragility_score": 20.496771,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.135974,
@@ -1568,7 +1568,7 @@
             "nikkei": -0.070587,
             "bovespa": 0.142339,
             "eu": 0.119239,
-            "em": 0.208886
+            "em": 0.208884
           },
           "features": {
             "vix": 17.332381,
@@ -1579,7 +1579,7 @@
         },
         {
           "date": "2013-01",
-          "fragility_score": 18.90829,
+          "fragility_score": 18.908241,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.184892,
@@ -1599,7 +1599,7 @@
         },
         {
           "date": "2013-02",
-          "fragility_score": 12.625103,
+          "fragility_score": 12.62517,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.1497,
@@ -1608,7 +1608,7 @@
             "nikkei": -0.005578,
             "bovespa": 0.384523,
             "eu": 0.098282,
-            "em": 0.28157
+            "em": 0.281575
           },
           "features": {
             "vix": 13.992,
@@ -1619,7 +1619,7 @@
         },
         {
           "date": "2013-03",
-          "fragility_score": 14.46548,
+          "fragility_score": 14.465484,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.082241,
@@ -1628,7 +1628,7 @@
             "nikkei": 0.060025,
             "bovespa": 0.343603,
             "eu": 0.075301,
-            "em": 0.257762
+            "em": 0.257771
           },
           "features": {
             "vix": 13.015714,
@@ -1639,7 +1639,7 @@
         },
         {
           "date": "2013-04",
-          "fragility_score": 15.227274,
+          "fragility_score": 15.227385,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.083539,
@@ -1648,7 +1648,7 @@
             "nikkei": 0.166897,
             "bovespa": 0.053072,
             "eu": 0.16879,
-            "em": 0.168619
+            "em": 0.168621
           },
           "features": {
             "vix": 13.967273,
@@ -1659,7 +1659,7 @@
         },
         {
           "date": "2013-05",
-          "fragility_score": 26.861406,
+          "fragility_score": 26.861486,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.2153,
@@ -1668,7 +1668,7 @@
             "nikkei": 0.08891,
             "bovespa": 0.131984,
             "eu": 0.232852,
-            "em": 0.217031
+            "em": 0.217032
           },
           "features": {
             "vix": 13.515217,
@@ -1679,7 +1679,7 @@
         },
         {
           "date": "2013-06",
-          "fragility_score": 49.639049,
+          "fragility_score": 49.639129,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.182647,
@@ -1688,7 +1688,7 @@
             "nikkei": 0.291471,
             "bovespa": -0.01906,
             "eu": 0.47429,
-            "em": 0.135596
+            "em": 0.1356
           },
           "features": {
             "vix": 17.2715,
@@ -1699,7 +1699,7 @@
         },
         {
           "date": "2013-07",
-          "fragility_score": 53.917818,
+          "fragility_score": 53.917814,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.170597,
@@ -1708,7 +1708,7 @@
             "nikkei": 0.285941,
             "bovespa": 0.077434,
             "eu": 0.539757,
-            "em": 0.187132
+            "em": 0.187136
           },
           "features": {
             "vix": 14.071305,
@@ -1719,7 +1719,7 @@
         },
         {
           "date": "2013-08",
-          "fragility_score": 41.744489,
+          "fragility_score": 41.744525,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.32655,
@@ -1728,7 +1728,7 @@
             "nikkei": 0.179402,
             "bovespa": 0.153762,
             "eu": 0.531872,
-            "em": 0.428893
+            "em": 0.428896
           },
           "features": {
             "vix": 14.21,
@@ -1739,7 +1739,7 @@
         },
         {
           "date": "2013-09",
-          "fragility_score": 38.10239,
+          "fragility_score": 38.10237,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.311809,
@@ -1748,7 +1748,7 @@
             "nikkei": 0.289074,
             "bovespa": 0.135555,
             "eu": 0.423337,
-            "em": 0.284812
+            "em": 0.284811
           },
           "features": {
             "vix": 14.802381,
@@ -1759,7 +1759,7 @@
         },
         {
           "date": "2013-10",
-          "fragility_score": 26.399889,
+          "fragility_score": 26.399859,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.289877,
@@ -1768,7 +1768,7 @@
             "nikkei": 0.301299,
             "bovespa": 0.148504,
             "eu": 0.407887,
-            "em": 0.295482
+            "em": 0.295479
           },
           "features": {
             "vix": 15.407826,
@@ -1779,7 +1779,7 @@
         },
         {
           "date": "2013-11",
-          "fragility_score": 23.977733,
+          "fragility_score": 23.977752,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.169307,
@@ -1799,7 +1799,7 @@
         },
         {
           "date": "2013-12",
-          "fragility_score": 32.033651,
+          "fragility_score": 32.033645,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.180049,
@@ -1819,7 +1819,7 @@
         },
         {
           "date": "2014-01",
-          "fragility_score": 30.772616,
+          "fragility_score": 30.772633,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.194492,
@@ -1839,7 +1839,7 @@
         },
         {
           "date": "2014-02",
-          "fragility_score": 49.385673,
+          "fragility_score": 49.38571,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.226171,
@@ -1848,7 +1848,7 @@
             "nikkei": 0.011491,
             "bovespa": 0.281365,
             "eu": 0.302617,
-            "em": 0.375423
+            "em": 0.37542
           },
           "features": {
             "vix": 15.375,
@@ -1859,7 +1859,7 @@
         },
         {
           "date": "2014-03",
-          "fragility_score": 46.378981,
+          "fragility_score": 46.379016,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.308152,
@@ -1868,7 +1868,7 @@
             "nikkei": 0.208317,
             "bovespa": 0.30619,
             "eu": 0.576701,
-            "em": 0.463266
+            "em": 0.463263
           },
           "features": {
             "vix": 14.836667,
@@ -1879,7 +1879,7 @@
         },
         {
           "date": "2014-04",
-          "fragility_score": 24.50463,
+          "fragility_score": 24.504643,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.193538,
@@ -1888,7 +1888,7 @@
             "nikkei": 0.050654,
             "bovespa": 0.146409,
             "eu": 0.514763,
-            "em": 0.438464
+            "em": 0.438461
           },
           "features": {
             "vix": 14.16,
@@ -1899,7 +1899,7 @@
         },
         {
           "date": "2014-05",
-          "fragility_score": 18.312088,
+          "fragility_score": 18.312081,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.020492,
@@ -1908,7 +1908,7 @@
             "nikkei": 0.178472,
             "bovespa": 0.091881,
             "eu": 0.366972,
-            "em": 0.27491
+            "em": 0.274905
           },
           "features": {
             "vix": 12.424545,
@@ -1919,7 +1919,7 @@
         },
         {
           "date": "2014-06",
-          "fragility_score": 14.074847,
+          "fragility_score": 14.074866,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.048693,
@@ -1928,7 +1928,7 @@
             "nikkei": 0.105862,
             "bovespa": 0.206323,
             "eu": 0.315329,
-            "em": 0.298879
+            "em": 0.298871
           },
           "features": {
             "vix": 11.541429,
@@ -1939,7 +1939,7 @@
         },
         {
           "date": "2014-07",
-          "fragility_score": 40.4453,
+          "fragility_score": 40.445331,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.312115,
@@ -1948,7 +1948,7 @@
             "nikkei": 0.160637,
             "bovespa": 0.272428,
             "eu": 0.395399,
-            "em": 0.329
+            "em": 0.328995
           },
           "features": {
             "vix": 12.210435,
@@ -1959,7 +1959,7 @@
         },
         {
           "date": "2014-08",
-          "fragility_score": 38.908945,
+          "fragility_score": 38.908976,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.292951,
@@ -1968,7 +1968,7 @@
             "nikkei": 0.091805,
             "bovespa": 0.196794,
             "eu": 0.293838,
-            "em": 0.329899
+            "em": 0.329892
           },
           "features": {
             "vix": 13.497143,
@@ -1979,7 +1979,7 @@
         },
         {
           "date": "2014-09",
-          "fragility_score": 37.862853,
+          "fragility_score": 37.862866,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.317507,
@@ -1988,7 +1988,7 @@
             "nikkei": -0.019633,
             "bovespa": 0.21501,
             "eu": 0.2605,
-            "em": 0.352559
+            "em": 0.352556
           },
           "features": {
             "vix": 13.404091,
@@ -1999,7 +1999,7 @@
         },
         {
           "date": "2014-10",
-          "fragility_score": 37.248442,
+          "fragility_score": 37.248521,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.055287,
@@ -2008,7 +2008,7 @@
             "nikkei": 0.057946,
             "bovespa": 0.143672,
             "eu": 0.238002,
-            "em": 0.156853
+            "em": 0.156855
           },
           "features": {
             "vix": 18.016087,
@@ -2019,7 +2019,7 @@
         },
         {
           "date": "2014-11",
-          "fragility_score": 17.628542,
+          "fragility_score": 17.628597,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.046321,
@@ -2028,7 +2028,7 @@
             "nikkei": 0.161367,
             "bovespa": 0.248225,
             "eu": 0.189106,
-            "em": 0.231665
+            "em": 0.231669
           },
           "features": {
             "vix": 13.346,
@@ -2039,7 +2039,7 @@
         },
         {
           "date": "2014-12",
-          "fragility_score": 21.626844,
+          "fragility_score": 21.626871,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.307548,
@@ -2048,7 +2048,7 @@
             "nikkei": 0.307549,
             "bovespa": 0.271276,
             "eu": 0.185531,
-            "em": 0.410923
+            "em": 0.410926
           },
           "features": {
             "vix": 16.227391,
@@ -2059,7 +2059,7 @@
         },
         {
           "date": "2015-01",
-          "fragility_score": 30.624609,
+          "fragility_score": 30.624643,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.285533,
@@ -2068,7 +2068,7 @@
             "nikkei": 0.385374,
             "bovespa": 0.239097,
             "eu": 0.106108,
-            "em": 0.341415
+            "em": 0.341418
           },
           "features": {
             "vix": 19.206364,
@@ -2079,7 +2079,7 @@
         },
         {
           "date": "2015-02",
-          "fragility_score": 31.762738,
+          "fragility_score": 31.762771,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.198641,
@@ -2088,7 +2088,7 @@
             "nikkei": 0.396072,
             "bovespa": 0.226573,
             "eu": 0.16111,
-            "em": 0.278857
+            "em": 0.278861
           },
           "features": {
             "vix": 15.8435,
@@ -2099,7 +2099,7 @@
         },
         {
           "date": "2015-03",
-          "fragility_score": 33.714932,
+          "fragility_score": 33.714927,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.100742,
@@ -2108,7 +2108,7 @@
             "nikkei": 0.427815,
             "bovespa": 0.298011,
             "eu": 0.073278,
-            "em": 0.236531
+            "em": 0.236533
           },
           "features": {
             "vix": 14.812727,
@@ -2119,7 +2119,7 @@
         },
         {
           "date": "2015-04",
-          "fragility_score": 29.67821,
+          "fragility_score": 29.678163,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.218465,
@@ -2128,7 +2128,7 @@
             "nikkei": 0.324369,
             "bovespa": 0.323443,
             "eu": -0.071796,
-            "em": 0.285339
+            "em": 0.285344
           },
           "features": {
             "vix": 13.548182,
@@ -2139,7 +2139,7 @@
         },
         {
           "date": "2015-05",
-          "fragility_score": 20.782272,
+          "fragility_score": 20.782266,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.261401,
@@ -2148,7 +2148,7 @@
             "nikkei": 0.273646,
             "bovespa": 0.1702,
             "eu": 0.048855,
-            "em": 0.264712
+            "em": 0.264714
           },
           "features": {
             "vix": 13.280952,
@@ -2159,7 +2159,7 @@
         },
         {
           "date": "2015-06",
-          "fragility_score": 36.889013,
+          "fragility_score": 36.888974,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.427256,
@@ -2168,7 +2168,7 @@
             "nikkei": 0.219999,
             "bovespa": 0.111518,
             "eu": 0.358884,
-            "em": 0.313731
+            "em": 0.313733
           },
           "features": {
             "vix": 14.339546,
@@ -2179,7 +2179,7 @@
         },
         {
           "date": "2015-07",
-          "fragility_score": 34.612449,
+          "fragility_score": 34.612476,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.503878,
@@ -2188,7 +2188,7 @@
             "nikkei": 0.206189,
             "bovespa": 0.367474,
             "eu": 0.42199,
-            "em": 0.390567
+            "em": 0.390568
           },
           "features": {
             "vix": 14.458696,
@@ -2199,7 +2199,7 @@
         },
         {
           "date": "2015-08",
-          "fragility_score": 41.684456,
+          "fragility_score": 41.684444,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.424365,
@@ -2208,7 +2208,7 @@
             "nikkei": 0.301239,
             "bovespa": 0.545378,
             "eu": 0.579563,
-            "em": 0.531281
+            "em": 0.53128
           },
           "features": {
             "vix": 19.428095,
@@ -2219,7 +2219,7 @@
         },
         {
           "date": "2015-09",
-          "fragility_score": 45.74267,
+          "fragility_score": 45.742683,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.379297,
@@ -2239,7 +2239,7 @@
         },
         {
           "date": "2015-10",
-          "fragility_score": 39.866866,
+          "fragility_score": 39.86689,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.421181,
@@ -2248,7 +2248,7 @@
             "nikkei": 0.304627,
             "bovespa": 0.453537,
             "eu": 0.571273,
-            "em": 0.563547
+            "em": 0.563548
           },
           "features": {
             "vix": 16.789545,
@@ -2259,7 +2259,7 @@
         },
         {
           "date": "2015-11",
-          "fragility_score": 37.084045,
+          "fragility_score": 37.084099,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.300698,
@@ -2268,7 +2268,7 @@
             "nikkei": 0.019455,
             "bovespa": 0.231637,
             "eu": 0.307026,
-            "em": 0.41896
+            "em": 0.418962
           },
           "features": {
             "vix": 16.161429,
@@ -2279,7 +2279,7 @@
         },
         {
           "date": "2015-12",
-          "fragility_score": 17.598485,
+          "fragility_score": 17.598546,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.253829,
@@ -2288,7 +2288,7 @@
             "nikkei": -0.033833,
             "bovespa": 0.211309,
             "eu": 0.334977,
-            "em": 0.358954
+            "em": 0.358957
           },
           "features": {
             "vix": 17.926087,
@@ -2299,7 +2299,7 @@
         },
         {
           "date": "2016-01",
-          "fragility_score": 40.111258,
+          "fragility_score": 40.111304,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.236492,
@@ -2308,7 +2308,7 @@
             "nikkei": 0.357182,
             "bovespa": 0.303986,
             "eu": 0.43935,
-            "em": 0.352366
+            "em": 0.352369
           },
           "features": {
             "vix": 23.612857,
@@ -2319,7 +2319,7 @@
         },
         {
           "date": "2016-02",
-          "fragility_score": 38.921362,
+          "fragility_score": 38.921382,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.373778,
@@ -2328,7 +2328,7 @@
             "nikkei": 0.344442,
             "bovespa": 0.433948,
             "eu": 0.55932,
-            "em": 0.458079
+            "em": 0.45808
           },
           "features": {
             "vix": 22.654286,
@@ -2339,7 +2339,7 @@
         },
         {
           "date": "2016-03",
-          "fragility_score": 37.134833,
+          "fragility_score": 37.134873,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.389536,
@@ -2359,7 +2359,7 @@
         },
         {
           "date": "2016-04",
-          "fragility_score": 24.546949,
+          "fragility_score": 24.546971,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.300422,
@@ -2368,7 +2368,7 @@
             "nikkei": 0.171766,
             "bovespa": 0.337006,
             "eu": 0.413432,
-            "em": 0.436557
+            "em": 0.436556
           },
           "features": {
             "vix": 14.300476,
@@ -2379,7 +2379,7 @@
         },
         {
           "date": "2016-05",
-          "fragility_score": 42.62063,
+          "fragility_score": 42.620675,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.26981,
@@ -2388,7 +2388,7 @@
             "nikkei": 0.000895,
             "bovespa": 0.326313,
             "eu": 0.326093,
-            "em": 0.427453
+            "em": 0.427451
           },
           "features": {
             "vix": 14.774091,
@@ -2399,7 +2399,7 @@
         },
         {
           "date": "2016-06",
-          "fragility_score": 55.658668,
+          "fragility_score": 55.658698,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.480876,
@@ -2408,7 +2408,7 @@
             "nikkei": 0.282088,
             "bovespa": 0.437039,
             "eu": 0.551032,
-            "em": 0.608898
+            "em": 0.608897
           },
           "features": {
             "vix": 17.774545,
@@ -2419,7 +2419,7 @@
         },
         {
           "date": "2016-07",
-          "fragility_score": 52.534768,
+          "fragility_score": 52.534773,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.289158,
@@ -2428,7 +2428,7 @@
             "nikkei": 0.269064,
             "bovespa": 0.163445,
             "eu": 0.359426,
-            "em": 0.293869
+            "em": 0.29387
           },
           "features": {
             "vix": 13.235238,
@@ -2439,7 +2439,7 @@
         },
         {
           "date": "2016-08",
-          "fragility_score": 50.314923,
+          "fragility_score": 50.314935,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.291552,
@@ -2459,7 +2459,7 @@
         },
         {
           "date": "2016-09",
-          "fragility_score": 24.418726,
+          "fragility_score": 24.41872,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.184104,
@@ -2468,7 +2468,7 @@
             "nikkei": 0.216798,
             "bovespa": 0.124468,
             "eu": 0.34732,
-            "em": 0.198485
+            "em": 0.198484
           },
           "features": {
             "vix": 14.117727,
@@ -2479,7 +2479,7 @@
         },
         {
           "date": "2016-10",
-          "fragility_score": 21.97108,
+          "fragility_score": 21.971132,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.386927,
@@ -2488,7 +2488,7 @@
             "nikkei": 0.098274,
             "bovespa": 0.402906,
             "eu": 0.534697,
-            "em": 0.431116
+            "em": 0.431112
           },
           "features": {
             "vix": 14.585238,
@@ -2499,7 +2499,7 @@
         },
         {
           "date": "2016-11",
-          "fragility_score": 25.020304,
+          "fragility_score": 25.020301,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.334518,
@@ -2508,7 +2508,7 @@
             "nikkei": 0.078109,
             "bovespa": 0.445111,
             "eu": 0.552701,
-            "em": 0.472518
+            "em": 0.472514
           },
           "features": {
             "vix": 15.108636,
@@ -2519,7 +2519,7 @@
         },
         {
           "date": "2016-12",
-          "fragility_score": 30.016123,
+          "fragility_score": 30.016124,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.289625,
@@ -2528,7 +2528,7 @@
             "nikkei": 0.012751,
             "bovespa": 0.445542,
             "eu": 0.539426,
-            "em": 0.460741
+            "em": 0.460738
           },
           "features": {
             "vix": 12.425455,
@@ -2539,7 +2539,7 @@
         },
         {
           "date": "2017-01",
-          "fragility_score": 14.125584,
+          "fragility_score": 14.125522,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.004983,
@@ -2548,7 +2548,7 @@
             "nikkei": -0.22522,
             "bovespa": 0.254349,
             "eu": 0.147679,
-            "em": 0.226406
+            "em": 0.226402
           },
           "features": {
             "vix": 11.701818,
@@ -2559,7 +2559,7 @@
         },
         {
           "date": "2017-02",
-          "fragility_score": 14.319646,
+          "fragility_score": 14.319619,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.046762,
@@ -2568,7 +2568,7 @@
             "nikkei": -0.247411,
             "bovespa": -0.015574,
             "eu": 0.115774,
-            "em": 0.116295
+            "em": 0.116294
           },
           "features": {
             "vix": 11.5285,
@@ -2579,7 +2579,7 @@
         },
         {
           "date": "2017-03",
-          "fragility_score": 22.594316,
+          "fragility_score": 22.594295,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.049251,
@@ -2588,7 +2588,7 @@
             "nikkei": -0.110565,
             "bovespa": -0.116514,
             "eu": 0.012443,
-            "em": 0.066138
+            "em": 0.066136
           },
           "features": {
             "vix": 11.897826,
@@ -2599,7 +2599,7 @@
         },
         {
           "date": "2017-04",
-          "fragility_score": 22.876922,
+          "fragility_score": 22.877003,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.227501,
@@ -2608,7 +2608,7 @@
             "nikkei": 0.23374,
             "bovespa": 0.009756,
             "eu": 0.268375,
-            "em": 0.290771
+            "em": 0.290773
           },
           "features": {
             "vix": 13.2775,
@@ -2619,7 +2619,7 @@
         },
         {
           "date": "2017-05",
-          "fragility_score": 16.395269,
+          "fragility_score": 16.395394,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.186191,
@@ -2628,7 +2628,7 @@
             "nikkei": 0.303629,
             "bovespa": 0.18437,
             "eu": 0.213667,
-            "em": 0.313684
+            "em": 0.31369
           },
           "features": {
             "vix": 10.816522,
@@ -2639,7 +2639,7 @@
         },
         {
           "date": "2017-06",
-          "fragility_score": 27.9306,
+          "fragility_score": 27.93069,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.325708,
@@ -2648,7 +2648,7 @@
             "nikkei": 0.36042,
             "bovespa": 0.308614,
             "eu": 0.335006,
-            "em": 0.301864
+            "em": 0.301867
           },
           "features": {
             "vix": 10.513636,
@@ -2659,7 +2659,7 @@
         },
         {
           "date": "2017-07",
-          "fragility_score": 22.79042,
+          "fragility_score": 22.790409,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.244395,
@@ -2668,7 +2668,7 @@
             "nikkei": 0.378317,
             "bovespa": 0.274878,
             "eu": 0.274165,
-            "em": 0.2324
+            "em": 0.232396
           },
           "features": {
             "vix": 10.31,
@@ -2679,7 +2679,7 @@
         },
         {
           "date": "2017-08",
-          "fragility_score": 22.758873,
+          "fragility_score": 22.758818,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.29415,
@@ -2688,7 +2688,7 @@
             "nikkei": -0.016062,
             "bovespa": 0.301696,
             "eu": 0.291744,
-            "em": 0.316769
+            "em": 0.316762
           },
           "features": {
             "vix": 11.975652,
@@ -2699,7 +2699,7 @@
         },
         {
           "date": "2017-09",
-          "fragility_score": 21.544944,
+          "fragility_score": 21.544954,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.240076,
@@ -2708,7 +2708,7 @@
             "nikkei": -0.184338,
             "bovespa": 0.353818,
             "eu": 0.141793,
-            "em": 0.367563
+            "em": 0.367558
           },
           "features": {
             "vix": 10.423333,
@@ -2719,7 +2719,7 @@
         },
         {
           "date": "2017-10",
-          "fragility_score": 16.962454,
+          "fragility_score": 16.962473,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.17279,
@@ -2728,7 +2728,7 @@
             "nikkei": -0.184388,
             "bovespa": 0.237057,
             "eu": -0.036136,
-            "em": 0.251122
+            "em": 0.251125
           },
           "features": {
             "vix": 10.125455,
@@ -2739,7 +2739,7 @@
         },
         {
           "date": "2017-11",
-          "fragility_score": 17.041964,
+          "fragility_score": 17.042002,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.148529,
@@ -2748,7 +2748,7 @@
             "nikkei": 0.148193,
             "bovespa": 0.046189,
             "eu": -0.106496,
-            "em": 0.134744
+            "em": 0.13475
           },
           "features": {
             "vix": 10.510455,
@@ -2759,7 +2759,7 @@
         },
         {
           "date": "2017-12",
-          "fragility_score": 39.374831,
+          "fragility_score": 39.374784,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.04614,
@@ -2768,7 +2768,7 @@
             "nikkei": 0.191017,
             "bovespa": 0.02745,
             "eu": -0.077865,
-            "em": 0.081318
+            "em": 0.081323
           },
           "features": {
             "vix": 10.247143,
@@ -2779,7 +2779,7 @@
         },
         {
           "date": "2018-01",
-          "fragility_score": 17.06808,
+          "fragility_score": 17.068013,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.177553,
@@ -2788,7 +2788,7 @@
             "nikkei": 0.217421,
             "bovespa": 0.204989,
             "eu": 0.045987,
-            "em": 0.253172
+            "em": 0.253175
           },
           "features": {
             "vix": 11.022174,
@@ -2799,7 +2799,7 @@
         },
         {
           "date": "2018-02",
-          "fragility_score": 24.581105,
+          "fragility_score": 24.581082,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.344177,
@@ -2819,7 +2819,7 @@
         },
         {
           "date": "2018-03",
-          "fragility_score": 21.674788,
+          "fragility_score": 21.674813,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.371505,
@@ -2828,7 +2828,7 @@
             "nikkei": 0.491942,
             "bovespa": 0.267538,
             "eu": 0.397159,
-            "em": 0.321449
+            "em": 0.32145
           },
           "features": {
             "vix": 19.066818,
@@ -2839,7 +2839,7 @@
         },
         {
           "date": "2018-04",
-          "fragility_score": 33.938468,
+          "fragility_score": 33.938508,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.214102,
@@ -2848,7 +2848,7 @@
             "nikkei": 0.433051,
             "bovespa": 0.099245,
             "eu": 0.285664,
-            "em": 0.192086
+            "em": 0.192084
           },
           "features": {
             "vix": 18.267619,
@@ -2859,7 +2859,7 @@
         },
         {
           "date": "2018-05",
-          "fragility_score": 22.793061,
+          "fragility_score": 22.79312,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.077597,
@@ -2868,7 +2868,7 @@
             "nikkei": 0.347706,
             "bovespa": 0.03322,
             "eu": 0.077766,
-            "em": 0.11179
+            "em": 0.111788
           },
           "features": {
             "vix": 14.085217,
@@ -2879,7 +2879,7 @@
         },
         {
           "date": "2018-06",
-          "fragility_score": 26.031455,
+          "fragility_score": 26.031502,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.118394,
@@ -2888,7 +2888,7 @@
             "nikkei": 0.042596,
             "bovespa": -0.077583,
             "eu": -0.053997,
-            "em": -0.102883
+            "em": -0.102887
           },
           "features": {
             "vix": 13.678095,
@@ -2899,7 +2899,7 @@
         },
         {
           "date": "2018-07",
-          "fragility_score": 37.690677,
+          "fragility_score": 37.690655,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.101657,
@@ -2919,7 +2919,7 @@
         },
         {
           "date": "2018-08",
-          "fragility_score": 46.898019,
+          "fragility_score": 46.898022,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.100546,
@@ -2928,7 +2928,7 @@
             "nikkei": 0.224855,
             "bovespa": -0.063712,
             "eu": 0.204239,
-            "em": 0.188557
+            "em": 0.188558
           },
           "features": {
             "vix": 12.546957,
@@ -2939,7 +2939,7 @@
         },
         {
           "date": "2018-09",
-          "fragility_score": 33.986549,
+          "fragility_score": 33.986509,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.147683,
@@ -2959,7 +2959,7 @@
         },
         {
           "date": "2018-10",
-          "fragility_score": 25.740631,
+          "fragility_score": 25.740609,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.242601,
@@ -2968,7 +2968,7 @@
             "nikkei": 0.214488,
             "bovespa": 0.044229,
             "eu": 0.258792,
-            "em": 0.295182
+            "em": 0.295184
           },
           "features": {
             "vix": 19.352174,
@@ -2979,7 +2979,7 @@
         },
         {
           "date": "2018-11",
-          "fragility_score": 24.984701,
+          "fragility_score": 24.984684,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.406716,
@@ -2988,7 +2988,7 @@
             "nikkei": 0.097312,
             "bovespa": 0.190832,
             "eu": 0.334626,
-            "em": 0.411391
+            "em": 0.411392
           },
           "features": {
             "vix": 19.453182,
@@ -2999,7 +2999,7 @@
         },
         {
           "date": "2018-12",
-          "fragility_score": 16.824352,
+          "fragility_score": 16.824349,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.329814,
@@ -3008,7 +3008,7 @@
             "nikkei": 0.040577,
             "bovespa": 0.177763,
             "eu": 0.251166,
-            "em": 0.302407
+            "em": 0.302409
           },
           "features": {
             "vix": 25.281905,
@@ -3019,7 +3019,7 @@
         },
         {
           "date": "2019-01",
-          "fragility_score": 20.45767,
+          "fragility_score": 20.457679,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.325971,
@@ -3028,7 +3028,7 @@
             "nikkei": 0.113643,
             "bovespa": -0.04819,
             "eu": 0.234669,
-            "em": 0.247099
+            "em": 0.247097
           },
           "features": {
             "vix": 19.749565,
@@ -3039,7 +3039,7 @@
         },
         {
           "date": "2019-02",
-          "fragility_score": 21.133967,
+          "fragility_score": 21.133984,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.244102,
@@ -3048,7 +3048,7 @@
             "nikkei": -0.038652,
             "bovespa": -0.153681,
             "eu": 0.205451,
-            "em": 0.193558
+            "em": 0.193557
           },
           "features": {
             "vix": 15.2185,
@@ -3059,7 +3059,7 @@
         },
         {
           "date": "2019-03",
-          "fragility_score": 27.926248,
+          "fragility_score": 27.926188,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.321077,
@@ -3068,7 +3068,7 @@
             "nikkei": 0.242179,
             "bovespa": 0.166469,
             "eu": 0.291302,
-            "em": 0.321588
+            "em": 0.321585
           },
           "features": {
             "vix": 14.485238,
@@ -3079,7 +3079,7 @@
         },
         {
           "date": "2019-04",
-          "fragility_score": 24.19227,
+          "fragility_score": 24.192231,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.279216,
@@ -3088,7 +3088,7 @@
             "nikkei": 0.153552,
             "bovespa": 0.184198,
             "eu": 0.370562,
-            "em": 0.364788
+            "em": 0.364782
           },
           "features": {
             "vix": 12.91,
@@ -3099,7 +3099,7 @@
         },
         {
           "date": "2019-05",
-          "fragility_score": 38.518032,
+          "fragility_score": 38.51797,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.204183,
@@ -3108,7 +3108,7 @@
             "nikkei": 0.160558,
             "bovespa": 0.258151,
             "eu": 0.274021,
-            "em": 0.39023
+            "em": 0.390225
           },
           "features": {
             "vix": 16.683913,
@@ -3119,7 +3119,7 @@
         },
         {
           "date": "2019-06",
-          "fragility_score": 21.843226,
+          "fragility_score": 21.843222,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.178756,
@@ -3128,7 +3128,7 @@
             "nikkei": 0.031724,
             "bovespa": 0.098149,
             "eu": 0.339118,
-            "em": 0.396283
+            "em": 0.396279
           },
           "features": {
             "vix": 15.836,
@@ -3139,7 +3139,7 @@
         },
         {
           "date": "2019-07",
-          "fragility_score": 20.868945,
+          "fragility_score": 20.868925,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.13842,
@@ -3148,7 +3148,7 @@
             "nikkei": 0.120141,
             "bovespa": 0.135343,
             "eu": 0.236146,
-            "em": 0.364717
+            "em": 0.364714
           },
           "features": {
             "vix": 13.273913,
@@ -3159,7 +3159,7 @@
         },
         {
           "date": "2019-08",
-          "fragility_score": 25.814866,
+          "fragility_score": 25.814844,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.0652,
@@ -3168,7 +3168,7 @@
             "nikkei": 0.323453,
             "bovespa": 0.100292,
             "eu": 0.189749,
-            "em": 0.163216
+            "em": 0.163217
           },
           "features": {
             "vix": 18.979091,
@@ -3179,7 +3179,7 @@
         },
         {
           "date": "2019-09",
-          "fragility_score": 26.325924,
+          "fragility_score": 26.325922,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.01547,
@@ -3188,7 +3188,7 @@
             "nikkei": 0.174439,
             "bovespa": 0.047712,
             "eu": 0.143482,
-            "em": 0.018061
+            "em": 0.018063
           },
           "features": {
             "vix": 15.721905,
@@ -3199,7 +3199,7 @@
         },
         {
           "date": "2019-10",
-          "fragility_score": 34.690063,
+          "fragility_score": 34.690059,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.017471,
@@ -3208,7 +3208,7 @@
             "nikkei": 0.176685,
             "bovespa": -0.046436,
             "eu": 0.111192,
-            "em": -0.066401
+            "em": -0.066398
           },
           "features": {
             "vix": 15.466522,
@@ -3219,7 +3219,7 @@
         },
         {
           "date": "2019-11",
-          "fragility_score": 23.588841,
+          "fragility_score": 23.588892,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.117207,
@@ -3228,7 +3228,7 @@
             "nikkei": 0.057757,
             "bovespa": -0.066596,
             "eu": 0.214453,
-            "em": -0.006418
+            "em": -0.006416
           },
           "features": {
             "vix": 12.486667,
@@ -3239,7 +3239,7 @@
         },
         {
           "date": "2019-12",
-          "fragility_score": 19.091984,
+          "fragility_score": 19.092002,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.014158,
@@ -3259,7 +3259,7 @@
         },
         {
           "date": "2020-01",
-          "fragility_score": 30.083321,
+          "fragility_score": 30.083303,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.331566,
@@ -3268,7 +3268,7 @@
             "nikkei": 0.47572,
             "bovespa": 0.222196,
             "eu": 0.222558,
-            "em": 0.347686
+            "em": 0.347688
           },
           "features": {
             "vix": 13.853913,
@@ -3279,7 +3279,7 @@
         },
         {
           "date": "2020-02",
-          "fragility_score": 48.240313,
+          "fragility_score": 48.240305,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.504529,
@@ -3288,7 +3288,7 @@
             "nikkei": 0.53388,
             "bovespa": 0.252564,
             "eu": 0.601564,
-            "em": 0.49561
+            "em": 0.495611
           },
           "features": {
             "vix": 19.3315,
@@ -3299,7 +3299,7 @@
         },
         {
           "date": "2020-03",
-          "fragility_score": 58.810534,
+          "fragility_score": 58.810543,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.570804,
@@ -3319,7 +3319,7 @@
         },
         {
           "date": "2020-04",
-          "fragility_score": 55.582807,
+          "fragility_score": 55.58281,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.592599,
@@ -3339,7 +3339,7 @@
         },
         {
           "date": "2020-05",
-          "fragility_score": 53.118126,
+          "fragility_score": 53.118132,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.638476,
@@ -3359,7 +3359,7 @@
         },
         {
           "date": "2020-06",
-          "fragility_score": 32.955056,
+          "fragility_score": 32.955096,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.382286,
@@ -3368,7 +3368,7 @@
             "nikkei": 0.314377,
             "bovespa": 0.271514,
             "eu": 0.522561,
-            "em": 0.367557
+            "em": 0.367558
           },
           "features": {
             "vix": 31.119546,
@@ -3379,7 +3379,7 @@
         },
         {
           "date": "2020-07",
-          "fragility_score": 32.402952,
+          "fragility_score": 32.402966,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.147557,
@@ -3388,7 +3388,7 @@
             "nikkei": 0.245105,
             "bovespa": 0.114972,
             "eu": 0.391117,
-            "em": 0.226317
+            "em": 0.226319
           },
           "features": {
             "vix": 26.876957,
@@ -3399,7 +3399,7 @@
         },
         {
           "date": "2020-08",
-          "fragility_score": 46.459745,
+          "fragility_score": 46.459806,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.0144,
@@ -3408,7 +3408,7 @@
             "nikkei": 0.083922,
             "bovespa": -0.026875,
             "eu": 0.315414,
-            "em": 0.018088
+            "em": 0.01809
           },
           "features": {
             "vix": 22.889524,
@@ -3419,7 +3419,7 @@
         },
         {
           "date": "2020-09",
-          "fragility_score": 10.454615,
+          "fragility_score": 10.454604,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.047603,
@@ -3428,7 +3428,7 @@
             "nikkei": -0.041083,
             "bovespa": 0.038943,
             "eu": 0.304333,
-            "em": -0.027843
+            "em": -0.027841
           },
           "features": {
             "vix": 27.788636,
@@ -3439,7 +3439,7 @@
         },
         {
           "date": "2020-10",
-          "fragility_score": 27.779867,
+          "fragility_score": 27.77984,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.361697,
@@ -3448,7 +3448,7 @@
             "nikkei": -0.081133,
             "bovespa": 0.331697,
             "eu": 0.474011,
-            "em": 0.28331
+            "em": 0.283308
           },
           "features": {
             "vix": 29.438636,
@@ -3459,7 +3459,7 @@
         },
         {
           "date": "2020-11",
-          "fragility_score": 40.069267,
+          "fragility_score": 40.069242,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.310193,
@@ -3468,7 +3468,7 @@
             "nikkei": 0.101945,
             "bovespa": 0.304593,
             "eu": 0.408545,
-            "em": 0.321563
+            "em": 0.321562
           },
           "features": {
             "vix": 24.817143,
@@ -3479,7 +3479,7 @@
         },
         {
           "date": "2020-12",
-          "fragility_score": 42.724719,
+          "fragility_score": 42.724715,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.277077,
@@ -3488,7 +3488,7 @@
             "nikkei": 0.217,
             "bovespa": 0.257154,
             "eu": 0.43394,
-            "em": 0.344749
+            "em": 0.344748
           },
           "features": {
             "vix": 22.337391,
@@ -3499,7 +3499,7 @@
         },
         {
           "date": "2021-01",
-          "fragility_score": 26.749652,
+          "fragility_score": 26.749641,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.216689,
@@ -3508,7 +3508,7 @@
             "nikkei": 0.125188,
             "bovespa": 0.201969,
             "eu": 0.390633,
-            "em": 0.286312
+            "em": 0.286311
           },
           "features": {
             "vix": 24.78,
@@ -3519,7 +3519,7 @@
         },
         {
           "date": "2021-02",
-          "fragility_score": 28.566579,
+          "fragility_score": 28.566602,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.375536,
@@ -3528,7 +3528,7 @@
             "nikkei": 0.425615,
             "bovespa": 0.285114,
             "eu": 0.553531,
-            "em": 0.466529
+            "em": 0.46653
           },
           "features": {
             "vix": 22.982,
@@ -3539,7 +3539,7 @@
         },
         {
           "date": "2021-03",
-          "fragility_score": 67.430865,
+          "fragility_score": 67.430876,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.085634,
@@ -3559,7 +3559,7 @@
         },
         {
           "date": "2021-04",
-          "fragility_score": 49.130536,
+          "fragility_score": 49.130557,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.057562,
@@ -3568,7 +3568,7 @@
             "nikkei": 0.348335,
             "bovespa": 0.070874,
             "eu": 0.135072,
-            "em": 0.073319
+            "em": 0.073318
           },
           "features": {
             "vix": 17.412273,
@@ -3579,7 +3579,7 @@
         },
         {
           "date": "2021-05",
-          "fragility_score": 14.98567,
+          "fragility_score": 14.985668,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.1383,
@@ -3588,7 +3588,7 @@
             "nikkei": 0.282996,
             "bovespa": 0.108288,
             "eu": 0.05296,
-            "em": -0.003829
+            "em": -0.003831
           },
           "features": {
             "vix": 19.617619,
@@ -3599,7 +3599,7 @@
         },
         {
           "date": "2021-06",
-          "fragility_score": 15.822377,
+          "fragility_score": 15.822355,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.032586,
@@ -3608,7 +3608,7 @@
             "nikkei": 0.226144,
             "bovespa": 0.153241,
             "eu": 0.180135,
-            "em": 0.097289
+            "em": 0.097288
           },
           "features": {
             "vix": 16.956818,
@@ -3619,7 +3619,7 @@
         },
         {
           "date": "2021-07",
-          "fragility_score": 15.924907,
+          "fragility_score": 15.924853,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.017147,
@@ -3639,7 +3639,7 @@
         },
         {
           "date": "2021-08",
-          "fragility_score": 17.959575,
+          "fragility_score": 17.959562,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.278431,
@@ -3648,7 +3648,7 @@
             "nikkei": 0.015142,
             "bovespa": -0.019662,
             "eu": 0.273642,
-            "em": 0.178261
+            "em": 0.17826
           },
           "features": {
             "vix": 17.477727,
@@ -3659,7 +3659,7 @@
         },
         {
           "date": "2021-09",
-          "fragility_score": 19.167455,
+          "fragility_score": 19.167428,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.258115,
@@ -3668,7 +3668,7 @@
             "nikkei": -0.133217,
             "bovespa": 0.139062,
             "eu": 0.312445,
-            "em": 0.317754
+            "em": 0.317753
           },
           "features": {
             "vix": 19.669545,
@@ -3679,7 +3679,7 @@
         },
         {
           "date": "2021-10",
-          "fragility_score": 16.473781,
+          "fragility_score": 16.473771,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.181858,
@@ -3699,7 +3699,7 @@
         },
         {
           "date": "2021-11",
-          "fragility_score": 33.543562,
+          "fragility_score": 33.543568,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.146939,
@@ -3708,7 +3708,7 @@
             "nikkei": 0.19194,
             "bovespa": 0.094493,
             "eu": 0.309408,
-            "em": 0.21465
+            "em": 0.214651
           },
           "features": {
             "vix": 18.504091,
@@ -3719,7 +3719,7 @@
         },
         {
           "date": "2021-12",
-          "fragility_score": 49.049562,
+          "fragility_score": 49.049553,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.335042,
@@ -3728,7 +3728,7 @@
             "nikkei": 0.363537,
             "bovespa": 0.13475,
             "eu": 0.210605,
-            "em": 0.225624
+            "em": 0.225621
           },
           "features": {
             "vix": 21.206957,
@@ -3739,7 +3739,7 @@
         },
         {
           "date": "2022-01",
-          "fragility_score": 40.177145,
+          "fragility_score": 40.177138,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.258324,
@@ -3748,7 +3748,7 @@
             "nikkei": 0.303932,
             "bovespa": 0.223588,
             "eu": 0.299459,
-            "em": 0.252897
+            "em": 0.252896
           },
           "features": {
             "vix": 22.990952,
@@ -3759,7 +3759,7 @@
         },
         {
           "date": "2022-02",
-          "fragility_score": 36.143956,
+          "fragility_score": 36.14395,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.215533,
@@ -3768,7 +3768,7 @@
             "nikkei": 0.306955,
             "bovespa": 0.23667,
             "eu": 0.445685,
-            "em": 0.336319
+            "em": 0.336318
           },
           "features": {
             "vix": 25.8485,
@@ -3779,7 +3779,7 @@
         },
         {
           "date": "2022-03",
-          "fragility_score": 41.982394,
+          "fragility_score": 41.982386,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.078663,
@@ -3788,7 +3788,7 @@
             "nikkei": 0.202386,
             "bovespa": 0.278495,
             "eu": 0.48031,
-            "em": 0.289146
+            "em": 0.289148
           },
           "features": {
             "vix": 26.968696,
@@ -3819,7 +3819,7 @@
         },
         {
           "date": "2022-05",
-          "fragility_score": 29.919254,
+          "fragility_score": 29.919255,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.200712,
@@ -3839,7 +3839,7 @@
         },
         {
           "date": "2022-06",
-          "fragility_score": 37.14495,
+          "fragility_score": 37.144959,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.268656,
@@ -3848,7 +3848,7 @@
             "nikkei": 0.148461,
             "bovespa": 0.187773,
             "eu": 0.28324,
-            "em": 0.184757
+            "em": 0.184758
           },
           "features": {
             "vix": 28.237727,
@@ -3859,7 +3859,7 @@
         },
         {
           "date": "2022-07",
-          "fragility_score": 31.020597,
+          "fragility_score": 31.020641,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.33349,
@@ -3868,7 +3868,7 @@
             "nikkei": 0.103883,
             "bovespa": 0.239757,
             "eu": 0.316553,
-            "em": 0.270027
+            "em": 0.270029
           },
           "features": {
             "vix": 24.955714,
@@ -3879,7 +3879,7 @@
         },
         {
           "date": "2022-08",
-          "fragility_score": 42.246446,
+          "fragility_score": 42.246485,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.250954,
@@ -3899,7 +3899,7 @@
         },
         {
           "date": "2022-09",
-          "fragility_score": 46.729366,
+          "fragility_score": 46.729348,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.261604,
@@ -3919,7 +3919,7 @@
         },
         {
           "date": "2022-10",
-          "fragility_score": 26.956447,
+          "fragility_score": 26.956403,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.339021,
@@ -3928,7 +3928,7 @@
             "nikkei": 0.168965,
             "bovespa": 0.37861,
             "eu": 0.325554,
-            "em": 0.420065
+            "em": 0.420064
           },
           "features": {
             "vix": 30.005714,
@@ -3939,7 +3939,7 @@
         },
         {
           "date": "2022-11",
-          "fragility_score": 22.897344,
+          "fragility_score": 22.897352,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.401494,
@@ -3959,7 +3959,7 @@
         },
         {
           "date": "2022-12",
-          "fragility_score": 19.58691,
+          "fragility_score": 19.586894,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.220734,
@@ -3979,7 +3979,7 @@
         },
         {
           "date": "2023-01",
-          "fragility_score": 41.7816,
+          "fragility_score": 41.781592,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.133752,
@@ -3988,7 +3988,7 @@
             "nikkei": -0.060951,
             "bovespa": -0.2307,
             "eu": 0.037788,
-            "em": 0.051846
+            "em": 0.051847
           },
           "features": {
             "vix": 20.185455,
@@ -3999,7 +3999,7 @@
         },
         {
           "date": "2023-02",
-          "fragility_score": 24.271403,
+          "fragility_score": 24.271379,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.05051,
@@ -4008,7 +4008,7 @@
             "nikkei": -0.084153,
             "bovespa": -0.091354,
             "eu": 0.066257,
-            "em": -0.121448
+            "em": -0.121446
           },
           "features": {
             "vix": 20.06,
@@ -4019,7 +4019,7 @@
         },
         {
           "date": "2023-03",
-          "fragility_score": 19.915327,
+          "fragility_score": 19.915315,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.208723,
@@ -4028,7 +4028,7 @@
             "nikkei": 0.052497,
             "bovespa": 0.06052,
             "eu": 0.120641,
-            "em": -0.141309
+            "em": -0.141307
           },
           "features": {
             "vix": 21.644348,
@@ -4039,7 +4039,7 @@
         },
         {
           "date": "2023-04",
-          "fragility_score": 29.807813,
+          "fragility_score": 29.807816,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.08797,
@@ -4059,7 +4059,7 @@
         },
         {
           "date": "2023-05",
-          "fragility_score": 23.570423,
+          "fragility_score": 23.570377,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.012463,
@@ -4068,7 +4068,7 @@
             "nikkei": 0.131266,
             "bovespa": 0.062975,
             "eu": 0.173456,
-            "em": -0.014831
+            "em": -0.014834
           },
           "features": {
             "vix": 17.657391,
@@ -4079,7 +4079,7 @@
         },
         {
           "date": "2023-06",
-          "fragility_score": 28.280247,
+          "fragility_score": 28.280223,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.062974,
@@ -4088,7 +4088,7 @@
             "nikkei": 0.093922,
             "bovespa": 0.031511,
             "eu": 0.135272,
-            "em": -0.016842
+            "em": -0.016844
           },
           "features": {
             "vix": 13.973636,
@@ -4099,7 +4099,7 @@
         },
         {
           "date": "2023-07",
-          "fragility_score": 28.611779,
+          "fragility_score": 28.611773,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.006203,
@@ -4108,7 +4108,7 @@
             "nikkei": 0.147551,
             "bovespa": 0.010714,
             "eu": 0.067828,
-            "em": 0.044548
+            "em": 0.044547
           },
           "features": {
             "vix": 13.92619,
@@ -4119,7 +4119,7 @@
         },
         {
           "date": "2023-08",
-          "fragility_score": 25.76461,
+          "fragility_score": 25.764618,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.037329,
@@ -4139,7 +4139,7 @@
         },
         {
           "date": "2023-09",
-          "fragility_score": 25.806101,
+          "fragility_score": 25.806112,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.043253,
@@ -4148,7 +4148,7 @@
             "nikkei": -0.19623,
             "bovespa": -0.183536,
             "eu": -0.041037,
-            "em": 0.00259
+            "em": 0.002589
           },
           "features": {
             "vix": 15.138571,
@@ -4159,7 +4159,7 @@
         },
         {
           "date": "2023-10",
-          "fragility_score": 27.828788,
+          "fragility_score": 27.828781,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.149672,
@@ -4168,7 +4168,7 @@
             "nikkei": -0.070235,
             "bovespa": -0.015476,
             "eu": 0.092675,
-            "em": 0.183713
+            "em": 0.183712
           },
           "features": {
             "vix": 18.887727,
@@ -4188,7 +4188,7 @@
             "nikkei": 0.095479,
             "bovespa": 0.142024,
             "eu": 0.161496,
-            "em": 0.28411
+            "em": 0.284109
           },
           "features": {
             "vix": 14.021364,
@@ -4199,7 +4199,7 @@
         },
         {
           "date": "2023-12",
-          "fragility_score": 35.503365,
+          "fragility_score": 35.50335,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.212694,
@@ -4219,7 +4219,7 @@
         },
         {
           "date": "2024-01",
-          "fragility_score": 12.686206,
+          "fragility_score": 12.68618,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.081005,
@@ -4228,7 +4228,7 @@
             "nikkei": -0.214938,
             "bovespa": -0.07439,
             "eu": 0.195182,
-            "em": 0.109211
+            "em": 0.109212
           },
           "features": {
             "vix": 13.323913,
@@ -4239,7 +4239,7 @@
         },
         {
           "date": "2024-02",
-          "fragility_score": 22.147722,
+          "fragility_score": 22.147724,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.107311,
@@ -4259,7 +4259,7 @@
         },
         {
           "date": "2024-03",
-          "fragility_score": 21.405979,
+          "fragility_score": 21.405983,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.280838,
@@ -4279,7 +4279,7 @@
         },
         {
           "date": "2024-04",
-          "fragility_score": 25.303749,
+          "fragility_score": 25.303751,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.25424,
@@ -4339,7 +4339,7 @@
         },
         {
           "date": "2024-07",
-          "fragility_score": 7.319589,
+          "fragility_score": 7.319591,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.024932,
@@ -4359,7 +4359,7 @@
         },
         {
           "date": "2024-08",
-          "fragility_score": 38.912731,
+          "fragility_score": 38.912736,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.29579,
@@ -4379,7 +4379,7 @@
         },
         {
           "date": "2024-09",
-          "fragility_score": 34.233949,
+          "fragility_score": 34.233946,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.33402,
@@ -4399,7 +4399,7 @@
         },
         {
           "date": "2024-10",
-          "fragility_score": 20.012214,
+          "fragility_score": 20.012225,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.252995,
@@ -4419,7 +4419,7 @@
         },
         {
           "date": "2024-11",
-          "fragility_score": 27.102254,
+          "fragility_score": 27.102245,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.323679,
@@ -4439,7 +4439,7 @@
         },
         {
           "date": "2024-12",
-          "fragility_score": 25.367747,
+          "fragility_score": 25.36776,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.225621,
@@ -4459,7 +4459,7 @@
         },
         {
           "date": "2025-01",
-          "fragility_score": 18.558204,
+          "fragility_score": 18.558211,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.233189,
@@ -4479,7 +4479,7 @@
         },
         {
           "date": "2025-02",
-          "fragility_score": 19.969579,
+          "fragility_score": 19.969578,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.212481,
@@ -4499,7 +4499,7 @@
         },
         {
           "date": "2025-03",
-          "fragility_score": 20.934674,
+          "fragility_score": 20.93467,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.003198,
@@ -4519,7 +4519,7 @@
         },
         {
           "date": "2025-04",
-          "fragility_score": 20.225649,
+          "fragility_score": 20.225653,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.067537,
@@ -4539,7 +4539,7 @@
         },
         {
           "date": "2025-05",
-          "fragility_score": 27.858547,
+          "fragility_score": 27.858553,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.02595,
@@ -4559,7 +4559,7 @@
         },
         {
           "date": "2025-06",
-          "fragility_score": 29.65695,
+          "fragility_score": 29.65696,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.055289,
@@ -4579,7 +4579,7 @@
         },
         {
           "date": "2025-07",
-          "fragility_score": 30.16826,
+          "fragility_score": 30.168257,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.386947,
@@ -4599,7 +4599,7 @@
         },
         {
           "date": "2025-08",
-          "fragility_score": 8.323749,
+          "fragility_score": 8.32375,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.239159,
@@ -4619,7 +4619,7 @@
         },
         {
           "date": "2025-09",
-          "fragility_score": 20.33118,
+          "fragility_score": 20.331175,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.108588,
@@ -4639,7 +4639,7 @@
         },
         {
           "date": "2025-10",
-          "fragility_score": 13.690821,
+          "fragility_score": 13.690832,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.092504,
@@ -4659,7 +4659,7 @@
         },
         {
           "date": "2025-11",
-          "fragility_score": 18.800241,
+          "fragility_score": 18.800248,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.005051,
@@ -4679,7 +4679,7 @@
         },
         {
           "date": "2025-12",
-          "fragility_score": 22.011441,
+          "fragility_score": 22.011446,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.051309,
@@ -4699,7 +4699,7 @@
         },
         {
           "date": "2026-01",
-          "fragility_score": 12.572039,
+          "fragility_score": 12.572043,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.137794,
@@ -4719,7 +4719,7 @@
         },
         {
           "date": "2026-02",
-          "fragility_score": 16.566528,
+          "fragility_score": 16.56653,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.056078,
@@ -4739,7 +4739,7 @@
         },
         {
           "date": "2026-03",
-          "fragility_score": 25.742306,
+          "fragility_score": 25.742308,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.12261,
@@ -4759,22 +4759,22 @@
         },
         {
           "date": "2026-04",
-          "fragility_score": 34.21554,
+          "fragility_score": 33.280951,
           "regime": "HEDGE",
           "correlations": {
-            "sp500": 0.306339,
-            "dax": 0.576826,
-            "ftse": 0.440725,
-            "nikkei": 0.340049,
-            "bovespa": 0.288737,
-            "eu": 0.604388,
-            "em": 0.398686
+            "sp500": 0.35113,
+            "dax": 0.598309,
+            "ftse": 0.450404,
+            "nikkei": 0.322356,
+            "bovespa": 0.288207,
+            "eu": 0.624837,
+            "em": 0.408818
           },
           "features": {
-            "vix": 20.498334,
-            "dxy": 98.859445,
-            "brent": 100.715,
-            "try_usd": 0.02237
+            "vix": 20.101429,
+            "dxy": 98.807001,
+            "brent": 101.728572,
+            "try_usd": 0.022346
           }
         }
       ]
@@ -4824,46 +4824,46 @@
       },
       "performance": {
         "ols": {
-          "r2": 0.093886,
-          "rmse": 0.095636,
-          "mae": 0.076086
+          "r2": 0.094466,
+          "rmse": 0.095652,
+          "mae": 0.076146
         },
         "elastic_net": {
-          "r2": 0.090271,
-          "rmse": 0.095826,
-          "mae": 0.075229
+          "r2": 0.090968,
+          "rmse": 0.095837,
+          "mae": 0.075242
         },
         "lasso": {
-          "r2": 0.094972,
-          "rmse": 0.095578,
-          "mae": 0.0751
+          "r2": 0.095708,
+          "rmse": 0.095586,
+          "mae": 0.075111
         },
         "random_forest": {
-          "r2": 0.137515,
-          "rmse": 0.093305,
-          "mae": 0.073921
+          "r2": 0.138314,
+          "rmse": 0.093307,
+          "mae": 0.073928
         }
       },
       "shap_values": {
-        "EM": 0.01819,
-        "BOVESPA": 0.008195,
-        "FTSE": 0.004411,
-        "VIX_lag1m": 0.004399,
-        "SP500": 0.003998,
-        "usdtry_vol": 0.003629,
-        "EU": 0.003435,
-        "DAX": 0.00266,
-        "rolling_vol": 0.002304,
-        "USDTRY_lag1m": 0.001835,
-        "NIKKEI": 0.001525,
+        "EM": 0.018219,
+        "BOVESPA": 0.008179,
+        "FTSE": 0.00441,
+        "VIX_lag1m": 0.004398,
+        "SP500": 0.004005,
+        "usdtry_vol": 0.003625,
+        "EU": 0.003438,
+        "DAX": 0.002679,
+        "rolling_vol": 0.002302,
+        "USDTRY_lag1m": 0.001834,
+        "NIKKEI": 0.001523,
         "pe": 0.001357,
-        "VIX": 0.001338,
-        "VIX_lag3m": 0.001095,
+        "VIX": 0.001336,
+        "VIX_lag3m": 0.001097,
         "VIX_lag6m": 0.001045,
         "BRENT_lag3m": 0.001025,
-        "mean_corr": 0.000929,
-        "DXY_lag12m": 0.000915,
-        "USDTRY_lag3m": 0.000782,
+        "mean_corr": 0.000938,
+        "DXY_lag12m": 0.000917,
+        "USDTRY_lag3m": 0.000783,
         "DXY_lag1m": 0.000699
       },
       "walk_forward": [
@@ -4871,7 +4871,7 @@
           "split": "split_2018_try",
           "description": "2018 TRY Crisis",
           "ols": {
-            "r2": 0.21024,
+            "r2": 0.210241,
             "rmse": 0.122039,
             "mae": 0.095563,
             "hedge_rmse": 0.076085,
@@ -4915,7 +4915,7 @@
             "ponzi_rmse": 0.067895
           },
           "elastic_net": {
-            "r2": 0.319832,
+            "r2": 0.319831,
             "rmse": 0.096407,
             "mae": 0.082168,
             "hedge_rmse": 0.091842,
@@ -4951,7 +4951,7 @@
             "ponzi_rmse": 0.091398
           },
           "elastic_net": {
-            "r2": -0.352517,
+            "r2": -0.352516,
             "rmse": 0.107437,
             "mae": 0.087497,
             "hedge_rmse": 0.096348,
@@ -4959,7 +4959,7 @@
             "ponzi_rmse": 0.124637
           },
           "lasso": {
-            "r2": -0.352517,
+            "r2": -0.352516,
             "rmse": 0.107437,
             "mae": 0.087497,
             "hedge_rmse": 0.096348,
@@ -5999,7 +5999,7 @@
         },
         {
           "date": "2007-04",
-          "fragility_score": 27.181831,
+          "fragility_score": 27.181962,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.615215,
@@ -6008,7 +6008,7 @@
             "nikkei": 0.046691,
             "bovespa": 0.502257,
             "eu": 0.508963,
-            "em": 0.580917
+            "em": 0.580913
           },
           "features": {
             "vix": 12.947143,
@@ -6019,7 +6019,7 @@
         },
         {
           "date": "2007-05",
-          "fragility_score": 26.737482,
+          "fragility_score": 26.737532,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.455227,
@@ -6028,7 +6028,7 @@
             "nikkei": 0.11781,
             "bovespa": 0.373735,
             "eu": 0.458159,
-            "em": 0.433776
+            "em": 0.433774
           },
           "features": {
             "vix": 13.299565,
@@ -6039,7 +6039,7 @@
         },
         {
           "date": "2007-06",
-          "fragility_score": 28.889533,
+          "fragility_score": 28.889576,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.30376,
@@ -6048,7 +6048,7 @@
             "nikkei": 0.260233,
             "bovespa": 0.342928,
             "eu": 0.545425,
-            "em": 0.366213
+            "em": 0.36621
           },
           "features": {
             "vix": 14.947619,
@@ -6059,7 +6059,7 @@
         },
         {
           "date": "2007-07",
-          "fragility_score": 33.747881,
+          "fragility_score": 33.747861,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.461667,
@@ -6068,7 +6068,7 @@
             "nikkei": 0.368519,
             "bovespa": 0.488239,
             "eu": 0.70837,
-            "em": 0.569039
+            "em": 0.569035
           },
           "features": {
             "vix": 17.166364,
@@ -6079,7 +6079,7 @@
         },
         {
           "date": "2007-08",
-          "fragility_score": 58.248523,
+          "fragility_score": 58.248542,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.525729,
@@ -6088,7 +6088,7 @@
             "nikkei": 0.142387,
             "bovespa": 0.675858,
             "eu": 0.74497,
-            "em": 0.716301
+            "em": 0.716302
           },
           "features": {
             "vix": 25.026087,
@@ -6099,7 +6099,7 @@
         },
         {
           "date": "2007-09",
-          "fragility_score": 35.808895,
+          "fragility_score": 35.808906,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.571657,
@@ -6119,7 +6119,7 @@
         },
         {
           "date": "2007-10",
-          "fragility_score": 32.575598,
+          "fragility_score": 32.575595,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.551812,
@@ -6128,7 +6128,7 @@
             "nikkei": 0.161796,
             "bovespa": 0.593117,
             "eu": 0.772745,
-            "em": 0.646267
+            "em": 0.646266
           },
           "features": {
             "vix": 19.115652,
@@ -6139,7 +6139,7 @@
         },
         {
           "date": "2007-11",
-          "fragility_score": 50.154785,
+          "fragility_score": 50.154774,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.57708,
@@ -6148,7 +6148,7 @@
             "nikkei": 0.39257,
             "bovespa": 0.538766,
             "eu": 0.77849,
-            "em": 0.573527
+            "em": 0.573526
           },
           "features": {
             "vix": 25.639545,
@@ -6159,7 +6159,7 @@
         },
         {
           "date": "2007-12",
-          "fragility_score": 48.358312,
+          "fragility_score": 48.358291,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.573668,
@@ -6168,7 +6168,7 @@
             "nikkei": 0.383849,
             "bovespa": 0.571378,
             "eu": 0.753873,
-            "em": 0.630478
+            "em": 0.630476
           },
           "features": {
             "vix": 21.505714,
@@ -6179,7 +6179,7 @@
         },
         {
           "date": "2008-01",
-          "fragility_score": 45.314397,
+          "fragility_score": 45.314378,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.294668,
@@ -6188,7 +6188,7 @@
             "nikkei": 0.424471,
             "bovespa": 0.692176,
             "eu": 0.809983,
-            "em": 0.446643
+            "em": 0.446642
           },
           "features": {
             "vix": 25.731305,
@@ -6199,7 +6199,7 @@
         },
         {
           "date": "2008-02",
-          "fragility_score": 59.409389,
+          "fragility_score": 59.409363,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.200941,
@@ -6208,7 +6208,7 @@
             "nikkei": 0.412949,
             "bovespa": 0.62925,
             "eu": 0.789186,
-            "em": 0.373963
+            "em": 0.373962
           },
           "features": {
             "vix": 25.435238,
@@ -6219,7 +6219,7 @@
         },
         {
           "date": "2008-03",
-          "fragility_score": 52.874073,
+          "fragility_score": 52.874039,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.333587,
@@ -6228,7 +6228,7 @@
             "nikkei": 0.41973,
             "bovespa": 0.616761,
             "eu": 0.760665,
-            "em": 0.459492
+            "em": 0.459491
           },
           "features": {
             "vix": 27.080476,
@@ -6239,7 +6239,7 @@
         },
         {
           "date": "2008-04",
-          "fragility_score": 49.463879,
+          "fragility_score": 49.463848,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.460298,
@@ -6248,7 +6248,7 @@
             "nikkei": 0.384437,
             "bovespa": 0.51311,
             "eu": 0.722667,
-            "em": 0.519499
+            "em": 0.519497
           },
           "features": {
             "vix": 21.562727,
@@ -6259,7 +6259,7 @@
         },
         {
           "date": "2008-05",
-          "fragility_score": 34.52597,
+          "fragility_score": 34.525915,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.460036,
@@ -6268,7 +6268,7 @@
             "nikkei": 0.472596,
             "bovespa": 0.440217,
             "eu": 0.679923,
-            "em": 0.513868
+            "em": 0.513866
           },
           "features": {
             "vix": 18.36,
@@ -6279,7 +6279,7 @@
         },
         {
           "date": "2008-06",
-          "fragility_score": 42.929262,
+          "fragility_score": 42.929255,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.354088,
@@ -6288,7 +6288,7 @@
             "nikkei": 0.263916,
             "bovespa": 0.373331,
             "eu": 0.579094,
-            "em": 0.378183
+            "em": 0.378182
           },
           "features": {
             "vix": 22.110476,
@@ -6299,7 +6299,7 @@
         },
         {
           "date": "2008-07",
-          "fragility_score": 32.378231,
+          "fragility_score": 32.378208,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.318287,
@@ -6308,7 +6308,7 @@
             "nikkei": 0.198977,
             "bovespa": 0.358256,
             "eu": 0.592766,
-            "em": 0.307794
+            "em": 0.307792
           },
           "features": {
             "vix": 24.341304,
@@ -6319,7 +6319,7 @@
         },
         {
           "date": "2008-08",
-          "fragility_score": 27.827524,
+          "fragility_score": 27.827519,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.162987,
@@ -6328,7 +6328,7 @@
             "nikkei": 0.138329,
             "bovespa": 0.197508,
             "eu": 0.46058,
-            "em": 0.151765
+            "em": 0.151762
           },
           "features": {
             "vix": 20.695714,
@@ -6339,7 +6339,7 @@
         },
         {
           "date": "2008-09",
-          "fragility_score": 68.398312,
+          "fragility_score": 68.398322,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.443936,
@@ -6348,7 +6348,7 @@
             "nikkei": 0.350222,
             "bovespa": 0.460961,
             "eu": 0.733837,
-            "em": 0.531061
+            "em": 0.53106
           },
           "features": {
             "vix": 29.802727,
@@ -6359,7 +6359,7 @@
         },
         {
           "date": "2008-10",
-          "fragility_score": 86.197351,
+          "fragility_score": 86.197359,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.590355,
@@ -6379,7 +6379,7 @@
         },
         {
           "date": "2008-11",
-          "fragility_score": 79.322626,
+          "fragility_score": 79.322636,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.629795,
@@ -6388,7 +6388,7 @@
             "nikkei": 0.443352,
             "bovespa": 0.649446,
             "eu": 0.768505,
-            "em": 0.648748
+            "em": 0.648749
           },
           "features": {
             "vix": 62.2535,
@@ -6399,7 +6399,7 @@
         },
         {
           "date": "2008-12",
-          "fragility_score": 53.722571,
+          "fragility_score": 53.722582,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.63103,
@@ -6408,7 +6408,7 @@
             "nikkei": 0.380121,
             "bovespa": 0.636668,
             "eu": 0.698221,
-            "em": 0.620613
+            "em": 0.620614
           },
           "features": {
             "vix": 52.048696,
@@ -6419,7 +6419,7 @@
         },
         {
           "date": "2009-01",
-          "fragility_score": 62.283042,
+          "fragility_score": 62.283058,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.568066,
@@ -6428,7 +6428,7 @@
             "nikkei": 0.139577,
             "bovespa": 0.478966,
             "eu": 0.728101,
-            "em": 0.531366
+            "em": 0.531368
           },
           "features": {
             "vix": 44.535,
@@ -6439,7 +6439,7 @@
         },
         {
           "date": "2009-02",
-          "fragility_score": 63.509637,
+          "fragility_score": 63.509642,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.498976,
@@ -6448,7 +6448,7 @@
             "nikkei": 0.141089,
             "bovespa": 0.54556,
             "eu": 0.638826,
-            "em": 0.598201
+            "em": 0.598202
           },
           "features": {
             "vix": 45.4385,
@@ -6459,7 +6459,7 @@
         },
         {
           "date": "2009-03",
-          "fragility_score": 63.768817,
+          "fragility_score": 63.76881,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.625002,
@@ -6479,7 +6479,7 @@
         },
         {
           "date": "2009-04",
-          "fragility_score": 52.04822,
+          "fragility_score": 52.048211,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.72216,
@@ -6488,7 +6488,7 @@
             "nikkei": 0.180375,
             "bovespa": 0.739073,
             "eu": 0.776735,
-            "em": 0.754664
+            "em": 0.754663
           },
           "features": {
             "vix": 37.994091,
@@ -6499,7 +6499,7 @@
         },
         {
           "date": "2009-05",
-          "fragility_score": 45.969007,
+          "fragility_score": 45.96901,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.628593,
@@ -6508,7 +6508,7 @@
             "nikkei": 0.02241,
             "bovespa": 0.615557,
             "eu": 0.654956,
-            "em": 0.703335
+            "em": 0.703334
           },
           "features": {
             "vix": 32.009048,
@@ -6519,7 +6519,7 @@
         },
         {
           "date": "2009-06",
-          "fragility_score": 48.497305,
+          "fragility_score": 48.497322,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.607729,
@@ -6539,7 +6539,7 @@
         },
         {
           "date": "2009-07",
-          "fragility_score": 40.734206,
+          "fragility_score": 40.734213,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.466613,
@@ -6548,7 +6548,7 @@
             "nikkei": 0.081569,
             "bovespa": 0.440924,
             "eu": 0.516088,
-            "em": 0.623987
+            "em": 0.623988
           },
           "features": {
             "vix": 26.240435,
@@ -6559,7 +6559,7 @@
         },
         {
           "date": "2009-08",
-          "fragility_score": 42.617225,
+          "fragility_score": 42.617233,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.620506,
@@ -6579,7 +6579,7 @@
         },
         {
           "date": "2009-09",
-          "fragility_score": 42.160363,
+          "fragility_score": 42.160329,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.507887,
@@ -6588,7 +6588,7 @@
             "nikkei": 0.052,
             "bovespa": 0.497479,
             "eu": 0.4931,
-            "em": 0.562299
+            "em": 0.562297
           },
           "features": {
             "vix": 24.941818,
@@ -6599,7 +6599,7 @@
         },
         {
           "date": "2009-10",
-          "fragility_score": 41.132608,
+          "fragility_score": 41.132604,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.571207,
@@ -6608,7 +6608,7 @@
             "nikkei": 0.034365,
             "bovespa": 0.491634,
             "eu": 0.638642,
-            "em": 0.609058
+            "em": 0.609059
           },
           "features": {
             "vix": 24.252273,
@@ -6619,7 +6619,7 @@
         },
         {
           "date": "2009-11",
-          "fragility_score": 48.222587,
+          "fragility_score": 48.222594,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.548875,
@@ -6628,7 +6628,7 @@
             "nikkei": 0.105197,
             "bovespa": 0.495151,
             "eu": 0.748167,
-            "em": 0.612495
+            "em": 0.612496
           },
           "features": {
             "vix": 23.62619,
@@ -6648,7 +6648,7 @@
             "nikkei": 0.225745,
             "bovespa": 0.464812,
             "eu": 0.752288,
-            "em": 0.5977
+            "em": 0.597699
           },
           "features": {
             "vix": 21.162609,
@@ -6659,7 +6659,7 @@
         },
         {
           "date": "2010-01",
-          "fragility_score": 39.077707,
+          "fragility_score": 39.077712,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.424118,
@@ -6668,7 +6668,7 @@
             "nikkei": 0.331188,
             "bovespa": 0.414271,
             "eu": 0.597241,
-            "em": 0.495532
+            "em": 0.495531
           },
           "features": {
             "vix": 20.5065,
@@ -6679,7 +6679,7 @@
         },
         {
           "date": "2010-02",
-          "fragility_score": 54.25498,
+          "fragility_score": 54.255005,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.541407,
@@ -6699,7 +6699,7 @@
         },
         {
           "date": "2010-03",
-          "fragility_score": 39.619058,
+          "fragility_score": 39.619061,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.523291,
@@ -6719,7 +6719,7 @@
         },
         {
           "date": "2010-04",
-          "fragility_score": 29.826243,
+          "fragility_score": 29.826247,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.543853,
@@ -6728,7 +6728,7 @@
             "nikkei": 0.267165,
             "bovespa": 0.462433,
             "eu": 0.634351,
-            "em": 0.62947
+            "em": 0.629472
           },
           "features": {
             "vix": 17.426364,
@@ -6748,7 +6748,7 @@
             "nikkei": 0.513091,
             "bovespa": 0.635924,
             "eu": 0.87136,
-            "em": 0.746368
+            "em": 0.746367
           },
           "features": {
             "vix": 31.93619,
@@ -6779,7 +6779,7 @@
         },
         {
           "date": "2010-07",
-          "fragility_score": 43.848839,
+          "fragility_score": 43.848851,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.643131,
@@ -6799,7 +6799,7 @@
         },
         {
           "date": "2010-08",
-          "fragility_score": 40.85045,
+          "fragility_score": 40.850481,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.549764,
@@ -6808,7 +6808,7 @@
             "nikkei": 0.282367,
             "bovespa": 0.502865,
             "eu": 0.754875,
-            "em": 0.586474
+            "em": 0.586475
           },
           "features": {
             "vix": 24.745909,
@@ -6819,7 +6819,7 @@
         },
         {
           "date": "2010-09",
-          "fragility_score": 37.19069,
+          "fragility_score": 37.190675,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.452848,
@@ -6828,7 +6828,7 @@
             "nikkei": 0.209058,
             "bovespa": 0.48902,
             "eu": 0.542345,
-            "em": 0.506861
+            "em": 0.50686
           },
           "features": {
             "vix": 22.462727,
@@ -6839,7 +6839,7 @@
         },
         {
           "date": "2010-10",
-          "fragility_score": 26.423523,
+          "fragility_score": 26.42353,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.312549,
@@ -6859,7 +6859,7 @@
         },
         {
           "date": "2010-11",
-          "fragility_score": 38.56888,
+          "fragility_score": 38.568879,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.30308,
@@ -6868,7 +6868,7 @@
             "nikkei": 0.113368,
             "bovespa": 0.374344,
             "eu": 0.446662,
-            "em": 0.343192
+            "em": 0.343188
           },
           "features": {
             "vix": 20.071364,
@@ -6879,7 +6879,7 @@
         },
         {
           "date": "2010-12",
-          "fragility_score": 47.406331,
+          "fragility_score": 47.406344,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.317234,
@@ -6888,7 +6888,7 @@
             "nikkei": 0.135445,
             "bovespa": 0.381413,
             "eu": 0.444946,
-            "em": 0.363926
+            "em": 0.363921
           },
           "features": {
             "vix": 17.521739,
@@ -6899,7 +6899,7 @@
         },
         {
           "date": "2011-01",
-          "fragility_score": 38.199287,
+          "fragility_score": 38.199274,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.323211,
@@ -6908,7 +6908,7 @@
             "nikkei": 0.219966,
             "bovespa": 0.426801,
             "eu": 0.438528,
-            "em": 0.372639
+            "em": 0.372634
           },
           "features": {
             "vix": 17.227143,
@@ -6919,7 +6919,7 @@
         },
         {
           "date": "2011-02",
-          "fragility_score": 34.03558,
+          "fragility_score": 34.035537,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.338137,
@@ -6928,7 +6928,7 @@
             "nikkei": 0.479929,
             "bovespa": 0.217818,
             "eu": 0.365243,
-            "em": 0.34604
+            "em": 0.346039
           },
           "features": {
             "vix": 17.38,
@@ -6939,7 +6939,7 @@
         },
         {
           "date": "2011-03",
-          "fragility_score": 41.039056,
+          "fragility_score": 41.039004,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.379725,
@@ -6948,7 +6948,7 @@
             "nikkei": 0.112962,
             "bovespa": 0.173727,
             "eu": 0.34833,
-            "em": 0.359742
+            "em": 0.359739
           },
           "features": {
             "vix": 20.723478,
@@ -6959,7 +6959,7 @@
         },
         {
           "date": "2011-04",
-          "fragility_score": 22.745353,
+          "fragility_score": 22.745288,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.390694,
@@ -6968,7 +6968,7 @@
             "nikkei": 0.057765,
             "bovespa": 0.258523,
             "eu": 0.342485,
-            "em": 0.349244
+            "em": 0.34924
           },
           "features": {
             "vix": 16.17,
@@ -6979,7 +6979,7 @@
         },
         {
           "date": "2011-05",
-          "fragility_score": 37.569901,
+          "fragility_score": 37.569842,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.260661,
@@ -6988,7 +6988,7 @@
             "nikkei": 0.015014,
             "bovespa": 0.329858,
             "eu": 0.211844,
-            "em": 0.311607
+            "em": 0.311604
           },
           "features": {
             "vix": 16.869091,
@@ -6999,7 +6999,7 @@
         },
         {
           "date": "2011-06",
-          "fragility_score": 35.499087,
+          "fragility_score": 35.499035,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.224376,
@@ -7019,7 +7019,7 @@
         },
         {
           "date": "2011-07",
-          "fragility_score": 35.263093,
+          "fragility_score": 35.263082,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.096075,
@@ -7028,7 +7028,7 @@
             "nikkei": 0.014971,
             "bovespa": 0.293982,
             "eu": 0.059493,
-            "em": 0.259087
+            "em": 0.259088
           },
           "features": {
             "vix": 19.067619,
@@ -7039,7 +7039,7 @@
         },
         {
           "date": "2011-08",
-          "fragility_score": 62.287904,
+          "fragility_score": 62.287923,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.492948,
@@ -7048,7 +7048,7 @@
             "nikkei": 0.289385,
             "bovespa": 0.470629,
             "eu": 0.419935,
-            "em": 0.528352
+            "em": 0.528353
           },
           "features": {
             "vix": 35.02913,
@@ -7059,7 +7059,7 @@
         },
         {
           "date": "2011-09",
-          "fragility_score": 54.751078,
+          "fragility_score": 54.751088,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.401949,
@@ -7068,7 +7068,7 @@
             "nikkei": 0.359905,
             "bovespa": 0.476882,
             "eu": 0.486041,
-            "em": 0.418751
+            "em": 0.41875
           },
           "features": {
             "vix": 36.411363,
@@ -7079,7 +7079,7 @@
         },
         {
           "date": "2011-10",
-          "fragility_score": 51.399471,
+          "fragility_score": 51.399473,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.277207,
@@ -7088,7 +7088,7 @@
             "nikkei": 0.300034,
             "bovespa": 0.395992,
             "eu": 0.576807,
-            "em": 0.332802
+            "em": 0.332801
           },
           "features": {
             "vix": 32.829048,
@@ -7099,7 +7099,7 @@
         },
         {
           "date": "2011-11",
-          "fragility_score": 53.86135,
+          "fragility_score": 53.861344,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.33873,
@@ -7108,7 +7108,7 @@
             "nikkei": 0.447799,
             "bovespa": 0.48723,
             "eu": 0.61899,
-            "em": 0.371794
+            "em": 0.371792
           },
           "features": {
             "vix": 32.034545,
@@ -7119,7 +7119,7 @@
         },
         {
           "date": "2011-12",
-          "fragility_score": 60.48071,
+          "fragility_score": 60.480711,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.559942,
@@ -7139,7 +7139,7 @@
         },
         {
           "date": "2012-01",
-          "fragility_score": 37.658606,
+          "fragility_score": 37.658593,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.516838,
@@ -7148,7 +7148,7 @@
             "nikkei": 0.288191,
             "bovespa": 0.518765,
             "eu": 0.61316,
-            "em": 0.538948
+            "em": 0.538947
           },
           "features": {
             "vix": 20.403182,
@@ -7159,7 +7159,7 @@
         },
         {
           "date": "2012-02",
-          "fragility_score": 28.751902,
+          "fragility_score": 28.751914,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.459706,
@@ -7179,7 +7179,7 @@
         },
         {
           "date": "2012-03",
-          "fragility_score": 39.056701,
+          "fragility_score": 39.056706,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.242352,
@@ -7188,7 +7188,7 @@
             "nikkei": 0.189997,
             "bovespa": 0.483235,
             "eu": 0.453401,
-            "em": 0.383132
+            "em": 0.38313
           },
           "features": {
             "vix": 16.167273,
@@ -7199,7 +7199,7 @@
         },
         {
           "date": "2012-04",
-          "fragility_score": 39.09559,
+          "fragility_score": 39.095603,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.366163,
@@ -7208,7 +7208,7 @@
             "nikkei": 0.414968,
             "bovespa": 0.395218,
             "eu": 0.360327,
-            "em": 0.435199
+            "em": 0.435195
           },
           "features": {
             "vix": 17.769524,
@@ -7219,7 +7219,7 @@
         },
         {
           "date": "2012-05",
-          "fragility_score": 40.555732,
+          "fragility_score": 40.555728,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.380411,
@@ -7228,7 +7228,7 @@
             "nikkei": 0.418324,
             "bovespa": 0.166417,
             "eu": 0.393489,
-            "em": 0.312409
+            "em": 0.312405
           },
           "features": {
             "vix": 21.034783,
@@ -7239,7 +7239,7 @@
         },
         {
           "date": "2012-06",
-          "fragility_score": 40.344624,
+          "fragility_score": 40.344627,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.343252,
@@ -7248,7 +7248,7 @@
             "nikkei": 0.381098,
             "bovespa": 0.19989,
             "eu": 0.491424,
-            "em": 0.324404
+            "em": 0.3244
           },
           "features": {
             "vix": 21.130952,
@@ -7259,7 +7259,7 @@
         },
         {
           "date": "2012-07",
-          "fragility_score": 39.608253,
+          "fragility_score": 39.608236,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.356525,
@@ -7268,7 +7268,7 @@
             "nikkei": 0.478438,
             "bovespa": 0.299042,
             "eu": 0.637434,
-            "em": 0.39727
+            "em": 0.397268
           },
           "features": {
             "vix": 17.524091,
@@ -7279,7 +7279,7 @@
         },
         {
           "date": "2012-08",
-          "fragility_score": 40.633616,
+          "fragility_score": 40.633619,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.412017,
@@ -7288,7 +7288,7 @@
             "nikkei": 0.298387,
             "bovespa": 0.404253,
             "eu": 0.643984,
-            "em": 0.456937
+            "em": 0.456935
           },
           "features": {
             "vix": 15.689565,
@@ -7299,7 +7299,7 @@
         },
         {
           "date": "2012-09",
-          "fragility_score": 38.395368,
+          "fragility_score": 38.395425,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.387481,
@@ -7308,7 +7308,7 @@
             "nikkei": 0.281842,
             "bovespa": 0.359447,
             "eu": 0.668068,
-            "em": 0.438627
+            "em": 0.438628
           },
           "features": {
             "vix": 15.394,
@@ -7319,7 +7319,7 @@
         },
         {
           "date": "2012-10",
-          "fragility_score": 29.571946,
+          "fragility_score": 29.572012,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.034422,
@@ -7328,7 +7328,7 @@
             "nikkei": 0.139601,
             "bovespa": 0.089294,
             "eu": 0.40834,
-            "em": 0.128461
+            "em": 0.128464
           },
           "features": {
             "vix": 16.409565,
@@ -7339,7 +7339,7 @@
         },
         {
           "date": "2012-11",
-          "fragility_score": 29.093244,
+          "fragility_score": 29.093256,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.07394,
@@ -7348,7 +7348,7 @@
             "nikkei": 0.061614,
             "bovespa": 0.022443,
             "eu": 0.344327,
-            "em": 0.123142
+            "em": 0.123147
           },
           "features": {
             "vix": 16.638636,
@@ -7359,7 +7359,7 @@
         },
         {
           "date": "2012-12",
-          "fragility_score": 26.66286,
+          "fragility_score": 26.66281,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.135974,
@@ -7368,7 +7368,7 @@
             "nikkei": -0.070587,
             "bovespa": 0.142339,
             "eu": 0.119239,
-            "em": 0.208886
+            "em": 0.208884
           },
           "features": {
             "vix": 17.332381,
@@ -7379,7 +7379,7 @@
         },
         {
           "date": "2013-01",
-          "fragility_score": 20.167546,
+          "fragility_score": 20.167512,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.184892,
@@ -7399,7 +7399,7 @@
         },
         {
           "date": "2013-02",
-          "fragility_score": 18.931241,
+          "fragility_score": 18.931282,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.1497,
@@ -7408,7 +7408,7 @@
             "nikkei": -0.005578,
             "bovespa": 0.384523,
             "eu": 0.098282,
-            "em": 0.28157
+            "em": 0.281575
           },
           "features": {
             "vix": 13.992,
@@ -7419,7 +7419,7 @@
         },
         {
           "date": "2013-03",
-          "fragility_score": 21.301868,
+          "fragility_score": 21.301891,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.082241,
@@ -7428,7 +7428,7 @@
             "nikkei": 0.060025,
             "bovespa": 0.343603,
             "eu": 0.075301,
-            "em": 0.257762
+            "em": 0.257771
           },
           "features": {
             "vix": 13.015714,
@@ -7439,7 +7439,7 @@
         },
         {
           "date": "2013-04",
-          "fragility_score": 17.747075,
+          "fragility_score": 17.747138,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.083539,
@@ -7448,7 +7448,7 @@
             "nikkei": 0.166897,
             "bovespa": 0.053072,
             "eu": 0.16879,
-            "em": 0.168619
+            "em": 0.168621
           },
           "features": {
             "vix": 13.967273,
@@ -7459,7 +7459,7 @@
         },
         {
           "date": "2013-05",
-          "fragility_score": 28.779374,
+          "fragility_score": 28.779411,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.2153,
@@ -7468,7 +7468,7 @@
             "nikkei": 0.08891,
             "bovespa": 0.131984,
             "eu": 0.232852,
-            "em": 0.217031
+            "em": 0.217032
           },
           "features": {
             "vix": 13.515217,
@@ -7479,7 +7479,7 @@
         },
         {
           "date": "2013-06",
-          "fragility_score": 46.89045,
+          "fragility_score": 46.890503,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.182647,
@@ -7488,7 +7488,7 @@
             "nikkei": 0.291471,
             "bovespa": -0.01906,
             "eu": 0.47429,
-            "em": 0.135596
+            "em": 0.1356
           },
           "features": {
             "vix": 17.2715,
@@ -7499,7 +7499,7 @@
         },
         {
           "date": "2013-07",
-          "fragility_score": 41.84542,
+          "fragility_score": 41.845433,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.170597,
@@ -7508,7 +7508,7 @@
             "nikkei": 0.285941,
             "bovespa": 0.077434,
             "eu": 0.539757,
-            "em": 0.187132
+            "em": 0.187136
           },
           "features": {
             "vix": 14.071305,
@@ -7519,7 +7519,7 @@
         },
         {
           "date": "2013-08",
-          "fragility_score": 35.213299,
+          "fragility_score": 35.21332,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.32655,
@@ -7528,7 +7528,7 @@
             "nikkei": 0.179402,
             "bovespa": 0.153762,
             "eu": 0.531872,
-            "em": 0.428893
+            "em": 0.428896
           },
           "features": {
             "vix": 14.21,
@@ -7539,7 +7539,7 @@
         },
         {
           "date": "2013-09",
-          "fragility_score": 38.658013,
+          "fragility_score": 38.658002,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.311809,
@@ -7548,7 +7548,7 @@
             "nikkei": 0.289074,
             "bovespa": 0.135555,
             "eu": 0.423337,
-            "em": 0.284812
+            "em": 0.284811
           },
           "features": {
             "vix": 14.802381,
@@ -7559,7 +7559,7 @@
         },
         {
           "date": "2013-10",
-          "fragility_score": 25.791203,
+          "fragility_score": 25.791182,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.289877,
@@ -7568,7 +7568,7 @@
             "nikkei": 0.301299,
             "bovespa": 0.148504,
             "eu": 0.407887,
-            "em": 0.295482
+            "em": 0.295479
           },
           "features": {
             "vix": 15.407826,
@@ -7579,7 +7579,7 @@
         },
         {
           "date": "2013-11",
-          "fragility_score": 27.010747,
+          "fragility_score": 27.010753,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.169307,
@@ -7599,7 +7599,7 @@
         },
         {
           "date": "2013-12",
-          "fragility_score": 28.148435,
+          "fragility_score": 28.14843,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.180049,
@@ -7619,7 +7619,7 @@
         },
         {
           "date": "2014-01",
-          "fragility_score": 40.658948,
+          "fragility_score": 40.658957,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.194492,
@@ -7639,7 +7639,7 @@
         },
         {
           "date": "2014-02",
-          "fragility_score": 39.439132,
+          "fragility_score": 39.439164,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.226171,
@@ -7648,7 +7648,7 @@
             "nikkei": 0.011491,
             "bovespa": 0.281365,
             "eu": 0.302617,
-            "em": 0.375423
+            "em": 0.37542
           },
           "features": {
             "vix": 15.375,
@@ -7659,7 +7659,7 @@
         },
         {
           "date": "2014-03",
-          "fragility_score": 37.156393,
+          "fragility_score": 37.156417,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.308152,
@@ -7668,7 +7668,7 @@
             "nikkei": 0.208317,
             "bovespa": 0.30619,
             "eu": 0.576701,
-            "em": 0.463266
+            "em": 0.463263
           },
           "features": {
             "vix": 14.836667,
@@ -7679,7 +7679,7 @@
         },
         {
           "date": "2014-04",
-          "fragility_score": 16.613035,
+          "fragility_score": 16.613044,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.193538,
@@ -7688,7 +7688,7 @@
             "nikkei": 0.050654,
             "bovespa": 0.146409,
             "eu": 0.514763,
-            "em": 0.438464
+            "em": 0.438461
           },
           "features": {
             "vix": 14.16,
@@ -7699,7 +7699,7 @@
         },
         {
           "date": "2014-05",
-          "fragility_score": 16.213979,
+          "fragility_score": 16.213985,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.020492,
@@ -7708,7 +7708,7 @@
             "nikkei": 0.178472,
             "bovespa": 0.091881,
             "eu": 0.366972,
-            "em": 0.27491
+            "em": 0.274905
           },
           "features": {
             "vix": 12.424545,
@@ -7719,7 +7719,7 @@
         },
         {
           "date": "2014-06",
-          "fragility_score": 19.207868,
+          "fragility_score": 19.207889,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.048693,
@@ -7728,7 +7728,7 @@
             "nikkei": 0.105862,
             "bovespa": 0.206323,
             "eu": 0.315329,
-            "em": 0.298879
+            "em": 0.298871
           },
           "features": {
             "vix": 11.541429,
@@ -7739,7 +7739,7 @@
         },
         {
           "date": "2014-07",
-          "fragility_score": 32.559576,
+          "fragility_score": 32.559598,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.312115,
@@ -7748,7 +7748,7 @@
             "nikkei": 0.160637,
             "bovespa": 0.272428,
             "eu": 0.395399,
-            "em": 0.329
+            "em": 0.328995
           },
           "features": {
             "vix": 12.210435,
@@ -7759,7 +7759,7 @@
         },
         {
           "date": "2014-08",
-          "fragility_score": 34.872418,
+          "fragility_score": 34.872441,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.292951,
@@ -7768,7 +7768,7 @@
             "nikkei": 0.091805,
             "bovespa": 0.196794,
             "eu": 0.293838,
-            "em": 0.329899
+            "em": 0.329892
           },
           "features": {
             "vix": 13.497143,
@@ -7779,7 +7779,7 @@
         },
         {
           "date": "2014-09",
-          "fragility_score": 33.110351,
+          "fragility_score": 33.110349,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.317507,
@@ -7788,7 +7788,7 @@
             "nikkei": -0.019633,
             "bovespa": 0.21501,
             "eu": 0.2605,
-            "em": 0.352559
+            "em": 0.352556
           },
           "features": {
             "vix": 13.404091,
@@ -7799,7 +7799,7 @@
         },
         {
           "date": "2014-10",
-          "fragility_score": 35.057507,
+          "fragility_score": 35.057568,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.055287,
@@ -7808,7 +7808,7 @@
             "nikkei": 0.057946,
             "bovespa": 0.143672,
             "eu": 0.238002,
-            "em": 0.156853
+            "em": 0.156855
           },
           "features": {
             "vix": 18.016087,
@@ -7819,7 +7819,7 @@
         },
         {
           "date": "2014-11",
-          "fragility_score": 19.584768,
+          "fragility_score": 19.584833,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.046321,
@@ -7828,7 +7828,7 @@
             "nikkei": 0.161367,
             "bovespa": 0.248225,
             "eu": 0.189106,
-            "em": 0.231665
+            "em": 0.231669
           },
           "features": {
             "vix": 13.346,
@@ -7839,7 +7839,7 @@
         },
         {
           "date": "2014-12",
-          "fragility_score": 29.592204,
+          "fragility_score": 29.592227,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.307548,
@@ -7848,7 +7848,7 @@
             "nikkei": 0.307549,
             "bovespa": 0.271276,
             "eu": 0.185531,
-            "em": 0.410923
+            "em": 0.410926
           },
           "features": {
             "vix": 16.227391,
@@ -7859,7 +7859,7 @@
         },
         {
           "date": "2015-01",
-          "fragility_score": 33.775773,
+          "fragility_score": 33.775794,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.285533,
@@ -7868,7 +7868,7 @@
             "nikkei": 0.385374,
             "bovespa": 0.239097,
             "eu": 0.106108,
-            "em": 0.341415
+            "em": 0.341418
           },
           "features": {
             "vix": 19.206364,
@@ -7879,7 +7879,7 @@
         },
         {
           "date": "2015-02",
-          "fragility_score": 36.770696,
+          "fragility_score": 36.770716,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.198641,
@@ -7888,7 +7888,7 @@
             "nikkei": 0.396072,
             "bovespa": 0.226573,
             "eu": 0.16111,
-            "em": 0.278857
+            "em": 0.278861
           },
           "features": {
             "vix": 15.8435,
@@ -7899,7 +7899,7 @@
         },
         {
           "date": "2015-03",
-          "fragility_score": 37.083549,
+          "fragility_score": 37.083541,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.100742,
@@ -7908,7 +7908,7 @@
             "nikkei": 0.427815,
             "bovespa": 0.298011,
             "eu": 0.073278,
-            "em": 0.236531
+            "em": 0.236533
           },
           "features": {
             "vix": 14.812727,
@@ -7919,7 +7919,7 @@
         },
         {
           "date": "2015-04",
-          "fragility_score": 30.954956,
+          "fragility_score": 30.954923,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.218465,
@@ -7928,7 +7928,7 @@
             "nikkei": 0.324369,
             "bovespa": 0.323443,
             "eu": -0.071796,
-            "em": 0.285339
+            "em": 0.285344
           },
           "features": {
             "vix": 13.548182,
@@ -7939,7 +7939,7 @@
         },
         {
           "date": "2015-05",
-          "fragility_score": 22.243014,
+          "fragility_score": 22.242996,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.261401,
@@ -7948,7 +7948,7 @@
             "nikkei": 0.273646,
             "bovespa": 0.1702,
             "eu": 0.048855,
-            "em": 0.264712
+            "em": 0.264714
           },
           "features": {
             "vix": 13.280952,
@@ -7959,7 +7959,7 @@
         },
         {
           "date": "2015-06",
-          "fragility_score": 37.189294,
+          "fragility_score": 37.189266,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.427256,
@@ -7968,7 +7968,7 @@
             "nikkei": 0.219999,
             "bovespa": 0.111518,
             "eu": 0.358884,
-            "em": 0.313731
+            "em": 0.313733
           },
           "features": {
             "vix": 14.339546,
@@ -7979,7 +7979,7 @@
         },
         {
           "date": "2015-07",
-          "fragility_score": 31.010585,
+          "fragility_score": 31.010586,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.503878,
@@ -7988,7 +7988,7 @@
             "nikkei": 0.206189,
             "bovespa": 0.367474,
             "eu": 0.42199,
-            "em": 0.390567
+            "em": 0.390568
           },
           "features": {
             "vix": 14.458696,
@@ -7999,7 +7999,7 @@
         },
         {
           "date": "2015-08",
-          "fragility_score": 51.216192,
+          "fragility_score": 51.216187,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.424365,
@@ -8008,7 +8008,7 @@
             "nikkei": 0.301239,
             "bovespa": 0.545378,
             "eu": 0.579563,
-            "em": 0.531281
+            "em": 0.53128
           },
           "features": {
             "vix": 19.428095,
@@ -8019,7 +8019,7 @@
         },
         {
           "date": "2015-09",
-          "fragility_score": 56.017459,
+          "fragility_score": 56.017466,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.379297,
@@ -8039,7 +8039,7 @@
         },
         {
           "date": "2015-10",
-          "fragility_score": 33.488205,
+          "fragility_score": 33.488219,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.421181,
@@ -8048,7 +8048,7 @@
             "nikkei": 0.304627,
             "bovespa": 0.453537,
             "eu": 0.571273,
-            "em": 0.563547
+            "em": 0.563548
           },
           "features": {
             "vix": 16.789545,
@@ -8059,7 +8059,7 @@
         },
         {
           "date": "2015-11",
-          "fragility_score": 28.47194,
+          "fragility_score": 28.471972,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.300698,
@@ -8068,7 +8068,7 @@
             "nikkei": 0.019455,
             "bovespa": 0.231637,
             "eu": 0.307026,
-            "em": 0.41896
+            "em": 0.418962
           },
           "features": {
             "vix": 16.161429,
@@ -8079,7 +8079,7 @@
         },
         {
           "date": "2015-12",
-          "fragility_score": 25.989117,
+          "fragility_score": 25.989171,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.253829,
@@ -8088,7 +8088,7 @@
             "nikkei": -0.033833,
             "bovespa": 0.211309,
             "eu": 0.334977,
-            "em": 0.358954
+            "em": 0.358957
           },
           "features": {
             "vix": 17.926087,
@@ -8099,7 +8099,7 @@
         },
         {
           "date": "2016-01",
-          "fragility_score": 42.840092,
+          "fragility_score": 42.840131,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.236492,
@@ -8108,7 +8108,7 @@
             "nikkei": 0.357182,
             "bovespa": 0.303986,
             "eu": 0.43935,
-            "em": 0.352366
+            "em": 0.352369
           },
           "features": {
             "vix": 23.612857,
@@ -8119,7 +8119,7 @@
         },
         {
           "date": "2016-02",
-          "fragility_score": 34.517871,
+          "fragility_score": 34.517886,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.373778,
@@ -8128,7 +8128,7 @@
             "nikkei": 0.344442,
             "bovespa": 0.433948,
             "eu": 0.55932,
-            "em": 0.458079
+            "em": 0.45808
           },
           "features": {
             "vix": 22.654286,
@@ -8139,7 +8139,7 @@
         },
         {
           "date": "2016-03",
-          "fragility_score": 29.901656,
+          "fragility_score": 29.901677,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.389536,
@@ -8159,7 +8159,7 @@
         },
         {
           "date": "2016-04",
-          "fragility_score": 23.806734,
+          "fragility_score": 23.806752,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.300422,
@@ -8168,7 +8168,7 @@
             "nikkei": 0.171766,
             "bovespa": 0.337006,
             "eu": 0.413432,
-            "em": 0.436557
+            "em": 0.436556
           },
           "features": {
             "vix": 14.300476,
@@ -8179,7 +8179,7 @@
         },
         {
           "date": "2016-05",
-          "fragility_score": 38.934567,
+          "fragility_score": 38.934592,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.26981,
@@ -8188,7 +8188,7 @@
             "nikkei": 0.000895,
             "bovespa": 0.326313,
             "eu": 0.326093,
-            "em": 0.427453
+            "em": 0.427451
           },
           "features": {
             "vix": 14.774091,
@@ -8199,7 +8199,7 @@
         },
         {
           "date": "2016-06",
-          "fragility_score": 45.749631,
+          "fragility_score": 45.749635,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.480876,
@@ -8208,7 +8208,7 @@
             "nikkei": 0.282088,
             "bovespa": 0.437039,
             "eu": 0.551032,
-            "em": 0.608898
+            "em": 0.608897
           },
           "features": {
             "vix": 17.774545,
@@ -8219,7 +8219,7 @@
         },
         {
           "date": "2016-07",
-          "fragility_score": 44.007233,
+          "fragility_score": 44.007239,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.289158,
@@ -8228,7 +8228,7 @@
             "nikkei": 0.269064,
             "bovespa": 0.163445,
             "eu": 0.359426,
-            "em": 0.293869
+            "em": 0.29387
           },
           "features": {
             "vix": 13.235238,
@@ -8239,7 +8239,7 @@
         },
         {
           "date": "2016-08",
-          "fragility_score": 43.273341,
+          "fragility_score": 43.273345,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.291552,
@@ -8259,7 +8259,7 @@
         },
         {
           "date": "2016-09",
-          "fragility_score": 26.273835,
+          "fragility_score": 26.273843,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.184104,
@@ -8268,7 +8268,7 @@
             "nikkei": 0.216798,
             "bovespa": 0.124468,
             "eu": 0.34732,
-            "em": 0.198485
+            "em": 0.198484
           },
           "features": {
             "vix": 14.117727,
@@ -8279,7 +8279,7 @@
         },
         {
           "date": "2016-10",
-          "fragility_score": 30.886371,
+          "fragility_score": 30.886394,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.386927,
@@ -8288,7 +8288,7 @@
             "nikkei": 0.098274,
             "bovespa": 0.402906,
             "eu": 0.534697,
-            "em": 0.431116
+            "em": 0.431112
           },
           "features": {
             "vix": 14.585238,
@@ -8299,7 +8299,7 @@
         },
         {
           "date": "2016-11",
-          "fragility_score": 35.672898,
+          "fragility_score": 35.672882,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.334518,
@@ -8308,7 +8308,7 @@
             "nikkei": 0.078109,
             "bovespa": 0.445111,
             "eu": 0.552701,
-            "em": 0.472518
+            "em": 0.472514
           },
           "features": {
             "vix": 15.108636,
@@ -8319,7 +8319,7 @@
         },
         {
           "date": "2016-12",
-          "fragility_score": 39.800711,
+          "fragility_score": 39.800697,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.289625,
@@ -8328,7 +8328,7 @@
             "nikkei": 0.012751,
             "bovespa": 0.445542,
             "eu": 0.539426,
-            "em": 0.460741
+            "em": 0.460738
           },
           "features": {
             "vix": 12.425455,
@@ -8339,7 +8339,7 @@
         },
         {
           "date": "2017-01",
-          "fragility_score": 29.218318,
+          "fragility_score": 29.218269,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.004983,
@@ -8348,7 +8348,7 @@
             "nikkei": -0.22522,
             "bovespa": 0.254349,
             "eu": 0.147679,
-            "em": 0.226406
+            "em": 0.226402
           },
           "features": {
             "vix": 11.701818,
@@ -8359,7 +8359,7 @@
         },
         {
           "date": "2017-02",
-          "fragility_score": 13.954494,
+          "fragility_score": 13.95448,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.046762,
@@ -8368,7 +8368,7 @@
             "nikkei": -0.247411,
             "bovespa": -0.015574,
             "eu": 0.115774,
-            "em": 0.116295
+            "em": 0.116294
           },
           "features": {
             "vix": 11.5285,
@@ -8379,7 +8379,7 @@
         },
         {
           "date": "2017-03",
-          "fragility_score": 21.677238,
+          "fragility_score": 21.677224,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.049251,
@@ -8388,7 +8388,7 @@
             "nikkei": -0.110565,
             "bovespa": -0.116514,
             "eu": 0.012443,
-            "em": 0.066138
+            "em": 0.066136
           },
           "features": {
             "vix": 11.897826,
@@ -8399,7 +8399,7 @@
         },
         {
           "date": "2017-04",
-          "fragility_score": 22.761561,
+          "fragility_score": 22.761627,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.227501,
@@ -8408,7 +8408,7 @@
             "nikkei": 0.23374,
             "bovespa": 0.009756,
             "eu": 0.268375,
-            "em": 0.290771
+            "em": 0.290773
           },
           "features": {
             "vix": 13.2775,
@@ -8419,7 +8419,7 @@
         },
         {
           "date": "2017-05",
-          "fragility_score": 15.310348,
+          "fragility_score": 15.310447,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.186191,
@@ -8428,7 +8428,7 @@
             "nikkei": 0.303629,
             "bovespa": 0.18437,
             "eu": 0.213667,
-            "em": 0.313684
+            "em": 0.31369
           },
           "features": {
             "vix": 10.816522,
@@ -8439,7 +8439,7 @@
         },
         {
           "date": "2017-06",
-          "fragility_score": 23.044048,
+          "fragility_score": 23.044124,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.325708,
@@ -8448,7 +8448,7 @@
             "nikkei": 0.36042,
             "bovespa": 0.308614,
             "eu": 0.335006,
-            "em": 0.301864
+            "em": 0.301867
           },
           "features": {
             "vix": 10.513636,
@@ -8459,7 +8459,7 @@
         },
         {
           "date": "2017-07",
-          "fragility_score": 24.506838,
+          "fragility_score": 24.506814,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.244395,
@@ -8468,7 +8468,7 @@
             "nikkei": 0.378317,
             "bovespa": 0.274878,
             "eu": 0.274165,
-            "em": 0.2324
+            "em": 0.232396
           },
           "features": {
             "vix": 10.31,
@@ -8479,7 +8479,7 @@
         },
         {
           "date": "2017-08",
-          "fragility_score": 20.771932,
+          "fragility_score": 20.771897,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.29415,
@@ -8488,7 +8488,7 @@
             "nikkei": -0.016062,
             "bovespa": 0.301696,
             "eu": 0.291744,
-            "em": 0.316769
+            "em": 0.316762
           },
           "features": {
             "vix": 11.975652,
@@ -8499,7 +8499,7 @@
         },
         {
           "date": "2017-09",
-          "fragility_score": 16.662565,
+          "fragility_score": 16.66256,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.240076,
@@ -8508,7 +8508,7 @@
             "nikkei": -0.184338,
             "bovespa": 0.353818,
             "eu": 0.141793,
-            "em": 0.367563
+            "em": 0.367558
           },
           "features": {
             "vix": 10.423333,
@@ -8519,7 +8519,7 @@
         },
         {
           "date": "2017-10",
-          "fragility_score": 29.4586,
+          "fragility_score": 29.458612,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.17279,
@@ -8528,7 +8528,7 @@
             "nikkei": -0.184388,
             "bovespa": 0.237057,
             "eu": -0.036136,
-            "em": 0.251122
+            "em": 0.251125
           },
           "features": {
             "vix": 10.125455,
@@ -8539,7 +8539,7 @@
         },
         {
           "date": "2017-11",
-          "fragility_score": 26.731375,
+          "fragility_score": 26.731395,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.148529,
@@ -8548,7 +8548,7 @@
             "nikkei": 0.148193,
             "bovespa": 0.046189,
             "eu": -0.106496,
-            "em": 0.134744
+            "em": 0.13475
           },
           "features": {
             "vix": 10.510455,
@@ -8559,7 +8559,7 @@
         },
         {
           "date": "2017-12",
-          "fragility_score": 23.939399,
+          "fragility_score": 23.939355,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.04614,
@@ -8568,7 +8568,7 @@
             "nikkei": 0.191017,
             "bovespa": 0.02745,
             "eu": -0.077865,
-            "em": 0.081318
+            "em": 0.081323
           },
           "features": {
             "vix": 10.247143,
@@ -8579,7 +8579,7 @@
         },
         {
           "date": "2018-01",
-          "fragility_score": 15.435981,
+          "fragility_score": 15.435933,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.177553,
@@ -8588,7 +8588,7 @@
             "nikkei": 0.217421,
             "bovespa": 0.204989,
             "eu": 0.045987,
-            "em": 0.253172
+            "em": 0.253175
           },
           "features": {
             "vix": 11.022174,
@@ -8599,7 +8599,7 @@
         },
         {
           "date": "2018-02",
-          "fragility_score": 27.919348,
+          "fragility_score": 27.919338,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.344177,
@@ -8619,7 +8619,7 @@
         },
         {
           "date": "2018-03",
-          "fragility_score": 29.577785,
+          "fragility_score": 29.577807,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.371505,
@@ -8628,7 +8628,7 @@
             "nikkei": 0.491942,
             "bovespa": 0.267538,
             "eu": 0.397159,
-            "em": 0.321449
+            "em": 0.32145
           },
           "features": {
             "vix": 19.066818,
@@ -8639,7 +8639,7 @@
         },
         {
           "date": "2018-04",
-          "fragility_score": 34.794795,
+          "fragility_score": 34.794812,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.214102,
@@ -8648,7 +8648,7 @@
             "nikkei": 0.433051,
             "bovespa": 0.099245,
             "eu": 0.285664,
-            "em": 0.192086
+            "em": 0.192084
           },
           "features": {
             "vix": 18.267619,
@@ -8659,7 +8659,7 @@
         },
         {
           "date": "2018-05",
-          "fragility_score": 36.304196,
+          "fragility_score": 36.304243,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.077597,
@@ -8668,7 +8668,7 @@
             "nikkei": 0.347706,
             "bovespa": 0.03322,
             "eu": 0.077766,
-            "em": 0.11179
+            "em": 0.111788
           },
           "features": {
             "vix": 14.085217,
@@ -8679,7 +8679,7 @@
         },
         {
           "date": "2018-06",
-          "fragility_score": 31.977454,
+          "fragility_score": 31.977482,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.118394,
@@ -8688,7 +8688,7 @@
             "nikkei": 0.042596,
             "bovespa": -0.077583,
             "eu": -0.053997,
-            "em": -0.102883
+            "em": -0.102887
           },
           "features": {
             "vix": 13.678095,
@@ -8699,7 +8699,7 @@
         },
         {
           "date": "2018-07",
-          "fragility_score": 33.087227,
+          "fragility_score": 33.087208,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.101657,
@@ -8719,7 +8719,7 @@
         },
         {
           "date": "2018-08",
-          "fragility_score": 52.109033,
+          "fragility_score": 52.109034,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.100546,
@@ -8728,7 +8728,7 @@
             "nikkei": 0.224855,
             "bovespa": -0.063712,
             "eu": 0.204239,
-            "em": 0.188557
+            "em": 0.188558
           },
           "features": {
             "vix": 12.546957,
@@ -8739,7 +8739,7 @@
         },
         {
           "date": "2018-09",
-          "fragility_score": 40.715779,
+          "fragility_score": 40.715762,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.147683,
@@ -8759,7 +8759,7 @@
         },
         {
           "date": "2018-10",
-          "fragility_score": 18.57221,
+          "fragility_score": 18.572199,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.242601,
@@ -8768,7 +8768,7 @@
             "nikkei": 0.214488,
             "bovespa": 0.044229,
             "eu": 0.258792,
-            "em": 0.295182
+            "em": 0.295184
           },
           "features": {
             "vix": 19.352174,
@@ -8779,7 +8779,7 @@
         },
         {
           "date": "2018-11",
-          "fragility_score": 17.343571,
+          "fragility_score": 17.343555,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.406716,
@@ -8788,7 +8788,7 @@
             "nikkei": 0.097312,
             "bovespa": 0.190832,
             "eu": 0.334626,
-            "em": 0.411391
+            "em": 0.411392
           },
           "features": {
             "vix": 19.453182,
@@ -8799,7 +8799,7 @@
         },
         {
           "date": "2018-12",
-          "fragility_score": 23.992292,
+          "fragility_score": 23.992287,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.329814,
@@ -8808,7 +8808,7 @@
             "nikkei": 0.040577,
             "bovespa": 0.177763,
             "eu": 0.251166,
-            "em": 0.302407
+            "em": 0.302409
           },
           "features": {
             "vix": 25.281905,
@@ -8819,7 +8819,7 @@
         },
         {
           "date": "2019-01",
-          "fragility_score": 26.356606,
+          "fragility_score": 26.356614,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.325971,
@@ -8828,7 +8828,7 @@
             "nikkei": 0.113643,
             "bovespa": -0.04819,
             "eu": 0.234669,
-            "em": 0.247099
+            "em": 0.247097
           },
           "features": {
             "vix": 19.749565,
@@ -8839,7 +8839,7 @@
         },
         {
           "date": "2019-02",
-          "fragility_score": 18.447309,
+          "fragility_score": 18.447318,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.244102,
@@ -8848,7 +8848,7 @@
             "nikkei": -0.038652,
             "bovespa": -0.153681,
             "eu": 0.205451,
-            "em": 0.193558
+            "em": 0.193557
           },
           "features": {
             "vix": 15.2185,
@@ -8859,7 +8859,7 @@
         },
         {
           "date": "2019-03",
-          "fragility_score": 29.980696,
+          "fragility_score": 29.980656,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.321077,
@@ -8868,7 +8868,7 @@
             "nikkei": 0.242179,
             "bovespa": 0.166469,
             "eu": 0.291302,
-            "em": 0.321588
+            "em": 0.321585
           },
           "features": {
             "vix": 14.485238,
@@ -8879,7 +8879,7 @@
         },
         {
           "date": "2019-04",
-          "fragility_score": 32.851828,
+          "fragility_score": 32.8518,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.279216,
@@ -8888,7 +8888,7 @@
             "nikkei": 0.153552,
             "bovespa": 0.184198,
             "eu": 0.370562,
-            "em": 0.364788
+            "em": 0.364782
           },
           "features": {
             "vix": 12.91,
@@ -8899,7 +8899,7 @@
         },
         {
           "date": "2019-05",
-          "fragility_score": 43.9102,
+          "fragility_score": 43.910165,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.204183,
@@ -8908,7 +8908,7 @@
             "nikkei": 0.160558,
             "bovespa": 0.258151,
             "eu": 0.274021,
-            "em": 0.39023
+            "em": 0.390225
           },
           "features": {
             "vix": 16.683913,
@@ -8919,7 +8919,7 @@
         },
         {
           "date": "2019-06",
-          "fragility_score": 18.377866,
+          "fragility_score": 18.377869,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.178756,
@@ -8928,7 +8928,7 @@
             "nikkei": 0.031724,
             "bovespa": 0.098149,
             "eu": 0.339118,
-            "em": 0.396283
+            "em": 0.396279
           },
           "features": {
             "vix": 15.836,
@@ -8939,7 +8939,7 @@
         },
         {
           "date": "2019-07",
-          "fragility_score": 16.864867,
+          "fragility_score": 16.864871,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.13842,
@@ -8948,7 +8948,7 @@
             "nikkei": 0.120141,
             "bovespa": 0.135343,
             "eu": 0.236146,
-            "em": 0.364717
+            "em": 0.364714
           },
           "features": {
             "vix": 13.273913,
@@ -8959,7 +8959,7 @@
         },
         {
           "date": "2019-08",
-          "fragility_score": 27.510682,
+          "fragility_score": 27.510667,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.0652,
@@ -8968,7 +8968,7 @@
             "nikkei": 0.323453,
             "bovespa": 0.100292,
             "eu": 0.189749,
-            "em": 0.163216
+            "em": 0.163217
           },
           "features": {
             "vix": 18.979091,
@@ -8979,7 +8979,7 @@
         },
         {
           "date": "2019-09",
-          "fragility_score": 29.966904,
+          "fragility_score": 29.966907,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.01547,
@@ -8988,7 +8988,7 @@
             "nikkei": 0.174439,
             "bovespa": 0.047712,
             "eu": 0.143482,
-            "em": 0.018061
+            "em": 0.018063
           },
           "features": {
             "vix": 15.721905,
@@ -8999,7 +8999,7 @@
         },
         {
           "date": "2019-10",
-          "fragility_score": 33.396433,
+          "fragility_score": 33.396439,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.017471,
@@ -9008,7 +9008,7 @@
             "nikkei": 0.176685,
             "bovespa": -0.046436,
             "eu": 0.111192,
-            "em": -0.066401
+            "em": -0.066398
           },
           "features": {
             "vix": 15.466522,
@@ -9019,7 +9019,7 @@
         },
         {
           "date": "2019-11",
-          "fragility_score": 22.923809,
+          "fragility_score": 22.92386,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.117207,
@@ -9028,7 +9028,7 @@
             "nikkei": 0.057757,
             "bovespa": -0.066596,
             "eu": 0.214453,
-            "em": -0.006418
+            "em": -0.006416
           },
           "features": {
             "vix": 12.486667,
@@ -9039,7 +9039,7 @@
         },
         {
           "date": "2019-12",
-          "fragility_score": 25.762352,
+          "fragility_score": 25.762374,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.014158,
@@ -9059,7 +9059,7 @@
         },
         {
           "date": "2020-01",
-          "fragility_score": 30.125942,
+          "fragility_score": 30.125935,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.331566,
@@ -9068,7 +9068,7 @@
             "nikkei": 0.47572,
             "bovespa": 0.222196,
             "eu": 0.222558,
-            "em": 0.347686
+            "em": 0.347688
           },
           "features": {
             "vix": 13.853913,
@@ -9079,7 +9079,7 @@
         },
         {
           "date": "2020-02",
-          "fragility_score": 46.785286,
+          "fragility_score": 46.785282,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.504529,
@@ -9088,7 +9088,7 @@
             "nikkei": 0.53388,
             "bovespa": 0.252564,
             "eu": 0.601564,
-            "em": 0.49561
+            "em": 0.495611
           },
           "features": {
             "vix": 19.3315,
@@ -9159,7 +9159,7 @@
         },
         {
           "date": "2020-06",
-          "fragility_score": 37.349808,
+          "fragility_score": 37.349837,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.382286,
@@ -9168,7 +9168,7 @@
             "nikkei": 0.314377,
             "bovespa": 0.271514,
             "eu": 0.522561,
-            "em": 0.367557
+            "em": 0.367558
           },
           "features": {
             "vix": 31.119546,
@@ -9179,7 +9179,7 @@
         },
         {
           "date": "2020-07",
-          "fragility_score": 37.49864,
+          "fragility_score": 37.498666,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.147557,
@@ -9188,7 +9188,7 @@
             "nikkei": 0.245105,
             "bovespa": 0.114972,
             "eu": 0.391117,
-            "em": 0.226317
+            "em": 0.226319
           },
           "features": {
             "vix": 26.876957,
@@ -9199,7 +9199,7 @@
         },
         {
           "date": "2020-08",
-          "fragility_score": 47.952328,
+          "fragility_score": 47.952373,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.0144,
@@ -9208,7 +9208,7 @@
             "nikkei": 0.083922,
             "bovespa": -0.026875,
             "eu": 0.315414,
-            "em": 0.018088
+            "em": 0.01809
           },
           "features": {
             "vix": 22.889524,
@@ -9219,7 +9219,7 @@
         },
         {
           "date": "2020-09",
-          "fragility_score": 29.671192,
+          "fragility_score": 29.671201,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.047603,
@@ -9228,7 +9228,7 @@
             "nikkei": -0.041083,
             "bovespa": 0.038943,
             "eu": 0.304333,
-            "em": -0.027843
+            "em": -0.027841
           },
           "features": {
             "vix": 27.788636,
@@ -9239,7 +9239,7 @@
         },
         {
           "date": "2020-10",
-          "fragility_score": 42.508285,
+          "fragility_score": 42.508279,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.361697,
@@ -9248,7 +9248,7 @@
             "nikkei": -0.081133,
             "bovespa": 0.331697,
             "eu": 0.474011,
-            "em": 0.28331
+            "em": 0.283308
           },
           "features": {
             "vix": 29.438636,
@@ -9259,7 +9259,7 @@
         },
         {
           "date": "2020-11",
-          "fragility_score": 41.856235,
+          "fragility_score": 41.85623,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.310193,
@@ -9268,7 +9268,7 @@
             "nikkei": 0.101945,
             "bovespa": 0.304593,
             "eu": 0.408545,
-            "em": 0.321563
+            "em": 0.321562
           },
           "features": {
             "vix": 24.817143,
@@ -9279,7 +9279,7 @@
         },
         {
           "date": "2020-12",
-          "fragility_score": 31.858769,
+          "fragility_score": 31.858768,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.277077,
@@ -9288,7 +9288,7 @@
             "nikkei": 0.217,
             "bovespa": 0.257154,
             "eu": 0.43394,
-            "em": 0.344749
+            "em": 0.344748
           },
           "features": {
             "vix": 22.337391,
@@ -9299,7 +9299,7 @@
         },
         {
           "date": "2021-01",
-          "fragility_score": 25.087748,
+          "fragility_score": 25.087744,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.216689,
@@ -9308,7 +9308,7 @@
             "nikkei": 0.125188,
             "bovespa": 0.201969,
             "eu": 0.390633,
-            "em": 0.286312
+            "em": 0.286311
           },
           "features": {
             "vix": 24.78,
@@ -9319,7 +9319,7 @@
         },
         {
           "date": "2021-02",
-          "fragility_score": 23.220316,
+          "fragility_score": 23.22033,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.375536,
@@ -9328,7 +9328,7 @@
             "nikkei": 0.425615,
             "bovespa": 0.285114,
             "eu": 0.553531,
-            "em": 0.466529
+            "em": 0.46653
           },
           "features": {
             "vix": 22.982,
@@ -9339,7 +9339,7 @@
         },
         {
           "date": "2021-03",
-          "fragility_score": 59.816428,
+          "fragility_score": 59.816438,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.085634,
@@ -9359,7 +9359,7 @@
         },
         {
           "date": "2021-04",
-          "fragility_score": 48.0135,
+          "fragility_score": 48.013512,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.057562,
@@ -9368,7 +9368,7 @@
             "nikkei": 0.348335,
             "bovespa": 0.070874,
             "eu": 0.135072,
-            "em": 0.073319
+            "em": 0.073318
           },
           "features": {
             "vix": 17.412273,
@@ -9379,7 +9379,7 @@
         },
         {
           "date": "2021-05",
-          "fragility_score": 25.003231,
+          "fragility_score": 25.003225,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.1383,
@@ -9388,7 +9388,7 @@
             "nikkei": 0.282996,
             "bovespa": 0.108288,
             "eu": 0.05296,
-            "em": -0.003829
+            "em": -0.003831
           },
           "features": {
             "vix": 19.617619,
@@ -9399,7 +9399,7 @@
         },
         {
           "date": "2021-06",
-          "fragility_score": 25.298961,
+          "fragility_score": 25.298944,
           "regime": "PONZI",
           "correlations": {
             "sp500": -0.032586,
@@ -9408,7 +9408,7 @@
             "nikkei": 0.226144,
             "bovespa": 0.153241,
             "eu": 0.180135,
-            "em": 0.097289
+            "em": 0.097288
           },
           "features": {
             "vix": 16.956818,
@@ -9419,7 +9419,7 @@
         },
         {
           "date": "2021-07",
-          "fragility_score": 20.754205,
+          "fragility_score": 20.754178,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.017147,
@@ -9439,7 +9439,7 @@
         },
         {
           "date": "2021-08",
-          "fragility_score": 20.953564,
+          "fragility_score": 20.953557,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.278431,
@@ -9448,7 +9448,7 @@
             "nikkei": 0.015142,
             "bovespa": -0.019662,
             "eu": 0.273642,
-            "em": 0.178261
+            "em": 0.17826
           },
           "features": {
             "vix": 17.477727,
@@ -9459,7 +9459,7 @@
         },
         {
           "date": "2021-09",
-          "fragility_score": 25.571307,
+          "fragility_score": 25.571276,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.258115,
@@ -9468,7 +9468,7 @@
             "nikkei": -0.133217,
             "bovespa": 0.139062,
             "eu": 0.312445,
-            "em": 0.317754
+            "em": 0.317753
           },
           "features": {
             "vix": 19.669545,
@@ -9479,7 +9479,7 @@
         },
         {
           "date": "2021-10",
-          "fragility_score": 36.537158,
+          "fragility_score": 36.537147,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.181858,
@@ -9499,7 +9499,7 @@
         },
         {
           "date": "2021-11",
-          "fragility_score": 52.970665,
+          "fragility_score": 52.970668,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.146939,
@@ -9508,7 +9508,7 @@
             "nikkei": 0.19194,
             "bovespa": 0.094493,
             "eu": 0.309408,
-            "em": 0.21465
+            "em": 0.214651
           },
           "features": {
             "vix": 18.504091,
@@ -9519,7 +9519,7 @@
         },
         {
           "date": "2021-12",
-          "fragility_score": 61.552319,
+          "fragility_score": 61.552307,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.335042,
@@ -9528,7 +9528,7 @@
             "nikkei": 0.363537,
             "bovespa": 0.13475,
             "eu": 0.210605,
-            "em": 0.225624
+            "em": 0.225621
           },
           "features": {
             "vix": 21.206957,
@@ -9539,7 +9539,7 @@
         },
         {
           "date": "2022-01",
-          "fragility_score": 37.56013,
+          "fragility_score": 37.560127,
           "regime": "PONZI",
           "correlations": {
             "sp500": 0.258324,
@@ -9548,7 +9548,7 @@
             "nikkei": 0.303932,
             "bovespa": 0.223588,
             "eu": 0.299459,
-            "em": 0.252897
+            "em": 0.252896
           },
           "features": {
             "vix": 22.990952,
@@ -9559,7 +9559,7 @@
         },
         {
           "date": "2022-02",
-          "fragility_score": 38.882549,
+          "fragility_score": 38.882545,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.215533,
@@ -9568,7 +9568,7 @@
             "nikkei": 0.306955,
             "bovespa": 0.23667,
             "eu": 0.445685,
-            "em": 0.336319
+            "em": 0.336318
           },
           "features": {
             "vix": 25.8485,
@@ -9579,7 +9579,7 @@
         },
         {
           "date": "2022-03",
-          "fragility_score": 52.361594,
+          "fragility_score": 52.361604,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.078663,
@@ -9588,7 +9588,7 @@
             "nikkei": 0.202386,
             "bovespa": 0.278495,
             "eu": 0.48031,
-            "em": 0.289146
+            "em": 0.289148
           },
           "features": {
             "vix": 26.968696,
@@ -9599,7 +9599,7 @@
         },
         {
           "date": "2022-04",
-          "fragility_score": 40.195175,
+          "fragility_score": 40.195184,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.138194,
@@ -9619,7 +9619,7 @@
         },
         {
           "date": "2022-05",
-          "fragility_score": 45.103268,
+          "fragility_score": 45.103265,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.200712,
@@ -9639,7 +9639,7 @@
         },
         {
           "date": "2022-06",
-          "fragility_score": 56.544959,
+          "fragility_score": 56.544966,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.268656,
@@ -9648,7 +9648,7 @@
             "nikkei": 0.148461,
             "bovespa": 0.187773,
             "eu": 0.28324,
-            "em": 0.184757
+            "em": 0.184758
           },
           "features": {
             "vix": 28.237727,
@@ -9659,7 +9659,7 @@
         },
         {
           "date": "2022-07",
-          "fragility_score": 39.801171,
+          "fragility_score": 39.801191,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.33349,
@@ -9668,7 +9668,7 @@
             "nikkei": 0.103883,
             "bovespa": 0.239757,
             "eu": 0.316553,
-            "em": 0.270027
+            "em": 0.270029
           },
           "features": {
             "vix": 24.955714,
@@ -9679,7 +9679,7 @@
         },
         {
           "date": "2022-08",
-          "fragility_score": 42.520101,
+          "fragility_score": 42.520132,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.250954,
@@ -9699,7 +9699,7 @@
         },
         {
           "date": "2022-09",
-          "fragility_score": 44.863747,
+          "fragility_score": 44.863752,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.261604,
@@ -9719,7 +9719,7 @@
         },
         {
           "date": "2022-10",
-          "fragility_score": 33.540528,
+          "fragility_score": 33.540514,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.339021,
@@ -9728,7 +9728,7 @@
             "nikkei": 0.168965,
             "bovespa": 0.37861,
             "eu": 0.325554,
-            "em": 0.420065
+            "em": 0.420064
           },
           "features": {
             "vix": 30.005714,
@@ -9739,7 +9739,7 @@
         },
         {
           "date": "2022-11",
-          "fragility_score": 27.887365,
+          "fragility_score": 27.887359,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.401494,
@@ -9759,7 +9759,7 @@
         },
         {
           "date": "2022-12",
-          "fragility_score": 22.409634,
+          "fragility_score": 22.409626,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.220734,
@@ -9779,7 +9779,7 @@
         },
         {
           "date": "2023-01",
-          "fragility_score": 32.230794,
+          "fragility_score": 32.230788,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.133752,
@@ -9788,7 +9788,7 @@
             "nikkei": -0.060951,
             "bovespa": -0.2307,
             "eu": 0.037788,
-            "em": 0.051846
+            "em": 0.051847
           },
           "features": {
             "vix": 20.185455,
@@ -9799,7 +9799,7 @@
         },
         {
           "date": "2023-02",
-          "fragility_score": 26.182383,
+          "fragility_score": 26.182385,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.05051,
@@ -9808,7 +9808,7 @@
             "nikkei": -0.084153,
             "bovespa": -0.091354,
             "eu": 0.066257,
-            "em": -0.121448
+            "em": -0.121446
           },
           "features": {
             "vix": 20.06,
@@ -9819,7 +9819,7 @@
         },
         {
           "date": "2023-03",
-          "fragility_score": 22.967592,
+          "fragility_score": 22.967586,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.208723,
@@ -9828,7 +9828,7 @@
             "nikkei": 0.052497,
             "bovespa": 0.06052,
             "eu": 0.120641,
-            "em": -0.141309
+            "em": -0.141307
           },
           "features": {
             "vix": 21.644348,
@@ -9839,7 +9839,7 @@
         },
         {
           "date": "2023-04",
-          "fragility_score": 30.062631,
+          "fragility_score": 30.062627,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.08797,
@@ -9859,7 +9859,7 @@
         },
         {
           "date": "2023-05",
-          "fragility_score": 30.115809,
+          "fragility_score": 30.11577,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.012463,
@@ -9868,7 +9868,7 @@
             "nikkei": 0.131266,
             "bovespa": 0.062975,
             "eu": 0.173456,
-            "em": -0.014831
+            "em": -0.014834
           },
           "features": {
             "vix": 17.657391,
@@ -9879,7 +9879,7 @@
         },
         {
           "date": "2023-06",
-          "fragility_score": 45.533941,
+          "fragility_score": 45.533918,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": 0.062974,
@@ -9888,7 +9888,7 @@
             "nikkei": 0.093922,
             "bovespa": 0.031511,
             "eu": 0.135272,
-            "em": -0.016842
+            "em": -0.016844
           },
           "features": {
             "vix": 13.973636,
@@ -9899,7 +9899,7 @@
         },
         {
           "date": "2023-07",
-          "fragility_score": 44.643416,
+          "fragility_score": 44.643411,
           "regime": "SPECULATIVE",
           "correlations": {
             "sp500": -0.006203,
@@ -9908,7 +9908,7 @@
             "nikkei": 0.147551,
             "bovespa": 0.010714,
             "eu": 0.067828,
-            "em": 0.044548
+            "em": 0.044547
           },
           "features": {
             "vix": 13.92619,
@@ -9919,7 +9919,7 @@
         },
         {
           "date": "2023-08",
-          "fragility_score": 26.137214,
+          "fragility_score": 26.137235,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.037329,
@@ -9939,7 +9939,7 @@
         },
         {
           "date": "2023-09",
-          "fragility_score": 24.880329,
+          "fragility_score": 24.880343,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.043253,
@@ -9948,7 +9948,7 @@
             "nikkei": -0.19623,
             "bovespa": -0.183536,
             "eu": -0.041037,
-            "em": 0.00259
+            "em": 0.002589
           },
           "features": {
             "vix": 15.138571,
@@ -9959,7 +9959,7 @@
         },
         {
           "date": "2023-10",
-          "fragility_score": 33.837162,
+          "fragility_score": 33.837153,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.149672,
@@ -9968,7 +9968,7 @@
             "nikkei": -0.070235,
             "bovespa": -0.015476,
             "eu": 0.092675,
-            "em": 0.183713
+            "em": 0.183712
           },
           "features": {
             "vix": 18.887727,
@@ -9979,7 +9979,7 @@
         },
         {
           "date": "2023-11",
-          "fragility_score": 36.956528,
+          "fragility_score": 36.956525,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.181128,
@@ -9988,7 +9988,7 @@
             "nikkei": 0.095479,
             "bovespa": 0.142024,
             "eu": 0.161496,
-            "em": 0.28411
+            "em": 0.284109
           },
           "features": {
             "vix": 14.021364,
@@ -9999,7 +9999,7 @@
         },
         {
           "date": "2023-12",
-          "fragility_score": 28.750715,
+          "fragility_score": 28.750706,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.212694,
@@ -10028,7 +10028,7 @@
             "nikkei": -0.214938,
             "bovespa": -0.07439,
             "eu": 0.195182,
-            "em": 0.109211
+            "em": 0.109212
           },
           "features": {
             "vix": 13.323913,
@@ -10039,7 +10039,7 @@
         },
         {
           "date": "2024-02",
-          "fragility_score": 25.506448,
+          "fragility_score": 25.506445,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.107311,
@@ -10059,7 +10059,7 @@
         },
         {
           "date": "2024-03",
-          "fragility_score": 27.10958,
+          "fragility_score": 27.109581,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.280838,
@@ -10079,7 +10079,7 @@
         },
         {
           "date": "2024-04",
-          "fragility_score": 23.610991,
+          "fragility_score": 23.610992,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.25424,
@@ -10099,7 +10099,7 @@
         },
         {
           "date": "2024-05",
-          "fragility_score": 15.289585,
+          "fragility_score": 15.289587,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.225245,
@@ -10119,7 +10119,7 @@
         },
         {
           "date": "2024-06",
-          "fragility_score": 16.244864,
+          "fragility_score": 16.244866,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.112739,
@@ -10139,7 +10139,7 @@
         },
         {
           "date": "2024-07",
-          "fragility_score": 16.811621,
+          "fragility_score": 16.811622,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.024932,
@@ -10159,7 +10159,7 @@
         },
         {
           "date": "2024-08",
-          "fragility_score": 37.543599,
+          "fragility_score": 37.543604,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.29579,
@@ -10179,7 +10179,7 @@
         },
         {
           "date": "2024-09",
-          "fragility_score": 35.49149,
+          "fragility_score": 35.491496,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.33402,
@@ -10199,7 +10199,7 @@
         },
         {
           "date": "2024-10",
-          "fragility_score": 25.325921,
+          "fragility_score": 25.325924,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.252995,
@@ -10219,7 +10219,7 @@
         },
         {
           "date": "2024-11",
-          "fragility_score": 24.506516,
+          "fragility_score": 24.506517,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.323679,
@@ -10259,7 +10259,7 @@
         },
         {
           "date": "2025-01",
-          "fragility_score": 22.796038,
+          "fragility_score": 22.79604,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.233189,
@@ -10279,7 +10279,7 @@
         },
         {
           "date": "2025-02",
-          "fragility_score": 24.078372,
+          "fragility_score": 24.078374,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.212481,
@@ -10299,7 +10299,7 @@
         },
         {
           "date": "2025-03",
-          "fragility_score": 30.199159,
+          "fragility_score": 30.199161,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.003198,
@@ -10319,7 +10319,7 @@
         },
         {
           "date": "2025-04",
-          "fragility_score": 33.861394,
+          "fragility_score": 33.861397,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.067537,
@@ -10339,7 +10339,7 @@
         },
         {
           "date": "2025-05",
-          "fragility_score": 31.023576,
+          "fragility_score": 31.023579,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.02595,
@@ -10359,7 +10359,7 @@
         },
         {
           "date": "2025-06",
-          "fragility_score": 32.527623,
+          "fragility_score": 32.527627,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.055289,
@@ -10379,7 +10379,7 @@
         },
         {
           "date": "2025-07",
-          "fragility_score": 29.990205,
+          "fragility_score": 29.990207,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.386947,
@@ -10399,7 +10399,7 @@
         },
         {
           "date": "2025-08",
-          "fragility_score": 18.17877,
+          "fragility_score": 18.178771,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.239159,
@@ -10439,7 +10439,7 @@
         },
         {
           "date": "2025-10",
-          "fragility_score": 19.270461,
+          "fragility_score": 19.270462,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.092504,
@@ -10459,7 +10459,7 @@
         },
         {
           "date": "2025-11",
-          "fragility_score": 26.314167,
+          "fragility_score": 26.31417,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.005051,
@@ -10479,7 +10479,7 @@
         },
         {
           "date": "2025-12",
-          "fragility_score": 25.943188,
+          "fragility_score": 25.943191,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.051309,
@@ -10499,7 +10499,7 @@
         },
         {
           "date": "2026-01",
-          "fragility_score": 18.140615,
+          "fragility_score": 18.140617,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.137794,
@@ -10519,7 +10519,7 @@
         },
         {
           "date": "2026-02",
-          "fragility_score": 20.711464,
+          "fragility_score": 20.711465,
           "regime": "HEDGE",
           "correlations": {
             "sp500": -0.056078,
@@ -10539,7 +10539,7 @@
         },
         {
           "date": "2026-03",
-          "fragility_score": 33.622563,
+          "fragility_score": 33.622568,
           "regime": "HEDGE",
           "correlations": {
             "sp500": 0.12261,
@@ -10559,22 +10559,22 @@
         },
         {
           "date": "2026-04",
-          "fragility_score": 38.240455,
+          "fragility_score": 38.155174,
           "regime": "HEDGE",
           "correlations": {
-            "sp500": 0.306339,
-            "dax": 0.576826,
-            "ftse": 0.440725,
-            "nikkei": 0.340049,
-            "bovespa": 0.288737,
-            "eu": 0.604388,
-            "em": 0.398686
+            "sp500": 0.35113,
+            "dax": 0.598309,
+            "ftse": 0.450404,
+            "nikkei": 0.322356,
+            "bovespa": 0.288207,
+            "eu": 0.624837,
+            "em": 0.408818
           },
           "features": {
-            "vix": 20.498334,
-            "dxy": 98.859445,
-            "brent": 100.715,
-            "try_usd": 0.02237
+            "vix": 20.101429,
+            "dxy": 98.807001,
+            "brent": 101.728572,
+            "try_usd": 0.022346
           }
         }
       ]

@@ -776,14 +776,13 @@ section {
   <section id="team">
     <div class="section-eyebrow">Team Split</div>
     <h1 class="section-title">4 Speakers · ~3.5 min each</h1>
-    <p class="section-sub">Jasneek is not present for the recording. Split across Rahul, Vansh, Suaad, and Sahar.</p>
+    <p class="section-sub">Since Jasneek is not present for the presentation, split across Rahul, Vansh, Suaad, and Sahar. The split below is just a suggestion — feel free to rearrange.</p>
 
     <div class="team-grid">
       <div class="speaker-card">
         <div class="speaker-name">Vansh</div>
-        <div class="speaker-slides">Slides 1, 7</div>
+        <div class="speaker-slides">Slide 7</div>
         <div class="speaker-tags">
-          <span class="tag">Title</span>
           <span class="tag">Divergence Gap</span>
         </div>
       </div>
@@ -794,13 +793,13 @@ section {
           <span class="tag">Methodology</span>
           <span class="tag">Data</span>
           <span class="tag">Validation</span>
-          <span class="tag backup">Tech Q&amp;A</span>
         </div>
       </div>
       <div class="speaker-card">
         <div class="speaker-name">Sahar</div>
-        <div class="speaker-slides">Slides 4, 6</div>
+        <div class="speaker-slides">Slides 1, 4, 6</div>
         <div class="speaker-tags">
+          <span class="tag">Title</span>
           <span class="tag">Crisis Test</span>
           <span class="tag">Distribution</span>
         </div>
@@ -816,8 +815,8 @@ section {
     </div>
 
     <div class="backup-banner">
-      <strong>Backup rule</strong>
-      Any technical question (R², data source, model choice) → Rahul answers regardless of which slide is showing.
+      <strong>Note</strong>
+      For technical questions (R², data source, model choice), whoever is most comfortable should take it — no hard rule.
     </div>
   </section>
 
@@ -827,7 +826,7 @@ section {
   <section id="timing">
     <div class="section-eyebrow">Timing</div>
     <h2 class="section-title">15 Minutes Total</h2>
-    <p class="section-sub">Buffer built in. If running long, drop the optional dashboard demos in slides 4 and 8.</p>
+    <p class="section-sub">Buffer built in. If running long, drop the optional dashboard demos in slides 4 and 8. Times are suggestions — adjust as you go.</p>
 
     <table class="timing-table">
       <thead>
@@ -838,7 +837,7 @@ section {
         </tr>
       </thead>
       <tbody>
-        <tr><td>1 · Title</td><td>Vansh</td><td>1:00</td></tr>
+        <tr><td>1 · Title</td><td>Sahar</td><td>1:00</td></tr>
         <tr><td>2 · Methodology</td><td>Rahul</td><td>1:45</td></tr>
         <tr><td>3 · The Data</td><td>Rahul</td><td>1:15</td></tr>
         <tr class="demo-row"><td>→ Dashboard demo</td><td>Rahul</td><td>1:00</td></tr>
@@ -862,7 +861,7 @@ section {
   <section id="scripts">
     <div class="section-eyebrow">Slide Scripts</div>
     <h2 class="section-title">Speaker Notes</h2>
-    <p class="section-sub">Use as a starting point — adapt to your own voice. Don't read verbatim.</p>
+    <p class="section-sub">This is an AI-generated reference — please use only as a starting point and ask if anything sounds off or doesn't match how you'd naturally say it.</p>
 
     <!-- S1 -->
     <div class="slide-card open" id="s1">
@@ -870,7 +869,7 @@ section {
         <div class="slide-num">1</div>
         <div class="slide-meta">
           <div class="slide-title">Title — "The Financial Fragility Clock"</div>
-          <div class="slide-speaker">Vansh · 1:00</div>
+          <div class="slide-speaker">Sahar · 1:00</div>
         </div>
         <div class="slide-time"></div>
         <div class="chevron">▼</div>
@@ -1106,7 +1105,7 @@ section {
   <section id="dashboard">
     <div class="section-eyebrow">Dashboard Demo</div>
     <h2 class="section-title">Cheatsheet</h2>
-    <p class="section-sub">Three demo moments — Rahul controls dashboard throughout.</p>
+    <p class="section-sub">Three demo moments. Whoever is presenting slides 3 and 8 controls the dashboard.</p>
 
     <table class="demo-table">
       <thead>
@@ -1170,7 +1169,7 @@ section {
   <section id="faq">
     <div class="section-eyebrow">FAQ</div>
     <h2 class="section-title">Likely Q&amp;A</h2>
-    <p class="section-sub">Technical questions default to Rahul regardless of who's presenting.</p>
+    <p class="section-sub">Whoever is most comfortable with a question should take it — these answers are here so everyone feels prepared.</p>
 
     <div class="faq-card open" id="faq1">
       <div class="faq-q" onclick="toggleCard(this.parentElement)">
@@ -1279,7 +1278,7 @@ section {
         <p><strong>(1)</strong> The assignment CSV is only 32 months — too narrow to train a robust time-series model, which is why Model B was necessary.</p>
         <p><strong>(2)</strong> The fragility score is a composite index, not a probability — it cannot be directly backtested as a trading signal without a defined decision rule.</p>
         <p><strong>(3)</strong> ANN underperformed due to sample size, limiting the deep learning component.</p>
-        <p><strong>(4)</strong> The ISE data contains circuit-breaker artifacts — days when returns were capped at ±2.9% — which slightly dampened volatility in Model A's training data. Documented as a data limitation, not corrected, to avoid rerunning all downstream outputs before submission.</p>
+        <p><strong>(4)</strong> The ISE training data contained a circuit-breaker artifact — on days when trading was halted, the original cleaned CSV forward-filled the last valid price, creating ~68 rows with artificially repeated values. This was identified, corrected, and the models were re-run against the fixed data. The key numbers were unchanged (Nov 2021 gap: 33.5 vs 53.0; Mar 2020: 58.8 vs 71.1; walk-forward R² identical) confirming the artifact had negligible impact on findings.</p>
       </div>
     </div>
 
@@ -1407,11 +1406,6 @@ section {
     <div class="quote-card">
       <div class="quote-text">"If you use RF and ANN, you can say: in all methodologies I consistently found similar effects."</div>
       <div class="quote-meaning">Your walk-forward heatmap with 4 models all agreeing on negative R² = exactly this.</div>
-    </div>
-
-    <div class="quote-card">
-      <div class="quote-text">"Please do not use Excel to prepare your figures."</div>
-      <div class="quote-meaning">All your plots are Python/JS — you're fine.</div>
     </div>
 
     <div class="quote-card">
