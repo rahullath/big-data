@@ -383,7 +383,7 @@ td.good{color:var(--hedge)}td.bad{color:var(--ponzi)}td.mu{color:var(--t2)}
 
     <div class="two-col" style="align-items:start">
       <div>
-        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model A · By Crisis Split</div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model A &amp; B · By Crisis Split</div>
         <div id="r-wf-body" class="loading">Loading…</div>
         <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.65">Negative R² marks a structural break — the model was trained on dynamics that do not generalise to that crisis type. The 2021–24 split reliably breaks all algorithms across both models, which is informative in itself.</div>
       </div>
@@ -1028,29 +1028,44 @@ function renderShap(containerId, shap, topN) {
 }
 
 // ── WALK-FORWARD HEATMAP ──────────────────────────────────────────────────────
-function renderWFHeatmap() {
-  const body=document.getElementById('r-wf-body'); if(!body)return;
-  const wf=DATA?.models?.model_2009?.walk_forward||[];
-  if(!wf.length){body.innerHTML='<p style="font-size:12px;color:var(--t3);font-family:var(--fm)">Walk-forward data not available.</p>';return;}
+function renderWFHeatmap(){
+  const body=document.getElementById('r-wf-body');if(!body)return;
+  const wfA=DATA?.models?.model_2009?.walk_forward||[];
+  const wfB=DATA?.models?.model_2003?.walk_forward||[];
+  if(!wfA.length&&!wfB.length){body.innerHTML='<p style="font-size:12px;color:var(--t3);font-family:var(--fm)">Walk-forward data not available.</p>';return;}
   const algos=['ols','elastic_net','lasso','rf'];
-  const algoLbls={ols:'OLS',elastic_net:'Elastic Net',lasso:'Lasso',rf:'Random Forest'};
+  const algoLabels={ols:'OLS',elastic_net:'E.Net',lasso:'Lasso',rf:'RF'};
   function r2Bg(v){
-    if(v==null)return'rgba(0,0,0,.04)';
+    if(v==null)return'var(--b)';
     if(v<0){const t=Math.min(1,-v/0.5);return`rgb(${Math.round(220-20*t)},${Math.round(80-30*t)},${Math.round(80-20*t)})`;}
     const t=Math.min(1,v/0.75);return`rgb(${Math.round(220-180*t)},${Math.round(200-40*t)},${Math.round(80-40*t)})`;
   }
-  let html=`<div style="display:grid;grid-template-columns:110px repeat(${algos.length},1fr);gap:3px">`;
-  html+=`<div class="wf-head" style="text-align:left">Split</div>`;
-  algos.forEach(a=>html+=`<div class="wf-head">${algoLbls[a]}</div>`);
-  wf.forEach(sp=>{
-    html+=`<div class="wf-row-lbl">${sp.description}</div>`;
-    algos.forEach(a=>{
-      const r2=sp[a]?.r2,val=r2!=null?r2.toFixed(3):'—';
-      const fg=r2==null?'var(--t3)':Math.abs(r2)>0.12?'#fff':'var(--t)';
-      html+=`<div class="wf-cell" style="background:${r2Bg(r2)};color:${fg}" title="${sp.description} · ${algoLbls[a]} · R²=${val}">${val}</div>`;
+  function r2Fg(v){return v==null?'var(--t3)':Math.abs(v)>0.12?'#fff':'var(--t)';}
+  function buildSection(wf,label,col){
+    if(!wf.length)return'';
+    let h=`<div style="font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:${col};margin-bottom:4px">${label}</div>`;
+    h+=`<div style="display:grid;grid-template-columns:auto repeat(${algos.length},1fr);gap:3px;margin-bottom:2px">`;
+    h+=`<div></div>`;
+    algos.forEach(a=>h+=`<div style="font-family:var(--fm);font-size:10px;color:var(--t3);text-align:center;padding:2px;letter-spacing:.04em">${algoLabels[a]}</div>`);
+    wf.forEach(sp=>{
+      const desc=(sp.description||sp.split||'').replace('Crisis','').replace('Turkey ','').trim();
+      h+=`<div style="font-family:var(--fm);font-size:10px;color:var(--t2);display:flex;align-items:center;padding-right:8px;white-space:nowrap">${desc}</div>`;
+      algos.forEach(a=>{
+        const r2=sp[a]?.r2;
+        const val=r2!=null?r2.toFixed(3):'—';
+        h+=`<div class="wf-cell" style="background:${r2Bg(r2)};color:${r2Fg(r2)}" title="${desc} · ${algoLabels[a]} · R²=${val}">${val}</div>`;
+      });
     });
-  });
-  html+=`</div>`;
+    h+=`</div>`;
+    return h;
+  }
+  let html=buildSection(wfA,'Model A · 2009–2011 baseline','var(--t3)');
+  html+=`<div style="border-top:1px solid var(--b);margin:8px 0"></div>`;
+  html+=buildSection(wfB,'Model B · 2003–2026 extended','var(--pu)');
+  html+=`<div style="display:flex;gap:16px;font-family:var(--fm);font-size:10px;color:var(--t3);margin-top:8px">
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgb(200,60,60);display:inline-block"></span>R² &lt; 0 · structural break</span>
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgb(60,190,60);display:inline-block"></span>R² &gt; 0.5 · strong fit</span>
+  </div>`;
   body.innerHTML=html;
 }
 
