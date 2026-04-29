@@ -383,7 +383,7 @@ td.good{color:var(--hedge)}td.bad{color:var(--ponzi)}td.mu{color:var(--t2)}
 
     <div class="two-col" style="align-items:start">
       <div>
-        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model B · By Crisis Split</div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model A · By Crisis Split</div>
         <div id="r-wf-body" class="loading">Loading…</div>
         <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.65">Negative R² marks a structural break — the model was trained on dynamics that do not generalise to that crisis type. The 2021–24 split reliably breaks all algorithms across both models, which is informative in itself.</div>
       </div>
@@ -1030,7 +1030,7 @@ function renderShap(containerId, shap, topN) {
 // ── WALK-FORWARD HEATMAP ──────────────────────────────────────────────────────
 function renderWFHeatmap() {
   const body=document.getElementById('r-wf-body'); if(!body)return;
-  const wf=DATA?.models?.model_2003?.walk_forward||[];
+  const wf=DATA?.models?.model_2009?.walk_forward||[];
   if(!wf.length){body.innerHTML='<p style="font-size:12px;color:var(--t3);font-family:var(--fm)">Walk-forward data not available.</p>';return;}
   const algos=['ols','elastic_net','lasso','rf'];
   const algoLbls={ols:'OLS',elastic_net:'Elastic Net',lasso:'Lasso',rf:'Random Forest'};
