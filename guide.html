@@ -932,7 +932,7 @@ section {
             </div>
             <div class="demo-step">
               <div class="step-num">3</div>
-              <div class="step-text">Toggle <strong>Model A</strong>: clock shows ~33.5. <em>"Model A: 33.5. Speculative but not alarming."</em></div>
+              <div class="step-text">Toggle <strong>Model A</strong>: clock shows ~33.5. <em>"Model A: 33.5 — Hedge. Below 40. No alarm signal at all."</em></div>
             </div>
             <div class="demo-step">
               <div class="step-num">4</div>
@@ -1056,7 +1056,7 @@ section {
       </div>
       <div class="slide-body">
         <div class="script-block">
-          "Two tables. Left: in-sample R² on the training data. OLS 4.2%, Elastic Net 8.0%, LASSO 6.6%, Random Forest 13.8%. If someone asks whether 13% means we only explain 13% of variability — here is the precise answer: R² measures the proportion of variance in the <strong>dependent variable</strong> — ISE daily returns — that the model explains. Not the features. And 4–14% for daily financial returns is the Efficient Market Hypothesis baseline. Fama (1970) literally predicts this. Getting any consistent R² from 7 market indices is itself a result."
+          "Two things on this slide. Left: in-sample R² across all four algorithms for both models. Model A: OLS 4.2%, Elastic Net 8.0%, LASSO 6.6%, Random Forest 0.8%. Model B: OLS 9.4%, EN 9.1%, LASSO 9.6%, RF 13.8%. If someone asks why RF drops from 13.8% down to 0.8% for Model A — that's actually a point in our favour: RF was trained on only 32 monthly observations. With 200 trees and 32 data points it memorises the training set and fails to generalise. The regularised linear models, which are explicitly designed for small samples, outperform it. Model B's RF at 13.8% shows what happens with 20 years of data. And on the linear range of 4–10%: that's the EMH baseline. Fama (1970) literally predicts this — daily returns are near-random by construction."
           <br><br>
           "Right table: walk-forward R² on crisis windows. GFC 2008: OLS 38.6%, RF 52.3%. COVID 2020: OLS 74.2%. These are the operative numbers."
           <br><br>
@@ -1178,8 +1178,8 @@ section {
         <div class="faq-chevron">▼</div>
       </div>
       <div class="faq-a">
-        <p>The 13.75% is the in-sample R² for Random Forest on <strong>ISE daily returns</strong> (the dependent variable). R² does not measure variance in the independent variables.</p>
-        <p>For daily financial returns, 4–14% is the EMH baseline. <strong>Fama (1970) predicts this</strong> — markets are informationally efficient so returns are near-random. Walk-forward R² on crisis windows: OLS reaches <em>74.2%</em> during COVID and <em>38.6%</em> during GFC. Those are the operative numbers.</p>
+        <p>R² measures the proportion of variance in <strong>ISE daily returns</strong> that the model explains — not variance in the features. For daily financial returns, <strong>Fama (1970) predicts</strong> near-zero R²: markets are informationally efficient so returns are near-random.</p>
+        <p>Model B RF achieves 13.8%. Model A RF achieves only 0.8% — not because RF is a bad model, but because it was trained on 32 monthly observations and memorised that window. The regularised linear models (4–10%) actually generalise better under those data constraints. Walk-forward R² on crisis windows is the operative measure: OLS reaches <em>74.2%</em> during COVID and <em>38.6%</em> during GFC — those are the numbers that matter.</p>
       </div>
     </div>
 
@@ -1390,7 +1390,7 @@ section {
 
     <div class="quote-card">
       <div class="quote-text">"As long as you can justify why, I think you are good."</div>
-      <div class="quote-meaning">Negative R² and 13% are fine — you have the justification ready (EMH, structural break).</div>
+      <div class="quote-meaning">Every number has a justification ready: 0.8% Model A RF (32-month window, memorisation), 13.8% Model B RF (20-year window), negative R² (structural break). You're covered.</div>
     </div>
 
     <div class="quote-card">
