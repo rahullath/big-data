@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Presentation Guide · Financial Fragility Clock · Group 5</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237132f5'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='white' stroke-width='2' fill='none'/%3E%3Cline x1='16' y1='6' x2='16' y2='16' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='16' x2='22' y2='12' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c10;
+  --s: #131318;
+  --s2: #1a1a22;
+  --b: rgba(255,255,255,.07);
+  --bm: rgba(255,255,255,.14);
+  --t: #e8eaf0;
+  --t2: #8b92a8;
+  --t3: #3d4357;
+  --pu: #7132f5;
+  --pu-dim: rgba(113,50,245,.15);
+  --pu-border: rgba(113,50,245,.3);
+  --hedge: #149e61;
+  --hedge-dim: rgba(20,158,97,.15);
+  --spec: #d97706;
+  --spec-dim: rgba(217,119,6,.15);
+  --ponzi: #dc2626;
+  --ponzi-dim: rgba(220,38,38,.15);
+  --fn: 'IBM Plex Sans', system-ui, sans-serif;
+  --fs: 'IBM Plex Serif', Georgia, serif;
+  --fm: 'IBM Plex Mono', monospace;
+  --r: 14px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fn);
+  background: var(--bg);
+  color: var(--t);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ── STICKY TOP BAR ── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(12,12,16,.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--b);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+}
+
+.topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.topbar-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--pu);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.topbar-title {
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--t2);
+  letter-spacing: .06em;
+}
+
+.topbar-title strong { color: var(--t); font-weight: 500; }
+
+.topbar-sep { flex: 1; }
+
+.theme-btn {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--b);
+  background: transparent;
+  cursor: pointer;
+  color: var(--t3);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+  font-size: 15px;
+}
+.theme-btn:hover { color: var(--t); border-color: var(--bm); }
+
+/* ── NAV TABS ── */
+.tabs-wrap {
+  position: sticky;
+  top: 52px;
+  z-index: 190;
+  background: rgba(12,12,16,.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--b);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-wrap::-webkit-scrollbar { display: none; }
+
+.tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 16px;
+  min-width: max-content;
+}
+
+.tab {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--t3);
+  padding: 12px 16px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  transition: all .15s;
+  white-space: nowrap;
+  text-decoration: none;
+  display: block;
+}
+.tab:hover { color: var(--t2); }
+.tab.active { color: var(--pu); border-bottom-color: var(--pu); }
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+
+section {
+  padding-top: 32px;
+}
+
+/* ── SECTION HEADER ── */
+.section-eyebrow {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--pu);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--fs);
+  font-size: clamp(22px, 5vw, 32px);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.section-sub {
+  font-size: 14px;
+  color: var(--t2);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--b);
+  margin: 32px 0;
+}
+
+/* ── TEAM GRID ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.speaker-card {
+  background: var(--s);
+  border: 1px solid var(--b);
+  border-radius: var(--r);
+  padding: 16px;
+  transition: border-color .15s;
+}
+.speaker-card:hover { border-color: var(--bm); }
+
+.speaker-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.speaker-slides {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--t3);
+  margin-bottom: 8px;
+}
+
+.speaker-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--fm);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: var(--pu-dim);
+  color: var(--pu);
+  border: 1px solid var(--pu-border);
+}
+
+.tag.backup { background: rgba(217,119,6,.12); color: var(--spec); border-color: rgba(217,119,6,.25); }
+
+/* ── TIMING TABLE ── */
+.timing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.timing-table th {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--b);
+}
+
+.timing-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--b);
+  color: var(--t2);
+  vertical-align: top;
+}
+
+.timing-table td:first-child { color: var(--t); font-weight: 500; }
+.timing-table td:last-child {
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--pu);
+  white-space: nowrap;
+}
+
+.timing-table tr.demo-row td {
+  background: rgba(113,50,245,.05);
+  font-size: 13px;
+  color: var(--t3);
+  font-style: italic;
+}
+
+.timing-total {
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--t3);
+  text-align: right;
+  margin-top: 8px;
+}
+
+/* ── SLIDE CARDS ── */
+.slide-card {
+  background: var(--s);
+  border: 1px solid var(--b);
+  border-radius: var(--r);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color .15s;
+}
+.slide-card:hover { border-color: var(--bm); }
+
+.slide-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.slide-num {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--pu-dim);
+  border: 1px solid var(--pu-border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--pu);
+  flex-shrink: 0;
+}
+
+.slide-meta { flex: 1; min-width: 0; }
+
+.slide-title {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-speaker {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--t3);
+  margin-top: 2px;
+}
+
+.slide-time {
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--t3);
+  flex-shrink: 0;
+}
+
+.chevron {
+  font-size: 12px;
+  color: var(--t3);
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+.slide-card.open .chevron { transform: rotate(180deg); }
+
+.slide-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--b);
+}
+.slide-card.open .slide-body { display: block; }
+
+/* ── SCRIPT BLOCK ── */
+.script-block {
+  background: var(--s2);
+  border-left: 3px solid var(--pu);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--t2);
+  font-style: italic;
+}
+
+.script-block strong { color: var(--t); font-style: normal; font-weight: 500; }
+
+/* ── DEMO STEPS ── */
+.demo-section {
+  background: rgba(113,50,245,.06);
+  border: 1px solid var(--pu-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.demo-title {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pu);
+  margin-bottom: 12px;
+}
+
+.demo-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.demo-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.step-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--pu);
+  color: #fff;
+  font-family: var(--fm);
+  font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.step-text {
+  font-size: 14px;
+  color: var(--t2);
+  line-height: 1.55;
+}
+
+.step-text em {
+  font-style: italic;
+  color: var(--t);
+}
+
+/* ── KEY LINE ── */
+.key-line {
+  background: rgba(20,158,97,.1);
+  border: 1px solid rgba(20,158,97,.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--hedge);
+  line-height: 1.5;
+}
+
+.key-line::before {
+  content: "KEY LINE → ";
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .12em;
+  opacity: .7;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── RUBRIC NOTE ── */
+.rubric-note {
+  font-size: 12px;
+  color: var(--t3);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+.rubric-note::before { content: "Rubric: "; font-style: normal; }
+
+/* ── FAQ CARDS ── */
+.faq-card {
+  background: var(--s);
+  border: 1px solid var(--b);
+  border-radius: var(--r);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.faq-q {
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.faq-icon {
+  font-family: var(--fm);
+  font-size: 12px;
+  color: var(--pu);
+  background: var(--pu-dim);
+  border: 1px solid var(--pu-border);
+  border-radius: 6px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.faq-question {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.faq-chevron {
+  font-size: 12px;
+  color: var(--t3);
+  flex-shrink: 0;
+  transition: transform .2s;
+  margin-top: 3px;
+}
+.faq-card.open .faq-chevron { transform: rotate(180deg); }
+
+.faq-a {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--b);
+}
+.faq-card.open .faq-a { display: block; }
+
+.faq-a p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--t2);
+  margin-top: 12px;
+}
+
+.faq-a p + p { margin-top: 10px; }
+
+.faq-a strong { color: var(--t); font-weight: 500; }
+.faq-a em { font-style: italic; color: var(--spec); }
+
+/* ── DASHBOARD CHEATSHEET ── */
+.cheat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.cheat-item {
+  background: var(--s);
+  border: 1px solid var(--b);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.cheat-label {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-bottom: 4px;
+}
+
+.cheat-desc {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.45;
+}
+
+/* ── DEMO TABLE ── */
+.demo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 16px 0;
+}
+
+.demo-table th {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--b);
+  text-align: left;
+}
+
+.demo-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--b);
+  color: var(--t2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.demo-table td:first-child { font-weight: 500; color: var(--t); white-space: nowrap; }
+
+/* ── RUBRIC TABLE ── */
+.rubric-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 16px 0;
+}
+
+.rubric-table th {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--b);
+  text-align: left;
+}
+
+.rubric-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--b);
+  color: var(--t2);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.rubric-table td:first-child { font-weight: 500; color: var(--t); }
+
+.weight-badge {
+  font-family: var(--fm);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--pu-dim);
+  color: var(--pu);
+  border: 1px solid var(--pu-border);
+  white-space: nowrap;
+}
+
+/* ── PROF QUOTES ── */
+.quote-card {
+  background: var(--s);
+  border: 1px solid var(--b);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.quote-text {
+  font-family: var(--fs);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--t);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.quote-meaning {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.55;
+  padding-top: 10px;
+  border-top: 1px solid var(--b);
+}
+
+.quote-meaning::before {
+  content: "What it means: ";
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── LIGHT MODE ── */
+[data-theme="light"] {
+  --bg: #f9f8f6;
+  --s: #ffffff;
+  --s2: #f4f3f0;
+  --b: rgba(0,0,0,.07);
+  --bm: rgba(0,0,0,.13);
+  --t: #1a1714;
+  --t2: #5a5450;
+  --t3: #a09894;
+  --pu-dim: rgba(113,50,245,.08);
+  --pu-border: rgba(113,50,245,.2);
+}
+
+[data-theme="light"] .topbar,
+[data-theme="light"] .tabs-wrap {
+  background: rgba(249,248,246,.92);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .cheat-grid { grid-template-columns: 1fr; }
+  .slide-title { font-size: 14px; }
+  .faq-question { font-size: 14px; }
+  .timing-table { font-size: 13px; }
+  .timing-table td, .timing-table th { padding: 8px; }
+}
+
+/* ── FLOATING BACK-TO-TOP ── */
+.btt {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  right: 16px;
+  width: 40px; height: 40px;
+  background: var(--s);
+  border: 1px solid var(--bm);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--t2);
+  font-size: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  z-index: 100;
+  text-decoration: none;
+}
+.btt.visible { opacity: 1; pointer-events: all; }
+.btt:hover { transform: translateY(-2px); color: var(--pu); }
+
+/* ── BACKUP BANNER ── */
+.backup-banner {
+  background: rgba(217,119,6,.1);
+  border: 1px solid rgba(217,119,6,.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--spec);
+  line-height: 1.55;
+}
+.backup-banner strong { display: block; font-family: var(--fm); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; opacity: .7; }
+
+/* ── PROGRESS BAR ── */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--pu);
+  z-index: 300;
+  transition: width .1s linear;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <a class="topbar-logo" href="index.html">
+    <div class="topbar-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="6" stroke="white" stroke-width="1.5"/>
+        <line x1="8" y1="3" x2="8" y2="8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8" y1="8" x2="11" y2="6" stroke="white" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="topbar-title"><strong>Group 5</strong> · Guide</span>
+  </a>
+  <div class="topbar-sep"></div>
+  <button class="theme-btn" id="themeBtn" title="Toggle theme">☀</button>
+</header>
+
+<!-- TABS -->
+<nav class="tabs-wrap" id="tabs">
+  <div class="tabs">
+    <a class="tab active" href="#team">Team</a>
+    <a class="tab" href="#timing">Timing</a>
+    <a class="tab" href="#scripts">Scripts</a>
+    <a class="tab" href="#dashboard">Dashboard</a>
+    <a class="tab" href="#faq">FAQ</a>
+    <a class="tab" href="#rubric">Rubric</a>
+    <a class="tab" href="#prof">Prof</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ── TEAM ── -->
+  <section id="team">
+    <div class="section-eyebrow">Team Split</div>
+    <h1 class="section-title">4 Speakers · ~3.5 min each</h1>
+    <p class="section-sub">Jasneek is not present for the recording. Split across Rahul, Vansh, Suaad, and Sahar.</p>
+
+    <div class="team-grid">
+      <div class="speaker-card">
+        <div class="speaker-name">Vansh</div>
+        <div class="speaker-slides">Slides 1, 7</div>
+        <div class="speaker-tags">
+          <span class="tag">Title</span>
+          <span class="tag">Divergence Gap</span>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Rahul</div>
+        <div class="speaker-slides">Slides 2, 3, 8 + demos</div>
+        <div class="speaker-tags">
+          <span class="tag">Methodology</span>
+          <span class="tag">Data</span>
+          <span class="tag">Validation</span>
+          <span class="tag backup">Tech Q&amp;A</span>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Sahar</div>
+        <div class="speaker-slides">Slides 4, 6</div>
+        <div class="speaker-tags">
+          <span class="tag">Crisis Test</span>
+          <span class="tag">Distribution</span>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Suaad</div>
+        <div class="speaker-slides">Slides 5, 9</div>
+        <div class="speaker-tags">
+          <span class="tag">SHAP</span>
+          <span class="tag">Conclusions</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="backup-banner">
+      <strong>Backup rule</strong>
+      Any technical question (R², data source, model choice) → Rahul answers regardless of which slide is showing.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── TIMING ── -->
+  <section id="timing">
+    <div class="section-eyebrow">Timing</div>
+    <h2 class="section-title">15 Minutes Total</h2>
+    <p class="section-sub">Buffer built in. If running long, drop the optional dashboard demos in slides 4 and 8.</p>
+
+    <table class="timing-table">
+      <thead>
+        <tr>
+          <th>Slide</th>
+          <th>Speaker</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1 · Title</td><td>Vansh</td><td>1:00</td></tr>
+        <tr><td>2 · Methodology</td><td>Rahul</td><td>1:45</td></tr>
+        <tr><td>3 · The Data</td><td>Rahul</td><td>1:15</td></tr>
+        <tr class="demo-row"><td>→ Dashboard demo</td><td>Rahul</td><td>1:00</td></tr>
+        <tr><td>4 · Crisis Test</td><td>Sahar</td><td>1:30</td></tr>
+        <tr class="demo-row"><td>→ Dashboard (optional)</td><td>Rahul</td><td>0:30</td></tr>
+        <tr><td>5 · SHAP</td><td>Suaad</td><td>1:30</td></tr>
+        <tr><td>6 · Score Distribution</td><td>Sahar</td><td>1:00</td></tr>
+        <tr><td>7 · Divergence Gap</td><td>Vansh</td><td>1:00</td></tr>
+        <tr><td>8 · Algorithm Validation</td><td>Rahul</td><td>2:00</td></tr>
+        <tr class="demo-row"><td>→ Dashboard (optional)</td><td>Rahul</td><td>0:20</td></tr>
+        <tr><td>9 · Conclusions</td><td>Suaad</td><td>1:30</td></tr>
+        <tr><td>Buffer</td><td>—</td><td>0:45</td></tr>
+      </tbody>
+    </table>
+    <div class="timing-total">Total with all demos: 15:05</div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── SCRIPTS ── -->
+  <section id="scripts">
+    <div class="section-eyebrow">Slide Scripts</div>
+    <h2 class="section-title">Speaker Notes</h2>
+    <p class="section-sub">Use as a starting point — adapt to your own voice. Don't read verbatim.</p>
+
+    <!-- S1 -->
+    <div class="slide-card open" id="s1">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">1</div>
+        <div class="slide-meta">
+          <div class="slide-title">Title — "The Financial Fragility Clock"</div>
+          <div class="slide-speaker">Vansh · 1:00</div>
+        </div>
+        <div class="slide-time"></div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "Can a machine learning model detect when the Istanbul Stock Exchange is approaching a financial crisis — before it happens? We built the Financial Fragility Clock: a system that maps market data onto Minsky's Financial Instability Hypothesis, scoring fragility from zero to one hundred. Our core question: what changes when you add Turkey-specific context to a global-only model — and does that difference matter when the crises that actually hit Turkey hardest occur?"
+        </div>
+        <p class="rubric-note">Sets up 'background of methods' — FIH theory before the pipeline.</p>
+      </div>
+    </div>
+
+    <!-- S2 -->
+    <div class="slide-card" id="s2">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">2</div>
+        <div class="slide-meta">
+          <div class="slide-title">Methodology — "How We Built It"</div>
+          <div class="slide-speaker">Rahul · 1:45</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "Four steps. First, data: Model A trains on the assignment's CSV — 536 daily observations from January 2009 to August 2011, covering the ISE and 7 global indices. Model B extends this with 260+ monthly observations from 2003 to 2026, downloaded from yfinance, adding 30+ features: Turkish lira velocity, VIX lags, a CBRT policy dummy."
+          <br><br>
+          "Step two: six models — OLS, Ridge, LASSO, Elastic Net, Random Forest, and ANN. Not all of them made it to the final output. Ridge converged identically to OLS — the optimal regularisation parameter hit the minimum of our search grid, meaning L2 penalisation provided zero additional benefit. The ANN's cross-validation RMSE was six times its test RMSE on 536 rows — a known overfitting failure mode on small financial samples, documented by Zhang (2003). Both are reported in Section 2 of the notebooks."
+          <br><br>
+          "Step three: walk-forward validation on four genuine crisis windows — GFC 2008, TRY 2018, COVID 2020, Turkey 2021–24. Train before the crisis, test during it. Step four: the fragility score — composite, normalised 0–100, mapped to Minsky's Hedge, Speculative, and Ponzi regimes at thresholds 40 and 70."
+        </div>
+        <p class="rubric-note">Covers 'steps performed', 'how they did it', 'pros and cons' (Ridge/ANN exclusion).</p>
+      </div>
+    </div>
+
+    <!-- S3 -->
+    <div class="slide-card" id="s3">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">3</div>
+        <div class="slide-meta">
+          <div class="slide-title">The Data — "Two Models, Two Stories"</div>
+          <div class="slide-speaker">Rahul · 1:15 + 1:00 demo</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "The timeline shows the full picture. The dashed line is Model A — trained only on 2009–2011 data. The solid line is Model B. Both are scored across 2003–2026, but they diverge sharply during Turkey-specific stress. The November 2021 cards show this exactly: Model A reads 33.5, Model B reads 53.0. That 19.4-point gap is the central finding of this project."
+        </div>
+
+        <div class="demo-section">
+          <div class="demo-title">Dashboard Demo — Primary (~60 sec)</div>
+          <div class="demo-steps">
+            <div class="demo-step">
+              <div class="step-num">1</div>
+              <div class="step-text">Point at the clock face: <em>"Current score and regime — live from our latest data."</em></div>
+            </div>
+            <div class="demo-step">
+              <div class="step-num">2</div>
+              <div class="step-text">Drag scrubber back to <strong>2021-11</strong>: <em>"November 2021 — Turkey is in a currency crisis."</em></div>
+            </div>
+            <div class="demo-step">
+              <div class="step-num">3</div>
+              <div class="step-text">Toggle <strong>Model A</strong>: clock shows ~33.5. <em>"Model A: 33.5. Speculative but not alarming."</em></div>
+            </div>
+            <div class="demo-step">
+              <div class="step-num">4</div>
+              <div class="step-text">Toggle <strong>Model B</strong>: clock jumps to ~53.0. <em>"Model B: 53.0. Same month. 20-point difference. That's the Turkey-specific signal."</em></div>
+            </div>
+            <div class="demo-step">
+              <div class="step-num">5</div>
+              <div class="step-text">While still at Nov 2021, show <strong>SHAP panel</strong>: <em>"And you can see why — Model B has TRY volatility in its top features, Model A doesn't."</em></div>
+            </div>
+          </div>
+        </div>
+        <p class="rubric-note">Return to presentation slides after demo.</p>
+      </div>
+    </div>
+
+    <!-- S4 -->
+    <div class="slide-card" id="s4">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">4</div>
+        <div class="slide-meta">
+          <div class="slide-title">Crisis Test — "Model A Underreads Turkey"</div>
+          <div class="slide-speaker">Sahar · 1:30</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "Four crises, four comparisons. Greek crisis 2010: both models show elevated scores — A=55.9, B=63.5. Global contagion is exactly what Model A was trained on."
+          <br><br>
+          "2018 TRY crash: A=46.9, B=52.1 — a 5.2-point gap. Model B is already elevated through TRY velocity, Model A sees only moderate stress."
+          <br><br>
+          "March 2020 COVID: A=58.8, B=71.1. This is the threshold test. Model B crosses 70 into Ponzi territory. Model A stays below. The VIX spike drives Model B through."
+          <br><br>
+          "November 2021: A=33.5, B=53.0 — a 19.4-point gap. This is the cleanest result. S&amp;P 500 was at all-time highs, VIX was low. Model A saw no global stress. Model B saw 53 because USDTRY was accelerating and the CBRT had just fired its governor for the third time. A global model cannot see that. A model trained on Turkish context can."
+        </div>
+
+        <div class="key-line">"When global markets are calm and Turkish markets are stressed, Model A is structurally blind. Model B is not."</div>
+
+        <div class="demo-section">
+          <div class="demo-title">Dashboard — Optional (~30 sec)</div>
+          <div class="demo-steps">
+            <div class="demo-step">
+              <div class="step-num">→</div>
+              <div class="step-text">Move scrubber to <strong>2020-03</strong> · toggle A (58.8) vs B (71.1). <em>"Model B is in the red zone. Model A is not."</em></div>
+            </div>
+          </div>
+        </div>
+        <p class="rubric-note">'Interpretation of results' — crisis comparison is the academic finding.</p>
+      </div>
+    </div>
+
+    <!-- S5 -->
+    <div class="slide-card" id="s5">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">5</div>
+        <div class="slide-meta">
+          <div class="slide-title">SHAP — "What Drives Each Model?"</div>
+          <div class="slide-speaker">Suaad · 1:30</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "SHAP values show which features each model relies on structurally. Model A's top five are EM, SP500, FTSE, NIKKEI, EU — purely global co-movement. These capture shared contagion but miss Turkey-domestic stress entirely."
+          <br><br>
+          "Model B still has EM at the top — the global channel remains. But look at what appears next: VIX lag, USDTRY volatility, rolling volatility. These are Turkey-specific. The extended model has genuinely different information, not just more of the same."
+          <br><br>
+          "One important nuance: Elastic Net in Model B collapses to EM-only. Linear models cannot capture the non-linear interaction between TRY velocity and ISE fragility. This is why Random Forest is necessary for Model B — and why it's an academic finding that linear and non-linear models diverge here."
+        </div>
+        <p class="rubric-note">'Interpretation of results', 'literature' — SHAP is the explainable AI element the professor specifically valued.</p>
+      </div>
+    </div>
+
+    <!-- S6 -->
+    <div class="slide-card" id="s6">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">6</div>
+        <div class="slide-meta">
+          <div class="slide-title">Score Distribution — "Where Each Model Spends Its Time"</div>
+          <div class="slide-speaker">Sahar · 1:00</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "The histogram shows where each model lands across 20+ years. Model A covers 229 monthly observations: 142 Hedge months (62%), 59 Speculative (26%), 28 Ponzi (12%). Model B covers 280 months: 196 Hedge (70%), 57 Speculative (20%), 27 Ponzi (10%)."
+          <br><br>
+          "Model B's broader coverage includes the early 2000s which were relatively stable — that shifts the distribution. But more importantly, when Model B does flag Speculative or Ponzi, it often does so at higher scores than Model A in the same period. The distribution's right tail is heavier for Model B during Turkey-specific stress windows."
+        </div>
+      </div>
+    </div>
+
+    <!-- S7 -->
+    <div class="slide-card" id="s7">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">7</div>
+        <div class="slide-meta">
+          <div class="slide-title">Divergence Gap — "Model B − Model A"</div>
+          <div class="slide-speaker">Vansh · 1:00</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "This chart shows Model B minus Model A across the full 20-year overlap. Purple above zero means Model B reads higher stress. The three stat cards tell the story: August 2018, the gap is +5.2 points. March 2020, +12.3 points. November 2021, +19.4 points — the peak divergence."
+          <br><br>
+          "That final number is the key. In November 2021, the S&amp;P 500 was near record highs. VIX was calm. There was no global stress signal for Model A to pick up. The +19.4 gap exists purely because of Turkey-domestic dynamics that only Model B's extended feature set captures."
+        </div>
+      </div>
+    </div>
+
+    <!-- S8 -->
+    <div class="slide-card" id="s8">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">8</div>
+        <div class="slide-meta">
+          <div class="slide-title">Algorithm Validation — "Cross-Algorithm Performance"</div>
+          <div class="slide-speaker">Rahul · 2:00</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "Two tables. Left: in-sample R² on the training data. OLS 4.1%, Elastic Net 7.9%, LASSO 6.5%, Random Forest 13.75%. If someone asks whether 13% means we only explain 13% of variability — here is the precise answer: R² measures the proportion of variance in the <strong>dependent variable</strong> — ISE daily returns — that the model explains. Not the features. And 4–14% for daily financial returns is the Efficient Market Hypothesis baseline. Fama (1970) literally predicts this. Getting any consistent R² from 7 market indices is itself a result."
+          <br><br>
+          "Right table: walk-forward R² on crisis windows. GFC 2008: OLS 38.6%, RF 52.3%. COVID 2020: OLS 74.2%. These are the operative numbers."
+          <br><br>
+          "The 2021–24 row: all four models show negative R². OLS -15.1%, RF -26.6%. Negative R² means predictions are worse than predicting the mean — a structural break. The relationship between global indices and ISE returns broke down. That break IS the finding. And the fragility score in Model B stays elevated during this period even when the linear prediction fails — which is the whole point of the composite score approach."
+        </div>
+
+        <div class="demo-section">
+          <div class="demo-title">Dashboard — Optional (~20 sec)</div>
+          <div class="demo-steps">
+            <div class="demo-step">
+              <div class="step-num">→</div>
+              <div class="step-text">Show the <strong>stats strip</strong> below the clock: <em>"These are the live metrics for whichever model is selected — R², RMSE, MAE."</em></div>
+            </div>
+          </div>
+        </div>
+        <p class="rubric-note">'Analysis thorough & accurate', 'pros and cons' — negative R² as structural break, Ridge/ANN exclusion.</p>
+      </div>
+    </div>
+
+    <!-- S9 -->
+    <div class="slide-card" id="s9">
+      <div class="slide-header" onclick="toggleCard(this.parentElement)">
+        <div class="slide-num">9</div>
+        <div class="slide-meta">
+          <div class="slide-title">Conclusions — "What We Found. What It Means."</div>
+          <div class="slide-speaker">Suaad · 1:30</div>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="slide-body">
+        <div class="script-block">
+          "Three numbers: 19.4 — the November 2021 gap between Model B and Model A. 71.1 — Model B's March 2020 score, crossing the Ponzi threshold. EM — the top SHAP driver in both models, confirming the global channel persists even in the extended version."
+          <br><br>
+          "The academic finding: a model trained only on GFC recovery co-movement cannot generalise to crises driven by Turkey-specific institutional shocks — CBRT governor firings, unorthodox monetary policy, currency fragility. Minsky's FIH applies: the 2009–2011 Hedge period IS the source of fragility that erupts in 2018 and 2021. Stability builds complacency, leverage accumulates, and a model trained on that stable period is blind to what comes next."
+          <br><br>
+          "The practical implication: extended, context-specific features keep the fragility signal elevated when a global-only baseline says everything is fine. In early-warning systems, that difference is the difference between a warning and silence."
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── DASHBOARD ── -->
+  <section id="dashboard">
+    <div class="section-eyebrow">Dashboard Demo</div>
+    <h2 class="section-title">Cheatsheet</h2>
+    <p class="section-sub">Three demo moments — Rahul controls dashboard throughout.</p>
+
+    <table class="demo-table">
+      <thead>
+        <tr>
+          <th>Slide</th>
+          <th>What to show</th>
+          <th>Line to say</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3 (primary)</td>
+          <td>Scrubber → 2021-11 · toggle A↔B</td>
+          <td>"33.5 vs 53. Same month. 20-point gap."</td>
+        </tr>
+        <tr>
+          <td>4 (optional)</td>
+          <td>Scrubber → 2020-03 · toggle A↔B</td>
+          <td>"B crosses 70 — Ponzi. A stays at 58."</td>
+        </tr>
+        <tr>
+          <td>8 (optional)</td>
+          <td>Stats strip below clock</td>
+          <td>"Live R², RMSE, MAE for selected model."</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-eyebrow" style="margin-top:24px;">Layout Reference</div>
+    <div class="cheat-grid">
+      <div class="cheat-item">
+        <div class="cheat-label">Clock Face</div>
+        <div class="cheat-desc">Score + regime colour (green=Hedge, amber=Spec, red=Ponzi)</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-label">Model Toggle</div>
+        <div class="cheat-desc">Top-right: "Model A" / "Model B" buttons</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-label">Scrubber</div>
+        <div class="cheat-desc">Bottom slider — drag left for past dates</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-label">Timeline Panel</div>
+        <div class="cheat-desc">2003–2026 arc, coloured by regime, crisis markers as dashed lines</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-label">SHAP Panel</div>
+        <div class="cheat-desc">Right side — feature importance bars, updates when model toggles</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-label">Stats Strip</div>
+        <div class="cheat-desc">Below clock — R², RMSE, MAE, CV-RMSE</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── FAQ ── -->
+  <section id="faq">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Likely Q&amp;A</h2>
+    <p class="section-sub">Technical questions default to Rahul regardless of who's presenting.</p>
+
+    <div class="faq-card open" id="faq1">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Your model only explains 13% of the variance — isn't that bad?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>The 13.75% is the in-sample R² for Random Forest on <strong>ISE daily returns</strong> (the dependent variable). R² does not measure variance in the independent variables.</p>
+        <p>For daily financial returns, 4–14% is the EMH baseline. <strong>Fama (1970) predicts this</strong> — markets are informationally efficient so returns are near-random. Walk-forward R² on crisis windows: OLS reaches <em>74.2%</em> during COVID and <em>38.6%</em> during GFC. Those are the operative numbers.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq2">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Why does the 2021–24 R² go negative?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>Negative R² means the model's predictions are worse than simply predicting the mean every time. This signals a <strong>structural break</strong> — the statistical relationship between global market indices and ISE returns broke down during 2021–24.</p>
+        <p>Turkey experienced repeated domestic shocks (CBRT firings, unorthodox rate policy, currency collapse) that severed the global co-movement link. <strong>Negative R² is the finding, not the problem.</strong></p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq3">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Why did you use yfinance for Model B when the assignment gave you a CSV?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>The CSV covers January 2009–August 2011 — the GFC recovery window. It contains 7 global indices. <strong>Model B's purpose</strong> is to test whether Turkey-specific context (USDTRY velocity, VIX lags, CBRT dummy) improves crisis detection across a 20-year horizon.</p>
+        <p>None of those features exist in the CSV. Model A strictly uses the provided CSV. Model B is our extension — separate data, separate purpose.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq4">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">What is the fragility score exactly? How is it calculated?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>It is a composite signal derived from three components: (1) <strong>prediction error</strong> from the walk-forward models — how far off the model is from actual ISE returns; (2) <strong>rolling return volatility</strong> — 30-day standard deviation of ISE monthly returns; (3) <strong>eigenvalue ratio from PCA</strong> on the feature correlation matrix — captures systemic co-movement across markets.</p>
+        <p>These are standardised and combined, then normalised to 0–100. Thresholds at 40 and 70 map to Minsky's Hedge, Speculative, and Ponzi regimes.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq5">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Why only four models in the dashboard? You mentioned six.</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p><strong>Ridge</strong> converged to OLS — the optimal α was 0.0001, the minimum of our search grid, meaning L2 penalisation provided no benefit. Ridge is subsumed into the OLS result.</p>
+        <p><strong>ANN's</strong> cross-validation RMSE was 0.0369 — six times its test RMSE of 0.006 — a classic overfitting signature on a 536-row sample. Zhang (2003) documents this failure mode explicitly. Both are fully reported in Section 2 notebooks. The four displayed models provide distinct signal; the excluded two are degenerate cases.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq6">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">How does Model A score months it wasn't trained on (e.g. 2018, 2021)?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>Model A is trained on the 2009–2011 CSV. The fragility scoring pipeline takes that trained model and runs it forward on monthly yfinance data from 2003 to 2026 — the model produces predictions on out-of-sample data, and those prediction errors feed into the fragility composite.</p>
+        <p>So Model A's 33.5 score in November 2021 is a genuine out-of-sample prediction — the model hasn't seen that data, which is why its error is large and the R² is negative.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq7">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Why is Model B's walk-forward R² also negative in 2021–24?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>Even with Turkey-specific features, 2021–24 breaks both models at the walk-forward prediction level. The fragility <strong>score</strong> for Model B is elevated (53.0 in Nov 2021) because the score composite includes rolling volatility and TRY velocity — signals that don't require accurate return prediction.</p>
+        <p><strong>The walk-forward R² measures prediction accuracy; the fragility score measures systemic stress. They are different things.</strong> Model B's value is that it keeps the score elevated even when prediction breaks down.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq8">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Why Minsky? Is this standard in financial ML?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>Minsky's Financial Instability Hypothesis provides the theoretical framework for why stability leads to fragility. The Hedge → Speculative → Ponzi transition maps directly to increasing leverage and vulnerability in financial markets.</p>
+        <p>It's been applied to emerging market crises extensively (Kindleberger, 2000; Borio, 2014). Using it as a regime labelling framework gives the composite score interpretability that a raw prediction error wouldn't have.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq9">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">What are the limitations of your approach?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>Four main limitations:</p>
+        <p><strong>(1)</strong> The assignment CSV is only 32 months — too narrow to train a robust time-series model, which is why Model B was necessary.</p>
+        <p><strong>(2)</strong> The fragility score is a composite index, not a probability — it cannot be directly backtested as a trading signal without a defined decision rule.</p>
+        <p><strong>(3)</strong> ANN underperformed due to sample size, limiting the deep learning component.</p>
+        <p><strong>(4)</strong> The ISE data contains circuit-breaker artifacts — days when returns were capped at ±2.9% — which slightly dampened volatility in Model A's training data. Documented as a data limitation, not corrected, to avoid rerunning all downstream outputs before submission.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq10">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">What is SHAP and why did you use it?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>SHAP (SHapley Additive exPlanations) assigns each feature a marginal contribution to the model's output, based on game theory. It provides global feature importance (averaged across all observations) and local explanations (for individual predictions).</p>
+        <p>The key finding: <strong>Model A's top features are all global indices. Model B's top features include VIX lag and USDTRY volatility</strong> — confirming the extended model captures information the baseline cannot access. This directly addresses the professor's emphasis on interpretable AI.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq11">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Did you test for data leakage?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>Yes — walk-forward validation is specifically designed to prevent look-ahead bias. Each split trains strictly on data <strong>before</strong> the crisis window and tests on the crisis window itself. There is no overlap between training and test periods. This is the standard approach for time-series cross-validation in financial forecasting.</p>
+      </div>
+    </div>
+
+    <div class="faq-card" id="faq12">
+      <div class="faq-q" onclick="toggleCard(this.parentElement)">
+        <div class="faq-icon">Q</div>
+        <div class="faq-question">Why not use LSTM or a proper deep learning approach?</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-a">
+        <p>LSTM requires substantially more data than 536 rows to train meaningfully. On this sample size, gradient-based sequence models overfit severely — our ANN result (CV RMSE 6× test RMSE) illustrates this.</p>
+        <p>The literature (Zhang, 2003; Makridakis et al., 2018) consistently shows that simple, well-regularised models outperform deep learning on small financial time series. Our choice of Random Forest as the primary non-linear model is deliberate.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── RUBRIC ── -->
+  <section id="rubric">
+    <div class="section-eyebrow">Rubric Alignment</div>
+    <h2 class="section-title">Grading Coverage</h2>
+    <p class="section-sub">Map each criterion to where it appears in the presentation.</p>
+
+    <table class="rubric-table">
+      <thead>
+        <tr>
+          <th>Criterion</th>
+          <th>Weight</th>
+          <th>Where Covered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Presentation quality &amp; structure</td>
+          <td><span class="weight-badge">10%</span></td>
+          <td>9 slides, consistent design, clear labels</td>
+        </tr>
+        <tr>
+          <td>Analysis thorough &amp; accurate</td>
+          <td><span class="weight-badge">50%</span></td>
+          <td>Slides 4, 8 — real numbers, walk-forward, regime breakdown</td>
+        </tr>
+        <tr>
+          <td>Background of methods</td>
+          <td>—</td>
+          <td>Slide 2 — 4-step pipeline, 6 models</td>
+        </tr>
+        <tr>
+          <td>Steps performed</td>
+          <td>—</td>
+          <td>Slide 2 — data → train → validate → score</td>
+        </tr>
+        <tr>
+          <td>Pros and cons</td>
+          <td>—</td>
+          <td>Slide 2 (Ridge/ANN exclusion), Slide 9 limitations</td>
+        </tr>
+        <tr>
+          <td>Results interpretation</td>
+          <td>—</td>
+          <td>Slides 4, 5, 7, 8, 9 — real scores, SHAP, gap</td>
+        </tr>
+        <tr>
+          <td>Literature &amp; course material</td>
+          <td><span class="weight-badge">20%</span></td>
+          <td>Fama (EMH), Minsky (FIH), Zhang (ANN), Borio, Kindleberger</td>
+        </tr>
+        <tr>
+          <td>Critical approach &amp; implications</td>
+          <td><span class="weight-badge">20%</span></td>
+          <td>Negative R² as structural break; Minsky mechanism in Slide 9</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── PROF ── -->
+  <section id="prof">
+    <div class="section-eyebrow">Professor's Perspective</div>
+    <h2 class="section-title">Direct Quotes</h2>
+    <p class="section-sub">From lecture captions — what each quote means for how you present.</p>
+
+    <div class="quote-card">
+      <div class="quote-text">"As long as you can justify why, I think you are good."</div>
+      <div class="quote-meaning">Negative R² and 13% are fine — you have the justification ready (EMH, structural break).</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-text">"Make a balance between each of the sections."</div>
+      <div class="quote-meaning">Don't over-dwell on EDA. Spend more time on model comparison and results.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-text">"Interpretable AI... it is not enough to make a model, you need to also interpret it."</div>
+      <div class="quote-meaning">SHAP slide is your strongest rubric asset — lead with it when explaining Model B.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-text">"If you use RF and ANN, you can say: in all methodologies I consistently found similar effects."</div>
+      <div class="quote-meaning">Your walk-forward heatmap with 4 models all agreeing on negative R² = exactly this.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-text">"Please do not use Excel to prepare your figures."</div>
+      <div class="quote-meaning">All your plots are Python/JS — you're fine.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-text">"Justification can come from domain knowledge and multiple comparison."</div>
+      <div class="quote-meaning">SHAP + walk-forward + crisis bars = triangulated evidence = strong justification.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-text">"The architecture of the flow remains the same — what changes is the method."</div>
+      <div class="quote-meaning">Slide 2 methodology is what he wants to see: data → quality control → model → validate → interpret.</div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- BACK TO TOP -->
+<a class="btt" href="#" id="btt" title="Back to top">↑</a>
+
+<script>
+// Toggle cards (slides + FAQs)
+function toggleCard(el) {
+  el.classList.toggle('open');
+}
+
+// Theme toggle
+const themeBtn = document.getElementById('themeBtn');
+const html = document.documentElement;
+themeBtn.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  themeBtn.textContent = isDark ? '☾' : '☀';
+  localStorage.setItem('guide-theme', isDark ? 'light' : 'dark');
+});
+
+// Restore theme
+const saved = localStorage.getItem('guide-theme');
+if (saved) {
+  html.setAttribute('data-theme', saved);
+  themeBtn.textContent = saved === 'dark' ? '☀' : '☾';
+}
+
+// Active tab tracking via IntersectionObserver
+const sections = document.querySelectorAll('section[id]');
+const tabs = document.querySelectorAll('.tab');
+
+const tabMap = {};
+tabs.forEach(t => {
+  const href = t.getAttribute('href');
+  if (href && href.startsWith('#')) tabMap[href.slice(1)] = t;
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tabs.forEach(t => t.classList.remove('active'));
+      const active = tabMap[entry.target.id];
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Back to top + scroll progress
+const btt = document.getElementById('btt');
+const progress = document.getElementById('progress');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+  progress.style.width = pct + '%';
+  btt.classList.toggle('visible', scrollTop > 300);
+}, { passive: true });
+</script>
+</body>
+</html>
