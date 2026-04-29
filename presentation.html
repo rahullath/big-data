@@ -310,30 +310,37 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fn);backgroun
   <div class="slide" id="slide-7" data-screen-label="08 Algorithm Validation">
     <div class="s-wide">
       <p class="eyebrow">Technical Validation</p>
-      <h2 class="slide-h" style="margin-bottom:20px">Cross-algorithm<br><em>performance check</em></h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+      <h2 class="slide-h" style="margin-bottom:18px">Does the story hold<br><em>across all algorithms?</em></h2>
+      <div style="display:grid;grid-template-columns:5fr 8fr;gap:28px;align-items:start">
         <div>
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">In-Sample R² · All Algorithms · Both Models</div>
-          <div style="background:var(--s);border:1px solid var(--b);border-radius:14px;overflow:hidden">
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:8px">In-Sample R² · All Algorithms · Both Training Windows</div>
+          <div style="background:var(--s);border:1px solid var(--b);border-radius:12px;overflow:hidden">
             <table id="p-algo-tbl" style="width:100%;border-collapse:collapse">
               <thead>
                 <tr style="border-bottom:1px solid var(--b)">
-                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:10px 14px;text-align:left;font-weight:400">Algorithm</th>
-                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);padding:10px 14px;text-align:left;font-weight:400">Model A R²</th>
-                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--pu);padding:10px 14px;text-align:left;font-weight:400">Model B R²</th>
+                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);padding:9px 12px;text-align:left;font-weight:400">Model</th>
+                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);padding:9px 12px;text-align:left;font-weight:400">A R²</th>
+                  <th style="font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--pu);padding:9px 12px;text-align:left;font-weight:400">B R²</th>
                 </tr>
               </thead>
               <tbody id="p-algo-body"></tbody>
             </table>
           </div>
-          <div style="margin-top:12px;font-size:13px;color:var(--t2);line-height:1.6">R² is on the raw return-prediction task. Modest values are expected — the fragility score is a composite signal, not a return forecast. Consistency across algorithms is what matters.</div>
+          <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.55">Model B improves on Model A across every algorithm. RF gains most — Model A's 32-month training window is too short for RF to generalise; Model B's 20-year window changes that.</div>
+          <div style="margin-top:8px;padding:10px 12px;background:var(--b);border-radius:8px;font-family:var(--fm);font-size:11px;color:var(--t3);line-height:1.5">4–14% is expected under EMH. These are test-set R² on 2018–2026 data — genuinely out-of-sample relative to both training windows.</div>
         </div>
         <div>
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">Walk-Forward R² · Model A &amp; B · By Crisis Split</div>
+          <div style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:8px">Walk-Forward R² · All Algorithms · Both Models · By Crisis Window</div>
           <div id="p-wf-body"></div>
-          <div class="callout">
-            <div class="callout-title">Academic Interpretation</div>
-            <div class="callout-text">Negative walk-forward R² is not a failure — it marks a structural break, which is itself informative. The 2021 split reliably breaks all models.<br><br><strong style="color:var(--t)">On the in-sample R² (left table):</strong> 4–14% is the EMH baseline — daily market returns are near-random. This measures variance in ISE returns explained, not the features. Walk-forward R² on crisis windows (38–74%) is the operative measure.<br><br><strong style="color:var(--t)">Ridge &amp; ANN:</strong> Ridge converged to OLS (α→0). ANN CV gap was 6× test RMSE on 536 rows — excluded per Zhang (2003) overfitting criterion. Both documented in Section 2 notebooks.</div>
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="padding:12px 14px;background:var(--s);border:1px solid var(--b);border-radius:10px">
+              <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--hedge);margin-bottom:5px">Global shocks → models work</div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.5">GFC and COVID show strong positive R² across both models. Co-movement is exactly what the training data captures.</div>
+            </div>
+            <div style="padding:12px 14px;background:var(--s);border:1px solid rgba(220,38,38,.2);border-radius:10px">
+              <div style="font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ponzi);margin-bottom:5px">Domestic stress → structural break</div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.5">2021–24 breaks every algorithm in both models. Negative R² marks the breakdown of global co-movement as a predictor — that <em>is</em> the finding.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -677,6 +684,7 @@ function renderTimeline(){
   html+=`<text x="${P.l+8}" y="${P.t+12}" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t3)">— Model A (dashed)</text>`;
   html+=`<text x="${P.l+142}" y="${P.t+12}" font-size="9" font-family="IBM Plex Mono,monospace" fill="var(--t2)">— Model B (solid)</text>`;
   svg.innerHTML=html;
+  svg.classList.remove('loading-state');
 }
 
 // ── SLIDE 3: CRISIS BARS ──────────────────────────────────────────────────────

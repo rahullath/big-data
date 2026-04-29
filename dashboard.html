@@ -681,7 +681,7 @@ function getMockData() {
     });
   }
   return {version:'mock',models:{
-    model_2009:{meta:{id:'model_2009',label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:{EM:.027,SP500:.019,FTSE:.015,NIKKEI:.011,EU:.010,BOVESPA:.009,DAX:.001},walk_forward:[],performance:{ols:{r2:.04,rmse:.098,mae:.08},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.064,rmse:.097,mae:.077},random_forest:{r2:.137,rmse:.093,mae:.074}}},
+    model_2009:{meta:{id:'model_2009',label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:{EM:.027,SP500:.019,FTSE:.015,NIKKEI:.011,EU:.010,BOVESPA:.009,DAX:.001},walk_forward:[],performance:{ols:{r2:.04,rmse:.098,mae:.08},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.064,rmse:.097,mae:.077},random_forest:{r2:.008,rmse:.100,mae:.077}}},
     model_2003:{meta:{id:'model_2003',label:'2003–2026 Extended'},monthly_scores:scores,shap_values:{EM:.018,BOVESPA:.008,FTSE:.004,VIX_lag1m:.004,SP500:.004,usdtry_vol:.003,EU:.003,DAX:.003,rolling_vol:.002,USDTRY_lag1m:.001},walk_forward:[],performance:{ols:{r2:.094,rmse:.095,mae:.076},elastic_net:{r2:.090,rmse:.095,mae:.075},lasso:{r2:.095,rmse:.095,mae:.075},random_forest:{r2:.137,rmse:.093,mae:.074}}}
   }};
 }

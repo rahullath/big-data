@@ -403,7 +403,7 @@ td.good{color:var(--hedge)}td.bad{color:var(--ponzi)}td.mu{color:var(--t2)}
             <tbody id="r-algo-body"></tbody>
           </table>
         </div>
-        <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.65">Random Forest achieves the highest R² but the linear models (OLS, Lasso) are more interpretable and academically defensible. The narrative is consistent across all four algorithms.</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--t2);line-height:1.65">Model B consistently improves on Model A across all algorithms. The RF gap is sharpest (0.8% → 13.8%): RF needs a large training set to generalise, and Model A's 32-month window is too short. These are test-set R² on 2018–2026, genuinely out-of-sample for both models. Full crisis-split breakdown is in the walk-forward section below.</div>
       </div>
     </div>
   </section>
@@ -715,7 +715,7 @@ function getMockData() {
   const scores=[];
   for(let i=0;i<277;i++){const yr=2003+Math.floor(i/12),mo=(i%12)+1;const d=`${yr}-${String(mo).padStart(2,'0')}-28`;const s=30+20*Math.sin(i/12)+10*Math.sin(i/4)+5*(yr>=2018?1:0);const sc=Math.min(85,Math.max(10,s));scores.push({date:d,fragility_score:sc,regime:sc>=70?'PONZI':sc>=40?'SPECULATIVE':'HEDGE',correlations:{sp500:.6,dax:.55,ftse:.5,em:.65},features:{}});}
   return{version:'mock',models:{
-    model_2009:{meta:{id:'model_2009',label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:{EM:.027,SP500:.019,FTSE:.015,NIKKEI:.011,EU:.010,BOVESPA:.009,DAX:.001},walk_forward:[],performance:{ols:{r2:.04,rmse:.098,mae:.08},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.064,rmse:.097,mae:.077},random_forest:{r2:.137,rmse:.093,mae:.074}}},
+    model_2009:{meta:{id:'model_2009',label:'2009–2011 Original'},monthly_scores:scores.map(s=>({...s,fragility_score:s.fragility_score*.7+5})),shap_values:{EM:.027,SP500:.019,FTSE:.015,NIKKEI:.011,EU:.010,BOVESPA:.009,DAX:.001},walk_forward:[],performance:{ols:{r2:.04,rmse:.098,mae:.08},elastic_net:{r2:.079,rmse:.096,mae:.076},lasso:{r2:.064,rmse:.097,mae:.077},random_forest:{r2:.008,rmse:.100,mae:.077}}},
     model_2003:{meta:{id:'model_2003',label:'2003–2026 Extended'},monthly_scores:scores,shap_values:{EM:.018,BOVESPA:.008,FTSE:.004,VIX_lag1m:.004,SP500:.004,usdtry_vol:.003,EU:.003,DAX:.003,rolling_vol:.002,USDTRY_lag1m:.001},walk_forward:[],performance:{ols:{r2:.094,rmse:.095,mae:.076},elastic_net:{r2:.090,rmse:.095,mae:.075},lasso:{r2:.095,rmse:.095,mae:.075},random_forest:{r2:.137,rmse:.093,mae:.074}}}
   }};
 }
